@@ -3,7 +3,7 @@ package dto;
 import util.R;
 import ai.AI;
 
-public class Preference {
+public class PreferenceDTO {
     
     /*
      * 用户设置,aiLevel,language,resolution数值含义参考R类

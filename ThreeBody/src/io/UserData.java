@@ -2,7 +2,7 @@ package io;
 
 import model.Account;
 
-public class LocalData {
+public class UserData {
     
     Account account;
     
