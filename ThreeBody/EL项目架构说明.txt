@@ -1,0 +1,38 @@
+三体架构说明
+
+包功能说明：
+ai：单机模式用。Player类里面有成员变量判断是不是ai，若是，控制权转移给特定ai对象，否则转移给网络上的玩家
+control：流程控制用。MainControl负责模块（panel）间的转跳，整个软件的运行；GameControl负责游戏时的逻辑，与网络的同步；
+dto：存放暂时数据用。GameDTO存放游戏过程中用到的数据；Preference存放用户喜好配置，比如音量，分辨率等
+io：负责程序与外部数据的交互，config子包负责读写xml文件（包括游戏参数，图片路径，控件大小等）；LocalData负责读写本地数据缓存（用户账号信息，用户喜好配置），NetClient负责与服务器的交互
+model：定义模型。card子包中放卡的类；Account为用户账号；Broadcast为广播；Character子包中放角色类；Coordinate坐标；Player玩家（与账号不同，此为游戏过程中的概念）；Room房间；Operation操作，非常重要，后面详细讲。
+ui：定义GUI样式，是什么面板看名字就行
+util：工具类包。OperationTranslator负责将Operation转换成文字消息；R负责放置图片文字BGM等常量
+
+游戏逻辑的说明：
+游戏由好多好多轮组成，直到归一者消灭全员或者地球消灭所有归一者和三体。
+每轮由开盘决定的顺序到各玩家的回合。
+一个回合由三个阶段组成。
+阶段一，科技增长和资源补充，由GameControl调用各个玩家的角色的方法完成
+阶段二，玩家行动阶段，玩家可以执行操作（Operation），创建Operation对象，由GameControl根据Operation对象完成操作
+阶段三，结束阶段，行动权转移给下一个玩家，由GameControl完成
+上面三个阶段中，阶段二和三都需要和服务器沟通，需要同步不同客户端和服务器中GameDTO的数据，这里采用建立Operation模型的方法实现（因为可以顺便完成战报生成的功能）
+
+Operation模型：
+一个Operation由from（执行玩家），to（被选择玩家），type（操作类型），extra（其他信息）operable（是否可执行）组成。
+当用户通过控件完成操作时，一个Operation对象生成，放入GameDTO的unhandledOperations中，GameControl通过访问这个List，执行相应方法。若from不是本地玩家，通过联网发送unhandledOperations给服务器，再由服务器分发给其他联机的客户端。
+
+其次，util包中的OperationTranslator类可以将Operation信息转换成文字战报记录，或者生成通知中的信息。
+
+Operation的type：
+CARD_USE：使用卡片，具体是哪个卡在extra中有
+TECH_CHANGE：变更科技值
+RSR_CHANGE：变更资源
+BROCAST: 广播，内容在extra中
+LOSE: 更改某个玩家状态为败北，operable = false
+CHARACTER_CHANGE: 将某个玩家角色变更，如从三体变成地球，operable = false
+COORDINATE_GET: from得到to的坐标，详细从extra
+PRIVILEGE_USE: 使用特权
+TURN_CHANGE：回合变更
+
+PS: 当使用Card类的process方法时，实际上还是生成一串的Operation对象完成。比如说当我使用高级智子获取了A的第二个坐标，实际上就是将一个type为COORDINATE_GET的Operation扔到GameDTO的unhandledOperations里面
