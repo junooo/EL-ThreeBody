@@ -19,10 +19,16 @@ public class AccountControl {
         
     }
     
+    /*
+     * 将本地改变上传到服务器端
+     */
     public void uploadChange(){
         
     }
     
+    /*
+     * 将服务器端改变下载
+     */
     public void downloadChange(){
         
     }

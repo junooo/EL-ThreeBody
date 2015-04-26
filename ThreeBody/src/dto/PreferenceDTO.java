@@ -12,6 +12,9 @@ public class PreferenceDTO {
     private boolean effectSwitch;
     private AI.level aiLevel;
     private R.language language;
+    /*
+     * ·Ö±æÂÊ
+     */
     private R.resolution resolution;
     private int volume;
 

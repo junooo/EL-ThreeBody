@@ -26,7 +26,7 @@ public class MainControl {
 
     }
 
-    public void toTutor() {
+    public void toTutorial() {
 
     }
 

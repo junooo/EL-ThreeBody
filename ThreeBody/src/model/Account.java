@@ -13,13 +13,16 @@ public class Account {
      * 积分
      */
     private int point;
+    /*
+     * 排名
+     */
     private int rank;
     /*
-     * 除了输和赢还有强退的
+     * 总游戏次数，除了输和赢还有强退的
      */
     private int totalGames;
     private int wins;
     private int losts;
-    private String country;
+    private String regions;
 
 }
