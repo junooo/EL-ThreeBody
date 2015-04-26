@@ -1,6 +1,6 @@
 package util;
 
-import model.Operation;
+import model.operation.Operation;
 
 public class OperationTranslator {
     
