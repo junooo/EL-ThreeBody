@@ -2,8 +2,8 @@ package io;
 
 import java.util.List;
 
-import model.Operation;
 import model.Room;
+import model.operation.Operation;
 
 public class NetClient {
     

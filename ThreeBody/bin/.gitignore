@@ -1,8 +1,8 @@
-/util/
-/model/
-/dto/
-/control/
-/io/
-/ui/
 /ai/
-/character/
+/control/
+/dto/
+/io/
+/model/
+/ui/
+/util/
+/operation/

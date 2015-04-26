@@ -3,7 +3,7 @@
 包功能说明：
 ai：单机模式用。Player类里面有成员变量判断是不是ai，若是，控制权转移给特定ai对象，否则转移给网络上的玩家
 control：流程控制用。MainControl负责模块（panel）间的转跳，整个软件的运行；GameControl负责游戏时的逻辑，与网络的同步；
-dto：存放暂时数据用。GameDTO存放游戏过程中用到的数据；Preference存放用户喜好配置，比如音量，分辨率等
+dto：存放暂时数据用。GameDTO存放游戏过程中用到的数据；PreferenceDTO存放用户喜好配置，比如音量，分辨率等
 io：负责程序与外部数据的交互，config子包负责读写xml文件（包括游戏参数，图片路径，控件大小等）；UserData负责读写本地数据缓存（用户账号信息，用户喜好配置），NetClient负责与服务器的交互
 model：定义模型。card子包中放卡的类；Account为用户账号；Broadcast为广播；Character子包中放角色类；Coordinate坐标；Player玩家（与账号不同，此为游戏过程中的概念）；Room房间；Operation操作，非常重要，后面详细讲。
 ui：定义GUI样式，是什么面板看名字就行

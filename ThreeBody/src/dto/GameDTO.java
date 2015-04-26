@@ -3,8 +3,8 @@ package dto;
 import java.util.List;
 
 import model.Broadcast;
-import model.Operation;
 import model.Player;
+import model.operation.Operation;
 
 public class GameDTO {
     
