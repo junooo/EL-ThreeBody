@@ -1,13 +1,23 @@
 package control;
 
+import util.R;
+
 public class RoomControl {
 	
-	public void ready(){
-		
+	public R.info ready(){
+		return null;
 	}
 	
-	public void cancelReady(){
-		
+	public R.info cancelReady(){
+		return null;
+	}
+	
+	public R.info start(){
+		return null;
+	}
+	
+	public R.info exit(){
+		return null;
 	}
 
 }

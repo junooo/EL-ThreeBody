@@ -1,23 +1,30 @@
 package model;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-public class Room {
+public class Room implements Serializable{
     
-    List<Account> accounts;
-    String name;
+    /**
+	 * default
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private List<Account> accounts;
+	private Account creater;
+	private String name;
     /*
      * 是否开始
      */
-    boolean state;
+	private boolean state;
     /*
      * 每位玩家是否准备好
      */
-    Map<Player,Boolean> ready;
+	private Map<Player,Boolean> ready;
     /*
      * 房间人数上限
      */
-    int size;
+	private int size;
 
 }
