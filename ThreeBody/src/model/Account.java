@@ -1,10 +1,16 @@
 package model;
 
 import java.awt.Image;
+import java.io.Serializable;
 
-public class Account {
+public class Account implements Serializable{
     
-    private String id;
+    /**
+	 * default serialVersionUID
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private String id;
     /*
      * Í·Ïñ
      */
