@@ -10,5 +10,4 @@ public class UserData {
     
     Account account;
     
-
 }

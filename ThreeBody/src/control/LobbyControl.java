@@ -2,6 +2,7 @@ package control;
 
 import java.util.List;
 
+import util.R;
 import model.Room;
 
 /*
@@ -13,12 +14,12 @@ public class LobbyControl {
         return null;
     }
     
-    public void enterRoom(Room room){
-        
+    public R.info enterRoom(Room room){
+        return null;
     }
     
-    public void exitRoom(Room room){
-        
+    public R.info createRoom(Room room){
+    	return null;
     }
 
 }
