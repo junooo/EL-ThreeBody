@@ -1,2 +1,8 @@
-/ui/
+/ai/
 /control/
+/dto/
+/io/
+/model/
+/ui/
+/util/
+/server/
