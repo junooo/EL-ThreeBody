@@ -14,7 +14,7 @@ import ui.sound.Sound;
 import control.MainControl;
 
 public class StartMenuPanel extends JPanel{
-	//ÎªÁË²»Æ®»ÆÏß¼ÓµÄÒ»ÐÐ´úÂë£¬²»Òª¸Ðµ½Ææ¹Ö
+	//Îªï¿½Ë²ï¿½Æ®ï¿½ï¿½ï¿½ß¼Óµï¿½Ò»ï¿½Ð´ï¿½ï¿½ë£¬ï¿½ï¿½Òªï¿½Ðµï¿½ï¿½ï¿½ï¿½
 	private static final long serialVersionUID = 1L;
 	
 	private JButton btnStartGame;
@@ -34,44 +34,44 @@ public class StartMenuPanel extends JPanel{
 	
 	private void initComonent() {
 
-		// ³õÊ¼»¯¿ªÊ¼°´Å¥
-		this.btnStartGame = new JButton("¿ªÊ¼ÓÎÏ·");
+		// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½Å¥
+		this.btnStartGame = new JButton("ï¿½ï¿½Ê¼ï¿½ï¿½Ï·");
 		this.btnStartGame.setContentAreaFilled(false);
 		this.btnStartGame.setBounds(483, 120, 200, 60);
 //		this.btnMultyPlay.setBorderPainted(false);
-		// ¸ø¿ªÊ¼°´Å¥Ôö¼ÓÊÂ¼þ¼àÌý
+		// ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½
 		btnStartGame.addMouseListener(new StartGameListener());
-		// Ìí¼Ó°´Å¥µ½Ãæ°å
+		// ï¿½ï¿½Ó°ï¿½Å¥ï¿½ï¿½ï¿½ï¿½ï¿½
 		this.add(btnStartGame);
 
-		this.btnOption = new JButton("ÓÎÏ·ÉèÖÃ");
+		this.btnOption = new JButton("ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½");
 		this.btnOption.setContentAreaFilled(false);
 		this.btnOption.setBounds(483, 220, 200, 60);
 		this.btnOption.addMouseListener(new OptionListener());
 
 		this.add(btnOption);
 
-		this.btnAboutUs = new JButton("¹ØÓÚÎÒÃÇ");
+		this.btnAboutUs = new JButton("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		this.btnAboutUs.setContentAreaFilled(false);
 		this.btnAboutUs.setBounds(483, 320, 200, 60);
 		this.btnAboutUs.addMouseListener(new AboutUsListener());
 		this.add(btnAboutUs);
 
-		this.btnExit = new JButton("ÍË³ö");
+		this.btnExit = new JButton("ï¿½Ë³ï¿½");
 		this.btnExit.setContentAreaFilled(false);
 		this.btnExit.setBounds(483, 420, 200, 60);
 		this.btnExit.addMouseListener(new ExitListener());
 		this.add(btnExit);
 
 		
-		this.btnLogIn = new JButton("µÇÂ½");
+		this.btnLogIn = new JButton("ï¿½ï¿½Â½");
 		this.btnLogIn.setContentAreaFilled(false);
 		this.btnLogIn.setBounds(0, 0, 150, 25);
 		this.btnLogIn.addMouseListener(new LogInListener());
 		this.add(btnLogIn);
 		
 		
-		this.btnAccount = new JButton("ÓÃ»§ÐÅÏ¢");
+		this.btnAccount = new JButton("ï¿½Ã»ï¿½ï¿½ï¿½Ï¢");
 		this.btnAccount.setContentAreaFilled(false);
 		this.btnAccount.setBounds(0, 25, 150, 25);
 		this.btnAccount.addMouseListener(new AccountListener());
@@ -79,7 +79,7 @@ public class StartMenuPanel extends JPanel{
 	@Override
 	public void paintComponent(Graphics g) {
 		Image IMG_MAIN = new ImageIcon("img1.jpg").getImage();
-		// »æÖÆÓÎÏ·½çÃæ
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½
 		g.drawImage(IMG_MAIN, 0, 0, 1158, 650, null);
 	}
 

@@ -3,50 +3,65 @@ package control;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import ui.MainFrame;
-import ui.StartMenuPanel;
-import ui.sound.Media;
-import ui.sound.Sound;
+import ui.*;
+import ui.sound.*;
 
 /*
- * ¸ºÔðÄ£¿é¼äµÄ×ªÌø
+ * ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½
  */
 public class MainControl {
 
-    JPanel currentPanel;
+    static JPanel currentPanel;
     JFrame frame;
     JPanel startMainPanel;
+    MainControl mainControl;
     
     public void toStartMenu() {
-
+    	currentPanel.setVisible(false);
+		currentPanel=new StartMenuPanel(this);
+    	currentPanel.setVisible(true);
     }
 
     public void toAnimate() {
-
+    	currentPanel.setVisible(false);
+		currentPanel=new AnimatePanel();
+    	currentPanel.setVisible(true);
     }
 
-    public void toConfig() {
-
+    public void toPreference() {
+    	currentPanel.setVisible(false);
+		currentPanel=new PreferencePanel();
+    	currentPanel.setVisible(true);
     }
 
     public void toTutorial() {
-
+    	currentPanel.setVisible(false);
+		currentPanel=new TutorialPanel();
+    	currentPanel.setVisible(true);
     }
 
     public void toGame() {
-
+    	currentPanel.setVisible(false);
+		currentPanel=new GamePanel();
+    	currentPanel.setVisible(true);
     }
 
     public void toLobby() {
-
+    	currentPanel.setVisible(false);
+		currentPanel=new LobbyPanel();
+    	currentPanel.setVisible(true);
     }
 
     public void toRoom() {
-
+    	currentPanel.setVisible(false);
+		currentPanel=new RoomPanel();
+    	currentPanel.setVisible(true);
     }
 
     public void toAboutUs() {
-
+    	currentPanel.setVisible(false);
+		currentPanel=new AboutUsPanel();
+    	currentPanel.setVisible(true);
     }
 
     public void exit() {
@@ -59,5 +74,6 @@ public class MainControl {
     	mc.frame.setContentPane(mc.startMainPanel);
     	Sound.load("BGM1");
     	Media.playBGM(Sound.BGM);
+    	currentPanel=new StartMenuPanel(mc);
 	}
 }

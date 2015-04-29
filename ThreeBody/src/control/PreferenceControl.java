@@ -1,16 +1,24 @@
 package control;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
+import io.UserData;
+
 /*
  * Preference
  */
 public class PreferenceControl {
     
-    public void savePreference(){
-        
+	UserData userData=new UserData();
+	
+	
+    public void savePreference() throws IOException{
+ 		userData.saveFile();
     }
     
-    public void loadPreference(){
-        
+    public void loadPreference() throws ClassNotFoundException, IOException{
+        userData.readFile();
     }
 
 }

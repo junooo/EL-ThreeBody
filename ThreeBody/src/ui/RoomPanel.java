@@ -1,5 +1,7 @@
 package ui;
 
-public class RoomPanel {
+import javax.swing.JPanel;
+
+public class RoomPanel extends JPanel{
 
 }

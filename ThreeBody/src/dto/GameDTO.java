@@ -7,30 +7,81 @@ import model.Player;
 import model.operation.Operation;
 
 public class GameDTO {
-    
+
     private List<Player> players;
-    /*
-     * Ë­µÄ»ØºÏ
+ 
+	/*
+     * æœ¬å›åˆæ“ä½œè€…
      */
     private Player whoseTurn;
     /*
-     * ±¾µØµÄÍæ¼Ò 
+     * æœ¬åœ°ç©å®¶
      */
     private Player user;
     /*
-     * ÀúÊ·ÏûÏ¢¼ÇÂ¼
+     * å†å²æ¶ˆæ¯è®°å½•
      */
     private List<Broadcast> broadcasts;
     /*
-     * ÀúÊ·²Ù×÷¼ÇÂ¼
+     *å†å²æ“ä½œè®°å½•
      */
     private List<Operation> operations;
     /*
-     * Î´Ö´ĞĞµÄ²Ù×÷
+     * å¾…æ‰§è¡Œæ“ä½œ
      */
     private List<Operation> unhandledOperations;
     
     public void depositOperation(Operation operation){
         
     }
+
+	public List<Player> getPlayers() {
+		return players;
+	}
+
+	public void setPlayers(List<Player> players) {
+		this.players = players;
+	}
+
+	public Player getWhoseTurn() {
+		return whoseTurn;
+	}
+
+	public void setWhoseTurn(Player whoseTurn) {
+		this.whoseTurn = whoseTurn;
+	}
+
+	public Player getUser() {
+		return user;
+	}
+
+	public void setUser(Player user) {
+		this.user = user;
+	}
+
+	public List<Broadcast> getBroadcasts() {
+		return broadcasts;
+	}
+
+	public void setBroadcasts(List<Broadcast> broadcasts) {
+		this.broadcasts = broadcasts;
+	}
+
+	public List<Operation> getOperations() {
+		return operations;
+	}
+
+	public void setOperations(List<Operation> operations) {
+		this.operations = operations;
+	}
+
+	public List<Operation> getUnhandledOperations() {
+		return unhandledOperations;
+	}
+
+	public void setUnhandledOperations(List<Operation> unhandledOperations) {
+		this.unhandledOperations = unhandledOperations;
+	}
+    
+    
 }
