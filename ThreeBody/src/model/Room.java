@@ -26,5 +26,27 @@ public class Room implements Serializable{
      * 房间人数上限
      */
 	private int size;
+	
+	/*
+	 * getters
+	 */
+	public List<Account> getAccounts() {
+		return accounts;
+	}
+	public Account getCreater() {
+		return creater;
+	}
+	public String getName() {
+		return name;
+	}
+	public boolean isState() {
+		return state;
+	}
+	public Map<Player, Boolean> getReady() {
+		return ready;
+	}
+	public int getSize() {
+		return size;
+	}
 
 }

@@ -16,8 +16,10 @@ public final class R {
     
     public static enum info implements Serializable{
     	SUCCESS,
-    	ALREADY_EXIST,
-    	CONNECT_FAIL
+    	ALREADY_EXISTED,
+    	CONNECT_FAIL,
+    	NOT_EXISTED,
+    	INVALID
     }
     
 }

@@ -7,7 +7,12 @@ import model.Player;
 import model.operation.Operation;
 
 public class GameDTO {
-
+	
+	/*
+	 * singleton
+	 */
+	private static GameDTO dto = new GameDTO();
+    
     private List<Player> players;
  
 	/*
@@ -31,10 +36,19 @@ public class GameDTO {
      */
     private List<Operation> unhandledOperations;
     
+    private GameDTO(){}
+    
+    public static GameDTO getInstance(){
+    	return dto;
+    }
+    
     public void depositOperation(Operation operation){
         
     }
 
+    /*
+     * getters and setters
+     */
 	public List<Player> getPlayers() {
 		return players;
 	}

@@ -37,5 +37,8 @@ public class AccountControl {
     public R.info loginByTransientID(){
     	return null;
     }
-    
+
+	public Account getAccount() {
+		return account;
+	}
 }
