@@ -1,16 +1,18 @@
 package ui;
 
-public class GamePanel {
+import javax.swing.JPanel;
+
+public class GamePanel extends JPanel{
     
     /*
-     * µ±Íæ¼Ò±»Õ¨Ê±²¥·ÅÌØ¼¼
+     * ï¿½ï¿½ï¿½ï¿½Ò±ï¿½Õ¨Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½
      */
     public void boom(){
         
     }
     
     /*
-     * µ±Íæ¼Ò±»Õ¼ÁìÊ±²¥·ÅÌØ¼¼
+     * ï¿½ï¿½ï¿½ï¿½Ò±ï¿½Õ¼ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½
      */
     public void conquer(){
         

@@ -9,29 +9,30 @@ import model.operation.Operation;
 public class GameDTO {
 	
 	/*
-	 * µ¥ÀıÄ£Ê½
+	 * singleton
 	 */
 	private static GameDTO dto = new GameDTO();
     
     private List<Player> players;
-    /*
-     * Ë­µÄ»ØºÏ
+ 
+	/*
+     * æœ¬å›åˆæ“ä½œè€…
      */
     private Player whoseTurn;
     /*
-     * ±¾µØµÄÍæ¼Ò 
+     * æœ¬åœ°ç©å®¶
      */
     private Player user;
     /*
-     * ÀúÊ·ÏûÏ¢¼ÇÂ¼
+     * å†å²æ¶ˆæ¯è®°å½•
      */
     private List<Broadcast> broadcasts;
     /*
-     * ÀúÊ·²Ù×÷¼ÇÂ¼
+     *å†å²æ“ä½œè®°å½•
      */
     private List<Operation> operations;
     /*
-     * Î´Ö´ĞĞµÄ²Ù×÷
+     * å¾…æ‰§è¡Œæ“ä½œ
      */
     private List<Operation> unhandledOperations;
     

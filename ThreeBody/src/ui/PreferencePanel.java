@@ -1,5 +1,7 @@
 package ui;
 
-public class PreferencePanel {
+import javax.swing.JPanel;
+
+public class PreferencePanel extends JPanel{
 
 }
