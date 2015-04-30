@@ -3,8 +3,20 @@ package control;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import ui.*;
-import ui.sound.*;
+import ui.AboutUsPanel;
+import ui.AnimatePanel;
+import ui.BroadcastPanel;
+import ui.GamePanel;
+import ui.LobbyPanel;
+import ui.MainFrame;
+import ui.PreferencePanel;
+import ui.RoomPanel;
+import ui.SelectPanel;
+import ui.StartMenuPanel;
+import ui.TutorialPanel;
+import ui.sound.Media;
+import ui.sound.Sound;
+
 
 /*
  * ����ģ����ת��
@@ -14,6 +26,10 @@ public class MainControl {
     JPanel currentPanel;
     JFrame frame;
     JPanel startMainPanel;
+    JPanel selectPanel;
+    JPanel gamePanel;
+    JPanel isOnlinePanel;
+    JPanel broadcast;
     MainControl mainControl;
     
     public void toStartMenu() {
@@ -43,10 +59,16 @@ public class MainControl {
 		frame.setContentPane(currentPanel);
     	currentPanel.setVisible(true);
     }
+    
+    public void toSelect(){
+    	this.frame.getContentPane().setVisible(false);
+    	this.selectPanel.setVisible(true);
+    	this.frame.setContentPane(this.selectPanel);
+    }
 
     public void toGame() {
     	currentPanel.setVisible(false);
-		currentPanel=new GamePanel();
+		currentPanel=new GamePanel(this);
 		frame.setContentPane(currentPanel);
     	currentPanel.setVisible(true);
     }
@@ -77,11 +99,22 @@ public class MainControl {
     }
     public static void main(String[] args) {
     	MainControl mc = new MainControl();
-    	mc.frame = new MainFrame();
     	mc.startMainPanel = new StartMenuPanel(mc);
+    	mc.gamePanel = new GamePanel(mc);
+    	mc.selectPanel = new SelectPanel(mc);
+    	mc.broadcast = new BroadcastPanel(mc);
+    	mc.broadcast.setBounds(0, 0, 400, 200);
+    	mc.frame = new MainFrame();
     	mc.frame.setContentPane(mc.startMainPanel);
     	Sound.load("BGM1");
     	Media.playBGM(Sound.BGM);
     	mc.currentPanel=new StartMenuPanel(mc);
 	}
+
+	public void openBroadcast() {
+    	this.broadcast.setVisible(true);
+    	this.frame.add(this.broadcast);
+		
+	}
+
 }
