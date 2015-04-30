@@ -37,7 +37,7 @@ public class StartMenuPanel extends JPanel{
 		// 初始化开始按钮
 		this.btnStartGame = new JButton(new ImageIcon("button.png"));
 		this.btnStartGame.setContentAreaFilled(false);
-		this.btnStartGame.setBounds(483, 120, 200, 60);
+		this.btnStartGame.setBounds(483, 120, 200, 80);
 		this.btnStartGame.setBorderPainted(false);
 		// 给开始按钮增加事件监听
 		btnStartGame.addMouseListener(new StartGameListener());
@@ -46,7 +46,7 @@ public class StartMenuPanel extends JPanel{
 
 		this.btnOption = new JButton(new ImageIcon("option.png"));
 		this.btnOption.setContentAreaFilled(false);
-		this.btnOption.setBounds(483, 220, 200, 60);
+		this.btnOption.setBounds(483, 220, 200, 80);
 		this.btnOption.setBorderPainted(false);
 		this.btnOption.addMouseListener(new OptionListener());
 
@@ -54,14 +54,14 @@ public class StartMenuPanel extends JPanel{
 
 		this.btnAboutUs = new JButton(new ImageIcon("about.png"));
 		this.btnAboutUs.setContentAreaFilled(false);
-		this.btnAboutUs.setBounds(483, 320, 200, 60);
+		this.btnAboutUs.setBounds(483, 320, 200, 80);
 		this.btnAboutUs.setBorderPainted(false);
 		this.btnAboutUs.addMouseListener(new AboutUsListener());
 		this.add(btnAboutUs);
 
 		this.btnExit = new JButton(new ImageIcon("exit.png"));
 		this.btnExit.setContentAreaFilled(false);
-		this.btnExit.setBounds(483, 420, 200, 60);
+		this.btnExit.setBounds(483, 420, 200, 80);
 		this.btnExit.setBorderPainted(false);
 		this.btnExit.addMouseListener(new ExitListener());
 		this.add(btnExit);
@@ -84,6 +84,7 @@ public class StartMenuPanel extends JPanel{
 		Image IMG_MAIN = new ImageIcon("img2.jpg").getImage();
 		// 绘制游戏界面
 		g.drawImage(IMG_MAIN, 0, 0, 1158, 650, null);
+		
 	}
 
 	class StartGameListener implements MouseListener {
@@ -91,7 +92,7 @@ public class StartMenuPanel extends JPanel{
 		@Override
 		public void mouseClicked(MouseEvent arg0) {
 			Media.playSound(Sound.enter);
-			mainControl.toGame();
+			mainControl.toSelect();
 		}
 
 		@Override
