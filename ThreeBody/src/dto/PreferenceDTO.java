@@ -6,16 +6,19 @@ import ai.AI;
 public class PreferenceDTO {
     
     /*
-     * ÓÃ»§ÉèÖÃ,aiLevel,language,resolutionÊıÖµº¬Òå²Î¿¼RÀà
+     * ç”¨æˆ·è®¾ç½®,aiLevel,language,resolutionæ•°å€¼å«ä¹‰å‚è€ƒRç±»
      */
     private boolean musicSwitch;
     private boolean effectSwitch;
     private AI.level aiLevel;
     private R.language language;
     /*
-     * ·Ö±æÂÊ
+     * åˆ†è¾¨ç‡
      */
     private R.resolution resolution;
+    /*
+     * éŸ³é‡
+     */
     private int volume;
     
     /*

@@ -1,5 +1,7 @@
 package ui;
 
-public class AboutUsPanel {
+import javax.swing.JPanel;
+
+public class AboutUsPanel extends JPanel{
 
 }

@@ -1,4 +1,7 @@
-/model/
 /dto/
-/server/
 /control/
+/io/
+/ui/
+/.DS_Store
+/server/
+/model/
