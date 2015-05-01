@@ -4,4 +4,5 @@
 /ui/
 /.DS_Store
 /server/
-/model/
+/ui/
+/util/

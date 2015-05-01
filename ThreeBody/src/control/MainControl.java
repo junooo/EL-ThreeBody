@@ -74,7 +74,7 @@ public class MainControl {
 
     public void exit() {
     	System.exit(0);
-    }
+    } 
     public static void main(String[] args) {
     	MainControl mc = new MainControl();
     	mc.frame = new MainFrame();
