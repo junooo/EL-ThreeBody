@@ -43,14 +43,14 @@ public class GamePanel  extends JPanel{
 		this.initComonent();
 	}
 	private void initComonent() {
-		this.btnReturn = new JButton("����");
+		this.btnReturn = new JButton("高级智子");
 		this.btnReturn.setContentAreaFilled(false);
 		this.btnReturn.setBounds(-50, 615, 100, 30);
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnReturn.addMouseListener(new ReturnListener());
 		this.add(btnReturn);
 		
-		this.btnBroadcast = new JButton("�㲥");
+		this.btnBroadcast = new JButton("智子");
 		this.btnBroadcast.setContentAreaFilled(false);
 		this.btnBroadcast.setBounds(400, 600, 50, 15);
 		// this.btnMultyPlay.setBorderPainted(false);

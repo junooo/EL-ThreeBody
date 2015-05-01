@@ -17,6 +17,7 @@ public class BroadcastPanel extends GamePanel {
 
 	public BroadcastPanel(MainControl mainControl) {
 		super(mainControl);
+//		setBounds(0, 0, 400, 200);
 	}
 
 	private void initComonent() {
@@ -27,7 +28,7 @@ public class BroadcastPanel extends GamePanel {
 	@Override
 	public void paintComponent(Graphics g) {
 		Image IMG_MAIN = new ImageIcon("img3.jpg").getImage();
-		// 绘制游戏界面
+		// 缁樺埗娓告垙鐣岄潰
 		g.drawImage(IMG_MAIN, 0, 0, 1158, 650, null);
 	}
 }

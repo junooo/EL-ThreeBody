@@ -10,7 +10,7 @@ import dto.GameDTO;
 /**
  * 
  * @author Sissel
- * ¸ß¼¶ÖÇ×Ó£¬
+ * é«˜çº§æ™ºå­
  */
 public class Sophon extends Card{
 
@@ -25,7 +25,7 @@ public class Sophon extends Card{
 	 * 
 	 * @param operator
 	 * @param receiver
-	 * @param number ÏëÒª»ñÈ¡µÄÍæ¼ÒµÄµÚ¼¸¸ö×ø±ê
+	 * @param number æƒ³è¦è·å–çš„ç©å®¶çš„ç¬¬å‡ ä¸ªåæ ‡
 	 */
 	public Sophon(String operator, String receiver,int number) {
 		super(operator, receiver);
@@ -39,7 +39,7 @@ public class Sophon extends Card{
 		GameDTO dto = GameDTO.getInstance();
 		Player pOperator = null;
 		Player pReceiver = null;
-		//ÕÒµ½¶ÔÓ¦µÄÍæ¼Ò
+		//æ‰¾åˆ°å¯¹åº”çš„ç©å®¶
 		for (Player player : dto.getPlayers()) {
 			if(player.getAccount().getId().equals(this.operator)){
 				pOperator = player;
@@ -48,17 +48,17 @@ public class Sophon extends Card{
 				pReceiver = player;
 			}
 		}
-		//ÏûºÄÏàÓ¦µÄ×ÊÔ´£¬Í¨¹ı·ÅÖÃĞÂOperationÀ´ÊµÏÖ
+		//æ¶ˆè€—ç›¸åº”çš„èµ„æºï¼Œé€šè¿‡æ”¾ç½®æ–°Operationæ¥å®ç°
 		ResourceChange rc = new ResourceChange(operator, receiver, ResourceChange.Type.DECREASE, this.resource);
 		dto.depositOperation(rc);
-		//Ö´ĞĞ»ñÈ¡×ø±ê²Ù×÷
+		//æ‰§è¡Œè·å–åæ ‡æ“ä½œ
 		Coordinate coordinate = pReceiver.getCoordinate();
 		int result = coordinate.getCoordinateElement(number);
 		if(result == Coordinate.UNKNOWN){
 			CoordinateGetFail cgf = new CoordinateGetFail(operator,receiver);
 			dto.depositOperation(cgf);
 		}else{
-			// Éè¶¨operatorµÄÒÑ·¢ÏÖµÄ×ø±êÖµ
+			// è®¾å®šoperatorçš„å·²å‘ç°çš„åæ ‡å€¼
 			pOperator.getFoundCoordinates().get(pReceiver).setCoordinateElement(number, result);
 			CoordinateGet cg = new CoordinateGet(operator,receiver,number,result);
 			dto.depositOperation(cg);

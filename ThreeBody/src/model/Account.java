@@ -12,19 +12,19 @@ public class Account implements Serializable{
 	
 	private String id;
     /*
-     * Í·Ïñ
+     * å¤´åƒ
      */
     private Image head;
     /*
-     * »ı·Ö
+     * ç§¯åˆ†
      */
     private int point;
     /*
-     * ÅÅÃû
+     * æ’å
      */
     private int rank;
     /*
-     * ×ÜÓÎÏ·´ÎÊı£¬³ıÁËÊäºÍÓ®»¹ÓĞÇ¿ÍËµÄ
+     * æ€»æ¸¸æˆæ¬¡æ•°ï¼Œé™¤äº†è¾“å’Œèµ¢è¿˜æœ‰å¼ºé€€çš„
      */
     private int totalGames;
     private int wins;

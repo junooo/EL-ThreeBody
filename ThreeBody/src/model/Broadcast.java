@@ -1,7 +1,7 @@
 package model;
 
 /*
- * ���� ����㲥��ϵͳ�㲥����ҵ���Ϣ
+ * 包括 坐标广播，系统广播，玩家的消息
  */
 public class Broadcast {
     

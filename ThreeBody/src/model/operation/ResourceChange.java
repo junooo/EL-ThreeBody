@@ -43,7 +43,7 @@ public class ResourceChange extends Operation implements Operable{
 	public void process() {
 		GameDTO dto = GameDTO.getInstance();
 		Player pReceiver = null;
-		//ÕÒµ½¶ÔÓ¦µÄÍæ¼Ò
+		// æ‰¾åˆ°å¯¹åº”çš„çŽ©å®¶
 		for (Player player : dto.getPlayers()) {
 			if(player.getAccount().getId().equals(this.receiver)){
 				pReceiver = player;

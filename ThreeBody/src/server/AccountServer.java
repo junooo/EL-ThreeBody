@@ -19,21 +19,21 @@ import util.R.info;
  * 
  * @author Sissel
  * 
- * Õâ¸öÀàÆäÊµ¶ÔÓ¦ÁËÁ½¸ö¹¦ÄÜ£¬Ò»¸öÊÇ×÷Îªµ¥Ò»¶ÔÏó¸ø¿Í»§¶ËµÇÂ½£¬²¢·Ö·¢¸÷×ÔµÄºóĞøÁ¬½Ó¶Ë¿Ú
- * ÁíÒ»¸ö¹¦ÄÜÊÇ×÷ÎªÌØ¶¨¶ÔÏóÎªÌØ¶¨¿Í»§¶ËµÄÁ¬½Ó¶Ë¿ÚÌá¹©·şÎñ
+ * è¿™ä¸ªç±»å…¶å®å¯¹åº”äº†ä¸¤ä¸ªåŠŸèƒ½ï¼Œä¸€ä¸ªæ˜¯ä½œä¸ºå•ä¸€å¯¹è±¡ç»™å®¢æˆ·ç«¯ç™»é™†ï¼Œå¹¶åˆ†å‘å„è‡ªçš„åç»­è¿æ¥ç«¯å£
+ * å¦ä¸€ä¸ªåŠŸèƒ½æ˜¯ä½œä¸ºç‰¹å®šå¯¹è±¡ä¸ºç‰¹å®šå®¢æˆ·ç«¯çš„è¿æ¥ç«¯å£æä¾›æœåŠ¡
  */
 public class AccountServer extends UnicastRemoteObject implements RMIAccount {
 
 	private static final long serialVersionUID = 1L;
 
 	/*
-	 * ¶ÔÓ¦Õû¸ö·şÎñÆ÷ÉÏµÄÈ«²¿account
+	 * å¯¹åº”æ•´ä¸ªæœåŠ¡å™¨ä¸Šçš„å…¨éƒ¨account
 	 */
 	Map<String, String> passwords;
 	Map<String, Account> accounts;
 	Set<String> invitationIDs;
 	/*
-	 * ¶ÔÓ¦µ¥¸öaccount
+	 * å¯¹åº”å•ä¸ªaccount
 	 */
 	Account account;
 
@@ -45,7 +45,7 @@ public class AccountServer extends UnicastRemoteObject implements RMIAccount {
 		try {
 			AccountServer dispatchSever = new AccountServer();
 			
-			// TODO ÎÄ¼şIO
+			// TODO æ–‡ä»¶IO
 			dispatchSever.passwords = new HashMap<String, String>();
 			dispatchSever.accounts = new HashMap<String, Account>();
 			dispatchSever.invitationIDs = new TreeSet<String>();

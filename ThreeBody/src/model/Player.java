@@ -4,33 +4,33 @@ import java.util.Map;
 
 public class Player {
     /*
-     * ¹ØÁªµÄÕË»§
+     * å…³è”çš„è´¦æˆ·
      */
     private Account account;
     private Character character;
     private Coordinate coordinate;
     /*
-     * ÊÇ·ñÒÑÊ¹ÓÃÌØÈ¨
+     * æ˜¯å¦å·²ä½¿ç”¨ç‰¹æƒ
      */
     private boolean privilegeUsed;
     /*
-     * ÊÇ·ñÊÇAI
+     * æ˜¯å¦æ˜¯AI
      */
     private boolean AI;
     /*
-     * ÊÇ·ñÒÑ¾­°Ü±±
+     * æ˜¯å¦å·²ç»è´¥åŒ—
      */
     private boolean lost;
     /*
-     * ÒÑ¾­»ñÖªµÄÆäËûÍæ¼ÒµÄ×ø±ê
+     * å·²ç»è·çŸ¥çš„å…¶ä»–ç©å®¶çš„åæ ‡
      */
     private Map<Player,Coordinate> foundCoordinates;
     /*
-     * ÒÑ¾­»ñÖªµÄÆäËûÍæ¼ÒµÄÉí·İ
+     * å·²ç»è·çŸ¥çš„å…¶ä»–ç©å®¶çš„èº«ä»½
      */
     private Map<Player,Character> foundCharacters;
     /*
-     * ×ÊÔ´£¬¿Æ¼¼µã
+     * èµ„æºï¼Œç§‘æŠ€ç‚¹
      */
     private int resource;
     private int techPoint;

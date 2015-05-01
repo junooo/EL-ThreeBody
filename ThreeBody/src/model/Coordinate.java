@@ -10,8 +10,8 @@ public class Coordinate {
     
     /**
      * 
-     * @param number 坐标的第几个
-     * @return 如果没有被保护，返回正常的坐标，否则返回PROTECTED
+     * @param number 鍧愭爣鐨勭鍑犱釜
+     * @return 濡傛灉娌℃湁琚繚鎶わ紝杩斿洖姝ｅ父鐨勫潗鏍囷紝鍚﹀垯杩斿洖PROTECTED
      */
     public int getCoordinateElement(int number){
     	if(isProtected[number]){
