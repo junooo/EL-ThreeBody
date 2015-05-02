@@ -14,7 +14,7 @@ public class CoordinateGetFail extends Operation{
 
 	@Override
 	public String toOperator() {
-		return "×ø±ê»ñÈ¡Ê§°Ü";
+		return "åæ ‡è·å–å¤±è´¥";
 	}
 
 	@Override

@@ -30,7 +30,7 @@ public class GameDTO {
     /*
      *历史操作记录
      */
-    private List<Operation> operations;
+    private List<Operation> historyOperations;
     /*
      * 待执行操作
      */
@@ -82,11 +82,11 @@ public class GameDTO {
 	}
 
 	public List<Operation> getOperations() {
-		return operations;
+		return historyOperations;
 	}
 
 	public void setOperations(List<Operation> operations) {
-		this.operations = operations;
+		this.historyOperations = operations;
 	}
 
 	public List<Operation> getUnhandledOperations() {

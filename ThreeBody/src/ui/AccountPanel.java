@@ -1,5 +1,7 @@
 package ui;
 
-public class AccountPanel {
 
+public class AccountPanel {
+	
+	
 }

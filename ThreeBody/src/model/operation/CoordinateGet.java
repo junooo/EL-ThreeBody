@@ -18,7 +18,7 @@ public class CoordinateGet extends Operation {
 
 	@Override
 	public String toOperator() {
-		return this.operator+" ÒÑ»ñµÃ "+this.receiver+" µÚ "+number+" ¸ö×ø±ê£º"+value;
+		return this.operator+" å·²è·å¾— "+this.receiver+" ç¬¬"+number+" ä¸ªåæ ‡ï¼šê£º"+value;
 	}
 
 	@Override

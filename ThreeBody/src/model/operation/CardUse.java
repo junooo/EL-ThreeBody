@@ -19,17 +19,17 @@ public class CardUse extends Operation implements Operable{
 	/*
 	 * (non-Javadoc)
 	 * @see model.operation.Visible#toOperator()
-	 * ¶Ô²Ù×÷Õß¿É¼û
+	 * å¯¹æ“ä½œè€…å¯è§
 	 */
 	@Override
 	public String toOperator() {
-		return this.operator + "Ê¹ÓÃÁË" + card.getName();
+		return this.operator + "Ê¹ï¿½ï¿½ï¿½ï¿½" + card.getName();
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * @see model.operation.Visible#toReceiver()
-	 * ¶Ô±»Ê¹ÓÃÕß²»¿É¼û
+	 * å¯¹è¢«ä½¿ç”¨è€…ä¸å¯è§
 	 */
 	@Override
 	public String toReceiver() {
@@ -39,7 +39,7 @@ public class CardUse extends Operation implements Operable{
 	/*
 	 * (non-Javadoc)
 	 * @see model.operation.Visible#toOthers()
-	 * ¶ÔÆäËûÈË²»¿É¼û
+	 * å¯¹å…¶ä»–äººä¸å¯è§
 	 */
 	@Override
 	public String toOthers() {

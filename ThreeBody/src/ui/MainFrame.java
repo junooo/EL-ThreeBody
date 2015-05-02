@@ -3,22 +3,22 @@ package ui;
 import javax.swing.JFrame;
 
 public class MainFrame extends JFrame {
-	//ÎªÁË²»Æ®»ÆÏß¼ÓµÄÒ»ĞĞ´úÂë£¬²»Òª¸Ğµ½Ææ¹Ö
+	// default
 	private static final long serialVersionUID = 1L;
 	
 	public MainFrame(){
-		//ÉèÖÃ±êÌâ
+		//è®¾ç½®æ ‡é¢˜
 		this.setTitle("Three Bodies");
-
-    	//ÉèÖÃÄ¬ÈÏ¹Ø±ÕÊôĞÔ£¨³ÌĞò½áÊø£©
+    	//è®¾ç½®é»˜è®¤å…³é—­å±æ€§ï¼ˆç¨‹åºç»“æŸï¼‰
     	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    	//ÉèÖÃ´°¿Ú´óĞ¡
+    	//è®¾ç½®çª—å£å¤§å°
     	this.setSize(1158, 650);
-    	//²»ÔÊĞíÓÃ»§¸Ä±ä´°¿Ú´óĞ¡
+    	//ä¸å…è®¸ç”¨æˆ·æ”¹å˜çª—å£å¤§å°
     	this.setResizable(false);
-    	//´°¿Ú¾ÓÖĞ
+    	//çª—å£å±…ä¸­
     	FrameUtil.setFrameCenter(this);
-    	//Ä¬ÈÏ´°¿ÚÎªÏÔÊ¾
+//    	this.setContentPane(panel);
+    	//é»˜è®¤çª—å£ä¸ºæ˜¾ç¤º
     	this.setVisible(true);
 	}
 

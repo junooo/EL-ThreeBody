@@ -1,13 +1,17 @@
 package io;
 
-import java.io.*;
-import java.util.ArrayList;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
-import dto.PreferenceDTO;
 import model.Account;
+import dto.PreferenceDTO;
 /**
  * 
- * ���������������˺Ż��棬���ϲ�����ã����ݻ���
+ * 负责存读账户缓存，数据缓存（战报等），Preference
  *
  */
 public class UserData {
@@ -31,9 +35,6 @@ public class UserData {
 	   preferenceDto=(PreferenceDTO)ois.readObject();   
 	   ois.close();
 	   
-	   
-
-	
    }
    
    public void saveFile() throws IOException{

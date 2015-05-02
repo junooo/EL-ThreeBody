@@ -15,15 +15,15 @@ public class Room implements Serializable{
 	private Account creater;
 	private String name;
     /*
-     * ÊÇ·ñ¿ªÊ¼
+     * æ˜¯å¦å¼€å§‹
      */
 	private boolean state;
     /*
-     * Ã¿Î»Íæ¼ÒÊÇ·ñ×¼±¸ºÃ
+     * æ¯ä½ç©å®¶æ˜¯å¦å‡†å¤‡å¥½
      */
 	private Map<Player,Boolean> ready;
     /*
-     * ·¿¼äÈËÊıÉÏÏŞ
+     * æˆ¿é—´äººæ•°ä¸Šé™
      */
 	private int size;
 	
