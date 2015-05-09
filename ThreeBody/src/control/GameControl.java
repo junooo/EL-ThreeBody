@@ -13,6 +13,7 @@ import dto.GameDTO;
  */
 public class GameControl {
 	
+<<<<<<< HEAD
 	private RMIGame rmig;
 	private GameDTO gameDTO;
 
@@ -70,4 +71,6 @@ public class GameControl {
 		
 	}
 
+=======
+>>>>>>> 3e160d61bb5a1711dcf75f2b3d0c9a866f7673b7
 }

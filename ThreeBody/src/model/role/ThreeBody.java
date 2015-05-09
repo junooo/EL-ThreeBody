@@ -16,17 +16,13 @@ public class ThreeBody extends Role{
 
 	public ThreeBody() {
 		super();
-		this.initialResource=15;
-		this.initialTechPoint=80;
-		this.tchDevelopSpeed=0;
+		this.initialResource=10;
+		this.initialTechPoint=30;
+		this.tchDevelopSpeed=10;
 		this.rsrRestoreSpeed=10;
 	}
 	public  boolean isAvailable(Card card){
-		// 	switch(card){
-		//		case 
-		//		}	
-		//TODO
-		return false;
+		return true;
 	}
 
 
