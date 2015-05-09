@@ -106,7 +106,7 @@ public class Player implements Serializable {
 		return techPoint;
 	}
 
-	public void setCharacter(model.role.Role character) {
+	public void setRole(model.role.Role character) {
 		this.role = character;
 	}
 
