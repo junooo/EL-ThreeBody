@@ -3,6 +3,8 @@ package model;
 import java.io.Serializable;
 import java.util.Map;
 
+import model.role.Role;
+
 public class Player implements Serializable {
 	
     /**
@@ -14,7 +16,7 @@ public class Player implements Serializable {
      * 关联的账户
      */
     private Account account;
-    private model.character.Role character;
+    private Role role;
     private Coordinate coordinate;
     /*
      * 是否已使用特权
@@ -35,32 +37,34 @@ public class Player implements Serializable {
     /*
      * 已经获知的其他玩家的身份
      */
-    private Map<Player,Character> foundCharacters;
+    private Map<Player,Role> foundRoles;
     /*
      * 资源，科技点
      */
     private int resource;
     private int techPoint;
     
-    public Player(Account account, model.character.Role character, Coordinate coordinate,
+    
+    
+    public Player(Account account, Role role, Coordinate coordinate,
 			boolean aI) {
     	
 		super();
 		this.account = account;
-		this.character = character;
+		this.role = role;
 		this.coordinate = coordinate;
 		AI = aI;
 		
-		resource = this.character.getInitialResource();
-		techPoint = this.character.getInitialTechPoint();
+		resource = this.role.getInitialResource();
+		techPoint = this.role.getInitialTechPoint();
 	}
     
     public void findCoordinate(Player player,int position,int value){
     	this.foundCoordinates.get(player).setCoordinateElement(position, value);
     }
     
-    public void findCharacter(Player player,Character character){
-    	this.foundCharacters.put(player, character);
+    public void findRole(Player player,Role role){
+    	this.foundRoles.put(player, role);
     }
 
 	/*
@@ -78,8 +82,8 @@ public class Player implements Serializable {
 		return account;
 	}
 
-	public model.character.Role getCharacter() {
-		return character;
+	public model.role.Role getCharacter() {
+		return role;
 	}
 
 	public Coordinate getCoordinate() {
@@ -102,8 +106,8 @@ public class Player implements Serializable {
 		return techPoint;
 	}
 
-	public void setCharacter(model.character.Role character) {
-		this.character = character;
+	public void setCharacter(model.role.Role character) {
+		this.role = character;
 	}
 
 	public void setPrivilegeUsed(boolean privilegeUsed) {

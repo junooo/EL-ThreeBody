@@ -12,8 +12,8 @@ import java.util.Map.Entry;
 import model.Account;
 import model.Coordinate;
 import model.Player;
-import model.character.Role;
 import model.operation.Operation;
+import model.role.Role;
 import server.interfaces.RMIGame;
 import util.R;
 import util.R.info;
@@ -40,7 +40,7 @@ public class GameServer extends UnicastRemoteObject implements RMIGame{
 		players = new ArrayList<Player>();
 		RandomCombiner rc = new RandomCombiner(accounts.size());
 		rc.addColumn(accounts.toArray());
-		rc.addColumn(Role.generateCharacters(3, 2, 1));
+		rc.addColumn(Role.generateRoles(3, 2, 1));
 		rc.addColumn(Coordinate.generateCoordinates(accounts.size()));
 		for (Object[] records : rc.generate()) {
 			Account ac = (Account)records[0];

@@ -1,4 +1,4 @@
-package model.character;
+package model.role;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -33,7 +33,7 @@ public abstract class Role {
 		return rsrRestoreSpeed;
 	}
 
-	public static Role[] generateCharacters(int earthNum, int tbNum, int uniNum){
+	public static Role[] generateRoles(int earthNum, int tbNum, int uniNum){
 		List<Role> roles = new LinkedList<Role>();
 		for (int i = 0; i < earthNum; i++) {
 			roles.add(null);

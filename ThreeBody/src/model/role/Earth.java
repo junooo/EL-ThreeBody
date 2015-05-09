@@ -1,4 +1,4 @@
-package model.character;
+package model.role;
 
 import model.card.Card;
 
@@ -12,7 +12,7 @@ import model.card.Card;
  * 
  */
 
-public class Earth extends Character{
+public class Earth extends Role{
 	
 	public Earth() {
 		super();
