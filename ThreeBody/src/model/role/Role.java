@@ -1,8 +1,11 @@
-package model.character;
+package model.role;
+
+import java.util.LinkedList;
+import java.util.List;
 
 import model.card.Card;
 
-public abstract class Character {
+public abstract class Role {
     
     protected int initialTechPoint;
     protected int initialResource;
@@ -30,6 +33,20 @@ public abstract class Character {
 		return rsrRestoreSpeed;
 	}
 
+	public static Role[] generateRoles(int earthNum, int tbNum, int uniNum){
+		List<Role> roles = new LinkedList<Role>();
+		for (int i = 0; i < earthNum; i++) {
+			roles.add(null);
+		}
+		for (int i = 0; i < tbNum; i++) {
+			roles.add(null);
+		}
+		for (int i = 0; i < uniNum; i++) {
+			roles.add(null);
+		}
+		return (Role[]) roles.toArray();
+	}
+	
 	public String getName(){
     	return this.getClass().getName();
     }
