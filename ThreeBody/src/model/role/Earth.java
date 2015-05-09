@@ -20,7 +20,9 @@ public class Earth extends Role{
 		this.initialTechPoint=10;
 		this.tchDevelopSpeed=15;
 		this.rsrRestoreSpeed=10;
+		
 	}
+	
 	public  boolean isAvailable(Card card){
 // 	switch(card){
 //		case 
