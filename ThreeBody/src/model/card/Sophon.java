@@ -19,19 +19,23 @@ public class Sophon extends Card{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private int number;
+	/**
+	 * 坐标的第几个
+	 */
+	private int position;
 
 	/**
 	 * 
 	 * @param operator
 	 * @param receiver
-	 * @param number 想要获取的玩家的第几个坐标
+	 * @param position 想要获取的玩家的第几个坐标
 	 */
-	public Sophon(String operator, String receiver,int number) {
+	public Sophon(String operator, String receiver,int position) {
 		super(operator, receiver);
-		this.techPoint = 30;
-		this.resource = 80;
-		this.number = number;
+		// TODO 游戏平衡配置
+		this.requiredTechPoint = 30;
+		this.requiredResource = 80;
+		this.position = position;
 	}
 
 	@Override
@@ -49,18 +53,18 @@ public class Sophon extends Card{
 			}
 		}
 		//消耗相应的资源，通过放置新Operation来实现
-		ResourceChange rc = new ResourceChange(operator, receiver, ResourceChange.Type.DECREASE, this.resource);
+		ResourceChange rc = new ResourceChange(operator, receiver, ResourceChange.Type.DECREASE, this.requiredResource);
 		dto.depositOperation(rc);
 		//执行获取坐标操作
 		Coordinate coordinate = pReceiver.getCoordinate();
-		int result = coordinate.getCoordinateElement(number);
+		int result = coordinate.getCoordinateElement(position);
 		if(result == Coordinate.UNKNOWN){
 			CoordinateGetFail cgf = new CoordinateGetFail(operator,receiver);
 			dto.depositOperation(cgf);
 		}else{
 			// 设定operator的已发现的坐标值
-			pOperator.getFoundCoordinates().get(pReceiver).setCoordinateElement(number, result);
-			CoordinateGet cg = new CoordinateGet(operator,receiver,number,result);
+			pOperator.findCoordinate(pReceiver, position, result);
+			CoordinateGet cg = new CoordinateGet(operator,receiver,position,result);
 			dto.depositOperation(cg);
 		}
 	}

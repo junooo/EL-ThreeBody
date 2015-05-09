@@ -3,14 +3,19 @@ package server.interfaces;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
+import model.Room;
+import util.R.info;
+
 public interface RMIRoom extends Remote {
 
-	String ready() throws RemoteException;
+	info ready(String id) throws RemoteException;
 
-	String cancelReady() throws RemoteException;
+	info cancelReady(String id) throws RemoteException;
 
-	String start() throws RemoteException;
+	info start() throws RemoteException;
 
-	String exit() throws RemoteException;
-
+	info exit(String id) throws RemoteException;
+	
+	Room refresh() throws RemoteException;
+	
 }

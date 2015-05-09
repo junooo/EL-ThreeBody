@@ -4,13 +4,16 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.List;
 
-import util.R;
+import model.Player;
 import model.operation.Operation;
+import util.R;
 
 public interface RMIGame extends Remote{
 	
-	List<Operation> downloadOperation() throws RemoteException;
+	List<Operation> downloadOperation(String id) throws RemoteException;
 	
-	R.info uploadOperation(List<Operation> unhandled) throws RemoteException;
+	List<Player> getPlayers() throws RemoteException;
+	
+	R.info uploadOperation(String id,List<Operation> unhandled) throws RemoteException;
 
 }
