@@ -3,7 +3,7 @@ package model.operation;
 public class CoordinateGet extends Operation {
 	
 	/**
-	 * 
+	 * default
 	 */
 	private static final long serialVersionUID = 1L;
 	

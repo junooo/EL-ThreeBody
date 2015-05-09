@@ -40,21 +40,17 @@ public class Sophon extends Card{
 
 	@Override
 	public void process() {
-		GameDTO dto = GameDTO.getInstance();
-		Player pOperator = null;
-		Player pReceiver = null;
-		//找到对应的玩家
-		for (Player player : dto.getPlayers()) {
-			if(player.getAccount().getId().equals(this.operator)){
-				pOperator = player;
-			}
-			if(player.getAccount().getId().equals(this.receiver)){
-				pReceiver = player;
-			}
-		}
+		
+		GameDTO dto=GameDTO.getInstance();
+		
+		//得到操作者与被操作者
+		Player pOperator=this.findOperator(dto);
+		Player pReceiver=this.findReceiver(dto);
+		
 		//消耗相应的资源，通过放置新Operation来实现
 		ResourceChange rc = new ResourceChange(operator, receiver, ResourceChange.Type.DECREASE, this.requiredResource);
 		dto.depositOperation(rc);
+		
 		//执行获取坐标操作
 		Coordinate coordinate = pReceiver.getCoordinate();
 		int result = coordinate.getCoordinateElement(position);
