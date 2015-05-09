@@ -3,17 +3,11 @@ package control;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import ui.AboutUsPanel;
-import ui.AnimatePanel;
 import ui.BroadcastPanel;
 import ui.GamePanel;
-import ui.LobbyPanel;
 import ui.MainFrame;
-import ui.PreferencePanel;
-import ui.RoomPanel;
 import ui.SelectPanel;
 import ui.StartMenuPanel;
-import ui.TutorialPanel;
 import ui.sound.Media;
 import ui.sound.Sound;
 
@@ -100,10 +94,9 @@ public class MainControl {
     	mc.broadcast = new BroadcastPanel();
     	//TODO 换个地方放
     	mc.broadcast = new BroadcastPanel();
-    	mc.broadcast.setBounds(0, 0, 400, 200);
+//    	mc.broadcast.setBounds(0, 0, 400, 200);
     	
     	mc.frame = new MainFrame();
-    	mc.frame.setContentPane(mc.gamePanel);
     	mc.startMenuPanel = new StartMenuPanel(mc);
     	mc.currentPanel = mc.startMenuPanel;
     	mc.toStartMenu();
