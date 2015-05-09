@@ -12,7 +12,7 @@ public class GameDTO {
 	/*
 	 * singleton
 	 */
-	private static GameDTO dto;
+	private static GameDTO dto = new GameDTO();
     
     private List<Player> players;
  
@@ -42,12 +42,11 @@ public class GameDTO {
     private boolean gameOver;
     
     public void setUp(List<Player> players){
-    	dto = new GameDTO(players);
+    	dto.players = players;
+    	whoseTurn = players.get(0);
     }
     
-    private GameDTO(List<Player> players){
-    	this.players = players;
-    	whoseTurn = players.get(0);
+    private GameDTO(){
     	//TODO 本地账号
     	broadcasts = new LinkedList<Broadcast>();
     	historyOperations = new LinkedList<Operation>();
