@@ -1,5 +1,7 @@
 package util;
 
+import java.io.Serializable;
+
 public final class R {
     
     public static enum resolution{
@@ -12,5 +14,12 @@ public final class R {
         STANDALIZED_CHINESE
     }
     
+    public static enum info implements Serializable{
+    	SUCCESS,
+    	ALREADY_EXISTED,
+    	NOT_EXISTED,
+    	INVALID,
+    	ROOM_FULL
+    }
     
 }

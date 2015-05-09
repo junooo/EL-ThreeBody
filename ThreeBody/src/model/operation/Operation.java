@@ -1,9 +1,14 @@
 package model.operation;
 
-import model.Player;
+import java.io.Serializable;
 
-public abstract class Operation implements Visible{
+public abstract class Operation implements Serializable{
     
+	/**
+	 * default
+	 */
+	private static final long serialVersionUID = 1L;
+	
 //    public enum Type{
 //        CARD_USE,
 //        TECH_CHANGE,
@@ -12,13 +17,29 @@ public abstract class Operation implements Visible{
 //        LOSE,
 //        CHARACTER_CHANGE,
 //        COORDINATE_GET,
+//		  COORDINATE_GET_FAIL
 //        PRIVILEGE_USE,
 //        TURN_CHANGE
 //    }
 
-    private Player operator;
-    private Player receiver;
-//    private Type type;
-    private String extra;
+    protected String operator;
+    protected String receiver;
+    
+	public String toOperator() {
+		return null;
+	}
+
+	public String toReceiver() {
+		return null;
+	}
+
+	public String toOthers() {
+		return null;
+	}
+    
+    public Operation(String operator,String receiver){
+    	this.operator = operator;
+    	this.receiver = receiver;
+    }
 
 }

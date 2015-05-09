@@ -1,34 +1,127 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Map;
 
-import model.character.Character;
-
-public class Player {
-    /*
-     * ¹ØÁªµÄÕË»§
+public class Player implements Serializable {
+	
+    /**
+	 * default
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	/*
+     * å…³è”çš„è´¦æˆ·
      */
     private Account account;
-    private Character character;
+    private model.character.Character character;
     private Coordinate coordinate;
     /*
-     * ÊÇ·ñÒÑÊ¹ÓÃÌØÈ¨
+     * æ˜¯å¦å·²ä½¿ç”¨ç‰¹æƒ
      */
     private boolean privilegeUsed;
     /*
-     * ÊÇ·ñÊÇAI
+     * æ˜¯å¦æ˜¯AI
      */
     private boolean AI;
     /*
-     * ÊÇ·ñÒÑ¾­°Ü±±
+     * æ˜¯å¦å·²ç»è´¥åŒ—
      */
     private boolean lost;
     /*
-     * ÒÑ¾­»ñÖªµÄÆäËûÍæ¼ÒµÄ×ø±ê
+     * å·²ç»è·çŸ¥çš„å…¶ä»–ç©å®¶çš„åæ ‡
      */
     private Map<Player,Coordinate> foundCoordinates;
     /*
-     * ÒÑ¾­»ñÖªµÄÆäËûÍæ¼ÒµÄÉí·İ
+     * å·²ç»è·çŸ¥çš„å…¶ä»–ç©å®¶çš„èº«ä»½
      */
     private Map<Player,Character> foundCharacters;
+    /*
+     * èµ„æºï¼Œç§‘æŠ€ç‚¹
+     */
+    private int resource;
+    private int techPoint;
+    
+    public Player(Account account, model.character.Character character, Coordinate coordinate,
+			boolean aI) {
+    	
+		super();
+		this.account = account;
+		this.character = character;
+		this.coordinate = coordinate;
+		AI = aI;
+		
+		resource = this.character.getInitialResource();
+		techPoint = this.character.getInitialTechPoint();
+	}
+    
+    public void findCoordinate(Player player,int position,int value){
+    	this.foundCoordinates.get(player).setCoordinateElement(position, value);
+    }
+    
+    public void findCharacter(Player player,Character character){
+    	this.foundCharacters.put(player, character);
+    }
+
+	/*
+     * getters and setters
+     */
+    public boolean isAI() {
+		return AI;
+	}
+
+	public void setAI(boolean aI) {
+		AI = aI;
+	}
+
+	public Account getAccount() {
+		return account;
+	}
+
+	public model.character.Character getCharacter() {
+		return character;
+	}
+
+	public Coordinate getCoordinate() {
+		return coordinate;
+	}
+
+	public boolean isPrivilegeUsed() {
+		return privilegeUsed;
+	}
+
+	public boolean isLost() {
+		return lost;
+	}
+
+	public int getResource() {
+		return resource;
+	}
+
+	public int getTechPoint() {
+		return techPoint;
+	}
+
+	public void setCharacter(model.character.Character character) {
+		this.character = character;
+	}
+
+	public void setPrivilegeUsed(boolean privilegeUsed) {
+		this.privilegeUsed = privilegeUsed;
+	}
+
+	public void setLost(boolean lost) {
+		this.lost = lost;
+	}
+
+	public void setResource(int resource) {
+		this.resource = resource;
+	}
+
+	public void setTechPoint(int techPoint) {
+		this.techPoint = techPoint;
+	}
+	
+	
+    
 }

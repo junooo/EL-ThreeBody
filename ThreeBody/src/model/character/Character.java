@@ -4,34 +4,39 @@ import model.card.Card;
 
 public abstract class Character {
     
-    private int techPoint;
-    private int resource;
+    protected int initialTechPoint;
+    protected int initialResource;
+    protected int tchDevelopSpeed;
+    protected int rsrRestoreSpeed;
     
     /*
-     * Ã¿»ØºÏÊıÖµÔö¼ÓÊ±µ÷ÓÃ 
-     */
-    public abstract void addTechPoint();
-    public abstract void addResource();
-    
-    /*
-     * ÅĞ¶ÏÄ³¸ö¼¼ÄÜÊÇ·ñ¿ÉÓÃ 
+     * åˆ¤æ–­è¿™å¼ ç‰Œæ˜¯å¦èƒ½è¢«Characteræ‰€ç”¨
      */
     public abstract boolean isAvailable(Card card);
     
     /*
-     * getters and setters
+     * getters
      */
-    public int getTechPoint() {
-        return techPoint;
+    public int getInitialTechPoint() {
+        return this.initialTechPoint;
     }
-    public void setTechPoint(int techPoint) {
-        this.techPoint = techPoint;
+    public int getInitialResource() {
+        return this.initialResource;
     }
-    public int getResource() {
-        return resource;
+    public int getTchDevelopSpeed() {
+		return tchDevelopSpeed;
+	}
+	public int getRsrRestoreSpeed() {
+		return rsrRestoreSpeed;
+	}
+
+	public String getName(){
+    	return this.getClass().getName();
     }
-    public void setResource(int resource) {
-        this.resource = resource;
-    }
+
+	@Override
+	public boolean equals(Object arg0) {
+		return this.getName().equals(arg0.getClass().getName());
+	}
     
 }

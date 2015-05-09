@@ -2,10 +2,11 @@ package control;
 
 import java.util.List;
 
+import util.R;
 import model.Room;
 
 /*
- * 游戏大厅的控制类
+ * 娓告垙澶у巺鐨勬帶鍒剁被
  */
 public class LobbyControl {
     
@@ -13,12 +14,12 @@ public class LobbyControl {
         return null;
     }
     
-    public void enterRoom(Room room){
-        
+    public R.info enterRoom(Room room){
+        return null;
     }
     
-    public void exitRoom(Room room){
-        
+    public R.info createRoom(Room room){
+    	return null;
     }
 
 }

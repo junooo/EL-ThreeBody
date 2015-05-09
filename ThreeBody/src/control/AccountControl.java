@@ -1,36 +1,43 @@
 package control;
 
+import util.R;
 import model.Account;
 
 public class AccountControl {
     
     private Account account;
+
+    public R.info login(String id,String password){
+        
+    	return null;
+    }
     
-    public Account getAccount() {
+    public R.info logout(){
         return null;
     }
+    
+    /*
+     * å°†æœ¬åœ°æ”¹å˜ä¸Šä¼ åˆ°æœåŠ¡å™¨ç«¯
+     */
+    public R.info uploadChange(){
+    	return null;
+    }
+    
+    /*
+     * å°†æœåŠ¡å™¨ç«¯æ”¹å˜ä¸‹è½½
+     */
+    public R.info downloadChange(){
+    	return null;
+    }
+    
+    /*
+     * å‡­å€Ÿç¼“å­˜çš„æš‚æ—¶å¯†ç åœ¨ä¸€å®šæ—¶é—´è‡ªåŠ¨ç™»é™†
+     */
+    public R.info loginByTransientID(){
+    	return null;
+    }
 
-    public boolean login(String id,String password){
-        
-        return false;
-    }
-    
-    public void logout(){
-        
-    }
-    
-    /*
-     * ½«±¾µØ¸Ä±äÉÏ´«µ½·şÎñÆ÷¶Ë
-     */
-    public void uploadChange(){
-        
-    }
-    
-    /*
-     * ½«·şÎñÆ÷¶Ë¸Ä±äÏÂÔØ
-     */
-    public void downloadChange(){
-        
-    }
-    
+	public Account getAccount() {
+		return account;
+	}
 }

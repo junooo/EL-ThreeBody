@@ -1,14 +1,47 @@
 package io;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
 import model.Account;
+import dto.PreferenceDTO;
 /**
  * 
- * 负责的数据有玩家账号缓存，玩家喜好设置，数据缓存
+ * 璐熻矗瀛樿璐︽埛缂撳瓨锛屾暟鎹紦瀛橈紙鎴樻姤绛夛級锛孭reference
  *
  */
 public class UserData {
     
     Account account;
-    
-
+    PreferenceDTO preferenceDto;
+  
+    public void readFile() throws IOException, IOException, ClassNotFoundException {
+    	//create file
+	  File file=new File("UserData");
+	   if(!file.exists()){
+		   try {
+			   file.createNewFile();
+		   } catch (IOException e) {
+			   e.printStackTrace();
+		   }
+	   }
+	   //form file to PreferenceDTO
+	   FileInputStream fis=new FileInputStream(new File("PreferenceDTO"));	   
+	   ObjectInputStream ois=new ObjectInputStream(fis);
+	   preferenceDto=(PreferenceDTO)ois.readObject();   
+	   ois.close();
+	   
+   }
+   
+   public void saveFile() throws IOException{
+	   //from PreferenceDTO to file
+	   ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream(new File("PreferenceDTO")));
+	   oos.writeObject(preferenceDto);
+	   oos.flush();
+	   oos.close();
+   }
 }
