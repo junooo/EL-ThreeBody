@@ -14,7 +14,9 @@ import ui.sound.Sound;
 import control.MainControl;
 
 public class StartMenuPanel extends JPanel{
-	//Ϊ�˲�Ʈ���߼ӵ�һ�д��룬��Ҫ�е����
+	/*
+	 * default
+	 */
 	private static final long serialVersionUID = 1L;
 	
 	private JButton btnStartGame;
@@ -38,9 +40,7 @@ public class StartMenuPanel extends JPanel{
 		this.btnStartGame.setContentAreaFilled(false);
 		this.btnStartGame.setBounds(483, 120, 200, 80);
 		this.btnStartGame.setBorderPainted(false);
-		// ����ʼ��ť�����¼�����
-		btnStartGame.addMouseListener(new StartGameListener());
-		// ��Ӱ�ť�����
+		this.btnStartGame.addMouseListener(new StartGameListener());
 		this.add(btnStartGame);
 
 		this.btnOption = new JButton(new ImageIcon("option.png"));
@@ -81,7 +81,6 @@ public class StartMenuPanel extends JPanel{
 	@Override
 	public void paintComponent(Graphics g) {
 		Image IMG_MAIN = new ImageIcon("img2.jpg").getImage();
-		// ������Ϸ����
 		g.drawImage(IMG_MAIN, 0, 0, 1158, 650, null);
 		
 	}

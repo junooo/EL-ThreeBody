@@ -1,9 +1,8 @@
 package control;
 
-import java.io.IOException;
-import java.util.ArrayList;
-
 import io.UserData;
+
+import java.io.IOException;
 
 /*
  * Preference
