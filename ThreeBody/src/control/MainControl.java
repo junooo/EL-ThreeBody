@@ -3,6 +3,7 @@ package control;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import ui.AboutUsPanel;
 import ui.BroadcastPanel;
 import ui.GamePanel;
 import ui.MainFrame;
@@ -22,7 +23,7 @@ public class MainControl {
     private JPanel isOnlinePanel = null;
     private JPanel broadcast = null;
     private JPanel message = null;
-    
+    private JPanel aboutUs = null;
     /*
      * TESTED
      */
@@ -82,6 +83,14 @@ public class MainControl {
     }
 
     public void toAboutUs() {
+    	currentPanel.setVisible(false);
+    	if(this.aboutUs == null){
+    		this.aboutUs = new AboutUsPanel(this);
+    	}
+		currentPanel = this.aboutUs;
+		frame.setContentPane(currentPanel);
+    	currentPanel.setVisible(true);	
+    	frame.validate();
     }
 
     public void exit() {
@@ -95,6 +104,7 @@ public class MainControl {
     	mc.selectPanel = new SelectPanel(mc);
     	mc.broadcast = new BroadcastPanel();
     	mc.message = new MessagePanel();
+    	mc.aboutUs = new AboutUsPanel(mc);
     	//TODO 换个地方放
     	mc.frame = new MainFrame();
     	mc.startMenuPanel = new StartMenuPanel(mc);
