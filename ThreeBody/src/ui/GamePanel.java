@@ -13,10 +13,6 @@ import javax.swing.JPanel;
 import control.MainControl;
 
 public class GamePanel  extends JPanel{
-
-    
-   
-    
     private static final long serialVersionUID = 1L;
     private MainControl mainControl;
 	
@@ -142,11 +138,6 @@ public class GamePanel  extends JPanel{
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnCard9.addMouseListener(new CardListener9());
 		this.add(btnCard9);
-		
-		
-		
-
-		
 
 	}
 	@Override
@@ -193,7 +184,7 @@ public class GamePanel  extends JPanel{
 		int y = btnCard1.getY();
 		@Override
 		public void mouseClicked(MouseEvent e) {
-//TODO
+			//TODO
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
@@ -223,7 +214,7 @@ public class GamePanel  extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-//TODO
+			//TODO
 			
 		}
 		@Override
@@ -293,7 +284,7 @@ public class GamePanel  extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-//TODO
+			//TODO
 			
 		}
 		@Override
