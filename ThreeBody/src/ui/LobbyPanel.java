@@ -6,12 +6,6 @@ import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import ui.GamePanel.CardListener1;
-import ui.GamePanel.CardListener2;
-import ui.GamePanel.CardListener3;
-import ui.GamePanel.CardListener4;
-import ui.GamePanel.CardListener5;
-import ui.GamePanel.CardListener6;
 import control.MainControl;
 
 public class LobbyPanel extends JPanel{

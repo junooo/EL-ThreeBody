@@ -8,8 +8,10 @@ import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import model.card.Sophon;
 import control.MainControl;
 
 public class GamePanel  extends JPanel{
@@ -42,14 +44,14 @@ public class GamePanel  extends JPanel{
 		this.initComonent();
 	}
 	private void initComonent() {
-		this.btnReturn = new JButton("高级智子");
+		this.btnReturn = new JButton("返回");
 		this.btnReturn.setContentAreaFilled(false);
 		this.btnReturn.setBounds(-50, 615, 100, 30);
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnReturn.addMouseListener(new ReturnListener());
 		this.add(btnReturn);
 		
-		this.btnBroadcast = new JButton("智子");
+		this.btnBroadcast = new JButton("广播");
 		this.btnBroadcast.setContentAreaFilled(false);
 		this.btnBroadcast.setBounds(400, 600, 50, 15);
 		btnBroadcast.setFont(new Font("黑体", Font.BOLD, 15));
@@ -57,7 +59,7 @@ public class GamePanel  extends JPanel{
 		btnBroadcast.addMouseListener(new BroadcastListener());
 		this.add(btnBroadcast);
 		
-		this.btnHistory = new JButton("��ʷ");
+		this.btnHistory = new JButton("历史记录");
 		this.btnHistory.setContentAreaFilled(false);
 		this.btnHistory.setBounds(600, 600, 50, 15);
 		btnHistory.setFont(new Font("黑体", Font.BOLD, 15));
@@ -65,7 +67,7 @@ public class GamePanel  extends JPanel{
 		btnHistory.addMouseListener(new HistoryListener());
 		this.add(btnHistory);
 		
-		this.btnMessage = new JButton("����");
+		this.btnMessage = new JButton("留言");
 		this.btnMessage.setContentAreaFilled(false);
 		this.btnMessage.setBounds(800, 600, 50, 15);
 		// this.btnMultyPlay.setBorderPainted(false);
@@ -73,7 +75,7 @@ public class GamePanel  extends JPanel{
 		btnMessage.addMouseListener(new MessageListener());
 		this.add(btnMessage);
 		
-		this.btnCard1 = new JButton("����");
+		this.btnCard1 = new JButton("智子");
 		this.btnCard1.setContentAreaFilled(false);
 		this.btnCard1.setBounds(1070, 30, 150, 30);
 		// this.btnMultyPlay.setBorderPainted(false);
@@ -81,7 +83,7 @@ public class GamePanel  extends JPanel{
 		this.add(btnCard1);
 		
 		
-		this.btnCard2 = new JButton("��������");
+		this.btnCard2 = new JButton("人造智子");
 		this.btnCard2.setContentAreaFilled(false);
 		this.btnCard2.setBounds(1070, 60, 150, 30);
 		// this.btnMultyPlay.setBorderPainted(false);
@@ -184,7 +186,14 @@ public class GamePanel  extends JPanel{
 		int y = btnCard1.getY();
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			//TODO
+			initSophon();
+			
+		}
+		
+		private void initSophon() {
+			JFrame sophonFinder = new SophonFinderFrame();
+			JPanel finder = new SophonFinderPanel(sophonFinder);
+			sophonFinder.setContentPane(finder);
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
