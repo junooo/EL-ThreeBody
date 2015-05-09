@@ -1,62 +1,52 @@
 package model.card;
 
-import dto.GameDTO;
-import model.Coordinate;
 import model.Player;
 import model.operation.ResourceChange;
 import model.operation.ResourceChange.Type;
+import dto.GameDTO;
 
-public class WholeBlock extends Card{
-	
+/*
+ * 对某个玩家禁一轮广播坐标功能
+ */
+public class NoBroadcasting extends Card{	
 	
 	/**
 	 * default
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private int lifetime=1;
 	
-
 	public int getLifetime() {
 		return lifetime;
 	}
-
 
 	public void setLifetime(int lifetime) {
 		this.lifetime = lifetime;
 	}
 
-
-	public WholeBlock(String operator, String receiver) {
+	public NoBroadcasting(String operator, String receiver) {
 		super(operator, receiver);
-		//TODO
 		this.requiredResource=40;
-		this.requiredTechPoint=30;
+		this.requiredTechPoint=50;
 	}
-
-
-	/*
-	 * 将玩家的所有坐标全部设为PROTECTED
-	 */
 
 	@Override
 	public void process() {
 		
 		GameDTO dto=GameDTO.getInstance();
 		
-		//get the operator, now operator==receiver
+		//get the operator and receiver
 		Player pOperator=this.findOperator(dto);
-		Player pReceiver=pOperator;
+		Player pReceiver=this.findReceiver(dto);
 		
-		//pay the resources
+		//pay the resource
 		ResourceChange rc=new ResourceChange(operator, receiver, Type.DECREASE, this.requiredResource);
 		dto.depositOperation(rc);
 		
-		//set the coordinate ==10086(PROTECTED)
-		for(int i=0;i<4;i++){
-			pOperator.getCoordinate().setCoordinateElement(i, 10086);
-		}		
+		//将receiver的broadcast设为false，在lifetime轮中
+		pReceiver.setBroadcast(false);
+		
 	}
 	
-		
 }
