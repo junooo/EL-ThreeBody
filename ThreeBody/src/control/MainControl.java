@@ -75,18 +75,18 @@ public class MainControl {
     	mc.startMainPanel = new StartMenuPanel(mc);
     	mc.gamePanel = new GamePanel(mc);
     	mc.selectPanel = new SelectPanel(mc);
-    	mc.broadcast = new BroadcastPanel(mc);
+    	mc.broadcast = new BroadcastPanel();
     	mc.broadcast.setBounds(0, 0, 400, 200);
     	mc.frame = new MainFrame();
-    	mc.frame.setContentPane(mc.startMainPanel);
+    	mc.frame.setContentPane(mc.gamePanel);
     	Sound.load("BGM1");
     	Media.playBGM(Sound.BGM);
 	}
 
 	public void openBroadcast() {
     	this.broadcast.setVisible(true);
-    	this.frame.add(this.broadcast);
-		
+    	this.gamePanel.add(this.broadcast);
+    	frame.repaint();
 	}
 
 }

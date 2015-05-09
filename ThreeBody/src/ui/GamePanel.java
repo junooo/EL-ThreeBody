@@ -35,7 +35,7 @@ public class GamePanel  extends JPanel{
 	private JButton btnHistory;
 	private JButton btnMessage;
 	
-	private JPanel panelBroadcast;
+	private JPanel panelBroadcast= new BroadcastPanel();;
 	
 	public GamePanel(MainControl mainControl) {
 		this.setLayout(null);

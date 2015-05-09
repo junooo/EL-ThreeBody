@@ -8,15 +8,14 @@ import javax.swing.JPanel;
 
 import control.MainControl;
 
-public class BroadcastPanel extends GamePanel {
+public class BroadcastPanel extends JPanel {
 
 	
 
 	private JPanel panelBroadcast;
 	private MainControl mainControl;
 
-	public BroadcastPanel(MainControl mainControl) {
-		super(mainControl);
+	public BroadcastPanel() {
 	}
 
 	private void initComonent() {
@@ -26,8 +25,8 @@ public class BroadcastPanel extends GamePanel {
 
 	@Override
 	public void paintComponent(Graphics g) {
-		Image IMG_MAIN = new ImageIcon("img3.jpg").getImage();
+		Image IMG_MAIN = new ImageIcon("img1.jpg").getImage();
 		// 绘制游戏界面
-		g.drawImage(IMG_MAIN, 0, 0, 1158, 650, null);
+		g.drawImage(IMG_MAIN, 100, 100,150,50, null);
 	}
 }
