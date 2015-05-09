@@ -6,7 +6,7 @@ import util.R;
 import model.Room;
 
 /*
- * 游戏大厅的控制类
+ * 娓告垙澶у巺鐨勬帶鍒剁被
  */
 public class LobbyControl {
     

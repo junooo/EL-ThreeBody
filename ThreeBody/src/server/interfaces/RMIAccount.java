@@ -20,4 +20,9 @@ public interface RMIAccount extends Remote {
 			throws RemoteException;
 
 	R.info loginByTransientID(String id, String transientID) throws RemoteException;
+	
+	R.info checkLink() throws RemoteException;
+	
+	//TODO ≤‚ ‘÷–
+	R.info test(String command);
 }

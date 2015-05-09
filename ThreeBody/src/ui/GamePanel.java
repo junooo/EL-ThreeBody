@@ -43,35 +43,35 @@ public class GamePanel  extends JPanel{
 		this.initComonent();
 	}
 	private void initComonent() {
-		this.btnReturn = new JButton("·µ»Ø");
+		this.btnReturn = new JButton("é«˜çº§æ™ºå­");
 		this.btnReturn.setContentAreaFilled(false);
 		this.btnReturn.setBounds(-50, 615, 100, 30);
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnReturn.addMouseListener(new ReturnListener());
 		this.add(btnReturn);
 		
-		this.btnBroadcast = new JButton("¹ã²¥");
+		this.btnBroadcast = new JButton("æ™ºå­");
 		this.btnBroadcast.setContentAreaFilled(false);
 		this.btnBroadcast.setBounds(400, 600, 50, 15);
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnBroadcast.addMouseListener(new BroadcastListener());
 		this.add(btnBroadcast);
 		
-		this.btnHistory = new JButton("ÀúÊ·");
+		this.btnHistory = new JButton("ï¿½ï¿½Ê·");
 		this.btnHistory.setContentAreaFilled(false);
 		this.btnHistory.setBounds(600, 600, 50, 15);
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnHistory.addMouseListener(new HistoryListener());
 		this.add(btnHistory);
 		
-		this.btnMessage = new JButton("ÁôÑÔ");
+		this.btnMessage = new JButton("ï¿½ï¿½ï¿½ï¿½");
 		this.btnMessage.setContentAreaFilled(false);
 		this.btnMessage.setBounds(800, 600, 50, 15);
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnMessage.addMouseListener(new MessageListener());
 		this.add(btnMessage);
 		
-		this.btnCard1 = new JButton("ÖÇ×Ó");
+		this.btnCard1 = new JButton("ï¿½ï¿½ï¿½ï¿½");
 		this.btnCard1.setContentAreaFilled(false);
 		this.btnCard1.setBounds(1070, 30, 150, 30);
 		// this.btnMultyPlay.setBorderPainted(false);
@@ -79,35 +79,35 @@ public class GamePanel  extends JPanel{
 		this.add(btnCard1);
 		
 		
-		this.btnCard2 = new JButton("ÈËÔìÖÇ×Ó");
+		this.btnCard2 = new JButton("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		this.btnCard2.setContentAreaFilled(false);
 		this.btnCard2.setBounds(1070, 60, 150, 30);
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnCard2.addMouseListener(new CardListener2());
 		this.add(btnCard2);
 		
-		this.btnCard3 = new JButton("ÈËÔìÖÇ×Ó");
+		this.btnCard3 = new JButton("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		this.btnCard3.setContentAreaFilled(false);
 		this.btnCard3.setBounds(1070, 90, 150, 30);
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnCard3.addMouseListener(new CardListener3());
 		this.add(btnCard3);
 		
-		this.btnCard4 = new JButton("ÈËÔìÖÇ×Ó");
+		this.btnCard4 = new JButton("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		this.btnCard4.setContentAreaFilled(false);
 		this.btnCard4.setBounds(1070, 120, 150, 30);
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnCard4.addMouseListener(new CardListener4());
 		this.add(btnCard4);
 		
-		this.btnCard5 = new JButton("ÈËÔìÖÇ×Ó");
+		this.btnCard5 = new JButton("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		this.btnCard5.setContentAreaFilled(false);
 		this.btnCard5.setBounds(1070, 150, 150, 30);
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnCard5.addMouseListener(new CardListener5());
 		this.add(btnCard5);
 		
-		this.btnCard6 = new JButton("ÈËÔìÖÇ×Ó");
+		this.btnCard6 = new JButton("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		this.btnCard6.setContentAreaFilled(false);
 		this.btnCard6.setBounds(1070, 180, 150, 30);
 		// this.btnMultyPlay.setBorderPainted(false);
@@ -115,7 +115,7 @@ public class GamePanel  extends JPanel{
 		this.add(btnCard6);
 		
 		
-		this.btnCard7 = new JButton("ÈËÔìÖÇ×Ó");
+		this.btnCard7 = new JButton("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		this.btnCard7.setContentAreaFilled(false);
 		this.btnCard7.setBounds(1070, 210, 150, 30);
 		// this.btnMultyPlay.setBorderPainted(false);
@@ -123,14 +123,14 @@ public class GamePanel  extends JPanel{
 		this.add(btnCard7);
 		
 		
-		this.btnCard8 = new JButton("ÈËÔìÖÇ×Ó");
+		this.btnCard8 = new JButton("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		this.btnCard8.setContentAreaFilled(false);
 		this.btnCard8.setBounds(1070, 240, 150, 30);
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnCard8.addMouseListener(new CardListener8());
 		this.add(btnCard8);
 		
-		this.btnCard9 = new JButton("ÈËÔìÖÇ×Ó");
+		this.btnCard9 = new JButton("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		this.btnCard9.setContentAreaFilled(false);
 		this.btnCard9.setBounds(1070, 270, 150, 30);
 		// this.btnMultyPlay.setBorderPainted(false);
@@ -144,7 +144,7 @@ public class GamePanel  extends JPanel{
 	@Override
 	public void paintComponent(Graphics g) {
 		Image IMG_MAIN = new ImageIcon("img3.jpg").getImage();
-		// »æÖÆÓÎÏ·½çÃæ
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½
 		g.drawImage(IMG_MAIN, 0, 0, 1158, 650, null);
 	}
 	
@@ -566,14 +566,14 @@ public class GamePanel  extends JPanel{
 	
 
 	 /*
-     * µ±Íæ¼Ò±»Õ¨Ê±²¥·ÅÌØ¼¼
+     * ï¿½ï¿½ï¿½ï¿½Ò±ï¿½Õ¨Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½
      */
     public void boom(){
         
     }
     
     /*
-     * µ±Íæ¼Ò±»Õ¼ÁìÊ±²¥·ÅÌØ¼¼
+     * ï¿½ï¿½ï¿½ï¿½Ò±ï¿½Õ¼ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½
      */
     public void conquer(){
         

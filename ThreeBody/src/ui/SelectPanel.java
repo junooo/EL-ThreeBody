@@ -29,21 +29,21 @@ public class SelectPanel extends JPanel {
 	}
 
 	private void initComonent() {
-		this.btnReturn = new JButton("·µ»Ø");
+		this.btnReturn = new JButton("è¿”å›");
 		this.btnReturn.setContentAreaFilled(false);
 		this.btnReturn.setBounds(483, 480, 200, 60);
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnReturn.addMouseListener(new ReturnListener());
 		this.add(btnReturn);
 
-		this.btnTwoPlayer = new JButton("2ÈËÓÎÏ·");
+		this.btnTwoPlayer = new JButton("2äººæ¸¸æˆ");
 		this.btnTwoPlayer.setContentAreaFilled(false);
 		this.btnTwoPlayer.setBounds(233, 120, 200, 300);
 		this.btnTwoPlayer.addMouseListener(new TwoPlayerListener());
 
 		this.add(btnTwoPlayer);
 
-		this.btnFourPlayer = new JButton("4ÈËÓÎÏ·");
+		this.btnFourPlayer = new JButton("4äººæ¸¸æˆ");
 		this.btnFourPlayer.setContentAreaFilled(false);
 		this.btnFourPlayer.setBounds(483, 120, 200, 300);
 		this.btnFourPlayer.addActionListener(new ActionListener() {
@@ -53,7 +53,7 @@ public class SelectPanel extends JPanel {
 		});
 		this.add(btnFourPlayer);
 
-		this.btnSixPlayer = new JButton("6ÈËÓÎÏ·");
+		this.btnSixPlayer = new JButton("6äººæ¸¸æˆ");
 		this.btnSixPlayer.setContentAreaFilled(false);
 		this.btnSixPlayer.setBounds(733, 120, 200, 300);
 		this.btnSixPlayer.addActionListener(new ActionListener() {
@@ -68,7 +68,7 @@ public class SelectPanel extends JPanel {
 	@Override
 	public void paintComponent(Graphics g) {
 		Image IMG_MAIN = new ImageIcon("img2.jpg").getImage();
-		// »æÖÆÓÎÏ·½çÃæ
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½
 		g.drawImage(IMG_MAIN, 0, 0, 1158, 650, null);
 	}
 

@@ -14,7 +14,7 @@ import ui.sound.Sound;
 import control.MainControl;
 
 public class StartMenuPanel extends JPanel{
-	//ÎªÁË²»Æ®»ÆÏß¼ÓµÄÒ»ÐÐ´úÂë£¬²»Òª¸Ðµ½Ææ¹Ö
+	//Îªï¿½Ë²ï¿½Æ®ï¿½ï¿½ï¿½ß¼Óµï¿½Ò»ï¿½Ð´ï¿½ï¿½ë£¬ï¿½ï¿½Òªï¿½Ðµï¿½ï¿½ï¿½ï¿½
 	private static final long serialVersionUID = 1L;
 	
 	private JButton btnStartGame;
@@ -34,14 +34,13 @@ public class StartMenuPanel extends JPanel{
 	
 	private void initComonent() {
 
-		// ³õÊ¼»¯¿ªÊ¼°´Å¥
 		this.btnStartGame = new JButton(new ImageIcon("button.png"));
 		this.btnStartGame.setContentAreaFilled(false);
 		this.btnStartGame.setBounds(483, 120, 200, 80);
 		this.btnStartGame.setBorderPainted(false);
-		// ¸ø¿ªÊ¼°´Å¥Ôö¼ÓÊÂ¼þ¼àÌý
+		// ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½
 		btnStartGame.addMouseListener(new StartGameListener());
-		// Ìí¼Ó°´Å¥µ½Ãæ°å
+		// ï¿½ï¿½Ó°ï¿½Å¥ï¿½ï¿½ï¿½ï¿½ï¿½
 		this.add(btnStartGame);
 
 		this.btnOption = new JButton(new ImageIcon("option.png"));
@@ -67,14 +66,14 @@ public class StartMenuPanel extends JPanel{
 		this.add(btnExit);
 
 		
-		this.btnLogIn = new JButton("µÇÂ½");
+		this.btnLogIn = new JButton("ï¿½ï¿½Â½");
 		this.btnLogIn.setContentAreaFilled(false);
 		this.btnLogIn.setBounds(0, 0, 150, 25);
 		this.btnLogIn.addMouseListener(new LogInListener());
 		this.add(btnLogIn);
 		
 		
-		this.btnAccount = new JButton("ÓÃ»§ÐÅÏ¢");
+		this.btnAccount = new JButton("ï¿½Ã»ï¿½ï¿½ï¿½Ï¢");
 		this.btnAccount.setContentAreaFilled(false);
 		this.btnAccount.setBounds(0, 25, 150, 25);
 		this.btnAccount.addMouseListener(new AccountListener());
@@ -82,7 +81,7 @@ public class StartMenuPanel extends JPanel{
 	@Override
 	public void paintComponent(Graphics g) {
 		Image IMG_MAIN = new ImageIcon("img2.jpg").getImage();
-		// »æÖÆÓÎÏ·½çÃæ
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½
 		g.drawImage(IMG_MAIN, 0, 0, 1158, 650, null);
 		
 	}
@@ -117,7 +116,7 @@ public class StartMenuPanel extends JPanel{
 		@Override
 		public void mouseClicked(MouseEvent arg0) {
 			Media.playSound(Sound.enter);
-			mainControl.toConfig();
+			mainControl.toPreference();
 		}
 
 		@Override

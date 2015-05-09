@@ -7,10 +7,10 @@ import javax.swing.JFrame;
 
 public class FrameUtil {
 	/**
-	 * ´°¿Ú¾ÓÖÐ
+	 * çª—å£å±…ä¸­
 	 */
 	public static void setFrameCenter(JFrame jf){
-		//´°¿Ú¾ÓÖÐ
+		// çª—å£å±…ä¸­
     	Toolkit toolkit =  Toolkit.getDefaultToolkit();
     	Dimension screen =  toolkit.getScreenSize();
     	int x = screen.width-jf.getWidth()>>1;
