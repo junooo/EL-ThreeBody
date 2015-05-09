@@ -16,6 +16,8 @@ public class BroadcastPanel extends JPanel {
 	private MainControl mainControl;
 
 	public BroadcastPanel() {
+
+//		setBounds(0, 0, 400, 200);
 	}
 
 	private void initComonent() {

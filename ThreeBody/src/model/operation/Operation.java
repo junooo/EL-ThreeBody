@@ -2,8 +2,6 @@ package model.operation;
 
 import java.io.Serializable;
 
-import model.Player;
-
 public abstract class Operation implements Visible,Serializable{
     
 	/**
@@ -19,12 +17,17 @@ public abstract class Operation implements Visible,Serializable{
 //        LOSE,
 //        CHARACTER_CHANGE,
 //        COORDINATE_GET,
+//		  COORDINATE_GET_FAIL
 //        PRIVILEGE_USE,
 //        TURN_CHANGE
 //    }
 
-    private Player operator;
-    private Player receiver;
-    private String extra;
+    protected String operator;
+    protected String receiver;
+    
+    public Operation(String operator,String receiver){
+    	this.operator = operator;
+    	this.receiver = receiver;
+    }
 
 }

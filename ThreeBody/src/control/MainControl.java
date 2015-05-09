@@ -3,90 +3,121 @@ package control;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import ui.AboutUsPanel;
+import ui.AnimatePanel;
 import ui.BroadcastPanel;
 import ui.GamePanel;
+import ui.LobbyPanel;
 import ui.MainFrame;
+import ui.PreferencePanel;
+import ui.RoomPanel;
 import ui.SelectPanel;
 import ui.StartMenuPanel;
+import ui.TutorialPanel;
 import ui.sound.Media;
 import ui.sound.Sound;
 
-
-/*
- * ∏∫‘ƒ£øÈº‰µƒ◊™Ã¯
- */
 public class MainControl {
 
-    JPanel currentPanel;
-    JFrame frame;
-    JPanel startMainPanel;
-    JPanel selectPanel;
-    JPanel gamePanel;
-    JPanel isOnlinePanel;
-    JPanel broadcast;
+    private JPanel currentPanel = null;
+    private JFrame frame = null;
+    private JPanel startMenuPanel = null;
+    private JPanel selectPanel = null;
+    private JPanel gamePanel = null;
+    private JPanel isOnlinePanel = null;
+    private JPanel broadcast = null;
     
+    /*
+     * TESTED
+     */
     public void toStartMenu() {
-    	this.frame.getContentPane().setVisible(false);
-    	this.startMainPanel.setVisible(true);
-    	this.frame.setContentPane(this.startMainPanel);
+    	currentPanel.setVisible(false);
+    	if(this.startMenuPanel == null){
+    		this.startMenuPanel = new StartMenuPanel(this);
+    	}
+		currentPanel = this.startMenuPanel;
+		frame.setContentPane(currentPanel);
+    	currentPanel.setVisible(true);	
+    	frame.validate();
     }
 
     public void toAnimate() {
-
     }
 
-    public void toConfig() {
+    public void toPreference() {
 
     }
 
     public void toTutorial() {
-
     }
     
+    /*
+     * TESTED
+     */
     public void toSelect(){
-    	this.frame.getContentPane().setVisible(false);
-    	this.selectPanel.setVisible(true);
-    	this.frame.setContentPane(this.selectPanel);
+    	currentPanel.setVisible(false);
+    	if(this.selectPanel == null){
+    		this.selectPanel = new SelectPanel(this);
+    	}
+		currentPanel = this.selectPanel;
+		frame.setContentPane(currentPanel);
+    	currentPanel.setVisible(true);	
+    	frame.validate();
     }
 
+    /*
+     * TESTED
+     */
     public void toGame() {
-    	this.frame.getContentPane().setVisible(false);
-    	this.gamePanel.setVisible(true);
-    	this.frame.setContentPane(this.gamePanel);
+    	currentPanel.setVisible(false);
+    	if(this.gamePanel == null){
+    		this.gamePanel = new GamePanel(this);
+    	}
+		currentPanel = this.gamePanel;
+		frame.setContentPane(currentPanel);
+    	currentPanel.setVisible(true);	
+    	frame.validate();
     }
 
     public void toLobby() {
-
     }
 
     public void toRoom() {
-
     }
 
     public void toAboutUs() {
-
     }
 
     public void exit() {
     	System.exit(0);
     }
     public static void main(String[] args) {
+    	
     	MainControl mc = new MainControl();
-    	mc.startMainPanel = new StartMenuPanel(mc);
+    	mc.startMenuPanel = new StartMenuPanel(mc);
     	mc.gamePanel = new GamePanel(mc);
     	mc.selectPanel = new SelectPanel(mc);
     	mc.broadcast = new BroadcastPanel();
+    	//TODO Êç¢‰∏™Âú∞ÊñπÊîæ
+    	mc.broadcast = new BroadcastPanel();
     	mc.broadcast.setBounds(0, 0, 400, 200);
+    	
     	mc.frame = new MainFrame();
     	mc.frame.setContentPane(mc.gamePanel);
+    	mc.startMenuPanel = new StartMenuPanel(mc);
+    	mc.currentPanel = mc.startMenuPanel;
+    	mc.toStartMenu();
+    	
     	Sound.load("BGM1");
     	Media.playBGM(Sound.BGM);
 	}
 
+    //TODO Êç¢‰∏™Âú∞ÊñπÊîæ
 	public void openBroadcast() {
     	this.broadcast.setVisible(true);
     	this.gamePanel.add(this.broadcast);
     	frame.repaint();
+    	this.frame.add(this.broadcast);
 	}
 
 }

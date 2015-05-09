@@ -4,34 +4,27 @@ import model.card.Card;
 
 public abstract class Character {
     
-    private int techPoint;
-    private int resource;
+    private int initialTechPoint;
+    private int initialResource;
     
     /*
-     * Ã¿»ØºÏÊıÖµÔö¼ÓÊ±µ÷ÓÃ 
+     * å¢åŠ ç§‘æŠ€å’Œèµ„æºçš„é€Ÿåº¦
      */
-    public abstract void addTechPoint();
-    public abstract void addResource();
+    public abstract int addTechPoint(int nowTechPoint);
+    public abstract int addResource(int nowResource);
     
     /*
-     * ÅĞ¶ÏÄ³¸ö¼¼ÄÜÊÇ·ñ¿ÉÓÃ 
+     * åˆ¤æ–­è¿™å¼ ç‰Œæ˜¯å¦èƒ½è¢«Characteræ‰€ç”¨
      */
     public abstract boolean isAvailable(Card card);
     
     /*
-     * getters and setters
+     * getters
      */
-    public int getTechPoint() {
-        return techPoint;
+    public int getInitialTechPoint() {
+        return this.initialTechPoint;
     }
-    public void setTechPoint(int techPoint) {
-        this.techPoint = techPoint;
+    public int getInitialResource() {
+        return this.initialResource;
     }
-    public int getResource() {
-        return resource;
-    }
-    public void setResource(int resource) {
-        this.resource = resource;
-    }
-    
 }

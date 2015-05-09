@@ -4,29 +4,77 @@ import java.util.Map;
 
 public class Player {
     /*
-     * ¹ØÁªµÄÕË»§
+     * å…³è”çš„è´¦æˆ·
      */
     private Account account;
     private Character character;
     private Coordinate coordinate;
     /*
-     * ÊÇ·ñÒÑÊ¹ÓÃÌØÈ¨
+     * æ˜¯å¦å·²ä½¿ç”¨ç‰¹æƒ
      */
     private boolean privilegeUsed;
     /*
-     * ÊÇ·ñÊÇAI
+     * æ˜¯å¦æ˜¯AI
      */
     private boolean AI;
     /*
-     * ÊÇ·ñÒÑ¾­°Ü±±
+     * æ˜¯å¦å·²ç»è´¥åŒ—
      */
     private boolean lost;
     /*
-     * ÒÑ¾­»ñÖªµÄÆäËûÍæ¼ÒµÄ×ø±ê
+     * å·²ç»è·çŸ¥çš„å…¶ä»–ç©å®¶çš„åæ ‡
      */
     private Map<Player,Coordinate> foundCoordinates;
     /*
-     * ÒÑ¾­»ñÖªµÄÆäËûÍæ¼ÒµÄÉí·İ
+     * å·²ç»è·çŸ¥çš„å…¶ä»–ç©å®¶çš„èº«ä»½
      */
     private Map<Player,Character> foundCharacters;
+    /*
+     * èµ„æºï¼Œç§‘æŠ€ç‚¹
+     */
+    private int resource;
+    private int techPoint;
+    
+    /*
+     * getters and setters
+     */
+    public int getResource() {
+		return resource;
+	}
+	public int getTechPoint() {
+		return techPoint;
+	}
+	public void setResource(int resource) {
+		this.resource = resource;
+	}
+	public void setTechPoint(int techPoint) {
+		this.techPoint = techPoint;
+	}
+	public Account getAccount() {
+		return account;
+	}
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+	public Character getCharacter() {
+		return character;
+	}
+	public Coordinate getCoordinate() {
+		return coordinate;
+	}
+	public boolean isPrivilegeUsed() {
+		return privilegeUsed;
+	}
+	public boolean isAI() {
+		return AI;
+	}
+	public boolean isLost() {
+		return lost;
+	}
+	public Map<Player, Coordinate> getFoundCoordinates() {
+		return foundCoordinates;
+	}
+	public Map<Player, Character> getFoundCharacters() {
+		return foundCharacters;
+	}
 }

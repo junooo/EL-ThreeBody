@@ -1,5 +1,7 @@
 package ui;
 
-public class TutorialPanel {
+import javax.swing.JPanel;
+
+public class TutorialPanel extends JPanel{
 
 }

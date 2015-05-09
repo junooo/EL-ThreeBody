@@ -1,5 +1,7 @@
 package ui;
 
-public class AnimatePanel {
+import javax.swing.JPanel;
+
+public class AnimatePanel extends JPanel{
 
 }
