@@ -2,18 +2,20 @@ package server.interfaces;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.util.List;
+import java.util.ArrayList;
 
-import util.R;
-import model.Account;
 import model.Room;
+import util.R;
 
 public interface RMILobby extends Remote {
 
-	List<Room> getRooms() throws RemoteException;
+	ArrayList<Room> getRooms() throws RemoteException;
 
-	R.info enterRoom(Account account, Room room) throws RemoteException;
+	R.info enterRoom(String id, String roomName) throws RemoteException;
 
 	R.info createRoom(Room room) throws RemoteException;
+	
+	RMIRoom getRoomService(String roomName) throws RemoteException;
 
+	R.info test(String command) throws RemoteException;
 }

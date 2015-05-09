@@ -43,7 +43,7 @@ public class GameDTO {
     }
     
     public void depositOperation(Operation operation){
-        
+        this.unhandledOperations.add(operation);
     }
 
     /*

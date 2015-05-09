@@ -25,21 +25,6 @@ public class ResourceChange extends Operation implements Operable{
 	}
 
 	@Override
-	public String toOperator() {
-		return null;
-	}
-
-	@Override
-	public String toReceiver() {
-		return null;
-	}
-
-	@Override
-	public String toOthers() {
-		return null;
-	}
-
-	@Override
 	public void process() {
 		GameDTO dto = GameDTO.getInstance();
 		Player pReceiver = null;

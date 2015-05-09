@@ -10,6 +10,9 @@ public class Account implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	/*
+	 * 唯一标识符
+	 */
 	private String id;
     /*
      * 头像
@@ -20,22 +23,30 @@ public class Account implements Serializable{
      */
     private int point;
     /*
-     * 排名
-     */
-    private int rank;
-    /*
      * 总游戏次数，除了输和赢还有强退的
      */
     private int totalGames;
     private int wins;
     private int losts;
-    private String regions;
+    
+    // TODO 迭代二再写
+//    private String regions;
     
     /*
-     * 
+     * 构造方法，只需要ID，密码存放在服务器端，不需要放在客户端
      */
     public Account(String id){
     	this.id = id;
+    }
+    
+    /*
+     * 初始化账号信息
+     */
+    public void init(){
+    	this.point = 0;
+    	this.totalGames = 0;
+    	this.wins = 0;
+    	this.losts = 0;
     }
     
     /*
@@ -43,9 +54,6 @@ public class Account implements Serializable{
      */
 	public String getId() {
 		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
 	}
 	public Image getHead() {
 		return head;
@@ -59,11 +67,9 @@ public class Account implements Serializable{
 	public void setPoint(int point) {
 		this.point = point;
 	}
+	// TODO 通过服务器交互返回
 	public int getRank() {
-		return rank;
-	}
-	public void setRank(int rank) {
-		this.rank = rank;
+		return 0;
 	}
 	public int getTotalGames() {
 		return totalGames;
@@ -83,13 +89,10 @@ public class Account implements Serializable{
 	public void setLosts(int losts) {
 		this.losts = losts;
 	}
-	public String getRegions() {
-		return regions;
-	}
-	public void setRegions(String regions) {
-		this.regions = regions;
-	}
-    
-    
-
+//	public String getRegions() {
+//		return regions;
+//	}
+//	public void setRegions(String regions) {
+//		this.regions = regions;
+//	}
 }

@@ -23,7 +23,7 @@ public class CardUse extends Operation implements Operable{
 	 */
 	@Override
 	public String toOperator() {
-		return this.operator + "ʹ����" + card.getName();
+		return this.operator + "使用了" + card.getName();
 	}
 
 	/*

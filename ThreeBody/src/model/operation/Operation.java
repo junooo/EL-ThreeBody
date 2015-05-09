@@ -2,7 +2,7 @@ package model.operation;
 
 import java.io.Serializable;
 
-public abstract class Operation implements Visible,Serializable{
+public abstract class Operation implements Serializable{
     
 	/**
 	 * default
@@ -24,6 +24,18 @@ public abstract class Operation implements Visible,Serializable{
 
     protected String operator;
     protected String receiver;
+    
+	public String toOperator() {
+		return null;
+	}
+
+	public String toReceiver() {
+		return null;
+	}
+
+	public String toOthers() {
+		return null;
+	}
     
     public Operation(String operator,String receiver){
     	this.operator = operator;

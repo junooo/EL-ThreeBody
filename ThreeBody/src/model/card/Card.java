@@ -10,8 +10,8 @@ public abstract class Card implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	protected String name;
-	protected int resource;
-    protected int techPoint;
+	protected int requiredResource;
+    protected int requiredTechPoint;
     protected String operator;
     protected String receiver;
     
@@ -22,19 +22,20 @@ public abstract class Card implements Serializable{
     
     public abstract void process();
     
-<<<<<<< Updated upstream
     public String getName() {
 		return name;
 	}
 
 	public int getResource() {
-		return resource;
+		return requiredResource;
 	}
 
 	public int getTechPoint() {
-		return techPoint;
+		return requiredTechPoint;
 	}
-=======
+	
+	/*
+	 * 建议可以在父类加些通用的代码,比如消耗资源部分的代码，根据String找到相应Player的代码
+	 */
 
->>>>>>> Stashed changes
 }

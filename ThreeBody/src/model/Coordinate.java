@@ -10,18 +10,18 @@ public class Coordinate {
     
     /**
      * 
-     * @param number 坐标的第几个
+     * @param position 坐标的第几个
      * @return 如果没有被保护，返回正常的坐标，否则返回PROTECTED
      */
-    public int getCoordinateElement(int number){
-    	if(isProtected[number]){
+    public int getCoordinateElement(int position){
+    	if(isProtected[position]){
     		return PROTECTED;
     	}
-    	return sequence[number];
+    	return sequence[position];
     }
     
-    public void setCoordinateElement(int number,int value){
-    	sequence[number] = value;
+    public void setCoordinateElement(int position,int value){
+    	sequence[position] = value;
     }
     
 }
