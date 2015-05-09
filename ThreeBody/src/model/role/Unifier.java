@@ -1,6 +1,7 @@
 package model.role;
 
 import model.card.Card;
+import model.card.ResourcePotion;
 
 /*
  * 角色：归一者
@@ -14,17 +15,20 @@ public class Unifier extends Role {
 	
 	public Unifier() {
 		super();
-		this.initialResource=10;
-		this.initialTechPoint=30;
-		this.tchDevelopSpeed=10;
+		this.initialResource=15;
+		this.initialTechPoint=80;
+		this.tchDevelopSpeed=0;
 		this.rsrRestoreSpeed=10;
 	}
 
 
 	@Override
 	public boolean isAvailable(Card card) {
-		// TODO Auto-generated method stub
-		return false;
+		if(card.getClass().equals(ResourcePotion.class)){
+			return false;
+		}else{
+			return true;
+		}
 	}
 
 	

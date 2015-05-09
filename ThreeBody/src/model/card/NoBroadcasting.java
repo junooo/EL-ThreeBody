@@ -36,8 +36,7 @@ public class NoBroadcasting extends Card{
 		
 		GameDTO dto=GameDTO.getInstance();
 		
-		//get the operator and receiver
-		Player pOperator=this.findOperator(dto);
+		//get the  receiver
 		Player pReceiver=this.findReceiver(dto);
 		
 		//pay the resource

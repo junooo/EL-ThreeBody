@@ -5,5 +5,5 @@ package control;
  * 提供可以调用的方法
  */
 public class GameControl {
-
+	
 }

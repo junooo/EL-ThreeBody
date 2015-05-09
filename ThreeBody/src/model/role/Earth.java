@@ -1,6 +1,8 @@
 package model.role;
 
 import model.card.Card;
+import model.card.NoBroadcasting;
+
 
 /*
  * 角色：地球
@@ -23,12 +25,12 @@ public class Earth extends Role{
 		
 	}
 	
-	public  boolean isAvailable(Card card){
-// 	switch(card){
-//		case 
-//		}	
-		//TODO
-		return false;
+	
+	@Override
+	public boolean isAvailable(Card card) {
+		 
+		return true;
+
 	}
 
 	
