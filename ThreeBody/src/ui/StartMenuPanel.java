@@ -34,32 +34,34 @@ public class StartMenuPanel extends JPanel{
 	
 	private void initComonent() {
 
-		// ��ʼ����ʼ��ť
-		this.btnStartGame = new JButton("��ʼ��Ϸ");
+		this.btnStartGame = new JButton(new ImageIcon("button.png"));
 		this.btnStartGame.setContentAreaFilled(false);
-		this.btnStartGame.setBounds(483, 120, 200, 60);
-//		this.btnMultyPlay.setBorderPainted(false);
+		this.btnStartGame.setBounds(483, 120, 200, 80);
+		this.btnStartGame.setBorderPainted(false);
 		// ����ʼ��ť�����¼�����
 		btnStartGame.addMouseListener(new StartGameListener());
 		// ��Ӱ�ť�����
 		this.add(btnStartGame);
 
-		this.btnOption = new JButton("��Ϸ����");
+		this.btnOption = new JButton(new ImageIcon("option.png"));
 		this.btnOption.setContentAreaFilled(false);
-		this.btnOption.setBounds(483, 220, 200, 60);
+		this.btnOption.setBounds(483, 220, 200, 80);
+		this.btnOption.setBorderPainted(false);
 		this.btnOption.addMouseListener(new OptionListener());
 
 		this.add(btnOption);
 
-		this.btnAboutUs = new JButton("��������");
+		this.btnAboutUs = new JButton(new ImageIcon("about.png"));
 		this.btnAboutUs.setContentAreaFilled(false);
-		this.btnAboutUs.setBounds(483, 320, 200, 60);
+		this.btnAboutUs.setBounds(483, 320, 200, 80);
+		this.btnAboutUs.setBorderPainted(false);
 		this.btnAboutUs.addMouseListener(new AboutUsListener());
 		this.add(btnAboutUs);
 
-		this.btnExit = new JButton("�˳�");
+		this.btnExit = new JButton(new ImageIcon("exit.png"));
 		this.btnExit.setContentAreaFilled(false);
-		this.btnExit.setBounds(483, 420, 200, 60);
+		this.btnExit.setBounds(483, 420, 200, 80);
+		this.btnExit.setBorderPainted(false);
 		this.btnExit.addMouseListener(new ExitListener());
 		this.add(btnExit);
 
@@ -78,9 +80,10 @@ public class StartMenuPanel extends JPanel{
 	}
 	@Override
 	public void paintComponent(Graphics g) {
-		Image IMG_MAIN = new ImageIcon("img1.jpg").getImage();
+		Image IMG_MAIN = new ImageIcon("img2.jpg").getImage();
 		// ������Ϸ����
 		g.drawImage(IMG_MAIN, 0, 0, 1158, 650, null);
+		
 	}
 
 	class StartGameListener implements MouseListener {
@@ -88,7 +91,7 @@ public class StartMenuPanel extends JPanel{
 		@Override
 		public void mouseClicked(MouseEvent arg0) {
 			Media.playSound(Sound.enter);
-			mainControl.toGame();
+			mainControl.toSelect();
 		}
 
 		@Override
@@ -113,7 +116,7 @@ public class StartMenuPanel extends JPanel{
 		@Override
 		public void mouseClicked(MouseEvent arg0) {
 			Media.playSound(Sound.enter);
-			mainControl.toConfig();
+			mainControl.toPreference();
 		}
 
 		@Override
@@ -213,7 +216,7 @@ public class StartMenuPanel extends JPanel{
 		@Override
 		public void mouseClicked(MouseEvent arg0) {
 			Media.playSound(Sound.choose);
-//			add(btnAccount);
+			btnLogIn.setIcon(new ImageIcon("option.png"));
 			repaint();
 		}
 

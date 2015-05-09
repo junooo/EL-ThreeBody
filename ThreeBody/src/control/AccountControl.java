@@ -17,25 +17,27 @@ public class AccountControl {
     }
     
     /*
-     * ½«±¾µØ¸Ä±äÉÏ´«µ½·şÎñÆ÷¶Ë
+     * å°†æœ¬åœ°æ”¹å˜ä¸Šä¼ åˆ°æœåŠ¡å™¨ç«¯
      */
     public R.info uploadChange(){
     	return null;
     }
     
     /*
-     * ½«·şÎñÆ÷¶Ë¸Ä±äÏÂÔØ
+     * å°†æœåŠ¡å™¨ç«¯æ”¹å˜ä¸‹è½½
      */
     public R.info downloadChange(){
     	return null;
     }
     
     /*
-     * 2015.4.27
-     * Æ¾½è»º´æµÄÔİÊ±ÃÜÂëÔÚÒ»¶¨Ê±¼ä×Ô¶¯µÇÂ½
+     * å‡­å€Ÿç¼“å­˜çš„æš‚æ—¶å¯†ç åœ¨ä¸€å®šæ—¶é—´è‡ªåŠ¨ç™»é™†
      */
     public R.info loginByTransientID(){
     	return null;
     }
-    
+
+	public Account getAccount() {
+		return account;
+	}
 }

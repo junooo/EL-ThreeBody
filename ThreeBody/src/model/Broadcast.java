@@ -1,12 +1,23 @@
 package model;
 
 /*
- * °üÀ¨ ×ø±ê¹ã²¥£¬ÏµÍ³¹ã²¥£¬Íæ¼ÒµÄÏûÏ¢
+ * åŒ…æ‹¬ åæ ‡å¹¿æ’­ï¼Œç³»ç»Ÿå¹¿æ’­ï¼Œç©å®¶çš„æ¶ˆæ¯
  */
 public class Broadcast {
     
     private Player from;
     private Player to;
     private String content;
+    
+	public Player getFrom() {
+		return from;
+	}
+	public Player getTo() {
+		return to;
+	}
+	public String getContent() {
+		return content;
+	}
 
+    
 }

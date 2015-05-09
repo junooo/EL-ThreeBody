@@ -7,7 +7,12 @@ import model.Player;
 import model.operation.Operation;
 
 public class GameDTO {
-
+	
+	/*
+	 * singleton
+	 */
+	private static GameDTO dto = new GameDTO();
+    
     private List<Player> players;
  
 	/*
@@ -25,16 +30,25 @@ public class GameDTO {
     /*
      *历史操作记录
      */
-    private List<Operation> operations;
+    private List<Operation> historyOperations;
     /*
      * 待执行操作
      */
     private List<Operation> unhandledOperations;
     
+    private GameDTO(){}
+    
+    public static GameDTO getInstance(){
+    	return dto;
+    }
+    
     public void depositOperation(Operation operation){
-        
+        this.unhandledOperations.add(operation);
     }
 
+    /*
+     * getters and setters
+     */
 	public List<Player> getPlayers() {
 		return players;
 	}
@@ -68,11 +82,11 @@ public class GameDTO {
 	}
 
 	public List<Operation> getOperations() {
-		return operations;
+		return historyOperations;
 	}
 
 	public void setOperations(List<Operation> operations) {
-		this.operations = operations;
+		this.historyOperations = operations;
 	}
 
 	public List<Operation> getUnhandledOperations() {

@@ -6,18 +6,20 @@ import java.rmi.RemoteException;
 import util.R;
 import model.Account;
 
+/**
+ * 
+ * @author Sissel
+ * 作为特定对象为特定客户端的连接端口提供服务
+ */
+
 public interface RMIAccount extends Remote {
-
-	R.info logout(Account account) throws RemoteException;
-
-	R.info login(String id, String password) throws RemoteException;
 
 	R.info uploadChange(Account account) throws RemoteException;
 	
-	R.info downloadChange(Account account) throws RemoteException;
-
-	R.info logUp(String id, String password, String invitationID)
-			throws RemoteException;
-
-	R.info loginByTransientID(String id, String transientID) throws RemoteException;
+	Account downloadChange() throws RemoteException;
+	
+	R.info connect() throws RemoteException;
+	
+	//TODO test
+	R.info test(String command) throws RemoteException;
 }

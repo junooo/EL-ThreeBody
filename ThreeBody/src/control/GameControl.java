@@ -1,8 +1,8 @@
 package control;
 
 /*
- * ·Ö·¢Ò»¸öÏß³Ì¸ºÔğÓë·şÎñÆ÷Í¨ĞÅ£¬¼ì²éGameDTOÀïÃæµÄunhandledOperations
- * Ìá¹©¿ÉÒÔµ÷ÓÃµÄ·½·¨
+ * åˆ†å‘ä¸€ä¸ªçº¿ç¨‹è´Ÿè´£ä¸æœåŠ¡å™¨é€šä¿¡ï¼Œæ£€æŸ¥GameDTOé‡Œé¢çš„unhandledOperations
+ * æä¾›å¯ä»¥è°ƒç”¨çš„æ–¹æ³•
  */
 public class GameControl {
 

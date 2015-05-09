@@ -21,6 +21,9 @@ public class PreferenceDTO {
      */
     private int volume;
     
+    /*
+     * getters and setters
+     */
 	public boolean isMusicSwitch() {
 		return musicSwitch;
 	}
@@ -57,7 +60,5 @@ public class PreferenceDTO {
 	public void setVolume(int volume) {
 		this.volume = volume;
 	}
-    
-    
-
 }
+
