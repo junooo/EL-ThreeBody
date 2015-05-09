@@ -1,13 +1,22 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Map;
 
-public class Player {
-    /*
+import model.role.Role;
+
+public class Player implements Serializable {
+	
+    /**
+	 * default
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	/*
      * 关联的账户
      */
     private Account account;
-    private Character character;
+    private Role role;
     private Coordinate coordinate;
     /*
      * 是否已使用特权
@@ -28,53 +37,95 @@ public class Player {
     /*
      * 已经获知的其他玩家的身份
      */
-    private Map<Player,Character> foundCharacters;
+    private Map<Player,Role> foundRoles;
     /*
      * 资源，科技点
      */
     private int resource;
     private int techPoint;
     
-    /*
+    
+    
+    public Player(Account account, Role role, Coordinate coordinate,
+			boolean aI) {
+    	
+		super();
+		this.account = account;
+		this.role = role;
+		this.coordinate = coordinate;
+		AI = aI;
+		
+		resource = this.role.getInitialResource();
+		techPoint = this.role.getInitialTechPoint();
+	}
+    
+    public void findCoordinate(Player player,int position,int value){
+    	this.foundCoordinates.get(player).setCoordinateElement(position, value);
+    }
+    
+    public void findRole(Player player,Role role){
+    	this.foundRoles.put(player, role);
+    }
+
+	/*
      * getters and setters
      */
-    public int getResource() {
-		return resource;
+    public boolean isAI() {
+		return AI;
 	}
-	public int getTechPoint() {
-		return techPoint;
+
+	public void setAI(boolean aI) {
+		AI = aI;
 	}
-	public void setResource(int resource) {
-		this.resource = resource;
-	}
-	public void setTechPoint(int techPoint) {
-		this.techPoint = techPoint;
-	}
+
 	public Account getAccount() {
 		return account;
 	}
-	public void setAccount(Account account) {
-		this.account = account;
+
+	public model.role.Role getCharacter() {
+		return role;
 	}
-	public Character getCharacter() {
-		return character;
-	}
+
 	public Coordinate getCoordinate() {
 		return coordinate;
 	}
+
 	public boolean isPrivilegeUsed() {
 		return privilegeUsed;
 	}
-	public boolean isAI() {
-		return AI;
-	}
+
 	public boolean isLost() {
 		return lost;
 	}
-	public Map<Player, Coordinate> getFoundCoordinates() {
-		return foundCoordinates;
+
+	public int getResource() {
+		return resource;
 	}
-	public Map<Player, Character> getFoundCharacters() {
-		return foundCharacters;
+
+	public int getTechPoint() {
+		return techPoint;
 	}
+
+	public void setCharacter(model.role.Role character) {
+		this.role = character;
+	}
+
+	public void setPrivilegeUsed(boolean privilegeUsed) {
+		this.privilegeUsed = privilegeUsed;
+	}
+
+	public void setLost(boolean lost) {
+		this.lost = lost;
+	}
+
+	public void setResource(int resource) {
+		this.resource = resource;
+	}
+
+	public void setTechPoint(int techPoint) {
+		this.techPoint = techPoint;
+	}
+	
+	
+    
 }

@@ -17,14 +17,5 @@ public class CoordinateGetFail extends Operation{
 		return "坐标获取失败";
 	}
 
-	@Override
-	public String toReceiver() {
-		return null;
-	}
-
-	@Override
-	public String toOthers() {
-		return null;
-	}
 
 }
