@@ -91,5 +91,15 @@ public class Coordinate {
 			return false;
 		}
 	}
+
+	@Override
+	public String toString() {
+		StringBuffer sb = new StringBuffer();
+		for (int i = 0; i < dimensions; i++) {
+			sb.append(sequence[i]+"-");
+		}
+		sb.deleteCharAt(sb.length()-1);
+		return sb.toString();
+	}
 	
 }

@@ -4,6 +4,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
+import model.Account;
+import model.Coordinate;
+
 /**
  * 可以生成几个元素个数相同的集合的元素间的随机的一一映射
  * 辅助游戏开始时生成随机的角色和顺序
@@ -61,5 +64,31 @@ public class RandomCombiner {
 			return result;
 		}
 
+	}
+	
+	public static void main(String[] args) {
+		RandomCombiner rc = new RandomCombiner(4);
+		Account[] accs = new Account[4];
+		accs[0] = new Account("A");
+		accs[1] = new Account("B");
+		accs[2] = new Account("C");
+		accs[3] = new Account("AD");
+		
+		rc.addColumn(accs);
+		String[] roles = new String[4];
+		roles[0] = "TB";
+		roles[1] = "EARTH";
+		roles[2] = "TB";
+		roles[3] = "UNIFIER";
+		rc.addColumn(roles);
+		
+		rc.addColumn(Coordinate.generateCoordinates(4));
+		
+		for (Object[] records : rc.generate()) {
+			Account ac = (Account)records[0];
+			String rl = (String)records[1];
+			
+			System.out.println();
+		}
 	}
 }
