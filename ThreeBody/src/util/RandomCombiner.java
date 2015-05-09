@@ -5,16 +5,17 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * 
- * @author Sissel 可以生成几个元素相同的集合的元素间的随机的一一映射 辅助游戏开始时生成随机的角色和顺序
+ * 可以生成几个元素个数相同的集合的元素间的随机的一一映射
+ * 辅助游戏开始时生成随机的角色和顺序
+ * @author Sissel 
  */
-public class RandomHelper {
+public class RandomCombiner {
 
-	private final int size;
+	private final int rowSize;
 	private List<Object[]> columns;
 
-	public RandomHelper(int size) {
-		this.size = size;
+	public RandomCombiner(int rowSize) {
+		this.rowSize = rowSize;
 		columns = new LinkedList<Object[]>();
 	}
 
@@ -23,12 +24,12 @@ public class RandomHelper {
 	}
 
 	public Object[][] generate() {
-		Object[][] records = new Object[size][columns.size()];
-		for (int i = 0; i < columns.size(); i++) {
-			Object[] objects = columns.get(i);
-			RandomSequence rs = new RandomSequence(size);
+		Object[][] records = new Object[rowSize][columns.size()];
+		for (int columnIndex = 0; columnIndex < columns.size(); columnIndex++) {
+			Object[] objects = columns.get(columnIndex);
+			RandomSequence rs = new RandomSequence(rowSize);
 			for (Object object : objects) {
-				records[rs.next()][i] = object;
+				records[rs.next()][columnIndex] = object;
 			}
 		}
 		return records;

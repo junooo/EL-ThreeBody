@@ -2,6 +2,7 @@ package server;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -9,12 +10,13 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import model.Account;
+import model.Coordinate;
 import model.Player;
 import model.operation.Operation;
 import server.interfaces.RMIGame;
 import util.R;
 import util.R.info;
-import util.RandomHelper;
+import util.RandomCombiner;
 
 public class GameServer extends UnicastRemoteObject implements RMIGame{
 	
@@ -32,11 +34,16 @@ public class GameServer extends UnicastRemoteObject implements RMIGame{
 		for (Account account : accounts) {
 			unhandledOperations.put(account.getId(), new LinkedList<Operation>());
 		}
+		players = new ArrayList<Player>();
+		RandomCombiner rc = new RandomCombiner(accounts.size());
+		rc.addColumn(accounts.toArray());
+		rc.addColumn(Coordinate.generateCoordinates(accounts.size()));
 	}
 	
 	// TODO 角色数量配置
 	private void initGame(){
-		RandomHelper rh = new RandomHelper(players.size());
+		
+		
 	}
 
 	@Override

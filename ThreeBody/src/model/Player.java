@@ -14,7 +14,7 @@ public class Player implements Serializable {
      * 关联的账户
      */
     private Account account;
-    private model.character.Character character;
+    private model.character.Role character;
     private Coordinate coordinate;
     /*
      * 是否已使用特权
@@ -42,7 +42,7 @@ public class Player implements Serializable {
     private int resource;
     private int techPoint;
     
-    public Player(Account account, model.character.Character character, Coordinate coordinate,
+    public Player(Account account, model.character.Role character, Coordinate coordinate,
 			boolean aI) {
     	
 		super();
@@ -78,7 +78,7 @@ public class Player implements Serializable {
 		return account;
 	}
 
-	public model.character.Character getCharacter() {
+	public model.character.Role getCharacter() {
 		return character;
 	}
 
@@ -102,7 +102,7 @@ public class Player implements Serializable {
 		return techPoint;
 	}
 
-	public void setCharacter(model.character.Character character) {
+	public void setCharacter(model.character.Role character) {
 		this.character = character;
 	}
 
