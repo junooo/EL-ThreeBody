@@ -76,6 +76,7 @@ public class BroadcastPanel extends JPanel {
 		select = new JComboBox<String>();
 		select.setFont(new Font("宋体", Font.PLAIN, 30));
 		select.setBounds(100,105, 60, 30);
+		//
 		if (players != null) {
 			for (int i = 0; i < players.size(); i++) {
 				if (players.get(i).equals(user)) {

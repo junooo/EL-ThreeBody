@@ -1,5 +1,6 @@
 package ui;
 
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
@@ -12,10 +13,6 @@ import javax.swing.JPanel;
 import control.MainControl;
 
 public class GamePanel  extends JPanel{
-
-    
-   
-    
     private static final long serialVersionUID = 1L;
     private MainControl mainControl;
 	
@@ -55,6 +52,7 @@ public class GamePanel  extends JPanel{
 		this.btnBroadcast = new JButton("智子");
 		this.btnBroadcast.setContentAreaFilled(false);
 		this.btnBroadcast.setBounds(400, 600, 50, 15);
+		btnBroadcast.setFont(new Font("黑体", Font.BOLD, 15));
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnBroadcast.addMouseListener(new BroadcastListener());
 		this.add(btnBroadcast);
@@ -62,6 +60,7 @@ public class GamePanel  extends JPanel{
 		this.btnHistory = new JButton("��ʷ");
 		this.btnHistory.setContentAreaFilled(false);
 		this.btnHistory.setBounds(600, 600, 50, 15);
+		btnHistory.setFont(new Font("黑体", Font.BOLD, 15));
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnHistory.addMouseListener(new HistoryListener());
 		this.add(btnHistory);
@@ -70,6 +69,7 @@ public class GamePanel  extends JPanel{
 		this.btnMessage.setContentAreaFilled(false);
 		this.btnMessage.setBounds(800, 600, 50, 15);
 		// this.btnMultyPlay.setBorderPainted(false);
+		btnMessage.setFont(new Font("黑体", Font.BOLD, 15));
 		btnMessage.addMouseListener(new MessageListener());
 		this.add(btnMessage);
 		
@@ -138,11 +138,6 @@ public class GamePanel  extends JPanel{
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnCard9.addMouseListener(new CardListener9());
 		this.add(btnCard9);
-		
-		
-		
-
-		
 
 	}
 	@Override
@@ -189,7 +184,7 @@ public class GamePanel  extends JPanel{
 		int y = btnCard1.getY();
 		@Override
 		public void mouseClicked(MouseEvent e) {
-//TODO
+			//TODO
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
@@ -219,7 +214,7 @@ public class GamePanel  extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-//TODO
+			//TODO
 			
 		}
 		@Override
@@ -289,7 +284,7 @@ public class GamePanel  extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-//TODO
+			//TODO
 			
 		}
 		@Override
@@ -394,7 +389,7 @@ public class GamePanel  extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-//TODO
+			//TODO
 			
 		}
 		@Override
@@ -519,6 +514,11 @@ public class GamePanel  extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
+			/**
+			 * 很HeHe的解决方式
+			 */
+			add(panelBroadcast);
+			repaint();
 			panelMessage.setVisible(false);
 			panelBroadcast.setVisible(false);
 			panelHistory.setVisible(true);
@@ -534,6 +534,7 @@ public class GamePanel  extends JPanel{
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {
+			repaint();
 		}
 		@Override
 		public void mouseExited(MouseEvent e) {

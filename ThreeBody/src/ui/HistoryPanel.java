@@ -9,16 +9,18 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
+import javax.swing.ScrollPaneConstants;
 
 import model.Player;
 import dto.GameDTO;
 
 public class HistoryPanel extends JPanel{
 	
-	private JTextArea hitory;
+	private JList history;
+	String[] historyOperation;
 	JScrollPane scroll;
 	private JButton btnReturn;
 	
@@ -35,22 +37,31 @@ public class HistoryPanel extends JPanel{
 	}
 
 	private void initComonent() {
-		this.hitory = new JTextArea("156484\n dfsdf\n56458\n");
+		historyOperation=new String[10];
+		for (int i = 0; i < 10; i++) {
+			historyOperation[i]="aa"+i;
+		}
+		this.history = new JList(historyOperation);
 		
-		this.hitory.setBounds(80, 0, 560, 90);
-		hitory.setFont(new Font("黑体", Font.BOLD, 20));
-		this.add(hitory);
-//		JScrollPane scroll = new JScrollPane(hitory); 
-//		scroll.setVerticalScrollBarPolicy( JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-//		scroll.getViewport().add(hitory);
-//		this.add(scroll);
+		this.history.setBounds(80, 30, 560, 80);
+		history.setFont(new Font("黑体", Font.BOLD, 20));
+		history.setVisibleRowCount(4);
+		history.setVisible(true);
 		
-		this.btnReturn = new JButton(new ImageIcon("exit.png"));
-		this.btnReturn.setContentAreaFilled(false);
-		this.btnReturn.setBounds(520, 95, 150, 60);
-		this.btnReturn.setBorderPainted(false);
-		btnReturn.addMouseListener(new ReturnListener());
-		this.add(btnReturn);
+		JScrollPane scroller = new JScrollPane(history);
+		scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scroller.setBounds(80, 30, 560, 120);
+		
+		this.add(scroller);
+		repaint();
+		
+//		this.btnReturn = new JButton(new ImageIcon("exit.png"));
+//		this.btnReturn.setContentAreaFilled(false);
+//		this.btnReturn.setBounds(520, 95, 150, 60);
+//		this.btnReturn.setBorderPainted(false);
+//		btnReturn.addMouseListener(new ReturnListener());
+//		this.add(btnReturn);
 
 	}
 	
