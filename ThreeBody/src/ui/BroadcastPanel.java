@@ -26,6 +26,7 @@ public class BroadcastPanel extends JPanel {
 	private JButton btnReturn;
 	private JComboBox select;
 	
+	
 	ArrayList<Player> players=null;
 	Player user;
 
@@ -75,13 +76,16 @@ public class BroadcastPanel extends JPanel {
 		select = new JComboBox<String>();
 		select.setFont(new Font("宋体", Font.PLAIN, 30));
 		select.setBounds(100,105, 60, 30);
-//		for (int i = 0; i < players.size(); i++) {
-//			if(players.get(i).equals(user)){
-//				continue;
-//			}else{
-//				select.addItem(players.get(i).getAccount().getId());
-//			}
-//		}
+		if (players != null) {
+			for (int i = 0; i < players.size(); i++) {
+				if (players.get(i).equals(user)) {
+					continue;
+				} else {
+					select.addItem(players.get(i).getAccount().getId());
+				}
+			}
+		}
+
 		select.addItem("aa");
 		select.addItem("bb");
 		this.add(select);
