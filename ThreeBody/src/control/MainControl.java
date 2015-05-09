@@ -22,7 +22,6 @@ public class MainControl {
     private JPanel isOnlinePanel = null;
     private JPanel broadcast = null;
     private JPanel message = null;
-    
     /*
      * TESTED
      */
