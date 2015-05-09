@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import ui.BroadcastPanel;
 import ui.GamePanel;
 import ui.MainFrame;
+import ui.MessagePanel;
 import ui.SelectPanel;
 import ui.StartMenuPanel;
 import ui.sound.Media;
@@ -20,6 +21,7 @@ public class MainControl {
     private JPanel gamePanel = null;
     private JPanel isOnlinePanel = null;
     private JPanel broadcast = null;
+    private JPanel message = null;
     
     /*
      * TESTED
@@ -92,10 +94,8 @@ public class MainControl {
     	mc.gamePanel = new GamePanel(mc);
     	mc.selectPanel = new SelectPanel(mc);
     	mc.broadcast = new BroadcastPanel();
+    	mc.message = new MessagePanel();
     	//TODO 换个地方放
-    	mc.broadcast = new BroadcastPanel();
-//    	mc.broadcast.setBounds(0, 0, 400, 200);
-    	
     	mc.frame = new MainFrame();
     	mc.startMenuPanel = new StartMenuPanel(mc);
     	mc.currentPanel = mc.startMenuPanel;
@@ -105,12 +105,6 @@ public class MainControl {
     	Media.playBGM(Sound.BGM);
 	}
 
-    //TODO 换个地方放
-	public void openBroadcast() {
-    	this.broadcast.setVisible(true);
-    	this.gamePanel.add(this.broadcast);
-    	frame.repaint();
-    	this.frame.add(this.broadcast);
-	}
+  
 
 }
