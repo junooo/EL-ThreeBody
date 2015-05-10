@@ -11,6 +11,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import ui.sophon.SophonFinderFrame;
+import ui.sophon.SophonFinderPanel;
 import control.MainControl;
 
 public class GamePanel  extends JPanel{

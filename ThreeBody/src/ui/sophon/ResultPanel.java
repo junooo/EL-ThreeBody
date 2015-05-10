@@ -1,4 +1,4 @@
-package ui;
+package ui.sophon;
 
 import java.awt.Graphics;
 import java.awt.Image;

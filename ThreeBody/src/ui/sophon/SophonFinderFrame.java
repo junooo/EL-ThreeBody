@@ -1,6 +1,8 @@
-package ui;
+package ui.sophon;
 
 import javax.swing.JFrame;
+
+import ui.FrameUtil;
 
 public class SophonFinderFrame extends JFrame{
 	private static final long serialVersionUID = 1L;
