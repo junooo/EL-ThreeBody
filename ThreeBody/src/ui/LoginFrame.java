@@ -5,10 +5,18 @@ import javax.swing.JFrame;
 public class LoginFrame extends JFrame{
 	private static final long serialVersionUID = 1L;
 	public LoginFrame(){
-		JFrame loginFrame = new JFrame();
-		loginFrame.setSize(400, 300);
-		FrameUtil.setFrameCenter(loginFrame);
-		loginFrame.setTitle("登陆");
-		loginFrame.setVisible(true);
+		//设置标题
+		this.setTitle("登录");
+    	//设置窗口大小
+    	this.setSize(400,300);
+    	//不允许用户改变窗口大小
+    	this.setResizable(false);
+    	//窗口居中
+    	FrameUtil.setFrameCenter(this);
+//    	this.setContentPane(panel);
+    	//默认窗口为显示
+    	this.setVisible(true);
 	}
+	
+	
 }
