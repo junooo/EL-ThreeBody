@@ -12,7 +12,7 @@ public class GameDTO {
 	/*
 	 * singleton
 	 */
-	private static GameDTO dto = new GameDTO();
+	private static GameDTO dto = new GameDTO(null);
     
     private List<Player> players;
  
@@ -29,7 +29,7 @@ public class GameDTO {
      */
     private List<Broadcast> broadcasts;
     /*
-     *历史操作记录
+     * 历史操作记录
      */
     private List<Operation> historyOperations;
     /*
@@ -41,16 +41,18 @@ public class GameDTO {
      */
     private boolean gameOver;
     
-    public void setUp(List<Player> players){
-    	dto.players = players;
-    	whoseTurn = players.get(0);
+    public static void setUp(List<Player> players){
+    	dto = new GameDTO(players);
     }
     
-    private GameDTO(){
+    private GameDTO(List<Player> players){
     	//TODO 本地账号
+//    	this.players = players;
+    	this.players = new LinkedList<Player>();
     	broadcasts = new LinkedList<Broadcast>();
     	historyOperations = new LinkedList<Operation>();
     	unhandledOperations = new LinkedList<Operation>();
+    	gameOver = false;
     }
     
     public static GameDTO getInstance(){
@@ -60,6 +62,10 @@ public class GameDTO {
     public void depositOperation(Operation operation){
         this.unhandledOperations.add(operation);
     }
+    
+    public void depositBroadcast(Broadcast br){
+    	this.broadcasts.add(br);
+    }
 
     /*
      * getters and setters
@@ -67,11 +73,7 @@ public class GameDTO {
 	public List<Player> getPlayers() {
 		return players;
 	}
-
-	public void setPlayers(List<Player> players) {
-		this.players = players;
-	}
-
+	
 	public Player getWhoseTurn() {
 		return whoseTurn;
 	}
@@ -90,10 +92,6 @@ public class GameDTO {
 
 	public List<Broadcast> getBroadcasts() {
 		return broadcasts;
-	}
-
-	public void setBroadcasts(List<Broadcast> broadcasts) {
-		this.broadcasts = broadcasts;
 	}
 
 	public List<Operation> getHistoryOperations() {

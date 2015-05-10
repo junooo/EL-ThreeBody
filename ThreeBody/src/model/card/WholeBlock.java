@@ -1,10 +1,9 @@
 package model.card;
 
-import dto.GameDTO;
-import model.Coordinate;
 import model.Player;
 import model.operation.ResourceChange;
 import model.operation.ResourceChange.Type;
+import dto.GameDTO;
 
 public class WholeBlock extends Card{
 	
@@ -53,9 +52,9 @@ public class WholeBlock extends Card{
 		dto.depositOperation(rc);
 		
 		//set the coordinate ==10086(PROTECTED)
-		for(int i=0;i<4;i++){
+		for (int i = 0; i < 4; i++) {
 			pOperator.getCoordinate().setCoordinateElement(i, 10086);
-		}		
+		}
 	}
 	
 		

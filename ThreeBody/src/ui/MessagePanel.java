@@ -5,7 +5,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -25,13 +25,13 @@ public class MessagePanel  extends JPanel{
 		private JComboBox<String> select;
 		
 		
-		ArrayList<Player> players=null;
+		List<Player> players=null;
 		Player user;
 
 		public MessagePanel() {
 			this.setLayout(null);
 			setBounds(231, 435, 695, 215);
-			players=(ArrayList<Player>) GameDTO.getInstance().getPlayers();
+			players= GameDTO.getInstance().getPlayers();
 			user=GameDTO.getInstance().getUser();
 			this.initComonent();
 		}

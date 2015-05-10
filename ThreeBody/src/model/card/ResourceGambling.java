@@ -27,7 +27,6 @@ public class ResourceGambling extends Card {
 
 	@Override
 	public void process() {
-		// TODO Auto-generated method stub
 		GameDTO dto=GameDTO.getInstance();
 		
 		//pay resources

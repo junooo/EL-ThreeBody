@@ -1,7 +1,6 @@
 package model.operation;
 
 import model.Player;
-import model.operation.ResourceChange.Type;
 import dto.GameDTO;
 
 public class TechChange extends Operation implements Operable {

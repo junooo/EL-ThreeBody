@@ -5,7 +5,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,7 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import model.Player;
-import model.card.Sophon;
 import dto.GameDTO;
 
 public class BroadcastPanel extends JPanel {
@@ -27,13 +26,13 @@ public class BroadcastPanel extends JPanel {
 	private JButton btnReturn;
 	private JComboBox<String> select;
 	
-	ArrayList<Player> players=null;
+	List<Player> players=null;
 	Player user;
 
 	public BroadcastPanel() {
 		this.setLayout(null);
 		setBounds(231, 435, 695, 215);
-		players=(ArrayList<Player>) GameDTO.getInstance().getPlayers();
+		players=GameDTO.getInstance().getPlayers();
 		user=GameDTO.getInstance().getUser();
 		this.initComonent();
 	}

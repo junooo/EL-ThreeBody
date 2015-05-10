@@ -40,7 +40,6 @@ public class RoomServer extends UnicastRemoteObject implements RMIRoom {
 
 	@Override
 	public info start() throws RemoteException {
-		// TODO GameServer
 		for(Boolean ready:room.getReady().values()){
 			if(!ready){
 				return R.info.INVALID;
