@@ -6,6 +6,7 @@ import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -35,12 +36,12 @@ public class SophonFinderPanel extends JPanel{
 	private JPanel sillyResultPanel;
 	private ResultPanel resultPanel;
 	private int coordinate;
-	ArrayList<Player> players=null;
+	List<Player> players=null;
 	Player user;
 	
 	public SophonFinderPanel(JFrame sophonFinder) {
 		this.setLayout(null);
-		players=(ArrayList<Player>) GameDTO.getInstance().getPlayers();
+		players= GameDTO.getInstance().getPlayers();
 		user=GameDTO.getInstance().getUser();
 		this.sophonFinder=sophonFinder;
 		sillyResultPanel = new SillyResultPanel(sophonFinder);

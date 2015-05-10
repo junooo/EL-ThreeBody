@@ -2,6 +2,8 @@ package control;
 
 import java.rmi.RemoteException;
 
+import javax.swing.JPanel;
+
 import model.Broadcast;
 import model.operation.Operable;
 import model.operation.Operation;
@@ -95,5 +97,36 @@ public class GameControl {
 			}
 		}
 	}
+	
+	
+
+		
+	class TimeThread extends Thread{
+
+		private int seconds;
+		private JPanel countDown;
+		
+		TimeThread(JPanel  countDown){
+			this .countDown= countDown;
+			this.seconds=60;
+		}
+		
+		@Override
+		public void run() {
+			
+			while(seconds>0){
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				countDown.repaint();
+				seconds--;
+			}
+			
+		}
+	}
+	
+
 
 }

@@ -15,11 +15,23 @@ public class GameDTO {
 	private static GameDTO dto = new GameDTO(null);
     
     private List<Player> players;
- 
-	/*
-     * 本回合操作者
+    
+    
+    /*
+     * 该回合的玩家
      */
     private Player whoseTurn;
+    
+    /*
+     * 回合数，每人完成一次操作即为增加一个回合
+     */
+    private int bout;
+    
+    /*
+     * 轮次，所有玩家均完成一次操作即为增加一轮
+     */
+    private int round;
+ 
     /*
      * 本地玩家
      */
@@ -74,12 +86,20 @@ public class GameDTO {
 		return players;
 	}
 	
-	public Player getWhoseTurn() {
-		return whoseTurn;
+	public int getBout() {
+		return bout;
 	}
 
-	public void setWhoseTurn(Player whoseTurn) {
-		this.whoseTurn = whoseTurn;
+	public void setBout(int bout) {
+		this.bout = bout;
+	}
+
+	public int getRound() {
+		return round;
+	}
+
+	public void setRound(int round) {
+		this.round = round;
 	}
 
 	public Player getUser() {
@@ -117,5 +137,15 @@ public class GameDTO {
 	public void setGameOver(boolean gameOver) {
 		this.gameOver = gameOver;
 	}
+
+	public Player getWhoseTurn() {
+		return whoseTurn;
+	}
+
+	public void setWhoseTurn(Player whoseTurn) {
+		this.whoseTurn = whoseTurn;
+	}
+	
+	
 
 }
