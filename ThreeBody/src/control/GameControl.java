@@ -2,6 +2,9 @@ package control;
 
 import java.rmi.RemoteException;
 
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 import model.operation.Operable;
 import model.operation.Operation;
 import server.interfaces.RMIGame;
@@ -13,7 +16,7 @@ import dto.GameDTO;
  */
 public class GameControl {
 	
-<<<<<<< HEAD
+
 	private RMIGame rmig;
 	private GameDTO gameDTO;
 
@@ -70,7 +73,36 @@ public class GameControl {
 		} //run
 		
 	}
+	
+	
 
-=======
->>>>>>> 3e160d61bb5a1711dcf75f2b3d0c9a866f7673b7
+		
+	class TimeThread extends Thread{
+
+		private int seconds;
+		private JPanel countDown;
+		
+		TimeThread(JPanel  countDown){
+			this .countDown= countDown;
+			this.seconds=60;
+		}
+		
+		@Override
+		public void run() {
+			
+			while(seconds>0){
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				countDown.repaint();
+				seconds--;
+			}
+			
+		}
+	}
+	
+
+
 }
