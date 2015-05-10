@@ -137,8 +137,15 @@ public class Player implements Serializable {
 	public void setBroadcast(boolean broadcast) {
 		this.broadcast = broadcast;
 	}
-	
-	
+
+	public Map<Player, Coordinate> getFoundCoordinates() {
+		return foundCoordinates;
+	}
+
+	public Map<Player, Role> getFoundRoles() {
+		return foundRoles;
+	}
+
 	
     
 }

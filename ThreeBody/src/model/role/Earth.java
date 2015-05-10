@@ -1,7 +1,6 @@
 package model.role;
 
 import model.card.Card;
-import model.card.NoBroadcasting;
 
 
 /*

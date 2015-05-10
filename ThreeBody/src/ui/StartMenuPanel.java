@@ -66,14 +66,14 @@ public class StartMenuPanel extends JPanel{
 		this.add(btnExit);
 
 		
-		this.btnLogIn = new JButton("��½");
+		this.btnLogIn = new JButton("登录");
 		this.btnLogIn.setContentAreaFilled(false);
 		this.btnLogIn.setBounds(0, 0, 150, 25);
 		this.btnLogIn.addMouseListener(new LogInListener());
 		this.add(btnLogIn);
 		
 		
-		this.btnAccount = new JButton("�û���Ϣ");
+		this.btnAccount = new JButton("账号");
 		this.btnAccount.setContentAreaFilled(false);
 		this.btnAccount.setBounds(0, 25, 150, 25);
 		this.btnAccount.addMouseListener(new AccountListener());

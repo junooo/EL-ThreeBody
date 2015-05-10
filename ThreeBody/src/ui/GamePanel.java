@@ -50,6 +50,7 @@ public class GamePanel  extends JPanel{
 		this.btnReturn = new JButton("返回");
 		this.btnReturn.setContentAreaFilled(false);
 		this.btnReturn.setBounds(-50, 615, 100, 30);
+		btnReturn.setFont(new Font("黑体", Font.BOLD, 20));
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnReturn.addMouseListener(new ReturnListener());
 		this.add(btnReturn);
@@ -61,6 +62,7 @@ public class GamePanel  extends JPanel{
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnBroadcast.addMouseListener(new BroadcastListener());
 		this.add(btnBroadcast);
+		
 		
 		this.btnHistory = new JButton("历史记录");
 		this.btnHistory.setContentAreaFilled(false);
@@ -81,6 +83,7 @@ public class GamePanel  extends JPanel{
 		this.btnCard1 = new JButton("智子");
 		this.btnCard1.setContentAreaFilled(false);
 		this.btnCard1.setBounds(1070, 30, 150, 30);
+		btnCard1.setFont(new Font("黑体", Font.BOLD, 15));
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnCard1.addMouseListener(new CardListener1());
 		this.add(btnCard1);

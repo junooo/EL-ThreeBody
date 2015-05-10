@@ -1,8 +1,6 @@
 package ui;
 
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
@@ -10,71 +8,83 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 import model.Player;
+import model.card.Sophon;
+import model.operation.CardUse;
 import dto.GameDTO;
 
-public class BroadcastPanel extends JPanel {
+public class SophonFinderPanel extends JPanel{
+	
 	private static final long serialVersionUID = 1L;
-	private JTextField btnCoordinateOne;
-	private JTextField btnCoordinateTwo;
-	private JTextField btnCoordinateThree;
-	private JTextField btnCoordinateFour;
+	private JButton btnCoordinateOne;
+	private JButton btnCoordinateTwo;
+	private JButton btnCoordinateThree;
+	private JButton btnCoordinateFour;
 	private JButton btnOK;
 	private JButton btnReturn;
+	private JFrame sophonFinder;
 	private JComboBox<String> select;
-	
+	private int cooperate;
 	List<Player> players=null;
 	Player user;
-
-	public BroadcastPanel() {
+	
+	public SophonFinderPanel(JFrame sophonFinder) {
 		this.setLayout(null);
-		setBounds(231, 435, 695, 215);
-		players=GameDTO.getInstance().getPlayers();
+		players = GameDTO.getInstance().getPlayers();
 		user=GameDTO.getInstance().getUser();
+		this.sophonFinder=sophonFinder;
 		this.initComonent();
 	}
-
+	
 	private void initComonent() {
-		this.btnCoordinateOne = new JTextField();
-		this.btnCoordinateOne.setBounds(12, 16, 159, 80);
+		
+		cooperate=1;
+		
+		this.btnCoordinateOne = new JButton();
+		this.btnCoordinateOne.setBounds(12, 16, 99, 60);
 		btnCoordinateOne.setFont(new Font("黑体", Font.BOLD, 60));
+		btnCoordinateOne.setContentAreaFilled(false);
 		this.add(btnCoordinateOne);
 		
-		this.btnCoordinateTwo = new JTextField();
-		this.btnCoordinateTwo.setBounds(183, 16, 159, 80);
+		this.btnCoordinateTwo = new JButton();
+		this.btnCoordinateTwo.setBounds(123, 16, 99, 60);
 		btnCoordinateTwo.setFont(new Font("黑体", Font.BOLD, 60));
+		btnCoordinateTwo.setContentAreaFilled(false);
 		this.add(btnCoordinateTwo);
 		
-		this.btnCoordinateThree = new JTextField();
-		this.btnCoordinateThree.setBounds(353, 16, 159, 80);
+		this.btnCoordinateThree = new JButton();
+		this.btnCoordinateThree.setBounds(233, 16, 99, 60);
 		btnCoordinateThree.setFont(new Font("黑体", Font.BOLD, 60));
+		btnCoordinateThree.setContentAreaFilled(false);
 		this.add(btnCoordinateThree);
 		
-		this.btnCoordinateFour = new JTextField();
-		this.btnCoordinateFour.setBounds(524, 16, 159, 80);
+		this.btnCoordinateFour = new JButton();
+		this.btnCoordinateFour.setBounds(344, 16, 99, 60);
 		btnCoordinateFour.setFont(new Font("黑体", Font.BOLD, 60));
+		btnCoordinateFour.setContentAreaFilled(false);
 		this.add(btnCoordinateFour);
 		
 		this.btnOK = new JButton(new ImageIcon("button.png"));
 		this.btnOK.setContentAreaFilled(false);
-		this.btnOK.setBounds(360, 105, 150, 60);
+		this.btnOK.setBounds(150, 105, 150, 60);
 		this.btnOK.setBorderPainted(false);
-//		btnOK.addMouseListener(new FindListener());
+//		btnOK.addMouseListener(new StartGameListener());
 		this.add(btnOK);
 		
 		this.btnReturn = new JButton(new ImageIcon("exit.png"));
 		this.btnReturn.setContentAreaFilled(false);
-		this.btnReturn.setBounds(520, 105, 150, 60);
+		this.btnReturn.setBounds(295, 105, 150, 60);
 		this.btnReturn.setBorderPainted(false);
 		btnReturn.addMouseListener(new ReturnListener());
 		this.add(btnReturn);
+
 		
 		select = new JComboBox<String>();
 		select.setFont(new Font("宋体", Font.PLAIN, 30));
-		select.setBounds(100,105, 60, 30);
+		select.setBounds(50,105, 60, 30);
 		//
 		if (players != null) {
 			for (int i = 0; i < players.size(); i++) {
@@ -95,7 +105,34 @@ public class BroadcastPanel extends JPanel {
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
+			sophonFinder.setVisible(false);
+		}
+		@Override
+		public void mousePressed(MouseEvent e) {
+			
+		}
+		@Override
+		public void mouseReleased(MouseEvent e) {
+		}
+		@Override
+		public void mouseEntered(MouseEvent e) {
+		}
+		@Override
+		public void mouseExited(MouseEvent e) {
+			
+		}
+	}
+	class FindListener implements MouseListener {
+
+		@Override
+		public void mouseClicked(MouseEvent e) {
 			setVisible(false);
+			useSophon();
+		}
+		private void useSophon() {
+			Sophon sophon  =new Sophon(user.getAccount().getId(), select.getSelectedItem().toString(), cooperate);
+			CardUse cardSophon = new CardUse(user.getAccount().getId(), select.getSelectedItem().toString(), sophon);
+			GameDTO.getInstance().depositOperation(cardSophon);
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
@@ -114,11 +151,4 @@ public class BroadcastPanel extends JPanel {
 	}
 	
 	
-
-	@Override
-	public void paintComponent(Graphics g) {
-		Image IMG_MAIN = new ImageIcon("img1.jpg").getImage();
-		// 绘制游戏界面
-		g.drawImage(IMG_MAIN, 0, 0,695,215, null);
-	}
 }
