@@ -21,8 +21,6 @@ public class MainControl {
     private JPanel selectPanel = null;
     private JPanel gamePanel = null;
     private JPanel isOnlinePanel = null;
-    private JPanel broadcast = null;
-    private JPanel message = null;
     private JPanel aboutUs = null;
     /*
      * TESTED
@@ -102,8 +100,6 @@ public class MainControl {
     	mc.startMenuPanel = new StartMenuPanel(mc);
     	mc.gamePanel = new GamePanel(mc);
     	mc.selectPanel = new SelectPanel(mc);
-    	mc.broadcast = new BroadcastPanel();
-    	mc.message = new MessagePanel();
     	mc.aboutUs = new AboutUsPanel(mc);
     	//TODO 换个地方放
     	mc.frame = new MainFrame();

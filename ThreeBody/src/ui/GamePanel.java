@@ -11,7 +11,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import model.card.Sophon;
 import control.MainControl;
 
 public class GamePanel  extends JPanel{
@@ -187,11 +186,10 @@ public class GamePanel  extends JPanel{
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			initSophon();
-			
 		}
 		
 		private void initSophon() {
-			JFrame sophonFinder = new SophonFinderFrame();
+			JFrame sophonFinder = new SophonFinderFrame("智子");
 			JPanel finder = new SophonFinderPanel(sophonFinder);
 			sophonFinder.setContentPane(finder);
 		}
@@ -223,7 +221,13 @@ public class GamePanel  extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			//TODO
+			initSillySophon();
+			
+		}
+		private void initSillySophon() {
+			JFrame sophonFinder = new SophonFinderFrame("人造智子");
+			JPanel finder = new SophonFinderPanel(sophonFinder);
+			sophonFinder.setContentPane(finder);
 			
 		}
 		@Override
