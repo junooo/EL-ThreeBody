@@ -19,7 +19,6 @@ public class SillyResultPanel extends JPanel{
 	private JButton btnReturn;
 	private JFrame sophonFinder;
 	private JPanel resultPanel;
-	private String result;
 	private int coordinate;
 	int coordinateOne;
 	int coordinateTwo;
@@ -34,7 +33,7 @@ public class SillyResultPanel extends JPanel{
 	
 	private void initComonent() {
 		
-		coordinate=1;
+		coordinate = 1;
 		
 		this.resultOne = new JButton();
 		this.resultOne.setBounds(11, 16, 99, 60);
