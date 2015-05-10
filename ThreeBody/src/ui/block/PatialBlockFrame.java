@@ -1,6 +1,8 @@
-package ui;
+package ui.block;
 
 import javax.swing.JFrame;
+
+import ui.FrameUtil;
 
 public class PatialBlockFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
