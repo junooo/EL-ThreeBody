@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import ui.AboutUsPanel;
 import ui.BroadcastPanel;
 import ui.GamePanel;
+import ui.LobbyPanel;
 import ui.MainFrame;
 import ui.MessagePanel;
 import ui.SelectPanel;
@@ -24,6 +25,7 @@ public class MainControl {
     private JPanel broadcast = null;
     private JPanel message = null;
     private JPanel aboutUs = null;
+	private JPanel lobbyPanel=null;
     /*
      * TESTED
      */
@@ -76,17 +78,28 @@ public class MainControl {
     	frame.validate();
     }
 
-    public void toLobby() {
-    }
+    public void toLobby(int i) {
+    	currentPanel.setVisible(false);
+    	if(this.lobbyPanel==null){
+    		this.lobbyPanel=new LobbyPanel(this);
+    	}
+    	currentPanel=this.lobbyPanel;
+		frame.setContentPane(currentPanel);
+    	currentPanel.setVisible(true);	
+    	frame.validate();
+    	}
+    	
+    	
+ 
 
     public void toRoom() {
     }
 
     public void toAboutUs() {
     	currentPanel.setVisible(false);
-    	if(this.aboutUs == null){
-    		this.aboutUs = new AboutUsPanel(this);
-    	}
+//    	if(this.aboutUs == null){
+//   		this.aboutUs = new AboutUsPanel(this);
+//    	}
 		currentPanel = this.aboutUs;
 		frame.setContentPane(currentPanel);
     	currentPanel.setVisible(true);	
@@ -105,6 +118,7 @@ public class MainControl {
     	mc.broadcast = new BroadcastPanel();
     	mc.message = new MessagePanel();
     	mc.aboutUs = new AboutUsPanel(mc);
+    	mc.lobbyPanel=new LobbyPanel(mc);
     	//TODO 换个地方放
     	mc.frame = new MainFrame();
     	mc.startMenuPanel = new StartMenuPanel(mc);
