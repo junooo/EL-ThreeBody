@@ -27,7 +27,6 @@ public class BroadcastPanel extends JPanel {
 	private JButton btnReturn;
 	private JComboBox<String> select;
 	
-	
 	ArrayList<Player> players=null;
 	Player user;
 

@@ -1,6 +1,8 @@
 package model.role;
 
 import model.card.Card;
+import model.card.NoBroadcasting;
+
 
 /*
  * 角色：地球
@@ -20,13 +22,15 @@ public class Earth extends Role{
 		this.initialTechPoint=10;
 		this.tchDevelopSpeed=15;
 		this.rsrRestoreSpeed=10;
+		
 	}
-	public  boolean isAvailable(Card card){
-// 	switch(card){
-//		case 
-//		}	
-		//TODO
-		return false;
+	
+	
+	@Override
+	public boolean isAvailable(Card card) {
+		 
+		return true;
+
 	}
 
 	

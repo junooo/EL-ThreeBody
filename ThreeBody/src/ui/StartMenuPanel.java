@@ -14,7 +14,9 @@ import ui.sound.Sound;
 import control.MainControl;
 
 public class StartMenuPanel extends JPanel{
-	//�д�
+	/*
+	 * default
+	 */
 	private static final long serialVersionUID = 1L;
 	
 	private JButton btnStartGame;
@@ -38,7 +40,7 @@ public class StartMenuPanel extends JPanel{
 		this.btnStartGame.setContentAreaFilled(false);
 		this.btnStartGame.setBounds(483, 120, 200, 80);
 		this.btnStartGame.setBorderPainted(false);
-		btnStartGame.addMouseListener(new StartGameListener());
+		this.btnStartGame.addMouseListener(new StartGameListener());
 		this.add(btnStartGame);
 
 		this.btnOption = new JButton(new ImageIcon("option.png"));
