@@ -1,14 +1,16 @@
-package ui;
+package ui.login;
 
 import javax.swing.JFrame;
 
-public class PatialBlockFrame extends JFrame {
+import ui.FrameUtil;
+
+public class LoginFrame extends JFrame{
 	private static final long serialVersionUID = 1L;
-	public PatialBlockFrame(){
+	public LoginFrame(){
 		//设置标题
-		this.setTitle("部分黑域");
+		this.setTitle("登录");
     	//设置窗口大小
-    	this.setSize(450,200);
+    	this.setSize(400,300);
     	//不允许用户改变窗口大小
     	this.setResizable(false);
     	//窗口居中
@@ -17,4 +19,6 @@ public class PatialBlockFrame extends JFrame {
     	//默认窗口为显示
     	this.setVisible(true);
 	}
+	
+	
 }

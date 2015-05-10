@@ -4,11 +4,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import ui.AboutUsPanel;
-import ui.GamePanel;
 import ui.LobbyPanel;
 import ui.MainFrame;
 import ui.SelectPanel;
 import ui.StartMenuPanel;
+import ui.game.GamePanel;
 import ui.sound.Media;
 import ui.sound.Sound;
 
@@ -66,7 +66,7 @@ public class MainControl {
     public void toGame() {
     	currentPanel.setVisible(false);
     	if(this.gamePanel == null){
-    		this.gamePanel = new GamePanel(this);
+    		this.gamePanel = new GamePanel(this,3);
     	}
 		currentPanel = this.gamePanel;
 		frame.setContentPane(currentPanel);
@@ -93,9 +93,7 @@ public class MainControl {
 
     public void toAboutUs() {
     	currentPanel.setVisible(false);
-//    	if(this.aboutUs == null){
-//   		this.aboutUs = new AboutUsPanel(this);
-//    	}
+   		this.aboutUs = new AboutUsPanel(this);
 		currentPanel = this.aboutUs;
 		frame.setContentPane(currentPanel);
     	currentPanel.setVisible(true);	
@@ -109,7 +107,7 @@ public class MainControl {
     	
     	MainControl mc = new MainControl();
     	mc.startMenuPanel = new StartMenuPanel(mc);
-    	mc.gamePanel = new GamePanel(mc);
+    	mc.gamePanel = new GamePanel(mc,3);
     	mc.selectPanel = new SelectPanel(mc);
     	mc.aboutUs = new AboutUsPanel(mc);
     	mc.lobbyPanel=new LobbyPanel(mc);

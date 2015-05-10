@@ -1,4 +1,4 @@
-package ui;
+package ui.game;
 
 import java.awt.Font;
 import java.awt.Graphics;
@@ -9,8 +9,11 @@ import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import ui.block.PatialBlockFrame;
+import ui.block.PatialBlockPanel;
 import ui.sophon.SophonFinderFrame;
 import ui.sophon.SophonFinderPanel;
 import control.MainControl;
@@ -35,14 +38,24 @@ public class GamePanel  extends JPanel{
 	private JButton btnHistory;
 	private JButton btnMessage;
 	
+	private int NumOfPlayer;
+	
 	private JPanel panelBroadcast= new BroadcastPanel();
 	private JPanel panelMessage= new MessagePanel();
 	private JPanel panelHistory= new HistoryPanel();
 	
-	public GamePanel(MainControl mainControl) {
+	public GamePanel(MainControl mainControl,int NumOfPlayer) {
 		this.setLayout(null);
 		this.mainControl = mainControl;
+		this.NumOfPlayer=NumOfPlayer;
 		this.initComonent();
+		this.createEnemy();
+	}
+	private void createEnemy() {
+		JLabel enemy = new JLabel();
+		enemy.setBounds(100,100,230,230);
+		enemy.setIcon(new ImageIcon("star5.gif"));
+		this.add(enemy);
 	}
 	private void initComonent() {
 		this.btnReturn = new JButton("返回");

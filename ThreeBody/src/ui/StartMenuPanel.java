@@ -7,8 +7,11 @@ import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import ui.login.LoginFrame;
+import ui.login.LoginPanel;
 import ui.sound.Media;
 import ui.sound.Sound;
 import control.MainControl;
@@ -27,11 +30,13 @@ public class StartMenuPanel extends JPanel{
 	private JButton btnLogIn;
 	
 	private MainControl mainControl;
+	private String accountId;
 	
 	public StartMenuPanel(MainControl mainControl) {
 		this.setLayout(null);
 		this.mainControl = mainControl;
 		this.initComonent();
+//		this.accountId=AccountDTO.getInstance().getId();
 	}
 	
 	private void initComonent() {
@@ -66,7 +71,7 @@ public class StartMenuPanel extends JPanel{
 		this.add(btnExit);
 
 		
-		this.btnLogIn = new JButton("登录");
+		this.btnLogIn = new JButton(accountId);
 		this.btnLogIn.setContentAreaFilled(false);
 		this.btnLogIn.setBounds(0, 0, 150, 25);
 		this.btnLogIn.addMouseListener(new LogInListener());
@@ -215,7 +220,11 @@ public class StartMenuPanel extends JPanel{
 		@Override
 		public void mouseClicked(MouseEvent arg0) {
 			Media.playSound(Sound.choose);
-			btnLogIn.setIcon(new ImageIcon("option.png"));
+			if(accountId==null){
+				JFrame loginFrame = new LoginFrame();
+				JPanel loginPanel = new LoginPanel(loginFrame);
+				loginFrame.setContentPane(loginPanel);
+			}
 			repaint();
 		}
 

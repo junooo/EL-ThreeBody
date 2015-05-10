@@ -1,4 +1,4 @@
-package ui;
+package ui.block;
 
 import java.awt.Font;
 import java.awt.Graphics;
@@ -10,6 +10,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import ui.FrameUtil;
 
 public class PatialBlockPanel extends JPanel {
 
