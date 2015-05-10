@@ -4,11 +4,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import ui.AboutUsPanel;
-import ui.GamePanel;
 import ui.LobbyPanel;
 import ui.MainFrame;
 import ui.SelectPanel;
 import ui.StartMenuPanel;
+import ui.game.GamePanel;
 import ui.sound.Media;
 import ui.sound.Sound;
 
