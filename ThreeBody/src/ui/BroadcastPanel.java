@@ -14,7 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import model.Player;
-import model.card.Sophon;
 import dto.GameDTO;
 
 public class BroadcastPanel extends JPanel {
