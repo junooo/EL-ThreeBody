@@ -89,14 +89,14 @@ public class GamePanel  extends JPanel{
 		btnCard2.addMouseListener(new CardListener2());
 		this.add(btnCard2);
 		
-		this.btnCard3 = new JButton("��������");
+		this.btnCard3 = new JButton("全局黑域");
 		this.btnCard3.setContentAreaFilled(false);
 		this.btnCard3.setBounds(1070, 90, 150, 30);
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnCard3.addMouseListener(new CardListener3());
 		this.add(btnCard3);
 		
-		this.btnCard4 = new JButton("��������");
+		this.btnCard4 = new JButton("局部黑域");
 		this.btnCard4.setContentAreaFilled(false);
 		this.btnCard4.setBounds(1070, 120, 150, 30);
 		// this.btnMultyPlay.setBorderPainted(false);
@@ -297,7 +297,13 @@ public class GamePanel  extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			//TODO
+			initPatialBlock();
+			
+		}
+		private void initPatialBlock() {
+			JFrame patialBlock = new PatialBlockFrame();
+			JPanel block = new PatialBlockPanel(patialBlock);
+			patialBlock.setContentPane(block);
 			
 		}
 		@Override
