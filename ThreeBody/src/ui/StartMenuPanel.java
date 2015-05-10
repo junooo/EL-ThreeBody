@@ -10,6 +10,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import ui.login.LoginFrame;
+import ui.login.LoginPanel;
 import ui.sound.Media;
 import ui.sound.Sound;
 import control.MainControl;

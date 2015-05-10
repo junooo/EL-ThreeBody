@@ -1,6 +1,8 @@
-package ui;
+package ui.login;
 
 import javax.swing.JFrame;
+
+import ui.FrameUtil;
 
 public class LoginFrame extends JFrame{
 	private static final long serialVersionUID = 1L;
