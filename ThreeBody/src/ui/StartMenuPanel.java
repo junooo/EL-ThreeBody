@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import model.Player;
 import ui.sound.Media;
 import ui.sound.Sound;
 import control.MainControl;
@@ -27,6 +28,7 @@ public class StartMenuPanel extends JPanel{
 	private JButton btnLogIn;
 	
 	private MainControl mainControl;
+	private Player user=null;
 	
 	public StartMenuPanel(MainControl mainControl) {
 		this.setLayout(null);
@@ -215,7 +217,9 @@ public class StartMenuPanel extends JPanel{
 		@Override
 		public void mouseClicked(MouseEvent arg0) {
 			Media.playSound(Sound.choose);
-			btnLogIn.setIcon(new ImageIcon("option.png"));
+			if(user==null){
+				new LoginFrame();
+			}
 			repaint();
 		}
 
