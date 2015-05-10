@@ -3,7 +3,7 @@ package ui;
 import java.awt.Font;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -11,10 +11,10 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import dto.GameDTO;
 import model.Player;
 import model.card.Sophon;
 import model.operation.CardUse;
+import dto.GameDTO;
 
 public class SophonFinderPanel extends JPanel{
 	
@@ -28,12 +28,12 @@ public class SophonFinderPanel extends JPanel{
 	private JFrame sophonFinder;
 	private JComboBox<String> select;
 	private int cooperate;
-	ArrayList<Player> players=null;
+	List<Player> players=null;
 	Player user;
 	
 	public SophonFinderPanel(JFrame sophonFinder) {
 		this.setLayout(null);
-		players=(ArrayList<Player>) GameDTO.getInstance().getPlayers();
+		players = GameDTO.getInstance().getPlayers();
 		user=GameDTO.getInstance().getUser();
 		this.sophonFinder=sophonFinder;
 		this.initComonent();
