@@ -31,16 +31,14 @@ public class LobbyPanel extends JPanel implements MouseWheelListener{
 	private LobbyControl lobbyControl = new LobbyControl();
 	public LobbyPanel(MainControl mc){
 		this.setLayout(null);
-		//this.ShowPeopleNum();
 		this.mc = mc;
 		roomList=lobbyControl.getRooms();
 		numOfRoom=roomList.size();
+		numOfRoom=1;
 		createRoom();
 		this.initComonent();
 		this.addMouseWheelListener(this);
 	}
-	
-
 	
 	private void createRoom() {
 		for (int i = 0; i < numOfRoom; i++) {
@@ -54,18 +52,22 @@ public class LobbyPanel extends JPanel implements MouseWheelListener{
 	
 	//添加房间的按钮
 	private void addRoom(int roomNumber) {
-		JButton atarashi = new JButton();
-		atarashi.setIcon(new ImageIcon());
+		JButton room = new JButton();
+//		JPanel roomPanel = new ButtonPanel(this.roomList.get(roomNumber));
+		JPanel roomPanel = new ButtonPanel(new Room(null, "南大花房", 3));
 		if(roomNumber!=0){
 			Rectangle rect = roomFamily.get(roomFamily.size()-1).getBounds();
 			rect.x=rect.x+350;
-			atarashi.setBounds(rect);
+			room.setBounds(rect);
+			roomPanel.setBounds(rect);
 		}else{
-			atarashi.setBounds(50,200,300,125);
+			room.setBounds(50,200,300,125);
+			roomPanel.setBounds(50,200,300,125);
 		}
-		atarashi.setContentAreaFilled(false);
-		atarashi.addMouseListener(new EnterListener(roomNumber));
-		roomFamily.add(atarashi);
+		room.setContentAreaFilled(false);
+		room.addMouseListener(new EnterListener(roomNumber));
+		room.add(roomPanel);
+		roomFamily.add(room);
 	}
 
 
@@ -77,7 +79,7 @@ public class LobbyPanel extends JPanel implements MouseWheelListener{
 	    this.createRoom.setIcon(new ImageIcon("newroom.png"));
 	    this.createRoom.setContentAreaFilled(false);
 	  	this.createRoom.setBounds(650,500,100,50);
-	  	this.createRoom.setVisible(true);  
+//	  	this.createRoom.setVisible(true);  
 	  	this.createRoom.addMouseListener(new CreateRoomListener());
 	    this.add(createRoom);
 	    
@@ -86,20 +88,11 @@ public class LobbyPanel extends JPanel implements MouseWheelListener{
 	    this.lobbyReturn.setIcon(new ImageIcon("roomreturn.png"));
 	    this.lobbyReturn.setContentAreaFilled(false);
 	  	this.lobbyReturn.setBounds(850,500,100,50);
-	  	this.lobbyReturn.setVisible(true);  
+//	  	this.lobbyReturn.setVisible(true);  
 	  	this.lobbyReturn.addMouseListener(new ReturnListener());
 	    this.add(lobbyReturn);
 	}
-//	public void ShowPeopleNum(){
-//		if(totalNum==4){
-//		}
-//		if(totalNum==6)){
-//			SixPerRoom();
-//		}
-//        if(totalNum==8)){
-//			EightRoom();
-//		}
-//	}  
+
 	
 	public void FourPerRoom(){
 	}
@@ -144,12 +137,12 @@ class CreateRoomListener implements MouseListener{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			JFrame createRoomFrame = new CreateRoomFrame();
-			JPanel createRoomPanel = new CreateRoomPanel(createRoomFrame,lobbyControl);
-			createRoomFrame.setContentPane(createRoomPanel);
-//			addRoom(roomFamily.size());
-//			add(roomFamily.get(roomFamily.size()-1));
-//			repaint();
+//			JFrame createRoomFrame = new CreateRoomFrame();
+//			JPanel createRoomPanel = new CreateRoomPanel(createRoomFrame,lobbyControl);
+//			createRoomFrame.setContentPane(createRoomPanel);
+			addRoom(roomFamily.size());
+			add(roomFamily.get(roomFamily.size()-1));
+			repaint();
 		}
 
 		@Override
