@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -38,24 +39,53 @@ public class GamePanel  extends JPanel{
 	private JButton btnHistory;
 	private JButton btnMessage;
 	
+	private JButton btnTurnEnd;
+	private JButton btnPriviledge;
+	
 	private int NumOfPlayer;
 	
 	private JPanel panelBroadcast= new BroadcastPanel();
 	private JPanel panelMessage= new MessagePanel();
 	private JPanel panelHistory= new HistoryPanel();
+	private JPanel countDown = new CountDownPanel();
+	
+	private JLabel[] enemies = new JLabel[7];
+	private ArrayList<int[]> location = new ArrayList<int[]>(7);
 	
 	public GamePanel(MainControl mainControl,int NumOfPlayer) {
 		this.setLayout(null);
 		this.mainControl = mainControl;
 		this.NumOfPlayer=NumOfPlayer;
 		this.initComonent();
+		this.initLocation();
 		this.createEnemy();
 	}
+	private void initLocation() {
+		int[] x0 = {350,100,300,200};
+		int[]  x1 = {650,100,230,230};
+		int[]	x2= {	250,300,230,230};
+		int[]	x3 = {500,300,230,230};
+		int[]	x4 = {750,300,230,230};
+		int[]	x5 = {100,100,230,230};
+		int[]	x6 = {900,100,230,230};
+		location.add(x0);
+		location.add(x1);
+		location.add(x2);
+		location.add(x3);
+		location.add(x4);
+		location.add(x5);
+		location.add(x6);
+	}
 	private void createEnemy() {
-		JLabel enemy = new JLabel();
-		enemy.setBounds(100,100,230,230);
-		enemy.setIcon(new ImageIcon("star06.gif"));
-		this.add(enemy);
+		for (int i = 0; i < NumOfPlayer-1; i++) {
+			enemies[i] = new JLabel();
+			enemies[i].setIcon(new ImageIcon("star06.gif"));
+			int[] locationi=location.get(i);
+			enemies[i].setBounds(locationi[0],locationi[1],locationi[2],locationi[3]);
+			this.add(enemies[i]);
+		}
+
+		
 	}
 	private void initComonent() {
 		this.btnReturn = new JButton("返回");
@@ -90,6 +120,16 @@ public class GamePanel  extends JPanel{
 		btnMessage.setFont(new Font("黑体", Font.BOLD, 15));
 		btnMessage.addMouseListener(new MessageListener());
 		this.add(btnMessage);
+		
+		
+		this.btnTurnEnd = new JButton("回合结束");
+		this.btnTurnEnd.setContentAreaFilled(false);
+		this.btnTurnEnd.setBounds(1000, 500, 150, 30);
+		btnTurnEnd.setFont(new Font("黑体", Font.BOLD, 15));
+		// this.btnMultyPlay.setBorderPainted(false);
+//		btnTurnEnd.addMouseListener(new CardListener1());
+		this.add(btnTurnEnd);
+		
 		
 		this.btnCard1 = new JButton("智子");
 		this.btnCard1.setContentAreaFilled(false);
@@ -151,7 +191,7 @@ public class GamePanel  extends JPanel{
 		btnCard8.addMouseListener(new CardListener8());
 		this.add(btnCard8);
 		
-		this.btnCard9 = new JButton("��������");
+		this.btnCard9 = new JButton("特权");
 		this.btnCard9.setContentAreaFilled(false);
 		this.btnCard9.setBounds(1070, 270, 150, 30);
 		// this.btnMultyPlay.setBorderPainted(false);
