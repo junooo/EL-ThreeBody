@@ -15,6 +15,7 @@ import ui.login.LoginPanel;
 import ui.sound.Media;
 import ui.sound.Sound;
 import control.MainControl;
+import dto.AccountDTO;
 
 public class StartMenuPanel extends JPanel{
 	/*
@@ -36,7 +37,7 @@ public class StartMenuPanel extends JPanel{
 		this.setLayout(null);
 		this.mainControl = mainControl;
 		this.initComonent();
-//		this.accountId=AccountDTO.getInstance().getId();
+		this.accountId=AccountDTO.getInstance().getId();
 	}
 	
 	private void initComonent() {
@@ -220,12 +221,14 @@ public class StartMenuPanel extends JPanel{
 		@Override
 		public void mouseClicked(MouseEvent arg0) {
 			Media.playSound(Sound.choose);
-			if(accountId==null){
+			if(AccountDTO.getInstance().getId() == "本地玩家"){
 				JFrame loginFrame = new LoginFrame();
-				JPanel loginPanel = new LoginPanel(loginFrame);
+				JPanel loginPanel = new LoginPanel(loginFrame,mainControl.ac);
 				loginFrame.setContentPane(loginPanel);
+				repaint();
+			}else{
+				System.out.println("Account界面，目前账号为："+AccountDTO.getInstance().getId());
 			}
-			repaint();
 		}
 
 		@Override

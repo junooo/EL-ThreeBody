@@ -40,7 +40,7 @@ public class AccountServer extends UnicastRemoteObject implements RMIAccount,Ser
 		this.lastWriten = 0;
 		state = State.NORMAL;
 		
-		new ConnectionChecker().run();
+		new ConnectionChecker().start();
 	}
 
 	@Override
@@ -75,6 +75,10 @@ public class AccountServer extends UnicastRemoteObject implements RMIAccount,Ser
 		return this.state;
 	}
 	
+	public void setState(State state) {
+		this.state = state;
+	}
+
 	private synchronized void checkLink(){
 		if(lastWriten == 0){
 			lastWriten = Calendar.getInstance().getTimeInMillis();

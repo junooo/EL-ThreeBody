@@ -14,6 +14,7 @@ import java.util.TreeSet;
 import javax.rmi.PortableRemoteObject;
 
 import model.Account;
+import server.AccountServer.State;
 import server.interfaces.RMIAccount;
 import server.interfaces.RMIAccountCenter;
 import util.R;
@@ -65,6 +66,10 @@ public class AccountCenter extends UnicastRemoteObject implements
 			this.transientIDs = new HashMap<String, String>();
 			this.actives = new HashMap<String, AccountServer>();
 			
+			// TODO test
+			accounts.put("Red", new Account("Red"));
+			passwords.put("Red", "r1234");
+			
 			// 检查链接是否正常的线程
 			ConnectionSupervision supervisor = new ConnectionSupervision();
 			supervisor.start();
@@ -81,7 +86,7 @@ public class AccountCenter extends UnicastRemoteObject implements
 	@Override
 	public info logout(String id) throws RemoteException {
 		if(actives.containsKey(id)){
-			this.unbindAccount(id);
+			this.informLogout(id);
 			return R.info.SUCCESS;
 		}else{
 			return R.info.NOT_EXISTED;
@@ -94,7 +99,7 @@ public class AccountCenter extends UnicastRemoteObject implements
 	@Override
 	public info logoutAndClear(String id) throws RemoteException {
 		if(actives.containsKey(id)){
-			this.unbindAccount(id);
+			this.informLogout(id);
 			transientIDs.remove(id);
 			return R.info.SUCCESS;
 		}else{
@@ -106,7 +111,7 @@ public class AccountCenter extends UnicastRemoteObject implements
 	public info login(String id, String password) throws RemoteException {
 		Account account = accounts.get(id);
 		if(actives.containsKey(id)){
-			return R.info.INVALID;
+			return R.info.ALREADY_IN;
 		}
 		if (account == null) {
 			return R.info.NOT_EXISTED;
@@ -149,7 +154,7 @@ public class AccountCenter extends UnicastRemoteObject implements
 			throws RemoteException {
 		Account account = accounts.get(id);
 		if(actives.containsKey(id)){
-			return R.info.INVALID;
+			return R.info.ALREADY_IN;
 		}
 		if (account == null) {
 			return R.info.NOT_EXISTED;
@@ -225,13 +230,8 @@ public class AccountCenter extends UnicastRemoteObject implements
 		}
 	}
 
-	private void unbindAccount(String id) {
-		try {
-			PortableRemoteObject.unexportObject(actives.get(id));
-		} catch (NoSuchObjectException e) {
-			e.printStackTrace();
-		}
-		actives.remove(id);
+	private void informLogout(String id) {
+		actives.get(id).setState(State.FAIL);
 	}
 	
 	public void unbindAccount(Account account){
@@ -254,6 +254,11 @@ public class AccountCenter extends UnicastRemoteObject implements
 		public void run() {
 			while(true){
 				System.out.println("Thread alive " + actives.size());
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}
