@@ -118,6 +118,26 @@ public class LogupPanel extends JPanel {
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
+			String id = idField.getText();
+			String password = passwordField.getText();
+			String invitationID = welcomeCodeField.getText();
+			if(password.equals(passwordConfirmField.getText())){
+				
+				// TODO 消息窗口
+				switch(accountControl.logUp(id, password, invitationID)){
+				case SUCCESS:
+					System.out.println("logup success");
+					break;
+				case ALREADY_EXISTED:
+					System.out.println("this id already exists");
+					break;
+				case NOT_EXISTED:
+					System.out.println("invitationID not existed");
+					break;
+				}
+				
+				loginFrame.setVisible(false);
+			}
 		}
 		
 		@Override

@@ -1,4 +1,4 @@
-package command;
+package util;
 
 import io.NetClient;
 
@@ -20,16 +20,13 @@ public class ServerCommand {
 			String[] parts = command.split(" ");
 			String result;
 			switch(parts[0]){
-			case "add_account":
-				result = accountCenter.command(command);
-				System.out.println(result);
-				break;
-			case "add_invitationID":
-				result = accountCenter.command(command);
-				System.out.println(result);
-				break;
 			case "close":
 				finish = true;
+				break;
+			default:
+				result = accountCenter.command(command);
+				System.out.println(result);
+				break;
 			}
 		}
 		scanner.close();
