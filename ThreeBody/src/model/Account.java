@@ -17,7 +17,7 @@ public class Account implements Serializable{
     /*
      * 头像
      */
-    private transient Image head;
+    private Image head;
     /*
      * 积分
      */

@@ -14,6 +14,9 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import util.R;
+import control.AccountControl;
+
 public class LoginPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private JButton btnlogin;
@@ -23,8 +26,11 @@ public class LoginPanel extends JPanel{
 	private JLabel idLabel;
 	private JLabel passwordLabel;
 	
+	private AccountControl accountControl;
 	
-	public LoginPanel(JFrame loginFrame) {
+	public LoginPanel(JFrame loginFrame,AccountControl accountControl) {
+		this.accountControl = accountControl;
+		
 		this.setLayout(null);
 		this.loginFrame=loginFrame;
 		this.initComonent();
@@ -59,9 +65,30 @@ public class LoginPanel extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
+			String id = idField.getText();
+			String password = passwordField.getText();
+			
+			System.out.println(id);
+			System.out.println(password);
+			
+			// TODO 消息窗口
+			switch(accountControl.login(id, password)){
+			case SUCCESS:
+				System.out.println("login success");
+				break;
+			case ALREADY_IN:
+				System.out.println("already log in");
+				break;
+			case INVALID:
+				System.out.println("wrong password");
+				break;
+			case NOT_EXISTED:
+				System.out.println("account not existed");
+				break;
+			}
+			
 			loginFrame.setVisible(false);
 		}
-		
 		
 		@Override
 		public void mousePressed(MouseEvent e) {

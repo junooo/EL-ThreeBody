@@ -64,12 +64,16 @@ public class UserData {
 	public static Account loadAccount() {
 		Account localData = null;
 		try {
-			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(
-					new File("Account.dat")));
-			localData = (Account) ois.readObject();
-			ois.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			File file = new File("Account.dat");
+			if(file.exists()){
+				ObjectInputStream ois = new ObjectInputStream(new FileInputStream(
+						file));
+				localData = (Account) ois.readObject();
+				ois.close();
+			}else{
+				// TODO
+				System.out.println("Account.dat not existed");
+			}
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -110,6 +114,8 @@ public class UserData {
 	
 	public static void clearAccount(){
 		File localData = new File("Account.dat");
+		localData.delete();
+		localData = new File("transientID.dat");
 		localData.delete();
 	}
 }

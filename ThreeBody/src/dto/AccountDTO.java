@@ -26,13 +26,17 @@ public class AccountDTO {
 		return instance;
 	}
 	
-	public static void init(Account account){
+	public static void initializeByLocalData(Account account){
 		instance = new AccountDTO(account);
 	}
 	
 	public static void synchronize(Account acc){
 		if(acc == null){
 			instance.account = null;
+			return;
+		}
+		if(instance.account == null){
+			instance.account = acc;
 			return;
 		}
 		instance.account.synchronize(acc);
