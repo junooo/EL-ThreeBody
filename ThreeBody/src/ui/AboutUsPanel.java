@@ -14,7 +14,6 @@ import javax.swing.JPanel;
 import ui.sound.Media;
 import ui.sound.Sound;
 import control.MainControl;
-import javax.swing.JLabel;
 
 
 public class AboutUsPanel extends JPanel{

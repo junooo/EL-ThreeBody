@@ -40,14 +40,19 @@ public class GamePanel  extends JPanel{
 	private JButton btnMessage;
 	
 	private JButton btnTurnEnd;
-	private JButton btnPriviledge;
 	
 	private int NumOfPlayer;
 	
 	private JPanel panelBroadcast= new BroadcastPanel();
 	private JPanel panelMessage= new MessagePanel();
 	private JPanel panelHistory= new HistoryPanel();
-	private JPanel countDown = new CountDownPanel();
+	
+	private JPanel panelCountDown = new CountDownPanel();
+	private JPanel panelTech = new TechPanel();
+	private JPanel panelResource = new ResourcePanel();
+	
+	private JLabel resourceString;
+	private JLabel techString;
 	
 	private JLabel[] enemies = new JLabel[7];
 	private ArrayList<int[]> location = new ArrayList<int[]>(7);
@@ -57,10 +62,10 @@ public class GamePanel  extends JPanel{
 		this.mainControl = mainControl;
 		this.NumOfPlayer=NumOfPlayer;
 		this.initComonent();
-		this.initLocation();
+		this.initEnemyLocation();
 		this.createEnemy();
 	}
-	private void initLocation() {
+	private void initEnemyLocation() {
 		int[] x0 = {350,100,300,200};
 		int[]  x1 = {650,100,230,230};
 		int[]	x2= {	250,300,230,230};
@@ -197,7 +202,18 @@ public class GamePanel  extends JPanel{
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnCard9.addMouseListener(new CardListener9());
 		this.add(btnCard9);
+		
+		resourceString = new JLabel(new ImageIcon("resource.png"));
+		resourceString.setBounds(110,480,60,30);
+		this.add(resourceString);
+		
+		techString = new JLabel(new ImageIcon("tech.png"));
+		techString.setBounds(110,510,60,30);
+		this.add(techString);
 
+		this.add(panelTech);
+		this.add(panelResource);
+		this.add(panelCountDown);
 	}
 	@Override
 	public void paintComponent(Graphics g) {

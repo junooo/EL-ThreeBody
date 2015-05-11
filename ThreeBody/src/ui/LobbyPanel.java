@@ -7,12 +7,12 @@ import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import control.MainControl;
 
 public class LobbyPanel extends JPanel{
+	private static final long serialVersionUID = 1L;
 	private MainControl mc;
 	private JButton lobby1;
 	private JButton lobby2;
