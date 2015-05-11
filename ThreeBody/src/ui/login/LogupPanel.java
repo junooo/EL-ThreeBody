@@ -15,35 +15,36 @@ import javax.swing.JTextField;
 
 import control.AccountControl;
 
-public class LoginPanel extends JPanel{
+public class LogupPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
-	private JButton btnlogin;
+	private JButton btnCancel;
 	private JButton btnlogup;
 	private JFrame loginFrame;
 	private JTextField idField;
+	private JTextField welcomeCodeField;
 	private JPasswordField passwordField;
+	private JPasswordField passwordConfirmField;
 	private JLabel idLabel;
 	private JLabel passwordLabel;
-	
-	public JFrame getLoginFrame() {
-		return loginFrame;
-	}
+	private JLabel passwordConfirmLabel;
+	private JLabel codeLabel;
+	private LoginPanel panelLogin;
 	private AccountControl accountControl;
-	private JPanel panelLogup;
-	public LoginPanel(JFrame loginFrame,AccountControl accountControl) {
+	
+	public LogupPanel(LoginPanel panelLogin,AccountControl accountControl) {
 		this.accountControl = accountControl;
-		
 		this.setLayout(null);
-		this.loginFrame=loginFrame;
-		panelLogup = new LogupPanel(this,accountControl);
+		this.panelLogin=panelLogin;
+		this.loginFrame=panelLogin.getLoginFrame();
 		this.initComonent();
+		
 	}
 	private void initComonent() {
-		this.btnlogin = new JButton(new ImageIcon("login.png"));
-		this.btnlogin.setBounds(220, 220, 80, 40);
-		btnlogin.setContentAreaFilled(false);
-		btnlogin.addMouseListener(new LoginListener());
-		this.add(btnlogin);
+		this.btnCancel = new JButton(new ImageIcon("logcancel.png"));
+		this.btnCancel.setBounds(220, 220, 80, 40);
+		btnCancel.setContentAreaFilled(false);
+		btnCancel.addMouseListener(new CancelListener());
+		this.add(btnCancel);
 		
 		this.btnlogup = new JButton(new ImageIcon("logup.png"));
 		this.btnlogup.setBounds(100, 220, 80, 40);
@@ -52,50 +53,49 @@ public class LoginPanel extends JPanel{
 		this.add(btnlogup);
 		
 		idField = new JTextField();
-		idField.setBounds(100,60,240,30);
+		idField.setBounds(105,40,240,30);
 		this.add(idField);
 		
 		passwordField =new JPasswordField();
-		passwordField.setBounds(100,110,240,30);
+		passwordField.setBounds(105,80,240,30);
 		this.add(passwordField);
 		
+		passwordConfirmField =new JPasswordField();
+		passwordConfirmField.setBounds(105,120,240,30);
+		this.add(passwordConfirmField);
+		
+		welcomeCodeField = new JTextField();
+		welcomeCodeField.setBounds(105,160,240,30);
+		this.add(welcomeCodeField);
+		
 		idLabel = new JLabel();
-		idLabel.setBounds(30,60,60,30);
+		idLabel.setBounds(30,40,60,30);
 		idLabel.setIcon(new ImageIcon("logid.png"));
 		this.add(idLabel);
 		
 		passwordLabel = new JLabel();
-		passwordLabel.setBounds(30,110,60,30);
+		passwordLabel.setBounds(30,80,60,30);
 		passwordLabel.setIcon(new ImageIcon("logpassword.png"));
 		this.add(passwordLabel);
+		
+		passwordConfirmLabel = new JLabel();
+		passwordConfirmLabel.setBounds(20,120,80,30);
+		passwordConfirmLabel.setIcon(new ImageIcon("logpasswordconfirm.png"));
+		this.add(passwordConfirmLabel);
+		
+		codeLabel = new JLabel();
+		codeLabel.setBounds(30,160,60,30);
+		codeLabel.setIcon(new ImageIcon("logcode.png"));
+		this.add(codeLabel);
 	}
-	class LoginListener implements MouseListener {
+	class CancelListener implements MouseListener {
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			String id = idField.getText();
-			String password = passwordField.getText();
-			
-			System.out.println(id);
-			System.out.println(password);
-			
-			// TODO 消息窗口
-			switch(accountControl.login(id, password)){
-			case SUCCESS:
-				System.out.println("login success");
-				break;
-			case ALREADY_IN:
-				System.out.println("already log in");
-				break;
-			case INVALID:
-				System.out.println("wrong password");
-				break;
-			case NOT_EXISTED:
-				System.out.println("account not existed");
-				break;
-			}
-			
-			loginFrame.setVisible(false);
+			setVisible(false);
+			panelLogin.setVisible(true);
+			loginFrame.setContentPane(panelLogin);
+			repaint();
 		}
 		
 		@Override
@@ -118,10 +118,6 @@ public class LoginPanel extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			setVisible(false);
-			panelLogup.setVisible(true);
-			loginFrame.setContentPane(panelLogup);
-			repaint();
 		}
 		
 		@Override
