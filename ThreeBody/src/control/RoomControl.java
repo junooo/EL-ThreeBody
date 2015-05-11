@@ -16,6 +16,10 @@ public class RoomControl {
 		this.rmir = rmir;
 	}
 
+	/**
+	 * 
+	 * @return SUCCESS：准备好
+	 */
 	public R.info ready(){
 		try {
 			return rmir.ready(id);
@@ -25,6 +29,10 @@ public class RoomControl {
 		return null;
 	}
 	
+	/**
+	 * 
+	 * @return SUCCESS：取消准备
+	 */
 	public R.info cancelReady(){
 		try {
 			return rmir.cancelReady(id);
@@ -34,6 +42,11 @@ public class RoomControl {
 		return null;
 	}
 	
+	/**
+	 * 
+	 * @return INVALID：有玩家没准备好
+	 *         SUCCESS: 成功开始
+	 */
 	public R.info start(){
 		try {
 			return rmir.start();
@@ -43,6 +56,10 @@ public class RoomControl {
 		return null;
 	}
 	
+	/**
+	 * 
+	 * @return 成功离开房间
+	 */
 	public R.info exit(){
 		try {
 			return rmir.exit(id);

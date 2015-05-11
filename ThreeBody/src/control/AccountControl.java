@@ -1,5 +1,7 @@
 package control;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 import io.NetClient;
@@ -104,12 +106,15 @@ public class AccountControl {
     	R.info feedback = null;
     	try {
 			feedback = rmiac.logout(account.getId());
+			if(feedback == R.info.SUCCESS){
+				mc.setConnected(false);
+				rmia = null;
+		    	account = null;
+		    	AccountDTO.synchronize(account);
+			}
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-    	rmia = null;
-    	account = null;
-    	AccountDTO.synchronize(account);
     	return feedback;
     }
     
@@ -121,13 +126,16 @@ public class AccountControl {
     	R.info feedback = null;
     	try {
 			feedback = rmiac.logoutAndClear(account.getId());
+			if(feedback == R.info.SUCCESS){
+				mc.setConnected(false);
+				UserData.clearAccount();
+				rmia = null;
+		    	account = null;
+		    	AccountDTO.synchronize(account);
+			}
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-    	rmia = null;
-    	account = null;
-    	AccountDTO.synchronize(account);
-    	UserData.clearAccount();
     	return feedback;
     }
     

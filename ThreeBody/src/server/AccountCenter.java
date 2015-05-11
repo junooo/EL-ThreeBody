@@ -166,9 +166,11 @@ public class AccountCenter extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public R.info test(String command) {
+	public String command(String command) {
+		
+		String[] parts = command.split(" ");
 
-		switch (command) {
+		switch (parts[0]) {
 		case "init":
 			accounts.put("Red", new Account("Red"));
 			accounts.put("Green", new Account("Green"));
@@ -182,15 +184,23 @@ public class AccountCenter extends UnicastRemoteObject implements
 			invitationIDs.add("fffff2");
 			invitationIDs.add("fffff3");
 			invitationIDs.add("fffff4");
-			return R.info.SUCCESS;
+			return R.info.SUCCESS.name();
 		case "clear":
 			accounts.clear();
 			passwords.clear();
 			invitationIDs.clear();
-			return R.info.SUCCESS;
+			return R.info.SUCCESS.name();
+		case "add_account":
+			Account acc = new Account(parts[1]);
+			accounts.put(parts[1], acc);
+			passwords.put(parts[1], parts[2]);
+			return "success";
+		case "add_invitationID":
+			invitationIDs.add(parts[2]);
+			return "now size:"+invitationIDs.size();
 		}
 
-		return R.info.INVALID;
+		return R.info.INVALID.name();
 	}
 
 	@Override

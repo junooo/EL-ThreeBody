@@ -32,13 +32,13 @@ public class LobbyServerTest {
 			// 连接到AccountCenter
 			center = (RMIAccountCenter) Naming
 					.lookup("rmi://104.236.174.190/AccountCenter");
-			if (center.test("init").equals(R.info.SUCCESS)) {
+			if (center.command("init").equals(R.info.SUCCESS)) {
 				System.out.println("INIT1");
 			}
 			
 			//连接到LobbyServer
 			lobby = (RMILobby) Naming.lookup("rmi://104.236.174.190/LobbyServer");
-			if (lobby.test("init").equals(R.info.SUCCESS)) {
+			if (lobby.command("init").equals(R.info.SUCCESS)) {
 				System.out.println("INIT2");
 			}
 			
@@ -55,10 +55,10 @@ public class LobbyServerTest {
 	public void tearDown() throws Exception {
 		try {
 			center.logoutAndClear("Green");
-			if (center.test("clear").equals(R.info.SUCCESS)) {
+			if (center.command("clear").equals(R.info.SUCCESS)) {
 				System.out.println("CLEAR1");
 			}
-			if (lobby.test("clear").equals(R.info.SUCCESS)) {
+			if (lobby.command("clear").equals(R.info.SUCCESS)) {
 				System.out.println("CLEAR2");
 			}
 		} catch (RemoteException e) {
@@ -95,8 +95,8 @@ public class LobbyServerTest {
 		Room newRoom = new Room(account,"RMB",6);
 		Room invalidRoom = new Room(account,"Room1",4);
 		try {
-			assertEquals(R.info.SUCCESS, lobby.createRoom(newRoom));
-			assertEquals(R.info.ALREADY_EXISTED, lobby.createRoom(invalidRoom));
+			assertEquals(R.info.SUCCESS, lobby.createRoom("RMB",account.getId(),6));
+			assertEquals(R.info.ALREADY_EXISTED, lobby.createRoom("Room1",account.getId(),4));
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
