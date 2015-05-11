@@ -26,8 +26,11 @@ public class Broadcast extends Operation implements Operable{
 		for(Player player:dto.getPlayers()){
 			if(player.getCoordinate().equals(coordinate)){
 				dto.getPlayers().remove(player);
+				Broadcast broadcast=new Broadcast(operator, receiver, coordinate);
+				dto.depositOperation(broadcast);
 			}
 		}
+		
 	}
 	
 	public String toOperator(){
