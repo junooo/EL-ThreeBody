@@ -25,14 +25,14 @@ public class SendMessage extends Operation implements Operable {
 	public String toOperator(){
 		Scanner scan = new Scanner(System.in);
 		String s=scan.nextLine();
-		return operator+"向"+receiver+"发送了一条消息： "+s;
+		return this.operator+"向"+this.receiver+"发送了一条消息： "+s;
 		
 	}
 	
 	public String toReceiver(){
 		Scanner scan = new Scanner(System.in);
 		String s=scan.nextLine();
-		return operator+"向"+receiver+"发送了一条消息： "+s;
+		return this.operator+"向"+this.receiver+"发送了一条消息： "+s;
 		
 	}
 	
