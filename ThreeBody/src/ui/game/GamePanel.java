@@ -54,7 +54,7 @@ public class GamePanel  extends JPanel{
 	private void createEnemy() {
 		JLabel enemy = new JLabel();
 		enemy.setBounds(100,100,230,230);
-		enemy.setIcon(new ImageIcon("star5.gif"));
+		enemy.setIcon(new ImageIcon("star06.gif"));
 		this.add(enemy);
 	}
 	private void initComonent() {
@@ -161,7 +161,7 @@ public class GamePanel  extends JPanel{
 	}
 	@Override
 	public void paintComponent(Graphics g) {
-		Image IMG_MAIN = new ImageIcon("img3.jpg").getImage();
+		Image IMG_MAIN = new ImageIcon("gamebg.jpg").getImage();
 		// ������Ϸ����
 		g.drawImage(IMG_MAIN, 0, 0, 1158, 650, null);
 	}
