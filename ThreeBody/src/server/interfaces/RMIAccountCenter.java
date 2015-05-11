@@ -22,7 +22,7 @@ public interface RMIAccountCenter extends Remote {
 	info logoutAndClear(String id) throws RemoteException;
 
 	// TODO test
-	R.info test(String command) throws RemoteException;
+	String command(String command) throws RemoteException;
 
 	RMIAccount getService(String id) throws RemoteException;
 

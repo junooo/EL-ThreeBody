@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -23,67 +24,51 @@ public class LobbyPanel extends JPanel{
 	private JButton createRoom;
 	private JButton lobbyReturn;
 	
+	private JButton[] rooms =new JButton[6];
+	private int numOfRoom=6;
+	private ArrayList<int[]> location = new ArrayList<int[]>(6);
+	
 	public LobbyPanel(MainControl mc){
 		this.setLayout(null);
-		this.initComonent();
 		//this.ShowPeopleNum();
 		this.mc = mc;
-		
+		initRoomLocation();
+		createRoom();
+		this.initComonent();
+	}
+	
+	private void initRoomLocation() {
+		int[] x0 = {50,100,300,125};
+		int[]  x1 = {400,100,300,125};
+		int[]	x2= {750,100,300,125};
+		int[]	x3 = {50,300,300,125};
+		int[]	x5 = {400,300,300,125};
+		int[]	x6 = {750,300,300,125};
+		location.add(x0);
+		location.add(x1);
+		location.add(x2);
+		location.add(x3);
+		location.add(x5);
+		location.add(x6);
+	}
+	private void createRoom() {
+		for (int i = 0; i < numOfRoom; i++) {
+			rooms[i] = new JButton();
+			rooms[i].setIcon(new ImageIcon(""));
+			int[] locationi=location.get(i%6);
+			rooms[i].setBounds(locationi[0],locationi[1],locationi[2],locationi[3]);
+			rooms[i].setContentAreaFilled(false);
+			this.add(rooms[i]);
+		}
 	}
 	public void initComonent(){
 	 //lobby room 3*2
-		this.lobby1=new JButton();
-	    this.lobby1.setIcon(new ImageIcon("下一页.png"));
-	    this.lobby1.setContentAreaFilled(false);
-	    this.lobby1.setBounds(50,100,300,125);
-	    this.lobby1.setVisible(true);  
-	    this.lobby1.addMouseListener(new EnterListener());
-	    this.add(lobby1);
-	    
-	    
-	    this.lobby2=new JButton();
-	    this.lobby2.setIcon(new ImageIcon(""));
-	    this.lobby2.setContentAreaFilled(false);
-	  	this.lobby2.setBounds(400,100,300,125);
-	  	this.lobby2.setVisible(true);  
-	  	this.lobby2.addMouseListener(new EnterListener());
-	    this.add(lobby2);
-	    
-	    this.lobby3=new JButton();
-	    this.lobby3.setIcon(new ImageIcon(""));
-	    this.lobby3.setContentAreaFilled(false);
-	  	this.lobby3.setBounds(750,100,300,125);
-	  	this.lobby3.setVisible(true);  
-	  	this.lobby3.addMouseListener(new EnterListener());
-	    this.add(lobby3);
-	    
-	    
-	    this.lobby4=new JButton();
-	    this.lobby4.setIcon(new ImageIcon(""));
-	    this.lobby4.setContentAreaFilled(false);
-	  	this.lobby4.setBounds(50,300,300,125);
-	  	this.lobby4.setVisible(true);  
-	  	this.lobby4.addMouseListener(new EnterListener());
-	    this.add(lobby4);
-	    
-	    
-	    this.lobby5=new JButton();
-	    this.lobby5.setIcon(new ImageIcon(""));
-	    this.lobby5.setContentAreaFilled(false);
-	  	this.lobby5.setBounds(400,300,300,125);
-	  	this.lobby5.setVisible(true);  
-	  	this.lobby5.addMouseListener(new EnterListener());
-	    this.add(lobby5);
-	    
-	    
-	    
-	    this.lobby6=new JButton();
-	    this.lobby6.setIcon(new ImageIcon(""));
-	    this.lobby6.setContentAreaFilled(false);
-	  	this.lobby6.setBounds(750,300,300,125);
-	  	this.lobby6.setVisible(true);  
-	  	this.lobby6.addMouseListener(new EnterListener());
-	    this.add(lobby6);
+	    rooms[0].addMouseListener(new EnterListener());
+	    rooms[1].addMouseListener(new EnterListener());
+	    rooms[2].addMouseListener(new EnterListener());
+	    rooms[3].addMouseListener(new EnterListener());
+	    rooms[4].addMouseListener(new EnterListener());
+	    rooms[5].addMouseListener(new EnterListener());
 	  	  
 	  	  
 	    

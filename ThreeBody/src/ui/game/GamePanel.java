@@ -89,8 +89,6 @@ public class GamePanel  extends JPanel{
 			enemies[i].setBounds(locationi[0],locationi[1],locationi[2],locationi[3]);
 			this.add(enemies[i]);
 		}
-
-		
 	}
 	private void initComonent() {
 		this.btnReturn = new JButton("返回");

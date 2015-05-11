@@ -35,9 +35,10 @@ public class MainControl {
 		mc.ac = new AccountControl(mc);
 		String id = AccountDTO.getInstance().getId();
 		if(!id.equals("本地玩家")){
-			if(mc.ac.loginByTransientID(id) == R.info.SUCCESS){
+			if (mc.ac.loginByTransientID(id) == R.info.SUCCESS) {
 				mc.connected = true;
 			}
+			
 		}
 		
 		mc.gamePanel = new GamePanel(mc, 3);

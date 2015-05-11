@@ -26,7 +26,7 @@ public class AccountServerTest {
 		try {
 			center = (RMIAccountCenter) Naming
 					.lookup("rmi://104.236.174.190/AccountCenter");
-			if (center.test("init").equals(R.info.SUCCESS)) {
+			if (center.command("init").equals(R.info.SUCCESS)) {
 				System.out.println("INIT");
 			}
 			center.login("Green", "g1234");

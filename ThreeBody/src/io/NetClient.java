@@ -13,22 +13,22 @@ public class NetClient {
     
 	private RMIAccountCenter rmiac;
 	private RMILobby rmilb;
-	private static NetClient instance = new NetClient();
+	private static NetClient instance;
 	
-	private NetClient() {
+	private NetClient(){
 		try {
 			rmiac = (RMIAccountCenter)Naming.lookup("rmi://104.236.174.190/AccountCenter");
 			rmilb = (RMILobby)Naming.lookup("rmi://104.236.174.190/LobbyServer");
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (NotBoundException e) {
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
 	public static NetClient getInstance(){
+		if(instance == null){
+			instance = new NetClient();
+		}
 		return instance;
 	}
 	

@@ -22,7 +22,7 @@ public class GameControl {
 	public GameControl(RMIGame rmig) {
 		this.rmig = rmig;
 		
-		// 初始化游戏
+		// 初始化GameDTO
 		try {
 			GameDTO.setUp(rmig.getPlayers());
 		} catch (RemoteException e) {

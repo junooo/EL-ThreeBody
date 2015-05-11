@@ -25,7 +25,7 @@ public class AccountCenterTest {
 		try {
 			center = (RMIAccountCenter) Naming
 					.lookup("rmi://104.236.174.190/AccountCenter");
-			if (center.test("init").equals(R.info.SUCCESS)) {
+			if (center.command("init").equals(R.info.SUCCESS)) {
 				System.out.println("INIT");
 			}
 			center.logoutAndClear("Green");
@@ -119,7 +119,7 @@ public class AccountCenterTest {
 	@After
 	public void after() {
 		try {
-			if (center.test("clear").equals(R.info.SUCCESS)) {
+			if (center.command("clear").equals(R.info.SUCCESS)) {
 				System.out.println("CLEAR");
 			}
 		} catch (RemoteException e) {
