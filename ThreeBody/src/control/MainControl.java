@@ -23,7 +23,6 @@ public class MainControl {
 	private JPanel startMenuPanel = null;
 	private JPanel selectPanel = null;
 	private JPanel gamePanel = null;
-	private JPanel isOnlinePanel = null;
 	private JPanel aboutUs = null;
 	private JPanel lobbyPanel = null;
 	
@@ -118,6 +117,7 @@ public class MainControl {
 	}
 
 	public void toRoom() {
+		
 	}
 
 	public void toAboutUs() {

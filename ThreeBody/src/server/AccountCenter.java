@@ -71,8 +71,8 @@ public class AccountCenter extends UnicastRemoteObject implements
 			passwords.put("Red", "r1234");
 			
 			// 检查链接是否正常的线程
-			ConnectionSupervision supervisor = new ConnectionSupervision();
-			supervisor.start();
+//			ConnectionSupervision supervisor = new ConnectionSupervision();
+//			supervisor.start();
 			
 			Naming.rebind("AccountCenter", (RMIAccountCenter)this);
 		} catch (RemoteException | MalformedURLException e) {

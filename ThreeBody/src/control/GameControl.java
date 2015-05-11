@@ -94,12 +94,9 @@ public class GameControl {
 								operation.toOthers()));
 					}
 				}
-			}
-		}
-	}
-	
-	
-
+			} // for
+		} // handleOperation
+	} // syncThread
 		
 	class TimeThread extends Thread{
 
@@ -123,10 +120,7 @@ public class GameControl {
 				countDown.repaint();
 				seconds--;
 			}
-			
 		}
 	}
 	
-
-
 }
