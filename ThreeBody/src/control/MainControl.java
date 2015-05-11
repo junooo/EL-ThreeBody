@@ -1,15 +1,8 @@
 package control;
 
-import java.net.MalformedURLException;
-import java.rmi.NotBoundException;
-import java.rmi.RemoteException;
-
-import io.NetClient;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import dto.AccountDTO;
 import ui.AboutUsPanel;
 import ui.LobbyPanel;
 import ui.MainFrame;
@@ -19,6 +12,7 @@ import ui.game.GamePanel;
 import ui.sound.Media;
 import ui.sound.Sound;
 import util.R;
+import dto.AccountDTO;
 
 public class MainControl {
 

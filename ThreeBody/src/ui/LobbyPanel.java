@@ -2,8 +2,12 @@ package ui;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -11,79 +15,52 @@ import javax.swing.JPanel;
 
 import control.MainControl;
 
-public class LobbyPanel extends JPanel{
+public class LobbyPanel extends JPanel implements MouseWheelListener{
 	private static final long serialVersionUID = 1L;
 	private MainControl mc;
-	private JButton lobby1;
-	private JButton lobby2;
-	private JButton lobby3;
-	private JButton lobby4;
-	private JButton lobby5;
-	private JButton lobby6;
 	private JButton createRoom;
 	private JButton lobbyReturn;
 	
+	private JButton[] rooms;
+	private int numOfRoom;
+	private ArrayList<int[]> location = new ArrayList<int[]>(6);
+	private ArrayList<JButton> roomFamily = new ArrayList<>();
+	
 	public LobbyPanel(MainControl mc){
 		this.setLayout(null);
-		this.initComonent();
 		//this.ShowPeopleNum();
 		this.mc = mc;
+		numOfRoom=6;
+		rooms =new JButton[numOfRoom];
+		createRoom();
+		this.initComonent();
+		this.addMouseWheelListener(this);
+	}
+	
+
+	
+	private void createRoom() {
+		for (int i = 0; i < numOfRoom; i++) {
+			rooms[i] = new JButton();
+			rooms[i].setIcon(new ImageIcon(""));
+			rooms[i].setBounds(50+350*i,200,300,125);
+			rooms[i].setContentAreaFilled(false);
+			rooms[i].addMouseListener(new EnterListener(i));
+			roomFamily.add(rooms[i]);
+		}
+		addRoom();
+	}
+	private void addRoom() {
+		for (int i = 0; i < roomFamily.size(); i++) {
+			this.add(roomFamily.get(i));
+		}
 		
 	}
+
+
+
 	public void initComonent(){
 	 //lobby room 3*2
-		this.lobby1=new JButton();
-	    this.lobby1.setIcon(new ImageIcon("下一页.png"));
-	    this.lobby1.setContentAreaFilled(false);
-	    this.lobby1.setBounds(50,100,300,125);
-	    this.lobby1.setVisible(true);  
-	    this.lobby1.addMouseListener(new EnterListener());
-	    this.add(lobby1);
-	    
-	    
-	    this.lobby2=new JButton();
-	    this.lobby2.setIcon(new ImageIcon(""));
-	    this.lobby2.setContentAreaFilled(false);
-	  	this.lobby2.setBounds(400,100,300,125);
-	  	this.lobby2.setVisible(true);  
-	  	this.lobby2.addMouseListener(new EnterListener());
-	    this.add(lobby2);
-	    
-	    this.lobby3=new JButton();
-	    this.lobby3.setIcon(new ImageIcon(""));
-	    this.lobby3.setContentAreaFilled(false);
-	  	this.lobby3.setBounds(750,100,300,125);
-	  	this.lobby3.setVisible(true);  
-	  	this.lobby3.addMouseListener(new EnterListener());
-	    this.add(lobby3);
-	    
-	    
-	    this.lobby4=new JButton();
-	    this.lobby4.setIcon(new ImageIcon(""));
-	    this.lobby4.setContentAreaFilled(false);
-	  	this.lobby4.setBounds(50,300,300,125);
-	  	this.lobby4.setVisible(true);  
-	  	this.lobby4.addMouseListener(new EnterListener());
-	    this.add(lobby4);
-	    
-	    
-	    this.lobby5=new JButton();
-	    this.lobby5.setIcon(new ImageIcon(""));
-	    this.lobby5.setContentAreaFilled(false);
-	  	this.lobby5.setBounds(400,300,300,125);
-	  	this.lobby5.setVisible(true);  
-	  	this.lobby5.addMouseListener(new EnterListener());
-	    this.add(lobby5);
-	    
-	    
-	    
-	    this.lobby6=new JButton();
-	    this.lobby6.setIcon(new ImageIcon(""));
-	    this.lobby6.setContentAreaFilled(false);
-	  	this.lobby6.setBounds(750,300,300,125);
-	  	this.lobby6.setVisible(true);  
-	  	this.lobby6.addMouseListener(new EnterListener());
-	    this.add(lobby6);
 	  	  
 	  	  
 	    
@@ -139,7 +116,10 @@ public class LobbyPanel extends JPanel{
 		}	
 	
 	class EnterListener implements MouseListener{
-
+		int roomId;
+		public EnterListener(int roomId){
+			this.roomId=roomId;
+		}
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			mc.toGame();
@@ -203,6 +183,8 @@ class CreateRoomListener implements MouseListener{
 			// TODO Auto-generated method stub
 			
 		}
+
+		
 }		
 		
 		
@@ -237,6 +219,29 @@ class ReturnListener implements MouseListener{
 		// TODO Auto-generated method stub
 		
 	}
+	
+}
+
+
+@Override
+public void mouseWheelMoved(MouseWheelEvent e) {
+	
+	if(e.getWheelRotation()==1){
+      //往左跑
+        for (int i = 0; i <roomFamily.size(); i++) {
+        	Rectangle rec = roomFamily.get(i).getBounds();
+        	rec.x = rec.x-30;
+        	roomFamily.get(i).setBounds(rec);
+		}
+    }
+    if(e.getWheelRotation()==-1){
+        //往左跑
+        for (int i = 0; i <roomFamily.size(); i++) {
+        	Rectangle rec = roomFamily.get(i).getBounds();
+        	rec.x = rec.x+30;
+        	roomFamily.get(i).setBounds(rec);
+		}
+    }
 	
 }
 }

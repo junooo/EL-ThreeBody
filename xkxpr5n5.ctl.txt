@@ -1,0 +1,38 @@
+﻿Merge branch 'develop2' of https://github.com/Sissel-Wu/EL-ThreeBody
+
+Conflicts:
+	ThreeBody/src/control/MainControl.java
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	modified:   ThreeBody/src/control/AccountControl.java
+#	modified:   ThreeBody/src/control/GameControl.java
+#	modified:   ThreeBody/src/control/LobbyControl.java
+#	modified:   ThreeBody/src/control/MainControl.java
+#	modified:   ThreeBody/src/control/RoomControl.java
+#	modified:   ThreeBody/src/io/NetClient.java
+#	modified:   ThreeBody/src/server/AccountCenter.java
+#	modified:   ThreeBody/src/server/LobbyServer.java
+#	modified:   ThreeBody/src/server/RoomServer.java
+#	modified:   ThreeBody/src/server/interfaces/RMIAccountCenter.java
+#	modified:   ThreeBody/src/server/interfaces/RMILobby.java
+#	modified:   ThreeBody/src/ui/LobbyPanel.java
+#	modified:   ThreeBody/src/ui/game/GamePanel.java
+#	new file:   ThreeBody/test/command/ServerCommand.java
+#	modified:   ThreeBody/test/server/AccountCenterTest.java
+#	modified:   ThreeBody/test/server/AccountServerTest.java
+#	modified:   ThreeBody/test/server/LobbyServerTest.java
+#
+
