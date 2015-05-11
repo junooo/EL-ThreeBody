@@ -10,7 +10,7 @@ public class ThreePeoplePanel extends GamePanel{
 	private JLabel playerTwo;
 	
 	public ThreePeoplePanel(MainControl mainControl) {
-		super(mainControl);
+		super(mainControl,3);
 		init();
 	}
 
