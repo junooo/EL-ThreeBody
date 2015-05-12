@@ -609,6 +609,7 @@ public class GamePanel  extends JPanel{
 			 * 很HeHe的解决方式
 			 */
 			add(panelBroadcast);
+			add(panelMessage);
 			repaint();
 			panelMessage.setVisible(false);
 			panelBroadcast.setVisible(false);

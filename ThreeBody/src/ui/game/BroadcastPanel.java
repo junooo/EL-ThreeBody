@@ -13,6 +13,7 @@ import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import ui.FrameUtil;
 import model.Player;
 import dto.GameDTO;
 
@@ -62,7 +63,7 @@ public class BroadcastPanel extends JPanel {
 		this.btnOK.setContentAreaFilled(false);
 		this.btnOK.setBounds(360, 105, 150, 60);
 		this.btnOK.setBorderPainted(false);
-//		btnOK.addMouseListener(new FindListener());
+		btnOK.addMouseListener(new BroadcastListener());
 		this.add(btnOK);
 		
 		this.btnReturn = new JButton(new ImageIcon("images/exit.png"));
@@ -96,6 +97,35 @@ public class BroadcastPanel extends JPanel {
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			setVisible(false);
+		}
+		@Override
+		public void mousePressed(MouseEvent e) {
+			
+		}
+		@Override
+		public void mouseReleased(MouseEvent e) {
+		}
+		@Override
+		public void mouseEntered(MouseEvent e) {
+		}
+		@Override
+		public void mouseExited(MouseEvent e) {
+			
+		}
+	}
+	
+	class BroadcastListener implements MouseListener {
+
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			try {
+				int co1=Integer.parseInt(btnCoordinateOne.getText());
+				int co2=Integer.parseInt(btnCoordinateTwo.getText());
+				int co3=Integer.parseInt(btnCoordinateThree.getText());
+				int co4=Integer.parseInt(btnCoordinateFour.getText());
+			} catch (Exception exception) {
+				FrameUtil.sendMessageByFrame("Error", "坐标输入错误");
+			}
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
