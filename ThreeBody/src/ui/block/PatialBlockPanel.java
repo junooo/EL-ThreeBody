@@ -70,7 +70,7 @@ coordinate=1;
 		this.setPicture(coordinate);
 		
 		
-		this.btnReturn = new JButton(new ImageIcon("exit.png"));
+		this.btnReturn = new JButton(new ImageIcon("images/exit.png"));
 		this.btnReturn.setContentAreaFilled(false);
 		this.btnReturn.setBounds(160, 105, 150, 60);
 		this.btnReturn.setBorderPainted(false);
@@ -202,25 +202,25 @@ coordinate=1;
 		}
 	}
 	public void setPicture(int cooperate) {
-		btnCoordinateOne.setIcon(new ImageIcon("coNothing.png"));
-		btnCoordinateTwo.setIcon(new ImageIcon("coNothing.png"));
-		btnCoordinateThree.setIcon(new ImageIcon("coNothing.png"));
-		btnCoordinateFour.setIcon(new ImageIcon("coNothing.png"));
+		btnCoordinateOne.setIcon(new ImageIcon("images/coNothing.png"));
+		btnCoordinateTwo.setIcon(new ImageIcon("images/coNothing.png"));
+		btnCoordinateThree.setIcon(new ImageIcon("images/coNothing.png"));
+		btnCoordinateFour.setIcon(new ImageIcon("images/coNothing.png"));
 		if(cooperate==1){
-			btnCoordinateOne.setIcon(new ImageIcon("select.png"));
+			btnCoordinateOne.setIcon(new ImageIcon("images/select.png"));
 		}
 		if(cooperate==2){
-			btnCoordinateTwo.setIcon(new ImageIcon("select.png"));
+			btnCoordinateTwo.setIcon(new ImageIcon("images/select.png"));
 		}
 		if(cooperate==3){
-			btnCoordinateThree.setIcon(new ImageIcon("select.png"));
+			btnCoordinateThree.setIcon(new ImageIcon("images/select.png"));
 		}
 		if(cooperate==4){
-			btnCoordinateFour.setIcon(new ImageIcon("select.png"));
+			btnCoordinateFour.setIcon(new ImageIcon("images/select.png"));
 		}
 	}
 	public void paintComponent(Graphics g) {
-		Image img = new ImageIcon("img1.jpg").getImage();
+		Image img = new ImageIcon("images/img1.jpg").getImage();
 		g.drawImage(img, 0, 0, null);
 		FrameUtil.drawCoordinate(123,156,502,666,g);
 		}

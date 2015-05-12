@@ -1,5 +1,7 @@
 package ui.login;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
@@ -13,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import ui.InformFrame;
 import control.AccountControl;
 
 public class LoginPanel extends JPanel{
@@ -23,7 +26,9 @@ public class LoginPanel extends JPanel{
 	private JTextField idField;
 	private JPasswordField passwordField;
 	private JLabel idLabel;
+	private JPanel thisPanel;
 	private JLabel passwordLabel;
+	private JLabel errorMsgLabel;
 	
 	public JFrame getLoginFrame() {
 		return loginFrame;
@@ -32,20 +37,20 @@ public class LoginPanel extends JPanel{
 	private JPanel panelLogup;
 	public LoginPanel(JFrame loginFrame,AccountControl accountControl) {
 		this.accountControl = accountControl;
-		
+		thisPanel=this;
 		this.setLayout(null);
 		this.loginFrame=loginFrame;
 		panelLogup = new LogupPanel(this,accountControl);
 		this.initComonent();
 	}
 	private void initComonent() {
-		this.btnlogin = new JButton(new ImageIcon("login.png"));
+		this.btnlogin = new JButton(new ImageIcon("images/login.png"));
 		this.btnlogin.setBounds(220, 220, 80, 40);
 		btnlogin.setContentAreaFilled(false);
 		btnlogin.addMouseListener(new LoginListener());
 		this.add(btnlogin);
 		
-		this.btnlogup = new JButton(new ImageIcon("logup.png"));
+		this.btnlogup = new JButton(new ImageIcon("images/logup.png"));
 		this.btnlogup.setBounds(100, 220, 80, 40);
 		btnlogup.setContentAreaFilled(false);
 		btnlogup.addMouseListener(new LogupListener());
@@ -61,13 +66,19 @@ public class LoginPanel extends JPanel{
 		
 		idLabel = new JLabel();
 		idLabel.setBounds(30,60,60,30);
-		idLabel.setIcon(new ImageIcon("logid.png"));
+		idLabel.setIcon(new ImageIcon("images/logid.png"));
 		this.add(idLabel);
 		
 		passwordLabel = new JLabel();
 		passwordLabel.setBounds(30,110,60,30);
-		passwordLabel.setIcon(new ImageIcon("logpassword.png"));
+		passwordLabel.setIcon(new ImageIcon("images/logpassword.png"));
 		this.add(passwordLabel);
+		
+		errorMsgLabel = new JLabel("密码输入错误");
+		errorMsgLabel.setForeground(Color.RED);
+		errorMsgLabel.setFont(new Font("宋体", Font.BOLD, 20));
+		errorMsgLabel.setBounds(110,140,190,30);
+		
 	}
 	class LoginListener implements MouseListener {
 
@@ -83,19 +94,33 @@ public class LoginPanel extends JPanel{
 			switch(accountControl.login(id, password)){
 			case SUCCESS:
 				System.out.println("login success");
+				loginFrame.setVisible(false);
+				InformFrame successInformFrame = new InformFrame("登录成功", 300,200); 
+				//1代表login成功，2代表logup成功
+				JPanel successIn = new SuccessPanel(1,successInformFrame);
+				successInformFrame.add(successIn);
 				break;
 			case ALREADY_IN:
 				System.out.println("already log in");
+				errorMsgLabel.setText("账户已在别处登录");
+				add(errorMsgLabel);
+				loginFrame.setContentPane(thisPanel);
 				break;
 			case INVALID:
 				System.out.println("wrong password");
+				errorMsgLabel.setText("密码输入错误");
+				add(errorMsgLabel);
+				loginFrame.setContentPane(thisPanel);
 				break;
 			case NOT_EXISTED:
 				System.out.println("account not existed");
+				errorMsgLabel.setText("账户已在别处登录");
+				add(errorMsgLabel);
+				loginFrame.setContentPane(thisPanel);
 				break;
 			}
 			
-			loginFrame.setVisible(false);
+			
 		}
 		
 		@Override
@@ -140,7 +165,7 @@ public class LoginPanel extends JPanel{
 		}
 	}
 	public void paintComponent(Graphics g) {
-		Image img = new ImageIcon("img1.jpg").getImage();
+		Image img = new ImageIcon("images/img1.jpg").getImage();
 		g.drawImage(img, 0, 0, null);
 		}
 }

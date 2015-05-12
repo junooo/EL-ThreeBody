@@ -5,7 +5,6 @@ import javax.swing.JPanel;
 
 import ui.AboutUsPanel;
 import ui.MainFrame;
-import ui.SelectPanel;
 import ui.StartMenuPanel;
 import ui.game.GamePanel;
 import ui.lobby.LobbyPanel;
@@ -19,7 +18,6 @@ public class MainControl {
 	private JPanel currentPanel = null;
 	private JFrame frame = null;
 	private JPanel startMenuPanel = null;
-	private JPanel selectPanel = null;
 	private JPanel gamePanel = null;
 	private JPanel aboutUs = null;
 	private JPanel lobbyPanel = null;
@@ -42,9 +40,7 @@ public class MainControl {
 		}
 		
 		mc.gamePanel = new GamePanel(mc, 3);
-		mc.selectPanel = new SelectPanel(mc);
 		mc.aboutUs = new AboutUsPanel(mc);
-		mc.lobbyPanel = new LobbyPanel(mc);
 		mc.frame = new MainFrame(mc);
 		mc.startMenuPanel = new StartMenuPanel(mc);
 		mc.currentPanel = mc.startMenuPanel;
@@ -78,19 +74,7 @@ public class MainControl {
 	public void toTutorial() {
 	}
 
-	/*
-	 * TESTED
-	 */
-	public void toSelect() {
-		currentPanel.setVisible(false);
-		if (this.selectPanel == null) {
-			this.selectPanel = new SelectPanel(this);
-		}
-		currentPanel = this.selectPanel;
-		frame.setContentPane(currentPanel);
-		currentPanel.setVisible(true);
-		frame.validate();
-	}
+	
 
 	/*
 	 * TESTED
@@ -104,7 +88,7 @@ public class MainControl {
 		frame.validate();
 	}
 
-	public void toLobby(int i) {
+	public void toLobby() {
 		currentPanel.setVisible(false);
 		if (this.lobbyPanel == null) {
 			this.lobbyPanel = new LobbyPanel(this);

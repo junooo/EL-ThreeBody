@@ -38,12 +38,12 @@ public class CreateRoomPanel extends JPanel{
 	private void initComonent() {
 		idLabel = new JLabel();
 		idLabel.setBounds(30,60,60,30);
-		idLabel.setIcon(new ImageIcon("roomname.png"));
+		idLabel.setIcon(new ImageIcon("images/roomname.png"));
 		this.add(idLabel);
 		
 		numLabel = new JLabel();
 		numLabel.setBounds(20,120,80,30);
-		numLabel.setIcon(new ImageIcon("roomnumber.png"));
+		numLabel.setIcon(new ImageIcon("images/roomnumber.png"));
 		this.add(numLabel);
 		
 		idField = new JTextField();
@@ -57,13 +57,13 @@ public class CreateRoomPanel extends JPanel{
 		select.addItem("8人房间");
 		this.add(select);
 		
-		this.btnOk = new JButton(new ImageIcon("roomcreate.png"));
+		this.btnOk = new JButton(new ImageIcon("images/roomcreate.png"));
 		this.btnOk.setBounds(100, 220, 80, 40);
 		btnOk.setContentAreaFilled(false);
 		btnOk.addMouseListener(new CreateListener());
 		this.add(btnOk);
 		
-		this.btnCancel = new JButton(new ImageIcon("roomcancel.png"));
+		this.btnCancel = new JButton(new ImageIcon("images/roomcancel.png"));
 		this.btnCancel.setBounds(220, 220, 80, 40);
 		btnCancel.setContentAreaFilled(false);
 		btnCancel.addMouseListener(new CancelListener());
@@ -72,7 +72,7 @@ public class CreateRoomPanel extends JPanel{
 	}
 	
 	public void paintComponent(Graphics g) {
-		Image img = new ImageIcon("img1.jpg").getImage();
+		Image img = new ImageIcon("images/img1.jpg").getImage();
 		g.drawImage(img, 0, 0, null);
 		}
 	

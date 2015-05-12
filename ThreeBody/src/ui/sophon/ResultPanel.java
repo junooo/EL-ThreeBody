@@ -28,7 +28,7 @@ public class ResultPanel extends JPanel {
 		
 	}
 	public void paintComponent(Graphics g) {
-		Image img = new ImageIcon("img1.jpg").getImage();
+		Image img = new ImageIcon("images/img1.jpg").getImage();
 		g.drawImage(img, 0, 0, null);
 		paintResult(result,g);
 	}

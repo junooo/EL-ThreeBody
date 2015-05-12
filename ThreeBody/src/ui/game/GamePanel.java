@@ -84,7 +84,7 @@ public class GamePanel  extends JPanel{
 	private void createEnemy() {
 		for (int i = 0; i < NumOfPlayer-1; i++) {
 			enemies[i] = new JLabel();
-			enemies[i].setIcon(new ImageIcon("star06.gif"));
+			enemies[i].setIcon(new ImageIcon("images/star06.gif"));
 			int[] locationi=location.get(i);
 			enemies[i].setBounds(locationi[0],locationi[1],locationi[2],locationi[3]);
 			this.add(enemies[i]);
@@ -201,11 +201,11 @@ public class GamePanel  extends JPanel{
 		btnCard9.addMouseListener(new CardListener9());
 		this.add(btnCard9);
 		
-		resourceString = new JLabel(new ImageIcon("resource.png"));
+		resourceString = new JLabel(new ImageIcon("images/resource.png"));
 		resourceString.setBounds(110,480,60,30);
 		this.add(resourceString);
 		
-		techString = new JLabel(new ImageIcon("tech.png"));
+		techString = new JLabel(new ImageIcon("images/tech.png"));
 		techString.setBounds(110,510,60,30);
 		this.add(techString);
 
@@ -215,7 +215,7 @@ public class GamePanel  extends JPanel{
 	}
 	@Override
 	public void paintComponent(Graphics g) {
-		Image IMG_MAIN = new ImageIcon("gamebg.jpg").getImage();
+		Image IMG_MAIN = new ImageIcon("images/gamebg.jpg").getImage();
 		// ������Ϸ����
 		g.drawImage(IMG_MAIN, 0, 0, 1158, 650, null);
 	}
