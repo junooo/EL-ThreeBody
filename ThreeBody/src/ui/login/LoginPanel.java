@@ -39,13 +39,13 @@ public class LoginPanel extends JPanel{
 		this.initComonent();
 	}
 	private void initComonent() {
-		this.btnlogin = new JButton(new ImageIcon("login.png"));
+		this.btnlogin = new JButton(new ImageIcon("images/login.png"));
 		this.btnlogin.setBounds(220, 220, 80, 40);
 		btnlogin.setContentAreaFilled(false);
 		btnlogin.addMouseListener(new LoginListener());
 		this.add(btnlogin);
 		
-		this.btnlogup = new JButton(new ImageIcon("logup.png"));
+		this.btnlogup = new JButton(new ImageIcon("images/logup.png"));
 		this.btnlogup.setBounds(100, 220, 80, 40);
 		btnlogup.setContentAreaFilled(false);
 		btnlogup.addMouseListener(new LogupListener());
@@ -61,12 +61,12 @@ public class LoginPanel extends JPanel{
 		
 		idLabel = new JLabel();
 		idLabel.setBounds(30,60,60,30);
-		idLabel.setIcon(new ImageIcon("logid.png"));
+		idLabel.setIcon(new ImageIcon("images/logid.png"));
 		this.add(idLabel);
 		
 		passwordLabel = new JLabel();
 		passwordLabel.setBounds(30,110,60,30);
-		passwordLabel.setIcon(new ImageIcon("logpassword.png"));
+		passwordLabel.setIcon(new ImageIcon("images/logpassword.png"));
 		this.add(passwordLabel);
 	}
 	class LoginListener implements MouseListener {
@@ -140,7 +140,7 @@ public class LoginPanel extends JPanel{
 		}
 	}
 	public void paintComponent(Graphics g) {
-		Image img = new ImageIcon("img1.jpg").getImage();
+		Image img = new ImageIcon("images/img1.jpg").getImage();
 		g.drawImage(img, 0, 0, null);
 		}
 }

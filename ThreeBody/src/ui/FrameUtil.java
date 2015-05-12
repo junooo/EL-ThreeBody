@@ -9,7 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 public class FrameUtil {
-	public static final Image NUMBER =  new ImageIcon("num.png").getImage();
+	public static final Image NUMBER =  new ImageIcon("images/num.png").getImage();
 	static int IMG_NUMBER_W=NUMBER.getWidth(null)/10;
 	static int IMG_NUMBER_H=NUMBER.getHeight(null);
 	/**

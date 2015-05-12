@@ -42,14 +42,14 @@ public class StartMenuPanel extends JPanel{
 	
 	private void initComonent() {
 
-		this.btnStartGame = new JButton(new ImageIcon("button.png"));
+		this.btnStartGame = new JButton(new ImageIcon("images/button.png"));
 		this.btnStartGame.setContentAreaFilled(false);
 		this.btnStartGame.setBounds(483, 120, 200, 80);
 		this.btnStartGame.setBorderPainted(false);
 		this.btnStartGame.addMouseListener(new StartGameListener());
 		this.add(btnStartGame);
 
-		this.btnOption = new JButton(new ImageIcon("option.png"));
+		this.btnOption = new JButton(new ImageIcon("images/option.png"));
 		this.btnOption.setContentAreaFilled(false);
 		this.btnOption.setBounds(483, 220, 200, 80);
 		this.btnOption.setBorderPainted(false);
@@ -57,14 +57,14 @@ public class StartMenuPanel extends JPanel{
 
 		this.add(btnOption);
 
-		this.btnAboutUs = new JButton(new ImageIcon("about.png"));
+		this.btnAboutUs = new JButton(new ImageIcon("images/about.png"));
 		this.btnAboutUs.setContentAreaFilled(false);
 		this.btnAboutUs.setBounds(483, 320, 200, 80);
 		this.btnAboutUs.setBorderPainted(false);
 		this.btnAboutUs.addMouseListener(new AboutUsListener());
 		this.add(btnAboutUs);
 
-		this.btnExit = new JButton(new ImageIcon("exit.png"));
+		this.btnExit = new JButton(new ImageIcon("images/exit.png"));
 		this.btnExit.setContentAreaFilled(false);
 		this.btnExit.setBounds(483, 420, 200, 80);
 		this.btnExit.setBorderPainted(false);
@@ -86,7 +86,7 @@ public class StartMenuPanel extends JPanel{
 	}
 	@Override
 	public void paintComponent(Graphics g) {
-		Image IMG_MAIN = new ImageIcon("img2.jpg").getImage();
+		Image IMG_MAIN = new ImageIcon("images/img2.jpg").getImage();
 		g.drawImage(IMG_MAIN, 0, 0, 1158, 650, null);
 		
 	}

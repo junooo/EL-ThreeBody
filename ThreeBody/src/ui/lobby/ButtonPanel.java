@@ -7,7 +7,6 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 import model.Room;
 
@@ -26,9 +25,9 @@ public class ButtonPanel extends JPanel {
 		this.initComonent();
 	}
 	private void initComonent() {
-		idLabel = new JLabel(new ImageIcon("roomname.png"));
+		idLabel = new JLabel(new ImageIcon("images/roomname.png"));
 		idLabel.setBounds(30,5,60,30);
-		idLabel.setIcon(new ImageIcon("roomname.png"));
+		idLabel.setIcon(new ImageIcon("images/roomname.png"));
 		this.add(idLabel);
 		
 		nameLabel = new JLabel(room.getName());
@@ -39,7 +38,7 @@ public class ButtonPanel extends JPanel {
 		
 		sizeStrLabel = new JLabel();
 		sizeStrLabel.setBounds(20,45,80,30);
-		sizeStrLabel.setIcon(new ImageIcon("roomsize.png"));
+		sizeStrLabel.setIcon(new ImageIcon("images/roomsize.png"));
 		this.add(sizeStrLabel);
 		
 		sizeLabel = new JLabel(room.getSize()+"人");
@@ -49,7 +48,7 @@ public class ButtonPanel extends JPanel {
 		
 		numStrLabel = new JLabel();
 		numStrLabel.setBounds(20,85,80,30);
-		numStrLabel.setIcon(new ImageIcon("roomnumber.png"));
+		numStrLabel.setIcon(new ImageIcon("images/roomnumber.png"));
 		this.add(numStrLabel);
 		
 		numLabel = new JLabel(room.getAccounts().size()+"人");
@@ -59,7 +58,7 @@ public class ButtonPanel extends JPanel {
 		
 	}
 	public void paintComponent(Graphics g) {
-		Image img = new ImageIcon("img1.jpg").getImage();
+		Image img = new ImageIcon("images/img1.jpg").getImage();
 		g.drawImage(img, 0, 0, null);
 		}
 	

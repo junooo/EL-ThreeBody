@@ -66,7 +66,7 @@ public class SillyResultPanel extends JPanel{
 		this.setPicture(coordinate);
 		
 		
-		this.btnReturn = new JButton(new ImageIcon("exit.png"));
+		this.btnReturn = new JButton(new ImageIcon("images/exit.png"));
 		this.btnReturn.setContentAreaFilled(false);
 		this.btnReturn.setBounds(160, 105, 150, 60);
 		this.btnReturn.setBorderPainted(false);
@@ -177,22 +177,22 @@ public class SillyResultPanel extends JPanel{
 	}
 	
 	public void setPicture(int cooperate) {
-		resultOne.setIcon(new ImageIcon("coNothing.png"));
-		resultTwo.setIcon(new ImageIcon("coNothing.png"));
-		resultThree.setIcon(new ImageIcon("coNothing.png"));
+		resultOne.setIcon(new ImageIcon("images/coNothing.png"));
+		resultTwo.setIcon(new ImageIcon("images/coNothing.png"));
+		resultThree.setIcon(new ImageIcon("images/coNothing.png"));
 		if(cooperate==1){
-			resultOne.setIcon(new ImageIcon("select.png"));
+			resultOne.setIcon(new ImageIcon("images/select.png"));
 		}
 		if(cooperate==2){
-			resultTwo.setIcon(new ImageIcon("select.png"));
+			resultTwo.setIcon(new ImageIcon("images/select.png"));
 		}
 		if(cooperate==3){
-			resultThree.setIcon(new ImageIcon("select.png"));
+			resultThree.setIcon(new ImageIcon("images/select.png"));
 		}
 		
 	}
 	public void paintComponent(Graphics g) {
-		Image img = new ImageIcon("img1.jpg").getImage();
+		Image img = new ImageIcon("images/img1.jpg").getImage();
 		g.drawImage(img, 0, 0, null);
 		FrameUtil.drawCoordinate(164, 323, 558, g);
 		}

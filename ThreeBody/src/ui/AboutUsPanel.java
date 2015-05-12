@@ -31,8 +31,8 @@ public class AboutUsPanel extends JPanel{
 	  
 	  //store the turns of pictureInfo  
 	  
-      pictureList[0]="ABOUTUS1.png";
-      pictureList[1]="ABOUTUS2.png";
+      pictureList[0]="images/ABOUTUS1.png";
+      pictureList[1]="images/ABOUTUS2.png";
 	  
 	  this.setLayout(null);
 	  this.initComonent();
@@ -67,7 +67,7 @@ public class AboutUsPanel extends JPanel{
 		  
 		  
 		  if(i==(pNum-1)){
-			  this.btnNextPage.setIcon(new ImageIcon("返回.png"));
+			  this.btnNextPage.setIcon(new ImageIcon("images/返回.png"));
 		  }
 	  }else{
 		  mc.toStartMenu();
@@ -108,7 +108,7 @@ class NextPageListener implements MouseListener{
   @Override
   //background picture
   public void paintComponent(Graphics g) {
-	  Image background=new ImageIcon("模糊背景.jpg").getImage();
+	  Image background=new ImageIcon("images/模糊背景.jpg").getImage();
 	  g.drawImage(background,0,0,null);
 	}
   

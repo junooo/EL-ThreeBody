@@ -1,6 +1,5 @@
 package ui.lobby;
 
-import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
@@ -30,7 +29,9 @@ public class LobbyPanel extends JPanel implements MouseWheelListener{
 	private ArrayList<JButton> roomFamily = new ArrayList<>();
 	private List<Room> roomList;
 	private LobbyControl lobbyControl = new LobbyControl();
+	
 	public LobbyPanel(MainControl mc){
+		
 		this.setLayout(null);
 		this.mc = mc;
 		roomList=lobbyControl.getRooms();
@@ -81,7 +82,7 @@ public class LobbyPanel extends JPanel implements MouseWheelListener{
 	 //lobby room 3*2
 	    
 	    this.createRoom=new JButton();
-	    this.createRoom.setIcon(new ImageIcon("newroom.png"));
+	    this.createRoom.setIcon(new ImageIcon("images/newroom.png"));
 	    this.createRoom.setContentAreaFilled(false);
 	  	this.createRoom.setBounds(650,500,100,50);
 	  	this.createRoom.addMouseListener(new CreateRoomListener());
@@ -89,7 +90,7 @@ public class LobbyPanel extends JPanel implements MouseWheelListener{
 	    
 	    
 	    this.lobbyReturn=new JButton();
-	    this.lobbyReturn.setIcon(new ImageIcon("roomreturn.png"));
+	    this.lobbyReturn.setIcon(new ImageIcon("images/roomreturn.png"));
 	    this.lobbyReturn.setContentAreaFilled(false);
 	  	this.lobbyReturn.setBounds(850,500,100,50);
 	  	this.lobbyReturn.addMouseListener(new ReturnListener());
@@ -106,7 +107,7 @@ public class LobbyPanel extends JPanel implements MouseWheelListener{
 	
 	
 	public void paintComponent(Graphics g) {
-		  Image background=new ImageIcon("模糊背景.jpg").getImage();
+		  Image background=new ImageIcon("images/模糊背景.jpg").getImage();
 		  g.drawImage(background,0,0,null);
 		 
 	}
@@ -194,26 +195,25 @@ class ReturnListener implements MouseListener{
 	
 }
 
+	@Override
+	public void mouseWheelMoved(MouseWheelEvent e) {
 
-@Override
-public void mouseWheelMoved(MouseWheelEvent e) {
-	
-	if(e.getWheelRotation()==1){
-      //往左跑
-        for (int i = 0; i <roomFamily.size(); i++) {
-        	Rectangle rec = roomFamily.get(i).getBounds();
-        	rec.x = rec.x-50;
-        	roomFamily.get(i).setBounds(rec);
+		if (e.getWheelRotation() == 1) {
+			// 往左跑
+			for (int i = 0; i < roomFamily.size(); i++) {
+				Rectangle rec = roomFamily.get(i).getBounds();
+				rec.x = rec.x - 50;
+				roomFamily.get(i).setBounds(rec);
+			}
 		}
-    }
-    if(e.getWheelRotation()==-1){
-        //往左跑
-        for (int i = 0; i <roomFamily.size(); i++) {
-        	Rectangle rec = roomFamily.get(i).getBounds();
-        	rec.x = rec.x+50;
-        	roomFamily.get(i).setBounds(rec);
+		if (e.getWheelRotation() == -1) {
+			// 往左跑
+			for (int i = 0; i < roomFamily.size(); i++) {
+				Rectangle rec = roomFamily.get(i).getBounds();
+				rec.x = rec.x + 50;
+				roomFamily.get(i).setBounds(rec);
+			}
 		}
-    }
-	
-}
+
+	}
 }

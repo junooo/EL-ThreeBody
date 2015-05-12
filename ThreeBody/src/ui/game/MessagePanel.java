@@ -44,14 +44,14 @@ public class MessagePanel  extends JPanel{
 			
 			
 			
-			this.btnOK = new JButton(new ImageIcon("button.png"));
+			this.btnOK = new JButton(new ImageIcon("images/button.png"));
 			this.btnOK.setContentAreaFilled(false);
 			this.btnOK.setBounds(360, 95, 150, 60);
 			this.btnOK.setBorderPainted(false);
 //			btnOK.addMouseListener(new StartGameListener());
 			this.add(btnOK);
 			
-			this.btnReturn = new JButton(new ImageIcon("exit.png"));
+			this.btnReturn = new JButton(new ImageIcon("images/exit.png"));
 			this.btnReturn.setContentAreaFilled(false);
 			this.btnReturn.setBounds(520, 95, 150, 60);
 			this.btnReturn.setBorderPainted(false);
@@ -100,7 +100,7 @@ public class MessagePanel  extends JPanel{
 
 		@Override
 		public void paintComponent(Graphics g) {
-			Image IMG_MAIN = new ImageIcon("img1.jpg").getImage();
+			Image IMG_MAIN = new ImageIcon("images/img1.jpg").getImage();
 			// 绘制游戏界面
 			g.drawImage(IMG_MAIN, 0, 0,695,215, null);
 		}

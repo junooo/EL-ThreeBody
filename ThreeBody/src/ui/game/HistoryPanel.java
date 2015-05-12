@@ -90,7 +90,7 @@ public class HistoryPanel extends JPanel{
 
 	@Override
 	public void paintComponent(Graphics g) {
-		Image IMG_MAIN = new ImageIcon("img1.jpg").getImage();
+		Image IMG_MAIN = new ImageIcon("images/img1.jpg").getImage();
 		// 绘制游戏界面
 		g.drawImage(IMG_MAIN, 0, 0,695,215, null);
 	}

@@ -40,13 +40,13 @@ public class LogupPanel extends JPanel {
 		
 	}
 	private void initComonent() {
-		this.btnCancel = new JButton(new ImageIcon("logcancel.png"));
+		this.btnCancel = new JButton(new ImageIcon("images/logcancel.png"));
 		this.btnCancel.setBounds(220, 220, 80, 40);
 		btnCancel.setContentAreaFilled(false);
 		btnCancel.addMouseListener(new CancelListener());
 		this.add(btnCancel);
 		
-		this.btnlogup = new JButton(new ImageIcon("logup.png"));
+		this.btnlogup = new JButton(new ImageIcon("images/logup.png"));
 		this.btnlogup.setBounds(100, 220, 80, 40);
 		btnlogup.setContentAreaFilled(false);
 		btnlogup.addMouseListener(new LogupListener());
@@ -70,12 +70,12 @@ public class LogupPanel extends JPanel {
 		
 		idLabel = new JLabel();
 		idLabel.setBounds(30,40,60,30);
-		idLabel.setIcon(new ImageIcon("logid.png"));
+		idLabel.setIcon(new ImageIcon("images/logid.png"));
 		this.add(idLabel);
 		
 		passwordLabel = new JLabel();
 		passwordLabel.setBounds(30,80,60,30);
-		passwordLabel.setIcon(new ImageIcon("logpassword.png"));
+		passwordLabel.setIcon(new ImageIcon("images/logpassword.png"));
 		this.add(passwordLabel);
 		
 		passwordConfirmLabel = new JLabel();
@@ -85,7 +85,7 @@ public class LogupPanel extends JPanel {
 		
 		codeLabel = new JLabel();
 		codeLabel.setBounds(30,160,60,30);
-		codeLabel.setIcon(new ImageIcon("logcode.png"));
+		codeLabel.setIcon(new ImageIcon("images/logcode.png"));
 		this.add(codeLabel);
 	}
 	class CancelListener implements MouseListener {
@@ -136,7 +136,7 @@ public class LogupPanel extends JPanel {
 		}
 	}
 	public void paintComponent(Graphics g) {
-		Image img = new ImageIcon("img1.jpg").getImage();
+		Image img = new ImageIcon("images/img1.jpg").getImage();
 		g.drawImage(img, 0, 0, null);
 		}
 }
