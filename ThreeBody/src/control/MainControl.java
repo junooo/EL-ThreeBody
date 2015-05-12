@@ -18,7 +18,6 @@ public class MainControl {
 	private JPanel currentPanel = null;
 	private JFrame frame = null;
 	private JPanel startMenuPanel = null;
-	private JPanel selectPanel = null;
 	private JPanel gamePanel = null;
 	private JPanel aboutUs = null;
 	private JPanel lobbyPanel = null;
