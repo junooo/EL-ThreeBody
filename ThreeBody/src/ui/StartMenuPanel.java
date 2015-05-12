@@ -12,7 +12,6 @@ import javax.swing.JPanel;
 
 import ui.login.LoginFrame;
 import ui.login.LoginPanel;
-import ui.login.SuccessPanel;
 import ui.sound.Media;
 import ui.sound.Sound;
 import control.MainControl;

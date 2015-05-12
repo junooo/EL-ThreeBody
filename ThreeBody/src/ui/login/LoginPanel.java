@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import ui.InformFrame;
+import ui.FrameUtil;
 import control.AccountControl;
 
 public class LoginPanel extends JPanel{
@@ -95,10 +95,7 @@ public class LoginPanel extends JPanel{
 			case SUCCESS:
 				System.out.println("login success");
 				loginFrame.setVisible(false);
-				InformFrame successInformFrame = new InformFrame("登录成功", 300,200); 
-				//1代表login成功，2代表logup成功
-				JPanel successIn = new SuccessPanel(1,successInformFrame);
-				successInformFrame.add(successIn);
+				FrameUtil.sendMessageByFrame("登录成功", "登录成功！");
 				break;
 			case ALREADY_IN:
 				System.out.println("already log in");
