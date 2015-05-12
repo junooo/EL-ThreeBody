@@ -13,24 +13,9 @@ public class WholeBlock extends Card{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private int lifetime=1;
-	
-
-	public int getLifetime() {
-		return lifetime;
-	}
-
-
-	public void setLifetime(int lifetime) {
-		this.lifetime = lifetime;
-	}
-
 
 	public WholeBlock(String operator, String receiver) {
 		super(operator, receiver);
-		//TODO
-		this.requiredResource=40;
-		this.requiredTechPoint=30;
 	}
 
 

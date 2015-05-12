@@ -17,26 +17,11 @@ public class PatialBlock extends Card{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private int lifetime=3;
 	private int position;
 	
-	
-	public int getLifetime() {
-		return lifetime;
-	}
-
-
-	public void setLifetime(int lifetime) {
-		this.lifetime = lifetime;
-	}
-
-
 	public PatialBlock(String operator, String receiver,int position) {
 		super(operator, receiver);
-		// TODO 
-		this.requiredResource=30;
-		this.requiredTechPoint=20;
-		this.position=position;
+		this.position=position;	
 	}
 
 

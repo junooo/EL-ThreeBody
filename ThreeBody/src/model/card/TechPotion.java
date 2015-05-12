@@ -18,8 +18,6 @@ public class TechPotion extends Card{
 
 	public TechPotion(String operator, String receiver) {
 		super(operator, receiver);
-		this.requiredResource=30;
-		this.requiredTechPoint=5;
 	}
 
 	@Override

@@ -15,20 +15,11 @@ public class NoBroadcasting extends Card{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private int lifetime=1;
-	
-	public int getLifetime() {
-		return lifetime;
-	}
 
-	public void setLifetime(int lifetime) {
-		this.lifetime = lifetime;
-	}
 
 	public NoBroadcasting(String operator, String receiver) {
 		super(operator, receiver);
-		this.requiredResource=40;
-		this.requiredTechPoint=50;
+
 	}
 
 	@Override
