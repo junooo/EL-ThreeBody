@@ -96,7 +96,7 @@ public class StartMenuPanel extends JPanel{
 		@Override
 		public void mouseClicked(MouseEvent arg0) {
 			Media.playSound(Sound.enter);
-			mainControl.toSelect();
+			mainControl.toLobby();
 		}
 
 		@Override

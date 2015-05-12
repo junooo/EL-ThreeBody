@@ -62,4 +62,5 @@ public class ButtonPanel extends JPanel {
 		Image img = new ImageIcon("img1.jpg").getImage();
 		g.drawImage(img, 0, 0, null);
 		}
+	
 }
