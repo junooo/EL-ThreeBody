@@ -17,10 +17,6 @@ public class MainControl {
 
 	private JPanel currentPanel = null;
 	private JFrame frame = null;
-	public JPanel getCurrentPanel() {
-		return currentPanel;
-	}
-
 	private JPanel startMenuPanel = null;
 	private JPanel selectPanel = null;
 	private JPanel gamePanel = null;
