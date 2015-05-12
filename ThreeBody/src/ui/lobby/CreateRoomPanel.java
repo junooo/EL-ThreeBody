@@ -80,8 +80,21 @@ public class CreateRoomPanel extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
+			// 选择的房间人数
+			int size = 0;
+			switch(select.getSelectedIndex()){
+			case 0:
+				size = 3;
+				break;
+			case 1:
+				size = 6;
+				break;
+			case 2:
+				size = 8;
+				break;
+			}
 			// 创建房间
-			
+			lobbyControl.createRoom(idField.getText(), size);
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {

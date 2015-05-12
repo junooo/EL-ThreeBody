@@ -39,8 +39,17 @@ public class AccountControl {
 			feedback = rmiac.logUp(id, password, invitationID);
 			if(feedback == R.info.SUCCESS){
 				rmia = rmiac.getService(id);
+				// 设成连接状态
+				mc.setConnected(true);
+				// 保存transientID
+				String transientID = rmiac.getTransientID(id);
+				UserData.saveTransientID(transientID);
+				// 同步网络端的account
 				account = rmia.getAccount();
-				AccountDTO.synchronize(account);
+				AccountDTO.synchronize(account);	
+				UserData.saveAccount(account);
+				// 开启检查连接的线程
+				new ConnectionChecker().start();
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();

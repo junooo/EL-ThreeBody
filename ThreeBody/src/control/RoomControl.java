@@ -58,7 +58,7 @@ public class RoomControl {
 	
 	/**
 	 * 
-	 * @return 成功离开房间
+	 * @return SUCCESS: 成功离开房间
 	 */
 	public R.info exit(){
 		try {
@@ -69,6 +69,10 @@ public class RoomControl {
 		return null;
 	}
 	
+	/**
+	 * 
+	 * @return 刷新后的Room
+	 */
 	public Room refresh(){
 		try {
 			return rmir.refresh();
@@ -78,6 +82,10 @@ public class RoomControl {
 		return null;
 	}
 	
+	/**
+	 * 
+	 * @return GameControl对象
+	 */
 	public GameControl getGameService(){
 		try {
 			return new GameControl(rmir.getGameServer());

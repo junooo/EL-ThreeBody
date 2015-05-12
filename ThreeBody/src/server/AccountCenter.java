@@ -70,10 +70,6 @@ public class AccountCenter extends UnicastRemoteObject implements
 			accounts.put("Red", new Account("Red"));
 			passwords.put("Red", "r1234");
 			
-			// 检查链接是否正常的线程
-//			ConnectionSupervision supervisor = new ConnectionSupervision();
-//			supervisor.start();
-			
 			Naming.rebind("AccountCenter", (RMIAccountCenter)this);
 		} catch (RemoteException | MalformedURLException e) {
 			e.printStackTrace();
@@ -169,6 +165,7 @@ public class AccountCenter extends UnicastRemoteObject implements
 	public String command(String command) {
 		
 		String[] parts = command.split(" ");
+		StringBuffer sb;
 
 		switch (parts[0]) {
 		case "init":
@@ -196,8 +193,29 @@ public class AccountCenter extends UnicastRemoteObject implements
 			passwords.put(parts[1], parts[2]);
 			return "success";
 		case "add_invitationID":
-			invitationIDs.add(parts[2]);
+			invitationIDs.add(parts[1]);
 			return "now size:"+invitationIDs.size();
+		case "check_connections":
+			sb = new StringBuffer();
+			sb.append("connections:"+actives.size()+"\n");
+			for (String name : actives.keySet()) {
+				sb.append(name+"\n");
+			}
+			return sb.toString();
+		case "check_invitationIDs":
+			sb = new StringBuffer();
+			sb.append("invitationIDs:"+invitationIDs.size()+"\n");
+			for (String invitationID : invitationIDs) {
+				sb.append(invitationID+"\n");
+			}
+			return sb.toString();
+		case "check_accounts":
+			sb = new StringBuffer();
+			sb.append("accounts:"+accounts.size()+"\n");
+			for (String name : accounts.keySet()) {
+				sb.append(name+"\n");
+			}
+			return sb.toString();
 		}
 
 		return R.info.INVALID.name();
@@ -257,20 +275,6 @@ public class AccountCenter extends UnicastRemoteObject implements
 	public void saveAccount(Account account) {
 		accounts.put(account.getId(), account);
 		
-	}
-	
-	private class ConnectionSupervision extends Thread{
-		@Override
-		public void run() {
-			while(true){
-				System.out.println("Thread alive " + actives.size());
-				try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-		}
 	}
 	
 	private class AccountData{

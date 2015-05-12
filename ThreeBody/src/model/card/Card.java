@@ -1,7 +1,6 @@
 package model.card;
 
 import java.io.Serializable;
-
 import model.Player;
 import dto.GameDTO;
 
@@ -15,14 +14,20 @@ public abstract class Card implements Serializable{
 	protected String name;
 	protected int requiredResource;
     protected int requiredTechPoint;
-    // ID
+    protected int lifetime;
+       
+    //ID
     protected String operator;
     protected String receiver;
     
     public Card(String operator,String receiver){
     	this.operator = operator;
     	this.receiver = receiver;
+
     }
+    
+    
+    
     
     public abstract void process();
     
@@ -36,6 +41,10 @@ public abstract class Card implements Serializable{
 
 	public int getTechPoint() {
 		return requiredTechPoint;
+	}
+	
+	public int getLifetime() {
+		return lifetime;
 	}
 	
 	public Player findOperator(GameDTO dto){
