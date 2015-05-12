@@ -19,8 +19,6 @@ public class SillySophon extends Card {
 	
 	public SillySophon(String operator, String receiver,int position) {
 		super(operator, receiver);
-		this.requiredTechPoint=20;
-		this.requiredResource=25;
 		this.position=position;
 	}
 

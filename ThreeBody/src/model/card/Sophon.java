@@ -33,8 +33,6 @@ public class Sophon extends Card{
 	public Sophon(String operator, String receiver,int position) {
 		super(operator, receiver);
 		// TODO 游戏平衡配置
-		this.requiredTechPoint = 30;
-		this.requiredResource = 40;
 		this.position = position;
 	}
 

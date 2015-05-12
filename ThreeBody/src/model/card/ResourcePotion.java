@@ -21,8 +21,7 @@ public class ResourcePotion extends Card {
 
 	public ResourcePotion(String operator, String receiver) {
 		super(operator, receiver);
-		this.requiredResource=30;
-		this.requiredTechPoint=5;
+;
 	}
 
 	@Override
