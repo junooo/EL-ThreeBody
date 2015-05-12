@@ -58,7 +58,7 @@ public class HistoryPanel extends JPanel{
 		this.add(scroller);
 		repaint();
 		
-//		this.btnReturn = new JButton(new ImageIcon("exit.png"));
+//		this.btnReturn = new JButton(new ImageIcon("images/exit.png"));
 //		this.btnReturn.setContentAreaFilled(false);
 //		this.btnReturn.setBounds(520, 95, 150, 60);
 //		this.btnReturn.setBorderPainted(false);

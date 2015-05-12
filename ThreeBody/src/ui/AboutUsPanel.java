@@ -21,13 +21,13 @@ public class AboutUsPanel extends JPanel{
   
   private JButton btnNextPage;
   private JLabel  picture;
-  private MainControl mc;
+  private MainControl mainControl;
   private int pNum=2;
   String[] pictureList=new String[pNum+1];
   private int i=0;
 	  
 
-  public AboutUsPanel(MainControl mc){
+  public AboutUsPanel(MainControl mainControl){
 	  
 	  //store the turns of pictureInfo  
 	  
@@ -36,7 +36,7 @@ public class AboutUsPanel extends JPanel{
 	  
 	  this.setLayout(null);
 	  this.initComonent();
-	  this.mc = mc;
+	  this.mainControl = mainControl;
 	  
   }
   
@@ -70,7 +70,7 @@ public class AboutUsPanel extends JPanel{
 			  this.btnNextPage.setIcon(new ImageIcon("images/返回.png"));
 		  }
 	  }else{
-		  mc.toStartMenu();
+		  mainControl.toStartMenu();
 		  
 	  }
 }

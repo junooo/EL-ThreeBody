@@ -80,7 +80,7 @@ public class LogupPanel extends JPanel {
 		
 		passwordConfirmLabel = new JLabel();
 		passwordConfirmLabel.setBounds(20,120,80,30);
-		passwordConfirmLabel.setIcon(new ImageIcon("logpasswordconfirm.png"));
+		passwordConfirmLabel.setIcon(new ImageIcon("images/logpasswordconfirm.png"));
 		this.add(passwordConfirmLabel);
 		
 		codeLabel = new JLabel();
