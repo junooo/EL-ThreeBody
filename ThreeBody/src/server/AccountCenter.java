@@ -70,10 +70,6 @@ public class AccountCenter extends UnicastRemoteObject implements
 			accounts.put("Red", new Account("Red"));
 			passwords.put("Red", "r1234");
 			
-			// 检查链接是否正常的线程
-//			ConnectionSupervision supervisor = new ConnectionSupervision();
-//			supervisor.start();
-			
 			Naming.rebind("AccountCenter", (RMIAccountCenter)this);
 		} catch (RemoteException | MalformedURLException e) {
 			e.printStackTrace();
@@ -279,20 +275,6 @@ public class AccountCenter extends UnicastRemoteObject implements
 	public void saveAccount(Account account) {
 		accounts.put(account.getId(), account);
 		
-	}
-	
-	private class ConnectionSupervision extends Thread{
-		@Override
-		public void run() {
-			while(true){
-				System.out.println("Thread alive " + actives.size());
-				try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-		}
 	}
 	
 	private class AccountData{

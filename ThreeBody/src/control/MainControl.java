@@ -26,7 +26,7 @@ public class MainControl {
 	
 	public AccountControl ac;
 	
-	private boolean connected;
+	private boolean connected = false;
 	
 	public static void main(String[] args) {
 
