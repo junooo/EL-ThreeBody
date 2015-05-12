@@ -1,5 +1,6 @@
 package ui.lobby;
 
+import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
@@ -38,8 +39,11 @@ public class LobbyPanel extends JPanel implements MouseWheelListener{
 		createRoom();
 		this.initComonent();
 		this.addMouseWheelListener(this);
+		
 	}
 	
+	
+
 	private void createRoom() {
 		for (int i = 0; i < numOfRoom; i++) {
 			addRoom(i);
@@ -70,8 +74,9 @@ public class LobbyPanel extends JPanel implements MouseWheelListener{
 		roomFamily.add(room);
 	}
 
-
-
+	private void refresh() {
+		mc.toLobby();
+	}
 	public void initComonent(){
 	 //lobby room 3*2
 	    
@@ -79,7 +84,6 @@ public class LobbyPanel extends JPanel implements MouseWheelListener{
 	    this.createRoom.setIcon(new ImageIcon("newroom.png"));
 	    this.createRoom.setContentAreaFilled(false);
 	  	this.createRoom.setBounds(650,500,100,50);
-//	  	this.createRoom.setVisible(true);  
 	  	this.createRoom.addMouseListener(new CreateRoomListener());
 	    this.add(createRoom);
 	    
@@ -88,7 +92,6 @@ public class LobbyPanel extends JPanel implements MouseWheelListener{
 	    this.lobbyReturn.setIcon(new ImageIcon("roomreturn.png"));
 	    this.lobbyReturn.setContentAreaFilled(false);
 	  	this.lobbyReturn.setBounds(850,500,100,50);
-//	  	this.lobbyReturn.setVisible(true);  
 	  	this.lobbyReturn.addMouseListener(new ReturnListener());
 	    this.add(lobbyReturn);
 	}
@@ -105,7 +108,8 @@ public class LobbyPanel extends JPanel implements MouseWheelListener{
 	public void paintComponent(Graphics g) {
 		  Image background=new ImageIcon("模糊背景.jpg").getImage();
 		  g.drawImage(background,0,0,null);
-		}	
+		 
+	}
 	
 	class EnterListener implements MouseListener{
 		int roomId;
@@ -137,12 +141,12 @@ class CreateRoomListener implements MouseListener{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-//			JFrame createRoomFrame = new CreateRoomFrame();
-//			JPanel createRoomPanel = new CreateRoomPanel(createRoomFrame,lobbyControl);
-//			createRoomFrame.setContentPane(createRoomPanel);
+			JFrame createRoomFrame = new CreateRoomFrame();
+			JPanel createRoomPanel = new CreateRoomPanel(createRoomFrame,lobbyControl);
+			createRoomFrame.setContentPane(createRoomPanel);
 			addRoom(roomFamily.size());
 			add(roomFamily.get(roomFamily.size()-1));
-			repaint();
+			refresh();
 		}
 
 		@Override
@@ -169,8 +173,7 @@ class ReturnListener implements MouseListener{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		mc.toSelect();
-		
+		mc.toStartMenu();
 	}
 
 	@Override
