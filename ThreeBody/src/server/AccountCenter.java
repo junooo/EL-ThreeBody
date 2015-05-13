@@ -100,6 +100,7 @@ public class AccountCenter extends UnicastRemoteObject implements
 		if(actives.containsKey(id)){
 			this.informLogout(id);
 			transientIDs.remove(id);
+			database.updateTransientID(id, null);
 			return R.info.SUCCESS;
 		}else{
 			return R.info.NOT_EXISTED;
@@ -118,7 +119,9 @@ public class AccountCenter extends UnicastRemoteObject implements
 			return R.info.INVALID;
 		}
 		// 生成暂时登陆码
-	    transientIDs.put(id, generateRandomTransientID());
+		String transientID = generateRandomTransientID();
+	    transientIDs.put(id, transientID);
+	    database.updateTransientID(id, transientID);
 	    // 分发远程对象
 		this.dispatchAccountServer(account);
 		return R.info.SUCCESS;
@@ -134,12 +137,15 @@ public class AccountCenter extends UnicastRemoteObject implements
 		}
 		// 移除已经使用的邀请码
 		invitationIDs.remove(invitationID);
+		database.deleteInvitationID(invitationID);
+		// 生成暂时登陆码
+		String transientID = generateRandomTransientID();
+		transientIDs.put(id,transientID);
 		// 生成账号
 		Account newAccount = new Account(id);
 		accounts.put(id, newAccount);
 		passwords.put(id, password);
-		// 生成暂时登陆码
-		transientIDs.put(id, generateRandomTransientID());
+		database.addAccount(id, password, transientID);
 		// 分发远程对象
 		this.dispatchAccountServer(newAccount);
 		return R.info.SUCCESS;
@@ -171,32 +177,20 @@ public class AccountCenter extends UnicastRemoteObject implements
 		StringBuffer sb;
 
 		switch (parts[0]) {
-		case "init":
-			accounts.put("Red", new Account("Red"));
-			accounts.put("Green", new Account("Green"));
-			accounts.put("Blue", new Account("Blue"));
-			accounts.put("Yellow", new Account("Yellow"));
-			passwords.put("Red", "r1234");
-			passwords.put("Green", "g1234");
-			passwords.put("Blue", "b1234");
-			passwords.put("Yellow", "y1234");
-			invitationIDs.add("fffff1");
-			invitationIDs.add("fffff2");
-			invitationIDs.add("fffff3");
-			invitationIDs.add("fffff4");
-			return R.info.SUCCESS.name();
-		case "clear":
-			accounts.clear();
-			passwords.clear();
-			invitationIDs.clear();
-			return R.info.SUCCESS.name();
 		case "add_account":
 			Account acc = new Account(parts[1]);
 			accounts.put(parts[1], acc);
 			passwords.put(parts[1], parts[2]);
+			String transientID = generateRandomTransientID();
+			transientIDs.put(parts[1],transientID);
 			return "success";
 		case "add_invitationID":
+			int beforeSize = invitationIDs.size();
 			invitationIDs.add(parts[1]);
+			int afterSize = invitationIDs.size();
+			if(afterSize > beforeSize){
+				database.addInvitationID(parts[1]);
+			}
 			return "now size:"+invitationIDs.size();
 		case "check_connections":
 			sb = new StringBuffer();
@@ -277,7 +271,6 @@ public class AccountCenter extends UnicastRemoteObject implements
 	// TODO 保存Account
 	public void saveAccount(Account account) {
 		accounts.put(account.getId(), account);
-		
 	}
 	
 }
