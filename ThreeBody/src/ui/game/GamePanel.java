@@ -26,15 +26,15 @@ public class GamePanel  extends JPanel{
 	
 	private JButton btnReturn;
 	
-	private JButton btnCard1;
-	private JButton btnCard2;
-	private JButton btnCard3;
-	private JButton btnCard4;
-	private JButton btnCard5;
-	private JButton btnCard6;
-	private JButton btnCard7;
-	private JButton btnCard8;
-	private JButton btnCard9;
+	private JButton btnCardSophon;
+	private JButton btnCardSillySophon;
+	private JButton btnCardWholeBlock;
+	private JButton btnCardPatialBlock;
+	private JButton btnCardNoBroadcasting;
+	private JButton btnCardTechPotion;
+	private JButton btnCardResourcePotion;
+	private JButton btnCardResourceGambling;
+	private JButton btnPriviledgeGetRole;
 	
 	private JButton btnBroadcast;
 	private JButton btnHistory;
@@ -136,81 +136,81 @@ public class GamePanel  extends JPanel{
 		this.add(btnTurnEnd);
 		
 		
-		this.btnCard1 = new JButton("智子");
-		this.btnCard1.setContentAreaFilled(false);
-		this.btnCard1.setBounds(1070, 30, 150, 30);
-		btnCard1.setFont(new Font("黑体", Font.BOLD, 15));
-		btnCard1.setForeground(Color.YELLOW);
+		this.btnCardSophon = new JButton("智子");
+		this.btnCardSophon.setContentAreaFilled(false);
+		this.btnCardSophon.setBounds(1070, 30, 150, 30);
+		btnCardSophon.setFont(new Font("黑体", Font.BOLD, 15));
+		btnCardSophon.setForeground(Color.YELLOW);
 		// this.btnMultyPlay.setBorderPainted(false);
-		btnCard1.addMouseListener(new CardListener1());
-		this.add(btnCard1);
+		btnCardSophon.addMouseListener(new CardSophonListener());
+		this.add(btnCardSophon);
 		
 		
-		this.btnCard2 = new JButton("人造智子");
-		this.btnCard2.setContentAreaFilled(false);
-		this.btnCard2.setBounds(1070, 60, 150, 30);
-		btnCard2.setForeground(Color.YELLOW);
+		this.btnCardSillySophon = new JButton("人造智子");
+		this.btnCardSillySophon.setContentAreaFilled(false);
+		this.btnCardSillySophon.setBounds(1070, 60, 150, 30);
+		btnCardSillySophon.setForeground(Color.YELLOW);
 		// this.btnMultyPlay.setBorderPainted(false);
-		btnCard2.addMouseListener(new CardListener2());
-		this.add(btnCard2);
+		btnCardSillySophon.addMouseListener(new CardSillySophonListener());
+		this.add(btnCardSillySophon);
 		
-		this.btnCard3 = new JButton("全局黑域");
-		this.btnCard3.setContentAreaFilled(false);
-		this.btnCard3.setBounds(1070, 90, 150, 30);
-		btnCard3.setForeground(Color.YELLOW);
+		this.btnCardWholeBlock = new JButton("全局黑域");
+		this.btnCardWholeBlock.setContentAreaFilled(false);
+		this.btnCardWholeBlock.setBounds(1070, 90, 150, 30);
+		btnCardWholeBlock.setForeground(Color.YELLOW);
 		// this.btnMultyPlay.setBorderPainted(false);
-		btnCard3.addMouseListener(new CardListener3());
-		this.add(btnCard3);
+		btnCardWholeBlock.addMouseListener(new CardWholeBlockListener());
+		this.add(btnCardWholeBlock);
 		
-		this.btnCard4 = new JButton("局部黑域");
-		this.btnCard4.setContentAreaFilled(false);
-		this.btnCard4.setBounds(1070, 120, 150, 30);
-		btnCard4.setForeground(Color.YELLOW);
+		this.btnCardPatialBlock = new JButton("局部黑域");
+		this.btnCardPatialBlock.setContentAreaFilled(false);
+		this.btnCardPatialBlock.setBounds(1070, 120, 150, 30);
+		btnCardPatialBlock.setForeground(Color.YELLOW);
 		// this.btnMultyPlay.setBorderPainted(false);
-		btnCard4.addMouseListener(new CardListener4());
-		this.add(btnCard4);
+		btnCardPatialBlock.addMouseListener(new CardPatialBlockListener());
+		this.add(btnCardPatialBlock);
 		
-		this.btnCard5 = new JButton("��������");
-		this.btnCard5.setContentAreaFilled(false);
-		this.btnCard5.setBounds(1070, 150, 150, 30);
-		btnCard5.setForeground(Color.YELLOW);
+		this.btnCardNoBroadcasting = new JButton("电波干扰");
+		this.btnCardNoBroadcasting.setContentAreaFilled(false);
+		this.btnCardNoBroadcasting.setBounds(1070, 150, 150, 30);
+		btnCardNoBroadcasting.setForeground(Color.YELLOW);
 		// this.btnMultyPlay.setBorderPainted(false);
-		btnCard5.addMouseListener(new CardListener5());
-		this.add(btnCard5);
+		btnCardNoBroadcasting.addMouseListener(new CardNoBroadcastingListener());
+		this.add(btnCardNoBroadcasting);
 		
-		this.btnCard6 = new JButton("��������");
-		this.btnCard6.setContentAreaFilled(false);
-		this.btnCard6.setBounds(1070, 180, 150, 30);
-		btnCard6.setForeground(Color.YELLOW);
+		this.btnCardTechPotion = new JButton("科技革命");
+		this.btnCardTechPotion.setContentAreaFilled(false);
+		this.btnCardTechPotion.setBounds(1070, 180, 150, 30);
+		btnCardTechPotion.setForeground(Color.YELLOW);
 		// this.btnMultyPlay.setBorderPainted(false);
-		btnCard6.addMouseListener(new CardListener6());
-		this.add(btnCard6);
+		btnCardTechPotion.addMouseListener(new CardTechPotionListener());
+		this.add(btnCardTechPotion);
 		
 		
-		this.btnCard7 = new JButton("��������");
-		this.btnCard7.setContentAreaFilled(false);
-		this.btnCard7.setBounds(1070, 210, 150, 30);
-		btnCard7.setForeground(Color.YELLOW);
+		this.btnCardResourcePotion = new JButton("资源爆发");
+		this.btnCardResourcePotion.setContentAreaFilled(false);
+		this.btnCardResourcePotion.setBounds(1070, 210, 150, 30);
+		btnCardResourcePotion.setForeground(Color.YELLOW);
 		// this.btnMultyPlay.setBorderPainted(false);
-		btnCard7.addMouseListener(new CardListener7());
-		this.add(btnCard7);
+		btnCardResourcePotion.addMouseListener(new CardResourcePotionListener());
+		this.add(btnCardResourcePotion);
 		
 		
-		this.btnCard8 = new JButton("��������");
-		this.btnCard8.setContentAreaFilled(false);
-		this.btnCard8.setBounds(1070, 240, 150, 30);
-		btnCard8.setForeground(Color.YELLOW);
+		this.btnCardResourceGambling = new JButton("资源赌博");
+		this.btnCardResourceGambling.setContentAreaFilled(false);
+		this.btnCardResourceGambling.setBounds(1070, 240, 150, 30);
+		btnCardResourceGambling.setForeground(Color.YELLOW);
 		// this.btnMultyPlay.setBorderPainted(false);
-		btnCard8.addMouseListener(new CardListener8());
-		this.add(btnCard8);
+		btnCardResourceGambling.addMouseListener(new CardResourceGamblingListener());
+		this.add(btnCardResourceGambling);
 		
-		this.btnCard9 = new JButton("特权");
-		this.btnCard9.setContentAreaFilled(false);
-		this.btnCard9.setBounds(1070, 270, 150, 30);
-		btnCard9.setForeground(Color.YELLOW);
+		this.btnPriviledgeGetRole = new JButton("特权");
+		this.btnPriviledgeGetRole.setContentAreaFilled(false);
+		this.btnPriviledgeGetRole.setBounds(1070, 270, 150, 30);
+		btnPriviledgeGetRole.setForeground(Color.YELLOW);
 		// this.btnMultyPlay.setBorderPainted(false);
-		btnCard9.addMouseListener(new CardListener9());
-		this.add(btnCard9);
+		btnPriviledgeGetRole.addMouseListener(new PriviledgeGetRoleListener());
+		this.add(btnPriviledgeGetRole);
 		
 		resourceString = new JLabel(new ImageIcon("images/resource.png"));
 		resourceString.setBounds(110,480,60,30);
@@ -263,9 +263,9 @@ public class GamePanel  extends JPanel{
 		}
 	}
 	
-	class CardListener1 implements MouseListener {
-		int x = btnCard1.getX();
-		int y = btnCard1.getY();
+	class CardSophonListener implements MouseListener {
+		int x = btnCardSophon.getX();
+		int y = btnCardSophon.getY();
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			initSophon();
@@ -278,28 +278,28 @@ public class GamePanel  extends JPanel{
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
-			btnCard1.setLocation(x-40, y);
-			btnCard2.setLocation(x-10, y+30);
+			btnCardSophon.setLocation(x-40, y);
+			btnCardSillySophon.setLocation(x-10, y+30);
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			btnCard1.setLocation(x-40, y);
-			btnCard2.setLocation(x-10, y+30);
+			btnCardSophon.setLocation(x-40, y);
+			btnCardSillySophon.setLocation(x-10, y+30);
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {
-			btnCard1.setLocation(x-40, y);
-			btnCard2.setLocation(x-10, y+30);
+			btnCardSophon.setLocation(x-40, y);
+			btnCardSillySophon.setLocation(x-10, y+30);
 		}
 		@Override
 		public void mouseExited(MouseEvent e) {
-			btnCard1.setLocation(x, y);
-			btnCard2.setLocation(x, y+30);
+			btnCardSophon.setLocation(x, y);
+			btnCardSillySophon.setLocation(x, y+30);
 		}
 	}
-	class CardListener2 implements MouseListener {
-		int x = btnCard2.getX();
-		int y = btnCard2.getY();
+	class CardSillySophonListener implements MouseListener {
+		int x = btnCardSillySophon.getX();
+		int y = btnCardSillySophon.getY();
 
 
 		@Override
@@ -315,32 +315,32 @@ public class GamePanel  extends JPanel{
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
-			btnCard1.setLocation(x-10, y-30);
-			btnCard2.setLocation(x-40, y);
-			btnCard3.setLocation(x-10, y+30);
+			btnCardSophon.setLocation(x-10, y-30);
+			btnCardSillySophon.setLocation(x-40, y);
+			btnCardWholeBlock.setLocation(x-10, y+30);
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			btnCard1.setLocation(x-10, y-30);
-			btnCard2.setLocation(x-40, y);
-			btnCard3.setLocation(x-10, y+30);
+			btnCardSophon.setLocation(x-10, y-30);
+			btnCardSillySophon.setLocation(x-40, y);
+			btnCardWholeBlock.setLocation(x-10, y+30);
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {
-			btnCard1.setLocation(x-10, y-30);
-			btnCard2.setLocation(x-40, y);
-			btnCard3.setLocation(x-10, y+30);
+			btnCardSophon.setLocation(x-10, y-30);
+			btnCardSillySophon.setLocation(x-40, y);
+			btnCardWholeBlock.setLocation(x-10, y+30);
 		}
 		@Override
 		public void mouseExited(MouseEvent e) {
-			btnCard1.setLocation(x, y-30);
-			btnCard2.setLocation(x, y);
-			btnCard3.setLocation(x, y+30);
+			btnCardSophon.setLocation(x, y-30);
+			btnCardSillySophon.setLocation(x, y);
+			btnCardWholeBlock.setLocation(x, y+30);
 		}
 	}
-	class CardListener3 implements MouseListener {
-		int x = btnCard3.getX();
-		int y = btnCard3.getY();
+	class CardWholeBlockListener implements MouseListener {
+		int x = btnCardWholeBlock.getX();
+		int y = btnCardWholeBlock.getY();
 
 
 		@Override
@@ -350,32 +350,32 @@ public class GamePanel  extends JPanel{
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
-			btnCard2.setLocation(x-10, y-30);
-			btnCard3.setLocation(x-40, y);
-			btnCard4.setLocation(x-10, y+30);
+			btnCardSillySophon.setLocation(x-10, y-30);
+			btnCardWholeBlock.setLocation(x-40, y);
+			btnCardPatialBlock.setLocation(x-10, y+30);
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			btnCard2.setLocation(x-10, y-30);
-			btnCard3.setLocation(x-40, y);
-			btnCard4.setLocation(x-10, y+30);
+			btnCardSillySophon.setLocation(x-10, y-30);
+			btnCardWholeBlock.setLocation(x-40, y);
+			btnCardPatialBlock.setLocation(x-10, y+30);
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {
-			btnCard2.setLocation(x-10, y-30);
-			btnCard3.setLocation(x-40, y);
-			btnCard4.setLocation(x-10, y+30);
+			btnCardSillySophon.setLocation(x-10, y-30);
+			btnCardWholeBlock.setLocation(x-40, y);
+			btnCardPatialBlock.setLocation(x-10, y+30);
 		}
 		@Override
 		public void mouseExited(MouseEvent e) {
-			btnCard2.setLocation(x, y-30);
-			btnCard3.setLocation(x, y);
-			btnCard4.setLocation(x, y+30);
+			btnCardSillySophon.setLocation(x, y-30);
+			btnCardWholeBlock.setLocation(x, y);
+			btnCardPatialBlock.setLocation(x, y+30);
 		}
 	}
-	class CardListener4 implements MouseListener {
-		int x = btnCard4.getX();
-		int y = btnCard4.getY();
+	class CardPatialBlockListener implements MouseListener {
+		int x = btnCardPatialBlock.getX();
+		int y = btnCardPatialBlock.getY();
 
 
 		@Override
@@ -391,32 +391,32 @@ public class GamePanel  extends JPanel{
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
-			btnCard3.setLocation(x-10, y-30);
-			btnCard4.setLocation(x-40, y);
-			btnCard5.setLocation(x-10, y+30);
+			btnCardWholeBlock.setLocation(x-10, y-30);
+			btnCardPatialBlock.setLocation(x-40, y);
+			btnCardNoBroadcasting.setLocation(x-10, y+30);
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			btnCard3.setLocation(x-10, y-30);
-			btnCard4.setLocation(x-40, y);
-			btnCard5.setLocation(x-10, y+30);
+			btnCardWholeBlock.setLocation(x-10, y-30);
+			btnCardPatialBlock.setLocation(x-40, y);
+			btnCardNoBroadcasting.setLocation(x-10, y+30);
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {
-			btnCard3.setLocation(x-10, y-30);
-			btnCard4.setLocation(x-40, y);
-			btnCard5.setLocation(x-10, y+30);
+			btnCardWholeBlock.setLocation(x-10, y-30);
+			btnCardPatialBlock.setLocation(x-40, y);
+			btnCardNoBroadcasting.setLocation(x-10, y+30);
 		}
 		@Override
 		public void mouseExited(MouseEvent e) {
-			btnCard3.setLocation(x, y-30);
-			btnCard4.setLocation(x, y);
-			btnCard5.setLocation(x, y+30);
+			btnCardWholeBlock.setLocation(x, y-30);
+			btnCardPatialBlock.setLocation(x, y);
+			btnCardNoBroadcasting.setLocation(x, y+30);
 		}
 	}
-	class CardListener5 implements MouseListener {
-		int x = btnCard5.getX();
-		int y = btnCard5.getY();
+	class CardNoBroadcastingListener implements MouseListener {
+		int x = btnCardNoBroadcasting.getX();
+		int y = btnCardNoBroadcasting.getY();
 
 
 		@Override
@@ -426,32 +426,32 @@ public class GamePanel  extends JPanel{
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
-			btnCard4.setLocation(x-10, y-30);
-			btnCard5.setLocation(x-40, y);
-			btnCard6.setLocation(x-10, y+30);
+			btnCardPatialBlock.setLocation(x-10, y-30);
+			btnCardNoBroadcasting.setLocation(x-40, y);
+			btnCardTechPotion.setLocation(x-10, y+30);
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			btnCard4.setLocation(x-10, y-30);
-			btnCard5.setLocation(x-40, y);
-			btnCard6.setLocation(x-10, y+30);
+			btnCardPatialBlock.setLocation(x-10, y-30);
+			btnCardNoBroadcasting.setLocation(x-40, y);
+			btnCardTechPotion.setLocation(x-10, y+30);
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {
-			btnCard4.setLocation(x-10, y-30);
-			btnCard5.setLocation(x-40, y);
-			btnCard6.setLocation(x-10, y+30);
+			btnCardPatialBlock.setLocation(x-10, y-30);
+			btnCardNoBroadcasting.setLocation(x-40, y);
+			btnCardTechPotion.setLocation(x-10, y+30);
 		}
 		@Override
 		public void mouseExited(MouseEvent e) {
-			btnCard4.setLocation(x, y-30);
-			btnCard5.setLocation(x, y);
-			btnCard6.setLocation(x, y+30);
+			btnCardPatialBlock.setLocation(x, y-30);
+			btnCardNoBroadcasting.setLocation(x, y);
+			btnCardTechPotion.setLocation(x, y+30);
 		}
 	}
-	class CardListener6 implements MouseListener {
-		int x = btnCard6.getX();
-		int y = btnCard6.getY();
+	class CardTechPotionListener implements MouseListener {
+		int x = btnCardTechPotion.getX();
+		int y = btnCardTechPotion.getY();
 
 
 		@Override
@@ -461,32 +461,32 @@ public class GamePanel  extends JPanel{
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
-			btnCard5.setLocation(x-10, y-30);
-			btnCard6.setLocation(x-40, y);
-			btnCard7.setLocation(x-10, y+30);
+			btnCardNoBroadcasting.setLocation(x-10, y-30);
+			btnCardTechPotion.setLocation(x-40, y);
+			btnCardResourcePotion.setLocation(x-10, y+30);
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			btnCard5.setLocation(x-10, y-30);
-			btnCard6.setLocation(x-40, y);
-			btnCard7.setLocation(x-10, y+30);
+			btnCardNoBroadcasting.setLocation(x-10, y-30);
+			btnCardTechPotion.setLocation(x-40, y);
+			btnCardResourcePotion.setLocation(x-10, y+30);
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {
-			btnCard5.setLocation(x-10, y-30);
-			btnCard6.setLocation(x-40, y);
-			btnCard7.setLocation(x-10, y+30);
+			btnCardNoBroadcasting.setLocation(x-10, y-30);
+			btnCardTechPotion.setLocation(x-40, y);
+			btnCardResourcePotion.setLocation(x-10, y+30);
 		}
 		@Override
 		public void mouseExited(MouseEvent e) {
-			btnCard5.setLocation(x, y-30);
-			btnCard6.setLocation(x, y);
-			btnCard7.setLocation(x, y+30);
+			btnCardNoBroadcasting.setLocation(x, y-30);
+			btnCardTechPotion.setLocation(x, y);
+			btnCardResourcePotion.setLocation(x, y+30);
 		}
 	}
-	class CardListener7 implements MouseListener {
-		int x = btnCard7.getX();
-		int y = btnCard7.getY();
+	class CardResourcePotionListener implements MouseListener {
+		int x = btnCardResourcePotion.getX();
+		int y = btnCardResourcePotion.getY();
 
 
 		@Override
@@ -496,32 +496,32 @@ public class GamePanel  extends JPanel{
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
-			btnCard6.setLocation(x-10, y-30);
-			btnCard7.setLocation(x-40, y);
-			btnCard8.setLocation(x-10, y+30);
+			btnCardTechPotion.setLocation(x-10, y-30);
+			btnCardResourcePotion.setLocation(x-40, y);
+			btnCardResourceGambling.setLocation(x-10, y+30);
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			btnCard6.setLocation(x-10, y-30);
-			btnCard7.setLocation(x-40, y);
-			btnCard8.setLocation(x-10, y+30);
+			btnCardTechPotion.setLocation(x-10, y-30);
+			btnCardResourcePotion.setLocation(x-40, y);
+			btnCardResourceGambling.setLocation(x-10, y+30);
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {
-			btnCard6.setLocation(x-10, y-30);
-			btnCard7.setLocation(x-40, y);
-			btnCard8.setLocation(x-10, y+30);
+			btnCardTechPotion.setLocation(x-10, y-30);
+			btnCardResourcePotion.setLocation(x-40, y);
+			btnCardResourceGambling.setLocation(x-10, y+30);
 		}
 		@Override
 		public void mouseExited(MouseEvent e) {
-			btnCard6.setLocation(x, y-30);
-			btnCard7.setLocation(x, y);
-			btnCard8.setLocation(x, y+30);
+			btnCardTechPotion.setLocation(x, y-30);
+			btnCardResourcePotion.setLocation(x, y);
+			btnCardResourceGambling.setLocation(x, y+30);
 		}
 	}
-	class CardListener8 implements MouseListener {
-		int x = btnCard8.getX();
-		int y = btnCard8.getY();
+	class CardResourceGamblingListener implements MouseListener {
+		int x = btnCardResourceGambling.getX();
+		int y = btnCardResourceGambling.getY();
 
 
 		@Override
@@ -531,32 +531,32 @@ public class GamePanel  extends JPanel{
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
-			btnCard7.setLocation(x-10, y-30);
-			btnCard8.setLocation(x-40, y);
-			btnCard9.setLocation(x-10, y+30);
+			btnCardResourcePotion.setLocation(x-10, y-30);
+			btnCardResourceGambling.setLocation(x-40, y);
+			btnPriviledgeGetRole.setLocation(x-10, y+30);
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			btnCard7.setLocation(x-10, y-30);
-			btnCard8.setLocation(x-40, y);
-			btnCard9.setLocation(x-10, y+30);
+			btnCardResourcePotion.setLocation(x-10, y-30);
+			btnCardResourceGambling.setLocation(x-40, y);
+			btnPriviledgeGetRole.setLocation(x-10, y+30);
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {
-			btnCard7.setLocation(x-10, y-30);
-			btnCard8.setLocation(x-40, y);
-			btnCard9.setLocation(x-10, y+30);
+			btnCardResourcePotion.setLocation(x-10, y-30);
+			btnCardResourceGambling.setLocation(x-40, y);
+			btnPriviledgeGetRole.setLocation(x-10, y+30);
 		}
 		@Override
 		public void mouseExited(MouseEvent e) {
-			btnCard7.setLocation(x, y-30);
-			btnCard8.setLocation(x, y);
-			btnCard9.setLocation(x, y+30);
+			btnCardResourcePotion.setLocation(x, y-30);
+			btnCardResourceGambling.setLocation(x, y);
+			btnPriviledgeGetRole.setLocation(x, y+30);
 		}
 	}
-	class CardListener9 implements MouseListener {
-		int x = btnCard9.getX();
-		int y = btnCard9.getY();
+	class PriviledgeGetRoleListener implements MouseListener {
+		int x = btnPriviledgeGetRole.getX();
+		int y = btnPriviledgeGetRole.getY();
 
 
 		@Override
@@ -565,23 +565,23 @@ public class GamePanel  extends JPanel{
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
-			btnCard8.setLocation(x-10, y-30);
-			btnCard9.setLocation(x-40, y);
+			btnCardResourceGambling.setLocation(x-10, y-30);
+			btnPriviledgeGetRole.setLocation(x-40, y);
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			btnCard8.setLocation(x-10, y-30);
-			btnCard9.setLocation(x-40, y);
+			btnCardResourceGambling.setLocation(x-10, y-30);
+			btnPriviledgeGetRole.setLocation(x-40, y);
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {
-			btnCard8.setLocation(x-10, y-30);
-			btnCard9.setLocation(x-40, y);
+			btnCardResourceGambling.setLocation(x-10, y-30);
+			btnPriviledgeGetRole.setLocation(x-40, y);
 		}
 		@Override
 		public void mouseExited(MouseEvent e) {
-			btnCard8.setLocation(x, y-30);
-			btnCard9.setLocation(x, y);
+			btnCardResourceGambling.setLocation(x, y-30);
+			btnPriviledgeGetRole.setLocation(x, y);
 		}
 	}
 	
@@ -630,7 +630,6 @@ public class GamePanel  extends JPanel{
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
-			
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
@@ -643,11 +642,7 @@ public class GamePanel  extends JPanel{
 		public void mouseExited(MouseEvent e) {
 		}
 	}
-	
-	
 	class MessageListener implements MouseListener {
-		
-
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			panelMessage.setVisible(true);
@@ -658,7 +653,6 @@ public class GamePanel  extends JPanel{
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
-			
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
@@ -668,11 +662,8 @@ public class GamePanel  extends JPanel{
 		}
 		@Override
 		public void mouseExited(MouseEvent e) {
-			
 		}
 	}
-	
-	
 
 	 /*
      * ����ұ�ըʱ�����ؼ�
