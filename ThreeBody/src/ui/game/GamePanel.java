@@ -528,8 +528,9 @@ public class GamePanel  extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-//TODO
-			
+			JFrame iframe = new InformFrame("资源赌博", 300, 200);
+			JPanel gamblePanel = new GamblePanel(iframe,"输入要赌博的资源");
+			iframe.add(gamblePanel);
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
