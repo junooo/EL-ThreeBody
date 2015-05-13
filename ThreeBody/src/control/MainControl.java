@@ -7,6 +7,7 @@ import ui.AboutUsPanel;
 import ui.AccountPanel;
 import ui.AnimatePanel;
 import ui.MainFrame;
+import ui.PreferencePanel;
 import ui.StartMenuPanel;
 import ui.game.GamePanel;
 import ui.lobby.LobbyPanel;
@@ -24,6 +25,7 @@ public class MainControl {
 	private JPanel aboutUs = null;
 	private JPanel lobbyPanel = null;
 	private JPanel account=null;
+	private JPanel preference=null;
 	private AnimatePanel animate=null;
 	public AccountControl ac;
 	
@@ -79,7 +81,14 @@ public class MainControl {
 	}
 
 	public void toPreference() {
-
+		currentPanel.setVisible(false);
+		if (this.preference == null) {
+			this.preference = new PreferencePanel(this);
+		}
+		currentPanel = this.preference;
+		frame.setContentPane(currentPanel);
+		currentPanel.setVisible(true);
+		frame.validate();
 	}
 
 	public void toTutorial() {

@@ -34,8 +34,8 @@ public class LobbyPanel extends JPanel implements MouseWheelListener {
 
 		this.setLayout(null);
 		this.mc = mc;
-		roomList = lobbyControl.getRooms();
-		numOfRoom = roomList.size();
+//		roomList = lobbyControl.getRooms();
+//		numOfRoom = roomList.size();
 		numOfRoom = 1;
 		createRoom();
 		this.initComonent();
