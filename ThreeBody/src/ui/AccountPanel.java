@@ -42,72 +42,90 @@ public class AccountPanel extends JPanel{
 	}
 	private void init() {
 		psId = new JLabel();
-		psId.setBounds(30,110,60,30);
-		psId.setIcon(new ImageIcon("images/logpassword.png"));
+		psId.setBounds(400,140,120,60);
+		psId.setIcon(new ImageIcon("images/accountId.png"));
 		this.add(psId);
 		
 		labelId = new JLabel();
-		labelId.setBounds(30,110,60,30);
-		labelId.setIcon(new ImageIcon("images/logpassword.png"));
+		labelId.setBounds(440,200,160,60);
+		labelId.setFont(new Font("宋体",Font.PLAIN,60));
+		labelId.setForeground(Color.YELLOW);
+		labelId.setText(account.getId());
 		this.add(labelId);
 		
 		labelHead = new JLabel();
-		labelHead.setBounds(30,110,60,30);
-//		ImageIcon headImage = new ImageIcon(account.getHead());
-//		labelHead.setIcon(headImage);
+		labelHead.setBounds(600,120,150,150);
+		if(account.getHead()!=null){
+			ImageIcon headImage = new ImageIcon(account.getHead());
+			labelHead.setIcon(headImage);
+		}else{
+			//TODO 设置默认头像
+			ImageIcon headImage = new ImageIcon("images/headtest.jpg");
+			labelHead.setIcon(headImage);
+		}
 		this.add(labelHead);
 		
 		psPoint = new JLabel();
-		psPoint.setBounds(30,110,60,30);
-		psPoint.setIcon(new ImageIcon("images/logpassword.png"));
+		psPoint.setBounds(400,300,60,30);
+		psPoint.setIcon(new ImageIcon("images/accountpoint.png"));
 		this.add(psPoint);
 		
 		labelPoint = new JLabel();
-		labelPoint.setBounds(30,110,60,30);
-		labelPoint.setIcon(new ImageIcon("images/logpassword.png"));
+		labelPoint.setBounds(690,300,60,30);
+		labelPoint.setFont(new Font("宋体",Font.PLAIN,30));
+		labelPoint.setForeground(Color.YELLOW);
+		labelPoint.setText(account.getPoint()+"");
 		this.add(labelPoint);
 		
 		psRank = new JLabel();
-		psRank.setBounds(30,110,60,30);
-		psRank.setIcon(new ImageIcon("images/logpassword.png"));
+		psRank.setBounds(400,350,60,30);
+		psRank.setIcon(new ImageIcon("images/accountlevel.png"));
 		this.add(psRank);
 		
 		labelRank = new JLabel();
-		labelRank.setBounds(30,110,60,30);
-		labelRank.setIcon(new ImageIcon("images/logpassword.png"));
+		labelRank.setBounds(690,350,60,30);
+		labelRank.setFont(new Font("宋体",Font.PLAIN,30));
+		labelRank.setForeground(Color.YELLOW);
+		labelRank.setText(account.getRank()+"");
 		this.add(labelRank);;
 		
 		psTotalGames = new JLabel();
-		psTotalGames.setBounds(30,110,60,30);
-		psTotalGames.setIcon(new ImageIcon("images/logpassword.png"));
+		psTotalGames.setBounds(400,400,80,30);
+		psTotalGames.setIcon(new ImageIcon("images/accounttotalgames.png"));
 		this.add(psTotalGames);
 		
 		labelTotalGames = new JLabel();
-		labelTotalGames.setBounds(30,110,60,30);
-		labelTotalGames.setIcon(new ImageIcon("images/logpassword.png"));
+		labelTotalGames.setBounds(690,400,60,30);
+		labelTotalGames.setFont(new Font("宋体",Font.PLAIN,30));
+		labelTotalGames.setForeground(Color.YELLOW);
+		labelTotalGames.setText(account.getTotalGames()+"");
 		this.add(labelTotalGames);
 		
 		
 		psWins = new JLabel();
-		psWins.setBounds(30,110,60,30);
-		psWins.setIcon(new ImageIcon("images/logpassword.png"));
+		psWins.setBounds(400,450,80,30);
+		psWins.setIcon(new ImageIcon("images/accountwins.png"));
 		this.add(psWins);
 		
 		labelWins = new JLabel();
-		labelWins.setBounds(30,110,60,30);
-		labelWins.setIcon(new ImageIcon("images/logpassword.png"));
+		labelWins.setBounds(690,450,60,30);
+		labelWins.setFont(new Font("宋体",Font.PLAIN,30));
+		labelWins.setForeground(Color.YELLOW);
+		labelWins.setText(account.getWins()+"");
 		this.add(labelWins);
 		
 		
 		psLosts = new JLabel();
-		psLosts.setBounds(30,110,60,30);
-		psLosts.setIcon(new ImageIcon("images/logpassword.png"));
+		psLosts.setBounds(400,500,80,30);
+		psLosts.setIcon(new ImageIcon("images/accountloses.png"));
 		this.add(psLosts);
 		
 		
 		labelLosts = new JLabel();
-		labelLosts.setBounds(30,110,60,30);
-		labelLosts.setIcon(new ImageIcon("images/logpassword.png"));
+		labelLosts.setBounds(690,500,60,30);
+		labelLosts.setFont(new Font("宋体",Font.PLAIN,30));
+		labelLosts.setForeground(Color.YELLOW);
+		labelLosts.setText(account.getLosts()+"");
 		this.add(labelLosts);
 		
 		this.btnReturn = new JButton("返回");
