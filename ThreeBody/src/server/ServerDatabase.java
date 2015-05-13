@@ -121,7 +121,7 @@ public class ServerDatabase {
 		}
 	}
 	
-	//TODO
+	//TESTED
 	public void updateTransientID(String id,String transientID){
 		String url;
 		if(transientID == null){

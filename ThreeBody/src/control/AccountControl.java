@@ -149,6 +149,18 @@ public class AccountControl {
     }
     
     /*
+     * 更改密码
+     */
+    public R.info editPassword(String password,String newPassword){
+    	try {
+			return rmiac.editPassword(account.getId(), password,newPassword);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+    	return null;
+    }
+    
+    /*
      * 将头像上传到服务器端
      */
     public R.info uploadHead(){

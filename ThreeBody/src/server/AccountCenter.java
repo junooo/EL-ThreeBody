@@ -272,5 +272,16 @@ public class AccountCenter extends UnicastRemoteObject implements
 	public void saveAccount(Account account) {
 		accounts.put(account.getId(), account);
 	}
+
+	@Override
+	public info editPassword(String id,String password, String newPassword) throws RemoteException {
+		if(passwords.get(id).equals(password)){
+			passwords.put(id, newPassword);
+			database.updatePassword(id, newPassword);
+			return R.info.SUCCESS;
+		}else{
+			return R.info.INVALID;
+		}
+	}
 	
 }

@@ -14,7 +14,9 @@ public class ServerControl extends UnicastRemoteObject implements RMIServerContr
 	 * default
 	 */
 	private static final long serialVersionUID = 1L;
-
+	private AccountCenter accountCenter;
+	@SuppressWarnings("unused")
+	private LobbyServer lobbyServer;
 
 	protected ServerControl() throws RemoteException {
 		super();
@@ -25,10 +27,6 @@ public class ServerControl extends UnicastRemoteObject implements RMIServerContr
 			e.printStackTrace();
 		}
 	}
-
-	AccountCenter accountCenter;
-	LobbyServer lobbyServer;
-		
 
 	public static void main(String[] args) {
 		try {
@@ -43,8 +41,11 @@ public class ServerControl extends UnicastRemoteObject implements RMIServerContr
 		switch(command){
 		case "shut down":
 			try {
+				lobbyServer = null;
+				accountCenter = null;
 				Naming.unbind("AccountCenter");
 				Naming.unbind("LobbyServer");
+				ServerDatabase.getInstance().closeDB();
 				System.exit(0);
 			} catch (MalformedURLException | NotBoundException e) {
 				e.printStackTrace();
