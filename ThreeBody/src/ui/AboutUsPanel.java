@@ -42,7 +42,7 @@ public class AboutUsPanel extends JPanel{
   
   private void initComonent() {
 	  this.btnNextPage=new JButton();
-	  this.btnNextPage.setIcon(new ImageIcon("下一页.png"));
+	  this.btnNextPage.setIcon(new ImageIcon("images/下一页.png"));
 	  this.btnNextPage.setContentAreaFilled(false);
       this.btnNextPage.setBounds(750,500,221,89);
 	  //this.btnNextPage.setBorderPainted(false);

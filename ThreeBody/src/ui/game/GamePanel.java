@@ -1,5 +1,6 @@
 package ui.game;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -129,6 +130,7 @@ public class GamePanel  extends JPanel{
 		this.btnTurnEnd.setContentAreaFilled(false);
 		this.btnTurnEnd.setBounds(1000, 500, 150, 30);
 		btnTurnEnd.setFont(new Font("黑体", Font.BOLD, 15));
+		btnTurnEnd.setForeground(Color.YELLOW);
 		// this.btnMultyPlay.setBorderPainted(false);
 //		btnTurnEnd.addMouseListener(new CardListener1());
 		this.add(btnTurnEnd);
@@ -138,6 +140,7 @@ public class GamePanel  extends JPanel{
 		this.btnCard1.setContentAreaFilled(false);
 		this.btnCard1.setBounds(1070, 30, 150, 30);
 		btnCard1.setFont(new Font("黑体", Font.BOLD, 15));
+		btnCard1.setForeground(Color.YELLOW);
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnCard1.addMouseListener(new CardListener1());
 		this.add(btnCard1);
@@ -146,6 +149,7 @@ public class GamePanel  extends JPanel{
 		this.btnCard2 = new JButton("人造智子");
 		this.btnCard2.setContentAreaFilled(false);
 		this.btnCard2.setBounds(1070, 60, 150, 30);
+		btnCard2.setForeground(Color.YELLOW);
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnCard2.addMouseListener(new CardListener2());
 		this.add(btnCard2);
@@ -153,6 +157,7 @@ public class GamePanel  extends JPanel{
 		this.btnCard3 = new JButton("全局黑域");
 		this.btnCard3.setContentAreaFilled(false);
 		this.btnCard3.setBounds(1070, 90, 150, 30);
+		btnCard3.setForeground(Color.YELLOW);
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnCard3.addMouseListener(new CardListener3());
 		this.add(btnCard3);
@@ -160,6 +165,7 @@ public class GamePanel  extends JPanel{
 		this.btnCard4 = new JButton("局部黑域");
 		this.btnCard4.setContentAreaFilled(false);
 		this.btnCard4.setBounds(1070, 120, 150, 30);
+		btnCard4.setForeground(Color.YELLOW);
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnCard4.addMouseListener(new CardListener4());
 		this.add(btnCard4);
@@ -167,6 +173,7 @@ public class GamePanel  extends JPanel{
 		this.btnCard5 = new JButton("��������");
 		this.btnCard5.setContentAreaFilled(false);
 		this.btnCard5.setBounds(1070, 150, 150, 30);
+		btnCard5.setForeground(Color.YELLOW);
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnCard5.addMouseListener(new CardListener5());
 		this.add(btnCard5);
@@ -174,6 +181,7 @@ public class GamePanel  extends JPanel{
 		this.btnCard6 = new JButton("��������");
 		this.btnCard6.setContentAreaFilled(false);
 		this.btnCard6.setBounds(1070, 180, 150, 30);
+		btnCard6.setForeground(Color.YELLOW);
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnCard6.addMouseListener(new CardListener6());
 		this.add(btnCard6);
@@ -182,6 +190,7 @@ public class GamePanel  extends JPanel{
 		this.btnCard7 = new JButton("��������");
 		this.btnCard7.setContentAreaFilled(false);
 		this.btnCard7.setBounds(1070, 210, 150, 30);
+		btnCard7.setForeground(Color.YELLOW);
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnCard7.addMouseListener(new CardListener7());
 		this.add(btnCard7);
@@ -190,6 +199,7 @@ public class GamePanel  extends JPanel{
 		this.btnCard8 = new JButton("��������");
 		this.btnCard8.setContentAreaFilled(false);
 		this.btnCard8.setBounds(1070, 240, 150, 30);
+		btnCard8.setForeground(Color.YELLOW);
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnCard8.addMouseListener(new CardListener8());
 		this.add(btnCard8);
@@ -197,6 +207,7 @@ public class GamePanel  extends JPanel{
 		this.btnCard9 = new JButton("特权");
 		this.btnCard9.setContentAreaFilled(false);
 		this.btnCard9.setBounds(1070, 270, 150, 30);
+		btnCard9.setForeground(Color.YELLOW);
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnCard9.addMouseListener(new CardListener9());
 		this.add(btnCard9);
@@ -609,6 +620,7 @@ public class GamePanel  extends JPanel{
 			 * 很HeHe的解决方式
 			 */
 			add(panelBroadcast);
+			add(panelMessage);
 			repaint();
 			panelMessage.setVisible(false);
 			panelBroadcast.setVisible(false);

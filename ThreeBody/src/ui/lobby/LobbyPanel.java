@@ -15,7 +15,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import ui.FrameUtil;
 import model.Room;
 import control.LobbyControl;
 import control.MainControl;
@@ -35,8 +34,8 @@ public class LobbyPanel extends JPanel implements MouseWheelListener {
 
 		this.setLayout(null);
 		this.mc = mc;
-		roomList = lobbyControl.getRooms();
-		numOfRoom = roomList.size();
+//		roomList = lobbyControl.getRooms();
+//		numOfRoom = roomList.size();
 		numOfRoom = 1;
 		createRoom();
 		this.initComonent();

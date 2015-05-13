@@ -122,13 +122,6 @@ public class StartMenuPanel extends JPanel{
 		public void mouseClicked(MouseEvent arg0) {
 			Media.playSound(Sound.enter);
 			mainControl.toPreference();
-			/**
-			 * 测试用的，想删就删掉
-			 */
-//			InformFrame successInformFrame = new InformFrame("登录成功", 300,200); 
-//			//1代表login成功，2代表logup成功
-//			JPanel successIn = new SuccessPanel(1,successInformFrame);
-//			successInformFrame.add(successIn);
 		}
 
 		@Override
@@ -235,8 +228,10 @@ public class StartMenuPanel extends JPanel{
 				repaint();
 			}else{
 				if(mainControl.isConnected()){
+					mainControl.toAccount(AccountDTO.getInstance().getId());
 					System.out.println("Account界面，目前账号为："+AccountDTO.getInstance().getId()+" 已连接");
 				}else{
+					mainControl.toAccount(AccountDTO.getInstance().getId());
 					System.out.println("Account界面，目前账号为："+AccountDTO.getInstance().getId()+" 未连接");
 				}
 			}
