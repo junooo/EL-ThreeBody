@@ -4,6 +4,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import ui.AboutUsPanel;
+import ui.AccountPanel;
+import ui.AnimatePanel;
 import ui.MainFrame;
 import ui.StartMenuPanel;
 import ui.game.GamePanel;
@@ -21,10 +23,12 @@ public class MainControl {
 	private JPanel gamePanel = null;
 	private JPanel aboutUs = null;
 	private JPanel lobbyPanel = null;
-	
+	private JPanel account=null;
+	private AnimatePanel animate=null;
 	public AccountControl ac;
 	
 	private boolean connected = false;
+	
 	
 	public static void main(String[] args) {
 
@@ -38,14 +42,14 @@ public class MainControl {
 			}
 			
 		}
-		
+		//TODO
 		mc.gamePanel = new GamePanel(mc, 3);
 		mc.aboutUs = new AboutUsPanel(mc);
 		mc.frame = new MainFrame(mc);
 		mc.startMenuPanel = new StartMenuPanel(mc);
 		mc.currentPanel = mc.startMenuPanel;
-		mc.toStartMenu();
-		
+//		mc.toStartMenu();
+		mc.toAnimate("opening");
 		Sound.load("BGM1");
 		Media.playBGM(Sound.BGM);
 	}
@@ -64,7 +68,14 @@ public class MainControl {
 		frame.validate();
 	}
 
-	public void toAnimate() {
+	public void toAnimate(String fileName) {
+		currentPanel.setVisible(false);
+		this.animate = new AnimatePanel(fileName,this);
+		currentPanel = this.animate;
+		frame.setContentPane(currentPanel);
+		currentPanel.setVisible(true);
+		frame.validate();
+		animate.run();
 	}
 
 	public void toPreference() {
@@ -111,6 +122,15 @@ public class MainControl {
 		currentPanel.setVisible(true);
 		frame.validate();
 	}
+	
+	public void toAccount(String id) {
+		currentPanel.setVisible(false);
+		this.account = new AccountPanel(this,id);
+		currentPanel = this.account;
+		frame.setContentPane(currentPanel);
+		currentPanel.setVisible(true);
+		frame.validate();
+	}
 
 	public void exit() {
 		if(connected){
@@ -126,5 +146,7 @@ public class MainControl {
 	public void setConnected(boolean connected) {
 		this.connected = connected;
 	}
+
+	
 
 }

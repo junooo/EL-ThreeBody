@@ -235,8 +235,10 @@ public class StartMenuPanel extends JPanel{
 				repaint();
 			}else{
 				if(mainControl.isConnected()){
+					mainControl.toAccount(AccountDTO.getInstance().getId());
 					System.out.println("Account界面，目前账号为："+AccountDTO.getInstance().getId()+" 已连接");
 				}else{
+					mainControl.toAccount(AccountDTO.getInstance().getId());
 					System.out.println("Account界面，目前账号为："+AccountDTO.getInstance().getId()+" 未连接");
 				}
 			}

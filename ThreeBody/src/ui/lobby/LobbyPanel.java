@@ -15,7 +15,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import ui.FrameUtil;
 import model.Room;
 import control.LobbyControl;
 import control.MainControl;
