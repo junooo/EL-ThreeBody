@@ -1,4 +1,4 @@
-package ui;
+package ui.account;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -12,7 +12,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import ui.InformFrame;
 import model.Account;
+import control.AccountControl;
 import control.MainControl;
 
 
@@ -32,12 +34,16 @@ public class AccountPanel extends JPanel{
 	private JLabel psLosts;
 	private JLabel labelLosts;
 	private JButton btnReturn;
+	private JButton btnLogout;
+	private JButton btnRevisePW;
 	private Account account;
+	private AccountControl accountControl;
 	private MainControl mainControl;
-	public AccountPanel(MainControl mainControl, String id){
+	public AccountPanel(MainControl mainControl, String id,AccountControl accountControl){
 		this.setLayout(null);
 		this.account=new Account(id);
 		this.mainControl=mainControl;
+		this.accountControl=accountControl;
 		init();
 	}
 	private void init() {
@@ -130,11 +136,27 @@ public class AccountPanel extends JPanel{
 		
 		this.btnReturn = new JButton("返回");
 		this.btnReturn.setContentAreaFilled(false);
-		this.btnReturn.setBounds(50, 515, 100, 30);
+		this.btnReturn.setBounds(950, 515, 100, 30);
 		btnReturn.setFont(new Font("黑体", Font.BOLD, 20));
 		btnReturn.setForeground(Color.YELLOW);
 		btnReturn.addMouseListener(new ReturnListener());
 		this.add(btnReturn);
+		
+		this.btnLogout = new JButton("登出");
+		this.btnLogout.setContentAreaFilled(false);
+		this.btnLogout.setBounds(950, 470, 100, 30);
+		btnLogout.setFont(new Font("黑体", Font.BOLD, 20));
+		btnLogout.setForeground(Color.YELLOW);
+		btnLogout.addMouseListener(new LogOutListener());
+		this.add(btnLogout);
+		
+		this.btnRevisePW = new JButton("修改密码");
+		this.btnRevisePW.setContentAreaFilled(false);
+		this.btnRevisePW.setBounds(50, 515, 120, 30);
+		btnRevisePW.setFont(new Font("黑体", Font.BOLD, 20));
+		btnRevisePW.setForeground(Color.YELLOW);
+		btnRevisePW.addMouseListener(new RevisePWListener());
+		this.add(btnRevisePW);
 		
 	}
 	@Override
@@ -148,6 +170,47 @@ public class AccountPanel extends JPanel{
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			mainControl.toStartMenu();
+		}
+		@Override
+		public void mousePressed(MouseEvent e) {
+		}
+		@Override
+		public void mouseReleased(MouseEvent e) {
+		}
+		@Override
+		public void mouseEntered(MouseEvent e) {
+		}
+		@Override
+		public void mouseExited(MouseEvent e) {
+		}
+	}
+	
+	class LogOutListener implements MouseListener {
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			//TODO 登出
+			mainControl.toStartMenu();
+		}
+		@Override
+		public void mousePressed(MouseEvent e) {
+		}
+		@Override
+		public void mouseReleased(MouseEvent e) {
+		}
+		@Override
+		public void mouseEntered(MouseEvent e) {
+		}
+		@Override
+		public void mouseExited(MouseEvent e) {
+		}
+	}
+	
+	class RevisePWListener implements MouseListener {
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			InformFrame revisePWFrame = new InformFrame("修改密码", 400, 300);
+			RevisePWPanel revisePWpanel = new RevisePWPanel(revisePWFrame, accountControl);
+			revisePWFrame.add(revisePWpanel);
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {

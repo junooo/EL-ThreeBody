@@ -4,11 +4,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import ui.AboutUsPanel;
-import ui.AccountPanel;
 import ui.AnimatePanel;
 import ui.MainFrame;
 import ui.PreferencePanel;
 import ui.StartMenuPanel;
+import ui.account.AccountPanel;
 import ui.game.GamePanel;
 import ui.lobby.LobbyPanel;
 import ui.sound.Media;
@@ -132,7 +132,8 @@ public class MainControl {
 	
 	public void toAccount(String id) {
 		currentPanel.setVisible(false);
-		this.account = new AccountPanel(this,id);
+		//TODO 这里传了this.ac 不合适再调
+		this.account = new AccountPanel(this,id,this.ac);
 		currentPanel = this.account;
 		frame.setContentPane(currentPanel);
 		currentPanel.setVisible(true);
