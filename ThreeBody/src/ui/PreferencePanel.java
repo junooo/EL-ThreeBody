@@ -89,7 +89,7 @@ public class PreferencePanel extends JPanel{
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			volume*=2;
-			volume=volume>2.0f?2.0f:volume;
+			volume=volume>=1.0f?1.0f:volume;
 			labelVolume.setText(volume+"");
 			Media.getBgmPlayer().setVolume(volume);
 		}
