@@ -14,6 +14,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import ui.FrameUtil;
+import ui.InformFrame;
 import ui.block.PatialBlockFrame;
 import ui.block.PatialBlockPanel;
 import ui.sophon.SophonFinderFrame;
@@ -67,20 +69,20 @@ public class GamePanel  extends JPanel{
 		this.createEnemy();
 	}
 	private void initEnemyLocation() {
-		int[] x0 = {350,100,300,200};
-		int[]  x1 = {650,100,230,230};
-		int[]	x2= {	250,300,230,230};
-		int[]	x3 = {500,300,230,230};
-		int[]	x4 = {750,300,230,230};
-		int[]	x5 = {100,100,230,230};
-		int[]	x6 = {900,100,230,230};
-		location.add(x0);
-		location.add(x1);
-		location.add(x2);
-		location.add(x3);
-		location.add(x4);
-		location.add(x5);
-		location.add(x6);
+		int[]  enemy1 = {350,100,300,200};
+		int[]  enemy2 = {650,100,230,230};
+		int[]	enemy3= {	250,300,230,230};
+		int[]	enemy4 = {500,300,230,230};
+		int[]	enemy5 = {750,300,230,230};
+		int[]	enemy6 = {100,100,230,230};
+		int[]	enemy7 = {900,100,230,230};
+		location.add(enemy1);
+		location.add(enemy2);
+		location.add(enemy3);
+		location.add(enemy4);
+		location.add(enemy5);
+		location.add(enemy6);
+		location.add(enemy7);
 	}
 	private void createEnemy() {
 		for (int i = 0; i < NumOfPlayer-1; i++) {
@@ -345,7 +347,7 @@ public class GamePanel  extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-//TODO
+			FrameUtil.sendMessageByFrame("全局黑域", "保护所有坐标一轮");
 			
 		}
 		@Override
@@ -421,8 +423,9 @@ public class GamePanel  extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-//TODO
-			
+			JFrame iframe = new InformFrame("电波干扰", 300, 200);
+			JPanel selectEnemyPanel = new SelectEnemyPanel(iframe,"选择要干扰的敌人");
+			iframe.add(selectEnemyPanel);
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
@@ -456,7 +459,7 @@ public class GamePanel  extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-//TODO
+			//TODO
 			
 		}
 		@Override
@@ -491,8 +494,7 @@ public class GamePanel  extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			//TODO
-			
+
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
@@ -526,8 +528,9 @@ public class GamePanel  extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-//TODO
-			
+			JFrame iframe = new InformFrame("资源赌博", 300, 200);
+			JPanel gamblePanel = new GamblePanel(iframe,"输入要赌博的资源");
+			iframe.add(gamblePanel);
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
@@ -561,7 +564,9 @@ public class GamePanel  extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			
+			JFrame iframe = new InformFrame("特权_身份探知", 300, 200);
+			JPanel selectEnemyPanel = new SelectEnemyPanel(iframe,"选择要探知的敌人");
+			iframe.add(selectEnemyPanel);
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {

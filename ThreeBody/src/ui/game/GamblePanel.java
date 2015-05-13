@@ -1,4 +1,4 @@
-package ui;
+package ui.game;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -12,22 +12,22 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-import ui.InformFrame;
-
-public class MessageByFramePanel extends JPanel{
+public class GamblePanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JFrame frame;
 	private JButton btnOK;
 	private JLabel msgLabel;
+	private JLabel idLabel;
+	private JTextField idField;
 	/**
 	 * 
-	 * @param i 1代表login，2代表logup
-	 * @param successInformFrame O
+	 * @param successInformFrame 
 	 */
-	public MessageByFramePanel(InformFrame successInformFrame,String message) {
+	public GamblePanel(JFrame frame,String message) {
 		this.setLayout(null);
-		this.frame=successInformFrame;
+		this.frame=frame;
 		this.initComonent(message);
 	}
 	private void initComonent(String message) {
@@ -41,8 +41,18 @@ public class MessageByFramePanel extends JPanel{
 		msgLabel.setForeground(Color.YELLOW);
 		msgLabel.setText(message);
 		msgLabel.setFont(new Font("宋体", Font.BOLD, 20));
-		msgLabel.setBounds(60,10,180,80);
+		msgLabel.setBounds(60,0,180,80);
 		this.add(msgLabel);
+		
+		idLabel = new JLabel();
+		idLabel.setBounds(30,60,60,30);
+		idLabel.setIcon(new ImageIcon("images/gamble.png"));
+		this.add(idLabel);
+		
+		idField = new JTextField();
+		idField.setBounds(100,60,140,30);
+		this.add(idField);
+		
 	}
 	
 	class OKListener implements MouseListener {
@@ -69,6 +79,6 @@ public class MessageByFramePanel extends JPanel{
 	public void paintComponent(Graphics g) {
 		Image IMG_MAIN = new ImageIcon("images/img1.jpg").getImage();
 		// 绘制游戏界面
-		g.drawImage(IMG_MAIN, 0, 0,695,215, null);
+		g.drawImage(IMG_MAIN, 0, 0, null);
 	}
 }
