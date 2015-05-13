@@ -94,6 +94,7 @@ public class LogupPanel extends JPanel {
 		public void mouseClicked(MouseEvent e) {
 			setVisible(false);
 			panelLogin.setVisible(true);
+			loginFrame.setTitle("登录");
 			loginFrame.setContentPane(panelLogin);
 			repaint();
 		}
