@@ -48,8 +48,8 @@ public class MainControl {
 		mc.frame = new MainFrame(mc);
 		mc.startMenuPanel = new StartMenuPanel(mc);
 		mc.currentPanel = mc.startMenuPanel;
-//		mc.toStartMenu();
-		mc.toAnimate("opening");
+		mc.toStartMenu();
+//		mc.toAnimate("opening");
 		Sound.load("BGM1");
 		Media.playBGM(Sound.BGM);
 	}
