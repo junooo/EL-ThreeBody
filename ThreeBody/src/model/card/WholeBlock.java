@@ -1,10 +1,9 @@
 package model.card;
 
-import dto.GameDTO;
-import model.Coordinate;
 import model.Player;
 import model.operation.ResourceChange;
 import model.operation.ResourceChange.Type;
+import dto.GameDTO;
 
 public class WholeBlock extends Card{
 	
@@ -14,7 +13,7 @@ public class WholeBlock extends Card{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	
+
 	public WholeBlock(String operator, String receiver) {
 		super(operator, receiver);
 	}
@@ -26,22 +25,22 @@ public class WholeBlock extends Card{
 
 	@Override
 	public void process() {
-		// TODO Auto-generated method stub
 		
 		GameDTO dto=GameDTO.getInstance();
 		
-		//get the operator,now operator==receiver
+		//get the operator, now operator==receiver
 		Player pOperator=this.findOperator(dto);
 		Player pReceiver=pOperator;
 		
-		//pay the resource
+		//pay the resources
 		ResourceChange rc=new ResourceChange(operator, receiver, Type.DECREASE, this.requiredResource);
 		dto.depositOperation(rc);
 		
 		//set the coordinate ==10086(PROTECTED)
-		for(int i=0;i<4;i++){
+		for (int i = 0; i < 4; i++) {
 			pOperator.getCoordinate().setCoordinateElement(i, 10086);
-		}		
+		}
 	}
+	
 		
 }

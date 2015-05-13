@@ -1,9 +1,7 @@
 package model.card;
 
 import java.io.Serializable;
-
 import model.Player;
-import model.operation.ResourceChange;
 import dto.GameDTO;
 
 public abstract class Card implements Serializable{
@@ -16,6 +14,8 @@ public abstract class Card implements Serializable{
 	protected String name;
 	protected int requiredResource;
     protected int requiredTechPoint;
+    protected int lifetime;
+       
     //ID
     protected String operator;
     protected String receiver;
@@ -23,7 +23,11 @@ public abstract class Card implements Serializable{
     public Card(String operator,String receiver){
     	this.operator = operator;
     	this.receiver = receiver;
+
     }
+    
+    
+    
     
     public abstract void process();
     
@@ -39,9 +43,9 @@ public abstract class Card implements Serializable{
 		return requiredTechPoint;
 	}
 	
-	/*
-	 * 建议可以在父类加些通用的代码,比如消耗资源部分的代码，根据String找到相应Player的代码
-	 */
+	public int getLifetime() {
+		return lifetime;
+	}
 	
 	public Player findOperator(GameDTO dto){
 		

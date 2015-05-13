@@ -4,8 +4,8 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
 import model.Room;
@@ -39,8 +39,8 @@ public class LobbyServer extends UnicastRemoteObject implements RMILobby{
 	}
 
 	@Override
-	public ArrayList<Room> getRooms() throws RemoteException {
-		ArrayList<Room> rooms = new ArrayList<Room>();
+	public LinkedList<Room> getRooms() throws RemoteException {
+		LinkedList<Room> rooms = new LinkedList<Room>();
 		for (Room room : this.rooms.values()) {
 			rooms.add(room);
 		}
@@ -61,13 +61,14 @@ public class LobbyServer extends UnicastRemoteObject implements RMILobby{
 	}
 
 	@Override
-	public info createRoom(Room room) throws RemoteException {
+	public info createRoom(String name,String createrID,int size) throws RemoteException {
 		// 房间名已存在
-		if(rooms.containsKey(room.getName())){
+		if(rooms.containsKey(name)){
 			return R.info.ALREADY_EXISTED;
 		}
-		rooms.put(room.getName(), room);
-		actives.put(room.getName(), new RoomServer(this,room));
+		Room newRoom = new Room(accountCenter.getAccount(createrID),name,size);
+		rooms.put(name, newRoom);
+		actives.put(name, new RoomServer(this,newRoom));
 		return R.info.SUCCESS;
 	}
 
@@ -80,13 +81,13 @@ public class LobbyServer extends UnicastRemoteObject implements RMILobby{
 	Room rm2;
 	
 	@Override
-	public info test(String command) throws RemoteException {
+	public info command(String command) throws RemoteException {
 		switch(command){
 		case "init":
-			rm1 = new Room(accountCenter.getAccount("Red"),"Room1",4);
-			rm2 = new Room(accountCenter.getAccount("Blue"),"Room2",2);
-			createRoom(rm1);
-			createRoom(rm2);
+			createRoom("Room1","Red",4);
+			createRoom("Room2","Blue",2);
+			rm1 = getRoomService("Room1").refresh();
+			rm2 = getRoomService("Room2").refresh();
 			return R.info.SUCCESS;
 		case "clear":
 			deleteRoom(rm1);

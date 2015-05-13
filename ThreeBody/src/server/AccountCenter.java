@@ -14,6 +14,7 @@ import java.util.TreeSet;
 import javax.rmi.PortableRemoteObject;
 
 import model.Account;
+import server.AccountServer.State;
 import server.interfaces.RMIAccount;
 import server.interfaces.RMIAccountCenter;
 import util.R;
@@ -56,24 +57,21 @@ public class AccountCenter extends UnicastRemoteObject implements
 	private Set<String> invitationIDs;
 	
 	/*
-	 * 不正常的连接
+	 * 数据库交互
 	 */
-	private Set<String> irregularConnections;
+	private ServerDatabase database;
 
 	protected AccountCenter() throws RemoteException {
 		try {
+			database = ServerDatabase.getInstance();
+			database.openDB();
+			database.loadData();
 			
-			// TODO 文件IO
-			this.passwords = new HashMap<String, String>();
-			this.accounts = new HashMap<String, Account>();
-			this.invitationIDs = new TreeSet<String>();
-			this.transientIDs = new HashMap<String, String>();
+			this.accounts = database.getAccounts();
+			this.passwords = database.getPasswords();
+			this.transientIDs = database.getTransientIDs();
+			this.invitationIDs = database.getInvitationIDs();
 			this.actives = new HashMap<String, AccountServer>();
-			this.irregularConnections = new TreeSet<String>();
-			
-			// 检查链接是否正常的线程
-			ConnectionSupervision supervisor = new ConnectionSupervision();
-			supervisor.start();
 			
 			Naming.rebind("AccountCenter", (RMIAccountCenter)this);
 		} catch (RemoteException | MalformedURLException e) {
@@ -87,7 +85,7 @@ public class AccountCenter extends UnicastRemoteObject implements
 	@Override
 	public info logout(String id) throws RemoteException {
 		if(actives.containsKey(id)){
-			this.unbindAccount(id);
+			this.informLogout(id);
 			return R.info.SUCCESS;
 		}else{
 			return R.info.NOT_EXISTED;
@@ -100,7 +98,7 @@ public class AccountCenter extends UnicastRemoteObject implements
 	@Override
 	public info logoutAndClear(String id) throws RemoteException {
 		if(actives.containsKey(id)){
-			this.unbindAccount(id);
+			this.informLogout(id);
 			transientIDs.remove(id);
 			return R.info.SUCCESS;
 		}else{
@@ -112,7 +110,7 @@ public class AccountCenter extends UnicastRemoteObject implements
 	public info login(String id, String password) throws RemoteException {
 		Account account = accounts.get(id);
 		if(actives.containsKey(id)){
-			return R.info.INVALID;
+			return R.info.ALREADY_IN;
 		}
 		if (account == null) {
 			return R.info.NOT_EXISTED;
@@ -155,7 +153,7 @@ public class AccountCenter extends UnicastRemoteObject implements
 			throws RemoteException {
 		Account account = accounts.get(id);
 		if(actives.containsKey(id)){
-			return R.info.INVALID;
+			return R.info.ALREADY_IN;
 		}
 		if (account == null) {
 			return R.info.NOT_EXISTED;
@@ -167,9 +165,12 @@ public class AccountCenter extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public R.info test(String command) {
+	public String command(String command) {
+		
+		String[] parts = command.split(" ");
+		StringBuffer sb;
 
-		switch (command) {
+		switch (parts[0]) {
 		case "init":
 			accounts.put("Red", new Account("Red"));
 			accounts.put("Green", new Account("Green"));
@@ -183,15 +184,44 @@ public class AccountCenter extends UnicastRemoteObject implements
 			invitationIDs.add("fffff2");
 			invitationIDs.add("fffff3");
 			invitationIDs.add("fffff4");
-			return R.info.SUCCESS;
+			return R.info.SUCCESS.name();
 		case "clear":
 			accounts.clear();
 			passwords.clear();
 			invitationIDs.clear();
-			return R.info.SUCCESS;
+			return R.info.SUCCESS.name();
+		case "add_account":
+			Account acc = new Account(parts[1]);
+			accounts.put(parts[1], acc);
+			passwords.put(parts[1], parts[2]);
+			return "success";
+		case "add_invitationID":
+			invitationIDs.add(parts[1]);
+			return "now size:"+invitationIDs.size();
+		case "check_connections":
+			sb = new StringBuffer();
+			sb.append("connections:"+actives.size()+"\n");
+			for (String name : actives.keySet()) {
+				sb.append(name+"\n");
+			}
+			return sb.toString();
+		case "check_invitationIDs":
+			sb = new StringBuffer();
+			sb.append("invitationIDs:"+invitationIDs.size()+"\n");
+			for (String invitationID : invitationIDs) {
+				sb.append(invitationID+"\n");
+			}
+			return sb.toString();
+		case "check_accounts":
+			sb = new StringBuffer();
+			sb.append("accounts:"+accounts.size()+"\n");
+			for (String name : accounts.keySet()) {
+				sb.append(name+"\n");
+			}
+			return sb.toString();
 		}
 
-		return R.info.INVALID;
+		return R.info.INVALID.name();
 	}
 
 	@Override
@@ -204,7 +234,6 @@ public class AccountCenter extends UnicastRemoteObject implements
 		return transientIDs.get(id);
 	}
 	
-	@Override
 	public Account getAccount(String id){
 		return accounts.get(id);
 	}
@@ -232,13 +261,8 @@ public class AccountCenter extends UnicastRemoteObject implements
 		}
 	}
 
-	private void unbindAccount(String id) {
-		try {
-			PortableRemoteObject.unexportObject(actives.get(id));
-		} catch (NoSuchObjectException e) {
-			e.printStackTrace();
-		}
-		actives.remove(id);
+	private void informLogout(String id) {
+		actives.get(id).setState(State.FAIL);
 	}
 	
 	public void unbindAccount(Account account){
@@ -250,19 +274,10 @@ public class AccountCenter extends UnicastRemoteObject implements
 		actives.remove(account.getId());
 	}
 	
-	private class ConnectionSupervision extends Thread{
-		@Override
-		public void run() {
-			while(true){
-				System.out.println("Thread alive " + actives.size());
-			}
-		}
-	}
-
 	// TODO 保存Account
 	public void saveAccount(Account account) {
 		accounts.put(account.getId(), account);
 		
 	}
-
+	
 }

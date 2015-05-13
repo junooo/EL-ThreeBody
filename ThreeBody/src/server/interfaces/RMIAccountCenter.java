@@ -3,7 +3,6 @@ package server.interfaces;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
-import model.Account;
 import util.R;
 import util.R.info;
 
@@ -22,12 +21,10 @@ public interface RMIAccountCenter extends Remote {
 	info logoutAndClear(String id) throws RemoteException;
 
 	// TODO test
-	R.info test(String command) throws RemoteException;
+	String command(String command) throws RemoteException;
 
 	RMIAccount getService(String id) throws RemoteException;
 
 	String getTransientID(String id) throws RemoteException;
-
-	Account getAccount(String id) throws RemoteException;
 
 }
