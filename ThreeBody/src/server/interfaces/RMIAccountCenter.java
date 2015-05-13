@@ -3,7 +3,6 @@ package server.interfaces;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
-import model.Account;
 import util.R;
 import util.R.info;
 

@@ -33,11 +33,10 @@ public class Account implements Serializable{
     private int wins;
     private int losts;
     
-    // TODO 迭代二再写
-//    private String regions;
+    private String regions;
     
     /*
-     * 构造方法，只需要ID，密码存放在服务器端，不需要放在客户端
+     * 构造方法，新创建用户时调用，只需要ID，密码存放在服务器端，不需要放在客户端
      */
     public Account(String id){
     	this.id = id;
@@ -49,6 +48,20 @@ public class Account implements Serializable{
     	this.losts = 0;
     }
     
+    /*
+     * 构造方法，从Database恢复时调用，只需要ID，密码存放在服务器端，不需要放在客户端
+     */
+    public Account(String id, int point, int totalGames, int wins,
+			int losts, String regions, Image head) {
+		this.id = id;
+		this.head = head;
+		this.point = point;
+		this.totalGames = totalGames;
+		this.wins = wins;
+		this.losts = losts;
+		this.regions = regions;
+	}
+    
     public void synchronize(Account acc){
     	this.rank = acc.rank;
     	this.point = acc.point;
@@ -57,7 +70,7 @@ public class Account implements Serializable{
     	this.losts = acc.losts;
     }
     
-    /*
+	/*
      * getters and setters
      */
 	public String getId() {
@@ -99,10 +112,10 @@ public class Account implements Serializable{
 	public void setLosts(int losts) {
 		this.losts = losts;
 	}
-//	public String getRegions() {
-//		return regions;
-//	}
-//	public void setRegions(String regions) {
-//		this.regions = regions;
-//	}
+	public String getRegions() {
+		return regions;
+	}
+	public void setRegions(String regions) {
+		this.regions = regions;
+	}
 }

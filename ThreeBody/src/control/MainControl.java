@@ -36,11 +36,9 @@ public class MainControl {
 			if (mc.ac.loginByTransientID(id) == R.info.SUCCESS) {
 				mc.connected = true;
 			}
-			
 		}
 		
 		mc.gamePanel = new GamePanel(mc, 3);
-		mc.aboutUs = new AboutUsPanel(mc);
 		mc.frame = new MainFrame(mc);
 		mc.startMenuPanel = new StartMenuPanel(mc);
 		mc.currentPanel = mc.startMenuPanel;

@@ -55,20 +55,23 @@ public class AccountCenter extends UnicastRemoteObject implements
 	 * 邀请码
 	 */
 	private Set<String> invitationIDs;
+	
+	/*
+	 * 数据库交互
+	 */
+	private ServerDatabase database;
 
 	protected AccountCenter() throws RemoteException {
 		try {
+			database = ServerDatabase.getInstance();
+			database.openDB();
+			database.loadData();
 			
-			// TODO 文件IO
-			this.passwords = new HashMap<String, String>();
-			this.accounts = new HashMap<String, Account>();
-			this.invitationIDs = new TreeSet<String>();
-			this.transientIDs = new HashMap<String, String>();
+			this.accounts = database.getAccounts();
+			this.passwords = database.getPasswords();
+			this.transientIDs = database.getTransientIDs();
+			this.invitationIDs = database.getInvitationIDs();
 			this.actives = new HashMap<String, AccountServer>();
-			
-			// TODO test
-			accounts.put("Red", new Account("Red"));
-			passwords.put("Red", "r1234");
 			
 			Naming.rebind("AccountCenter", (RMIAccountCenter)this);
 		} catch (RemoteException | MalformedURLException e) {
@@ -277,17 +280,4 @@ public class AccountCenter extends UnicastRemoteObject implements
 		
 	}
 	
-	private class AccountData{
-		
-		private Map<String, Account> accounts;
-		private Map<String, String> passwords;
-		private Map<String, String> transientIDs;
-		private Set<String> invitationIDs;
-		
-		public AccountData() {
-			super();
-		}
-		
-	}
-
 }
