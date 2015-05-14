@@ -1,16 +1,15 @@
 package control;
 
-import java.net.MalformedURLException;
-import java.rmi.NotBoundException;
-import java.rmi.RemoteException;
-
 import io.NetClient;
 import io.UserData;
-import dto.AccountDTO;
+
+import java.rmi.RemoteException;
+
 import model.Account;
 import server.interfaces.RMIAccount;
 import server.interfaces.RMIAccountCenter;
 import util.R;
+import dto.AccountDTO;
 
 /**
  * 跟账户控制有关
@@ -216,5 +215,5 @@ public class AccountControl {
     		rmiac = NetClient.getInstance().getAccountCenter();
     	}
     }
-    
+
 }

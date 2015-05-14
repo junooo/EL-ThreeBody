@@ -48,6 +48,7 @@ public class AccountPanel extends JPanel{
 		this.account=new Account(id);
 		this.mainControl=mainControl;
 		this.accountControl=accountControl;
+//		this.account=accountControl.getAccount();
 		init();
 	}
 	private void init() {
@@ -248,6 +249,8 @@ public class AccountPanel extends JPanel{
 			Image headImage = new ImageIcon(fileHead.getPath()).getImage();
 			headImage=headImage.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
 			labelHead.setIcon(new ImageIcon(headImage));
+			account.setHead(headImage);
+//			UserData.saveAccount(account); TODO
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
