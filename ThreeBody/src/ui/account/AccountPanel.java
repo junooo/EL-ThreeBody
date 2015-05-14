@@ -19,6 +19,7 @@ import control.AccountControl;
 import control.MainControl;
 
 
+
 public class AccountPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private JLabel psId;
@@ -63,12 +64,14 @@ public class AccountPanel extends JPanel{
 		labelHead = new JLabel();
 		labelHead.setBounds(600,120,150,150);
 		if(account.getHead()!=null){
-			ImageIcon headImage = new ImageIcon(account.getHead());
-			labelHead.setIcon(headImage);
+			Image headImage=account.getHead();
+			headImage=headImage.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+			labelHead.setIcon(new ImageIcon(headImage));
 		}else{
 			//TODO 设置默认头像
-			ImageIcon headImage = new ImageIcon("images/headtest.jpg");
-			labelHead.setIcon(headImage);
+			Image headImage = new ImageIcon("images/headtest.jpg").getImage();
+			headImage=headImage.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+			labelHead.setIcon(new ImageIcon(headImage));
 		}
 		this.add(labelHead);
 		
