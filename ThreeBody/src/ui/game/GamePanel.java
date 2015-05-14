@@ -60,6 +60,8 @@ public class GamePanel  extends JPanel{
 	
 	private JLabel[] enemies = new JLabel[7];
 	private JLabel[] coordinateOfEnemies = new JLabel[7];
+	private JLabel[] promptLabels = new JLabel[9];
+	ImageIcon[] prompts = new ImageIcon[9];
 	private ArrayList<Rectangle> location = new ArrayList<Rectangle>(7);
 	
 	public GamePanel(MainControl mainControl,int NumOfPlayer) {
@@ -68,10 +70,29 @@ public class GamePanel  extends JPanel{
 		this.NumOfPlayer=NumOfPlayer;
 		this.initComonent();
 		this.initEnemyLocation();
+		this.initPrompt();
 		this.createEnemy();
 		this.createCoordinatePanel();
 	}
 	
+	private void initPrompt() {
+		
+		prompts[0]=new ImageIcon("images/psSophonLabel.png");
+		prompts[1]=new ImageIcon("images/psSillySophonLabel.png");
+		prompts[2]=new ImageIcon("images/psWholeBlockLabel.png");
+		prompts[3]=new ImageIcon("images/psPartialBlockLabel.png");
+		prompts[4]=new ImageIcon("images/psNoBroadcastLabel.png");
+		prompts[5]=new ImageIcon("images/psResourcePotionLabel.png");
+		prompts[6]=new ImageIcon("images/psTechPotionLabel.png");
+		prompts[7]=new ImageIcon("images/psGambleLabel.png");
+		prompts[8]=new ImageIcon("images/psRoleGetLabel.png");
+		for (int i = 0; i < prompts.length; i++) {
+			promptLabels[i] = new JLabel();
+			promptLabels[i].setIcon(prompts[i]);
+			promptLabels[i].setVisible(false);
+		}
+	}
+
 	/**
 	 * 存放敌人的位置
 	 */
@@ -298,6 +319,7 @@ public class GamePanel  extends JPanel{
 	class CardSophonListener implements MouseListener {
 		int x = btnCardSophon.getX();
 		int y = btnCardSophon.getY();
+		Rectangle rec = btnCardSophon.getBounds();
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			initSophon();
@@ -322,18 +344,22 @@ public class GamePanel  extends JPanel{
 		public void mouseEntered(MouseEvent e) {
 			btnCardSophon.setLocation(x-40, y);
 			btnCardSillySophon.setLocation(x-10, y+30);
+			promptLabels[0].setBounds(rec.x-prompts[0].getIconWidth()-40,rec.y,prompts[0].getIconWidth(),prompts[0].getIconHeight());
+			promptLabels[0].setVisible(true);
+			add(promptLabels[0]);
+			repaint();
 		}
 		@Override
 		public void mouseExited(MouseEvent e) {
 			btnCardSophon.setLocation(x, y);
 			btnCardSillySophon.setLocation(x, y+30);
+			promptLabels[0].setVisible(false);
 		}
 	}
 	class CardSillySophonListener implements MouseListener {
 		int x = btnCardSillySophon.getX();
 		int y = btnCardSillySophon.getY();
-
-
+		Rectangle rec = btnCardSillySophon.getBounds();
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			initSillySophon();
@@ -362,19 +388,23 @@ public class GamePanel  extends JPanel{
 			btnCardSophon.setLocation(x-10, y-30);
 			btnCardSillySophon.setLocation(x-40, y);
 			btnCardWholeBlock.setLocation(x-10, y+30);
+			promptLabels[1].setBounds(rec.x-prompts[1].getIconWidth()-40,rec.y,prompts[1].getIconWidth(),prompts[1].getIconHeight());
+			promptLabels[1].setVisible(true);
+			add(promptLabels[1]);
+			repaint();
 		}
 		@Override
 		public void mouseExited(MouseEvent e) {
 			btnCardSophon.setLocation(x, y-30);
 			btnCardSillySophon.setLocation(x, y);
 			btnCardWholeBlock.setLocation(x, y+30);
+			promptLabels[1].setVisible(false);
 		}
 	}
 	class CardWholeBlockListener implements MouseListener {
 		int x = btnCardWholeBlock.getX();
 		int y = btnCardWholeBlock.getY();
-
-
+		Rectangle rec = btnCardWholeBlock.getBounds();
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			FrameUtil.sendMessageByFrame("全局黑域", "保护所有坐标一轮");
@@ -397,19 +427,23 @@ public class GamePanel  extends JPanel{
 			btnCardSillySophon.setLocation(x-10, y-30);
 			btnCardWholeBlock.setLocation(x-40, y);
 			btnCardPatialBlock.setLocation(x-10, y+30);
+			promptLabels[2].setBounds(rec.x-prompts[2].getIconWidth()-40,rec.y,prompts[2].getIconWidth(),prompts[2].getIconHeight());
+			promptLabels[2].setVisible(true);
+			add(promptLabels[2]);
+			repaint();
 		}
 		@Override
 		public void mouseExited(MouseEvent e) {
 			btnCardSillySophon.setLocation(x, y-30);
 			btnCardWholeBlock.setLocation(x, y);
 			btnCardPatialBlock.setLocation(x, y+30);
+			promptLabels[2].setVisible(false);
 		}
 	}
 	class CardPatialBlockListener implements MouseListener {
 		int x = btnCardPatialBlock.getX();
 		int y = btnCardPatialBlock.getY();
-
-
+		Rectangle rec = btnCardPatialBlock.getBounds();
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			initPatialBlock();
@@ -438,19 +472,23 @@ public class GamePanel  extends JPanel{
 			btnCardWholeBlock.setLocation(x-10, y-30);
 			btnCardPatialBlock.setLocation(x-40, y);
 			btnCardNoBroadcasting.setLocation(x-10, y+30);
+			promptLabels[3].setBounds(rec.x-prompts[3].getIconWidth()-40,rec.y,prompts[3].getIconWidth(),prompts[3].getIconHeight());
+			promptLabels[3].setVisible(true);
+			add(promptLabels[3]);
+			repaint();
 		}
 		@Override
 		public void mouseExited(MouseEvent e) {
 			btnCardWholeBlock.setLocation(x, y-30);
 			btnCardPatialBlock.setLocation(x, y);
 			btnCardNoBroadcasting.setLocation(x, y+30);
+			promptLabels[3].setVisible(false);
 		}
 	}
 	class CardNoBroadcastingListener implements MouseListener {
 		int x = btnCardNoBroadcasting.getX();
 		int y = btnCardNoBroadcasting.getY();
-
-
+		Rectangle rec = btnCardNoBroadcasting.getBounds();
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			JFrame iframe = new InformFrame("电波干扰", 300, 200);
@@ -474,19 +512,23 @@ public class GamePanel  extends JPanel{
 			btnCardPatialBlock.setLocation(x-10, y-30);
 			btnCardNoBroadcasting.setLocation(x-40, y);
 			btnCardTechPotion.setLocation(x-10, y+30);
+			promptLabels[4].setBounds(rec.x-prompts[4].getIconWidth()-40,rec.y,prompts[4].getIconWidth(),prompts[4].getIconHeight());
+			promptLabels[4].setVisible(true);
+			add(promptLabels[4]);
+			repaint();
 		}
 		@Override
 		public void mouseExited(MouseEvent e) {
 			btnCardPatialBlock.setLocation(x, y-30);
 			btnCardNoBroadcasting.setLocation(x, y);
 			btnCardTechPotion.setLocation(x, y+30);
+			promptLabels[4].setVisible(false);
 		}
 	}
 	class CardTechPotionListener implements MouseListener {
 		int x = btnCardTechPotion.getX();
 		int y = btnCardTechPotion.getY();
-
-
+		Rectangle rec = btnCardTechPotion.getBounds();
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			
@@ -508,19 +550,23 @@ public class GamePanel  extends JPanel{
 			btnCardNoBroadcasting.setLocation(x-10, y-30);
 			btnCardTechPotion.setLocation(x-40, y);
 			btnCardResourcePotion.setLocation(x-10, y+30);
+			promptLabels[5].setBounds(rec.x-prompts[5].getIconWidth()-40,rec.y,prompts[5].getIconWidth(),prompts[5].getIconHeight());
+			promptLabels[5].setVisible(true);
+			add(promptLabels[5]);
+			repaint();
 		}
 		@Override
 		public void mouseExited(MouseEvent e) {
 			btnCardNoBroadcasting.setLocation(x, y-30);
 			btnCardTechPotion.setLocation(x, y);
 			btnCardResourcePotion.setLocation(x, y+30);
+			promptLabels[5].setVisible(false);
 		}
 	}
 	class CardResourcePotionListener implements MouseListener {
 		int x = btnCardResourcePotion.getX();
 		int y = btnCardResourcePotion.getY();
-
-
+		Rectangle rec = btnCardResourcePotion.getBounds();
 		@Override
 		public void mouseClicked(MouseEvent e) {
 
@@ -542,19 +588,23 @@ public class GamePanel  extends JPanel{
 			btnCardTechPotion.setLocation(x-10, y-30);
 			btnCardResourcePotion.setLocation(x-40, y);
 			btnCardResourceGambling.setLocation(x-10, y+30);
+			promptLabels[6].setBounds(rec.x-prompts[6].getIconWidth()-40,rec.y,prompts[6].getIconWidth(),prompts[6].getIconHeight());
+			promptLabels[6].setVisible(true);
+			add(promptLabels[6]);
+			repaint();
 		}
 		@Override
 		public void mouseExited(MouseEvent e) {
 			btnCardTechPotion.setLocation(x, y-30);
 			btnCardResourcePotion.setLocation(x, y);
 			btnCardResourceGambling.setLocation(x, y+30);
+			promptLabels[6].setVisible(false);
 		}
 	}
 	class CardResourceGamblingListener implements MouseListener {
 		int x = btnCardResourceGambling.getX();
 		int y = btnCardResourceGambling.getY();
-
-
+		Rectangle rec = btnCardResourceGambling.getBounds();
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			JFrame iframe = new InformFrame("资源赌博", 300, 200);
@@ -578,19 +628,23 @@ public class GamePanel  extends JPanel{
 			btnCardResourcePotion.setLocation(x-10, y-30);
 			btnCardResourceGambling.setLocation(x-40, y);
 			btnPriviledgeGetRole.setLocation(x-10, y+30);
+			promptLabels[7].setBounds(rec.x-prompts[7].getIconWidth()-40,rec.y,prompts[7].getIconWidth(),prompts[7].getIconHeight());
+			promptLabels[7].setVisible(true);
+			add(promptLabels[7]);
+			repaint();
 		}
 		@Override
 		public void mouseExited(MouseEvent e) {
 			btnCardResourcePotion.setLocation(x, y-30);
 			btnCardResourceGambling.setLocation(x, y);
 			btnPriviledgeGetRole.setLocation(x, y+30);
+			promptLabels[7].setVisible(false);
 		}
 	}
 	class PriviledgeGetRoleListener implements MouseListener {
 		int x = btnPriviledgeGetRole.getX();
 		int y = btnPriviledgeGetRole.getY();
-
-
+		Rectangle rec = btnPriviledgeGetRole.getBounds();
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			JFrame iframe = new InformFrame("特权_身份探知", 300, 200);
@@ -611,11 +665,16 @@ public class GamePanel  extends JPanel{
 		public void mouseEntered(MouseEvent e) {
 			btnCardResourceGambling.setLocation(x-10, y-30);
 			btnPriviledgeGetRole.setLocation(x-40, y);
+			promptLabels[8].setBounds(rec.x-prompts[8].getIconWidth()-40,rec.y,prompts[8].getIconWidth(),prompts[8].getIconHeight());
+			promptLabels[8].setVisible(true);
+			add(promptLabels[8]);
+			repaint();
 		}
 		@Override
 		public void mouseExited(MouseEvent e) {
 			btnCardResourceGambling.setLocation(x, y-30);
 			btnPriviledgeGetRole.setLocation(x, y);
+			promptLabels[8].setVisible(false);
 		}
 	}
 	
