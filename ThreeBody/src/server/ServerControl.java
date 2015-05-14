@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
 import java.rmi.server.UnicastRemoteObject;
 
 import server.interfaces.RMIServerControl;
@@ -17,18 +18,26 @@ public class ServerControl extends UnicastRemoteObject implements RMIServerContr
 	private AccountCenter accountCenter;
 	@SuppressWarnings("unused")
 	private LobbyServer lobbyServer;
+	@SuppressWarnings("unused")
+	private ImageServer imageServer;
 
 	protected ServerControl() throws RemoteException {
 		super();
 		try {
 			accountCenter = new AccountCenter();
 			lobbyServer = new LobbyServer(accountCenter);
+			imageServer = new ImageServer();
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 	}
 
 	public static void main(String[] args) {
+		try {
+			LocateRegistry.createRegistry(1099);
+		} catch (RemoteException e1) {
+			e1.printStackTrace();
+		}
 		try {
 			new ServerControl();
 		} catch (RemoteException e) {
