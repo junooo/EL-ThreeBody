@@ -3,6 +3,10 @@ package model;
 import java.awt.Image;
 import java.io.Serializable;
 
+import javax.swing.ImageIcon;
+
+import dto.AccountDTO;
+
 public class Account implements Serializable{
     
     /**
@@ -77,6 +81,17 @@ public class Account implements Serializable{
 		return id;
 	}
 	public Image getHead() {
+		if(head == null){
+			if(id.equals(AccountDTO.getInstance().getId())){
+				// TODO windows目录符号
+				head = new ImageIcon("userdata\\head.png").getImage();
+			}else{
+				head = new ImageIcon("tmp\\"+id+".png").getImage();
+				if(head == null){
+					
+				}
+			}
+		}
 		return head;
 	}
 	public void setHead(Image head) {

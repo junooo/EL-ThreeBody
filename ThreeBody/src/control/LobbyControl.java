@@ -7,6 +7,7 @@ import java.util.List;
 
 import model.Room;
 import server.interfaces.RMILobby;
+import ui.lobby.LobbyPanel;
 import util.R;
 import dto.AccountDTO;
 
@@ -17,7 +18,21 @@ public class LobbyControl {
 	
 	private RMILobby rmilb;
 	private String id = AccountDTO.getInstance().getId();
+	private LobbyPanel lobbyPanel;
 	
+	public LobbyControl(LobbyPanel lobbyPanel) {
+		super();
+		this.lobbyPanel = lobbyPanel;
+	}
+	
+	public void refreshPanel(){
+		lobbyPanel.refresh();
+	}
+	
+	public void setLobbyPanel(LobbyPanel lp){
+		this.lobbyPanel = lp;
+	}
+
 	/**
 	 * 
 	 * @param room 进去了的房间的号码
