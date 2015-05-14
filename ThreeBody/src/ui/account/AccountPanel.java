@@ -2,6 +2,7 @@ package ui.account;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
@@ -12,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import ui.FrameUtil;
 import ui.InformFrame;
 import model.Account;
 import control.AccountControl;
@@ -188,8 +190,13 @@ public class AccountPanel extends JPanel{
 	class LogOutListener implements MouseListener {
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			//TODO 登出
-			mainControl.toStartMenu();
+			switch(accountControl.logoutAndClear()){
+			case SUCCESS:
+				FrameUtil.sendMessageByFrame("登出成功", "登出成功，本地缓存已删除");
+				break;
+			default:
+				FrameUtil.sendMessageByFrame("登出失败", "登出失败 T_T");
+			}
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {

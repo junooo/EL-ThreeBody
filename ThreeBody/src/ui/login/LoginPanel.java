@@ -111,13 +111,11 @@ public class LoginPanel extends JPanel{
 				break;
 			case NOT_EXISTED:
 				System.out.println("account not existed");
-				errorMsgLabel.setText("账户已在别处登录");
+				errorMsgLabel.setText("账户不存在");
 				add(errorMsgLabel);
 				loginFrame.setContentPane(thisPanel);
 				break;
 			}
-			
-			
 		}
 		
 		@Override

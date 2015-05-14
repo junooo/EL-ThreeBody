@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import ui.FrameUtil;
 import control.AccountControl;
 
 public class RevisePWPanel extends JPanel{
@@ -60,8 +61,6 @@ public class RevisePWPanel extends JPanel{
 		pwConfirmField.setBounds(105,120,240,30);
 		this.add(pwConfirmField);
 		
-
-		
 		pwOldLabel = new JLabel();
 		pwOldLabel.setBounds(30,40,60,30);
 		pwOldLabel.setIcon(new ImageIcon("images/pwold.png"));
@@ -106,7 +105,19 @@ public class RevisePWPanel extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-
+			if(!pwNewField.getText().equals(pwConfirmField.getText())){
+				FrameUtil.sendMessageByFrame("两次输入的密码不一致", "两次输入的密码不一致");
+			}
+			switch(accountControl.editPassword(pwOldField.getText(), pwNewField.getText())){
+			case SUCCESS:
+				FrameUtil.sendMessageByFrame("修改成功", "修改成功");
+				frame.setVisible(false);
+				break;
+			case INVALID:
+				FrameUtil.sendMessageByFrame("修改失败", "原密码不正确");
+				frame.setVisible(false);
+				break;
+			}
 		}
 		
 		@Override

@@ -55,20 +55,23 @@ public class AccountCenter extends UnicastRemoteObject implements
 	 * 邀请码
 	 */
 	private Set<String> invitationIDs;
+	
+	/*
+	 * 数据库交互
+	 */
+	private ServerDatabase database;
 
 	protected AccountCenter() throws RemoteException {
 		try {
+			database = ServerDatabase.getInstance();
+			database.openDB();
+			database.loadData();
 			
-			// TODO 文件IO
-			this.passwords = new HashMap<String, String>();
-			this.accounts = new HashMap<String, Account>();
-			this.invitationIDs = new TreeSet<String>();
-			this.transientIDs = new HashMap<String, String>();
+			this.accounts = database.getAccounts();
+			this.passwords = database.getPasswords();
+			this.transientIDs = database.getTransientIDs();
+			this.invitationIDs = database.getInvitationIDs();
 			this.actives = new HashMap<String, AccountServer>();
-			
-			// TODO test
-			accounts.put("Red", new Account("Red"));
-			passwords.put("Red", "r1234");
 			
 			Naming.rebind("AccountCenter", (RMIAccountCenter)this);
 		} catch (RemoteException | MalformedURLException e) {
@@ -97,6 +100,7 @@ public class AccountCenter extends UnicastRemoteObject implements
 		if(actives.containsKey(id)){
 			this.informLogout(id);
 			transientIDs.remove(id);
+			database.updateTransientID(id, null);
 			return R.info.SUCCESS;
 		}else{
 			return R.info.NOT_EXISTED;
@@ -115,7 +119,9 @@ public class AccountCenter extends UnicastRemoteObject implements
 			return R.info.INVALID;
 		}
 		// 生成暂时登陆码
-	    transientIDs.put(id, generateRandomTransientID());
+		String transientID = generateRandomTransientID();
+	    transientIDs.put(id, transientID);
+	    database.updateTransientID(id, transientID);
 	    // 分发远程对象
 		this.dispatchAccountServer(account);
 		return R.info.SUCCESS;
@@ -131,12 +137,15 @@ public class AccountCenter extends UnicastRemoteObject implements
 		}
 		// 移除已经使用的邀请码
 		invitationIDs.remove(invitationID);
+		database.deleteInvitationID(invitationID);
+		// 生成暂时登陆码
+		String transientID = generateRandomTransientID();
+		transientIDs.put(id,transientID);
 		// 生成账号
 		Account newAccount = new Account(id);
 		accounts.put(id, newAccount);
 		passwords.put(id, password);
-		// 生成暂时登陆码
-		transientIDs.put(id, generateRandomTransientID());
+		database.addAccount(id, password, transientID);
 		// 分发远程对象
 		this.dispatchAccountServer(newAccount);
 		return R.info.SUCCESS;
@@ -168,32 +177,20 @@ public class AccountCenter extends UnicastRemoteObject implements
 		StringBuffer sb;
 
 		switch (parts[0]) {
-		case "init":
-			accounts.put("Red", new Account("Red"));
-			accounts.put("Green", new Account("Green"));
-			accounts.put("Blue", new Account("Blue"));
-			accounts.put("Yellow", new Account("Yellow"));
-			passwords.put("Red", "r1234");
-			passwords.put("Green", "g1234");
-			passwords.put("Blue", "b1234");
-			passwords.put("Yellow", "y1234");
-			invitationIDs.add("fffff1");
-			invitationIDs.add("fffff2");
-			invitationIDs.add("fffff3");
-			invitationIDs.add("fffff4");
-			return R.info.SUCCESS.name();
-		case "clear":
-			accounts.clear();
-			passwords.clear();
-			invitationIDs.clear();
-			return R.info.SUCCESS.name();
 		case "add_account":
 			Account acc = new Account(parts[1]);
 			accounts.put(parts[1], acc);
 			passwords.put(parts[1], parts[2]);
+			String transientID = generateRandomTransientID();
+			transientIDs.put(parts[1],transientID);
 			return "success";
 		case "add_invitationID":
+			int beforeSize = invitationIDs.size();
 			invitationIDs.add(parts[1]);
+			int afterSize = invitationIDs.size();
+			if(afterSize > beforeSize){
+				database.addInvitationID(parts[1]);
+			}
 			return "now size:"+invitationIDs.size();
 		case "check_connections":
 			sb = new StringBuffer();
@@ -274,20 +271,17 @@ public class AccountCenter extends UnicastRemoteObject implements
 	// TODO 保存Account
 	public void saveAccount(Account account) {
 		accounts.put(account.getId(), account);
-		
-	}
-	
-	private class AccountData{
-		
-		private Map<String, Account> accounts;
-		private Map<String, String> passwords;
-		private Map<String, String> transientIDs;
-		private Set<String> invitationIDs;
-		
-		public AccountData() {
-			super();
-		}
-		
 	}
 
+	@Override
+	public info editPassword(String id,String password, String newPassword) throws RemoteException {
+		if(passwords.get(id).equals(password)){
+			passwords.put(id, newPassword);
+			database.updatePassword(id, newPassword);
+			return R.info.SUCCESS;
+		}else{
+			return R.info.INVALID;
+		}
+	}
+	
 }
