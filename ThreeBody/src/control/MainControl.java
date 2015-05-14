@@ -102,9 +102,9 @@ public class MainControl {
 	/*
 	 * TESTED
 	 */
-	public void toGame() {
+	public void toGame(int NumOfEnemy) {
 		currentPanel.setVisible(false);
-		this.gamePanel = new GamePanel(this, 3);
+		this.gamePanel = new GamePanel(this, NumOfEnemy);
 		currentPanel = this.gamePanel;
 		frame.setContentPane(currentPanel);
 		currentPanel.setVisible(true);

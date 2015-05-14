@@ -12,15 +12,12 @@ import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import model.Account;
 import model.Room;
 import ui.lobby.ButtonPanel;
-import ui.lobby.CreateRoomFrame;
-import ui.lobby.CreateRoomPanel;
 import control.LobbyControl;
 import control.MainControl;
 
@@ -163,13 +160,13 @@ public class RoomPanel extends JPanel{
 		
 	}
 	public void initLocation(){
-		locations.add(new Rectangle(215,20,600,60));
-		locations.add(new Rectangle(215,100,600,60));
-		locations.add(new Rectangle(215,180,600,60));
-		locations.add(new Rectangle(215,260,600,60));
-		locations.add(new Rectangle(215,340,600,60));
-		locations.add(new Rectangle(215,420,600,60));
-		locations.add(new Rectangle(215,500,600,60));
+		locations.add(new Rectangle(15,20,800,60));
+		locations.add(new Rectangle(15,100,800,60));
+		locations.add(new Rectangle(15,180,800,60));
+		locations.add(new Rectangle(15,260,800,60));
+		locations.add(new Rectangle(15,340,800,60));
+		locations.add(new Rectangle(15,420,800,60));
+		locations.add(new Rectangle(15,500,800,60));
 	}
 	public void initComonent() {
 		for (int i = 0; i < room.getSize(); i++) {
@@ -193,7 +190,7 @@ public class RoomPanel extends JPanel{
 		this.btn_ready.setIcon(new ImageIcon("images/newroom.png"));
 		this.btn_ready.setContentAreaFilled(false);
 		this.btn_ready.setBounds(840, 500, 100, 50);
-		this.btn_ready.addMouseListener(new CreateRoomListener());
+		this.btn_ready.addMouseListener(new ToGameListener());
 		this.add(btn_ready);
 
 		this.btn_lobbyReturn = new JButton();
@@ -211,26 +208,11 @@ public class RoomPanel extends JPanel{
 		g.drawImage(background, 0, 0, null);
 	}
 
-	class EnterListener extends MouseAdapter  {
-		int roomId;
-		public EnterListener(int roomId) {
-			this.roomId = roomId;
-		}
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			mainControl.toGame();
-		}
-	}
 
-	class CreateRoomListener extends MouseAdapter  {
+	class ToGameListener extends MouseAdapter  {
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			JFrame createRoomFrame = new CreateRoomFrame();
-			JPanel createRoomPanel = new CreateRoomPanel(createRoomFrame,
-					lobbyControl);
-			createRoomFrame.setContentPane(createRoomPanel);
-//			addRoom(roomFamily.size());
-//			add(roomFamily.get(roomFamily.size() - 1));
+			mainControl.toGame(room.getSize());
 		}
 	}
 
