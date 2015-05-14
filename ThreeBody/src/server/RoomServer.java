@@ -21,6 +21,7 @@ public class RoomServer extends UnicastRemoteObject implements RMIRoom {
 	
 	private Room room;
 	private LobbyServer lobbyServer;
+	private GameServer gameServer;
 
 	protected RoomServer(LobbyServer lobbyServer,Room room) throws RemoteException {
 		super();
@@ -40,13 +41,13 @@ public class RoomServer extends UnicastRemoteObject implements RMIRoom {
 
 	@Override
 	public info start() throws RemoteException {
-		// TODO GameServer
 		for(Boolean ready:room.getReady().values()){
 			if(!ready){
 				return R.info.INVALID;
 			}
 		}
 		room.setStart(true);
+		new GameServer(room.getAccounts());
 		return R.info.SUCCESS;
 	}
 
@@ -78,7 +79,7 @@ public class RoomServer extends UnicastRemoteObject implements RMIRoom {
 	@Override
 	public RMIGame getGameServer() throws RemoteException {
 		if(room.isStart()){
-			return new GameServer(room.getAccounts());
+			return gameServer;
 		}
 		return null;
 	}

@@ -43,17 +43,9 @@ public abstract class Card implements Serializable{
 		return requiredTechPoint;
 	}
 	
-	
 	public int getLifetime() {
 		return lifetime;
 	}
-
-	
-	
-	/*
-	 * 建议可以在父类加些通用的代码,比如消耗资源部分的代码，根据String找到相应Player的代码
-	 */
-	
 	
 	public Player findOperator(GameDTO dto){
 		

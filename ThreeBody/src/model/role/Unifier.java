@@ -31,6 +31,4 @@ public class Unifier extends Role {
 		}
 	}
 
-	
-
 }

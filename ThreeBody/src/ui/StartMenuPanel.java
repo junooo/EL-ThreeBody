@@ -7,11 +7,15 @@ import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import ui.login.LoginFrame;
+import ui.login.LoginPanel;
 import ui.sound.Media;
 import ui.sound.Sound;
 import control.MainControl;
+import dto.AccountDTO;
 
 public class StartMenuPanel extends JPanel{
 	/*
@@ -27,23 +31,25 @@ public class StartMenuPanel extends JPanel{
 	private JButton btnLogIn;
 	
 	private MainControl mainControl;
+	private String accountId;
 	
 	public StartMenuPanel(MainControl mainControl) {
 		this.setLayout(null);
 		this.mainControl = mainControl;
 		this.initComonent();
+		this.accountId=AccountDTO.getInstance().getId();
 	}
 	
 	private void initComonent() {
 
-		this.btnStartGame = new JButton(new ImageIcon("button.png"));
+		this.btnStartGame = new JButton(new ImageIcon("images/button.png"));
 		this.btnStartGame.setContentAreaFilled(false);
 		this.btnStartGame.setBounds(483, 120, 200, 80);
 		this.btnStartGame.setBorderPainted(false);
 		this.btnStartGame.addMouseListener(new StartGameListener());
 		this.add(btnStartGame);
 
-		this.btnOption = new JButton(new ImageIcon("option.png"));
+		this.btnOption = new JButton(new ImageIcon("images/option.png"));
 		this.btnOption.setContentAreaFilled(false);
 		this.btnOption.setBounds(483, 220, 200, 80);
 		this.btnOption.setBorderPainted(false);
@@ -51,14 +57,14 @@ public class StartMenuPanel extends JPanel{
 
 		this.add(btnOption);
 
-		this.btnAboutUs = new JButton(new ImageIcon("about.png"));
+		this.btnAboutUs = new JButton(new ImageIcon("images/about.png"));
 		this.btnAboutUs.setContentAreaFilled(false);
 		this.btnAboutUs.setBounds(483, 320, 200, 80);
 		this.btnAboutUs.setBorderPainted(false);
 		this.btnAboutUs.addMouseListener(new AboutUsListener());
 		this.add(btnAboutUs);
 
-		this.btnExit = new JButton(new ImageIcon("exit.png"));
+		this.btnExit = new JButton(new ImageIcon("images/exit.png"));
 		this.btnExit.setContentAreaFilled(false);
 		this.btnExit.setBounds(483, 420, 200, 80);
 		this.btnExit.setBorderPainted(false);
@@ -66,21 +72,21 @@ public class StartMenuPanel extends JPanel{
 		this.add(btnExit);
 
 		
-		this.btnLogIn = new JButton("��½");
+		this.btnLogIn = new JButton(accountId);
 		this.btnLogIn.setContentAreaFilled(false);
 		this.btnLogIn.setBounds(0, 0, 150, 25);
 		this.btnLogIn.addMouseListener(new LogInListener());
 		this.add(btnLogIn);
 		
 		
-		this.btnAccount = new JButton("�û���Ϣ");
+		this.btnAccount = new JButton("账号");
 		this.btnAccount.setContentAreaFilled(false);
 		this.btnAccount.setBounds(0, 25, 150, 25);
 		this.btnAccount.addMouseListener(new AccountListener());
 	}
 	@Override
 	public void paintComponent(Graphics g) {
-		Image IMG_MAIN = new ImageIcon("img2.jpg").getImage();
+		Image IMG_MAIN = new ImageIcon("images/img2.jpg").getImage();
 		g.drawImage(IMG_MAIN, 0, 0, 1158, 650, null);
 		
 	}
@@ -90,7 +96,7 @@ public class StartMenuPanel extends JPanel{
 		@Override
 		public void mouseClicked(MouseEvent arg0) {
 			Media.playSound(Sound.enter);
-			mainControl.toSelect();
+			mainControl.toLobby();
 		}
 
 		@Override
@@ -215,8 +221,20 @@ public class StartMenuPanel extends JPanel{
 		@Override
 		public void mouseClicked(MouseEvent arg0) {
 			Media.playSound(Sound.choose);
-			btnLogIn.setIcon(new ImageIcon("option.png"));
-			repaint();
+			if(AccountDTO.getInstance().getId() == "本地玩家"){
+				JFrame loginFrame = new LoginFrame();
+				JPanel loginPanel = new LoginPanel(loginFrame,mainControl.ac);
+				loginFrame.setContentPane(loginPanel);
+				repaint();
+			}else{
+				if(mainControl.isConnected()){
+					mainControl.toAccount(AccountDTO.getInstance().getId());
+					System.out.println("Account界面，目前账号为："+AccountDTO.getInstance().getId()+" 已连接");
+				}else{
+					mainControl.toAccount(AccountDTO.getInstance().getId());
+					System.out.println("Account界面，目前账号为："+AccountDTO.getInstance().getId()+" 未连接");
+				}
+			}
 		}
 
 		@Override

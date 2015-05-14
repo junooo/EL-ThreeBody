@@ -6,9 +6,9 @@ import saint.media.SimplePlayer;
 /**
  * 
  * @author Ğ¡Y
- * ¸ĞĞ»Ğ¡YµÄÈÈĞÄ°ïÖú
- * saint°üÒÔ¼°MediaÀàÎªĞ¡YÓÑÇéÌá¹©
- * ÓÃÓÚÒôÀÖµÄ²¥·Å
+ * ï¿½ï¿½Ğ»Ğ¡Yï¿½ï¿½ï¿½ï¿½ï¿½Ä°ï¿½ï¿½ï¿½
+ * saintï¿½ï¿½ï¿½Ô¼ï¿½Mediaï¿½ï¿½ÎªĞ¡Yï¿½ï¿½ï¿½ï¿½ï¿½á¹©
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÖµÄ²ï¿½ï¿½ï¿½
  *
  */
 
@@ -31,7 +31,7 @@ public class Media{
 			bgmPlayer.setLoop(true);
 			bgmPlayer.setLoopCount(1000);
 		}catch (Exception e) {
-			System.err.println("ÎÄ¼şÎŞ·¨¼ÓÔØ");
+			System.err.println("ï¿½Ä¼ï¿½ï¿½Ş·ï¿½ï¿½ï¿½ï¿½ï¿½");
 			return;
 		}
 
@@ -49,7 +49,7 @@ public class Media{
 			soundPlayer.open(new File("sound/"+name+".mp3"));
 			soundPlayer.setLoop(false);
 		}catch (Exception e) {
-			System.err.println("ÎÄ¼şÎŞ·¨¼ÓÔØ");
+			System.err.println("ï¿½Ä¼ï¿½ï¿½Ş·ï¿½ï¿½ï¿½ï¿½ï¿½");
 			return;
 		}
 
@@ -67,7 +67,7 @@ public class Media{
 			midiPlayer.open(new File("sound/"+name+".mid"));
 			midiPlayer.setLoop(false);
 		}catch (Exception e) {
-			System.err.println("ÎÄ¼şÎŞ·¨¼ÓÔØ");
+			System.err.println("ï¿½Ä¼ï¿½ï¿½Ş·ï¿½ï¿½ï¿½ï¿½ï¿½");
 			return;
 		}
 
@@ -88,6 +88,18 @@ public class Media{
 	
 	public static void stopMidi(String name){
 		midiPlayer.setVolume(0);
+	}
+
+	public static SimplePlayer getBgmPlayer() {
+		return bgmPlayer;
+	}
+
+	public static SimplePlayer getSoundPlayer() {
+		return soundPlayer;
+	}
+
+	public static MidiPlayer getMidiPlayer() {
+		return midiPlayer;
 	}
 	
 }

@@ -1,6 +1,5 @@
 package model.card;
 
-import model.Player;
 import model.operation.ResourceChange;
 import model.operation.ResourceChange.Type;
 import model.operation.TechChange;

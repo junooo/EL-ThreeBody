@@ -11,51 +11,82 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import control.MainControl;
 import ui.sound.Media;
 import ui.sound.Sound;
+import control.MainControl;
+
 
 public class AboutUsPanel extends JPanel{
-	private static final long serialVersionUID = 1L;
-	
+  private static final long serialVersionUID = 1L;
+  
   private JButton btnNextPage;
-  private JLabel picture;
-  private MainControl mc;
-  
-  
-  public AboutUsPanel(MainControl mc){
+  private JLabel  picture;
+  private MainControl mainControl;
+  private int pNum=2;
+  String[] pictureList=new String[pNum+1];
+  private int i=0;
+	  
+
+  public AboutUsPanel(MainControl mainControl){
+	  
+	  //store the turns of pictureInfo  
+	  
+      pictureList[0]="images/ABOUTUS1.png";
+      pictureList[1]="images/ABOUTUS2.png";
+	  
 	  this.setLayout(null);
 	  this.initComonent();
-	  this.mc = mc;
+	  this.mainControl = mainControl;
+	  
   }
   
   private void initComonent() {
-	  this.btnNextPage=new JButton("下一页");
+	  this.btnNextPage=new JButton();
+	  this.btnNextPage.setIcon(new ImageIcon("images/下一页.png"));
 	  this.btnNextPage.setContentAreaFilled(false);
-      this.btnNextPage.setBounds(0,0,200,50);
-	  this.btnNextPage.setBorderPainted(false);
+      this.btnNextPage.setBounds(750,500,221,89);
+	  //this.btnNextPage.setBorderPainted(false);
  
 	  btnNextPage.addMouseListener(new NextPageListener());
 	  btnNextPage.setVisible(true);
 	  this.add(btnNextPage);
-	  
-	  Icon icon=new ImageIcon("929a10fa828ba61e3a1927a84134970a324e59f5.gif");
+	
+	  //show the first picture
+	  Icon icon=new ImageIcon(pictureList[0]);
 	  this.picture=new JLabel(icon);
-	  this.picture.setBounds(0,0,200,200);
-	  
+	  this.picture.setBounds(200,100,800,400);
 	  this.picture.setVisible(true);
 	  this.add(picture);
   }
   
   
-  class NextPageListener implements MouseListener{
+  public void changeImage(){
+	  if(i<(pNum-1)){
+		  i++;
+		  picture.setIcon(new ImageIcon(pictureList[i]));
+		  
+		  
+		  if(i==(pNum-1)){
+			  this.btnNextPage.setIcon(new ImageIcon("images/返回.png"));
+		  }
+	  }else{
+		  mainControl.toStartMenu();
+		  
+	  }
+}
+  
+  
+class NextPageListener implements MouseListener{
 	  public void mouseClicked(MouseEvent arg0) {
 		  Media.playSound(Sound.enter);
+		  changeImage();
+		  
 	  }
 
 	  @Override
 	  public void mouseEntered(MouseEvent arg0) {
 		  Media.playSound(Sound.choose);
+		  
 	  }
 
 	  @Override
@@ -68,12 +99,19 @@ public class AboutUsPanel extends JPanel{
 
 	  @Override
 	  public void mouseReleased(MouseEvent arg0) {
+		  
 	  }
 }
+
+
+
   @Override
   //background picture
   public void paintComponent(Graphics g) {
-	  Image AboutUs1=new ImageIcon("ABOUTUS1.jpg").getImage();
-	  g.drawImage(AboutUs1,0,0,400,400,0,0,1024,512,null);
+	  Image background=new ImageIcon("images/模糊背景.jpg").getImage();
+	  g.drawImage(background,0,0,null);
 	}
+  
+  
 }
+  

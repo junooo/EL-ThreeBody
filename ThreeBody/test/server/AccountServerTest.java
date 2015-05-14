@@ -26,12 +26,12 @@ public class AccountServerTest {
 		try {
 			center = (RMIAccountCenter) Naming
 					.lookup("rmi://104.236.174.190/AccountCenter");
-			if (center.test("init").equals(R.info.SUCCESS)) {
+			if (center.command("init").equals(R.info.SUCCESS)) {
 				System.out.println("INIT");
 			}
 			center.login("Green", "g1234");
-			account = center.getAccount("Green");
 			service = center.getService("Green");
+			account = service.getAccount();
 		} catch (MalformedURLException e1) {
 			e1.printStackTrace();
 		} catch (RemoteException e1) {
@@ -70,7 +70,7 @@ public class AccountServerTest {
 			assertEquals(R.info.SUCCESS,service.uploadChange(account));
 			
 			service.test("changeGames");
-			account = service.downloadChange();
+			account = service.getAccount();
 			assertEquals(998, account.getTotalGames());
 		} catch (RemoteException e) {
 			e.printStackTrace();
