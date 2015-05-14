@@ -48,7 +48,6 @@ public class MainControl {
 		//TODO
 		mc.gamePanel = new GamePanel(mc, 3);
 		mc.frame = new MainFrame(mc);
-		mc.startMenuPanel = new StartMenuPanel(mc);
 		mc.currentPanel = mc.startMenuPanel;
 		mc.toStartMenu();
 //		mc.toAnimate("opening");
@@ -60,7 +59,7 @@ public class MainControl {
 	 * TESTED
 	 */
 	public void toStartMenu() {
-		currentPanel.setVisible(false);
+//		currentPanel.setVisible(false);
 		if (this.startMenuPanel == null) {
 			this.startMenuPanel = new StartMenuPanel(this);
 		}

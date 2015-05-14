@@ -59,16 +59,16 @@ public class BroadcastPanel extends JPanel {
 		btnCoordinateFour.setFont(new Font("黑体", Font.BOLD, 60));
 		this.add(btnCoordinateFour);
 		
-		this.btnOK = new JButton(new ImageIcon("images/button.png"));
+		this.btnOK = new JButton(new ImageIcon("images/btnbroadcast.png"));
 		this.btnOK.setContentAreaFilled(false);
-		this.btnOK.setBounds(360, 105, 150, 60);
+		this.btnOK.setBounds(360, 105, 120, 60);
 		this.btnOK.setBorderPainted(false);
 		btnOK.addMouseListener(new BroadcastListener());
 		this.add(btnOK);
 		
-		this.btnReturn = new JButton(new ImageIcon("images/exit.png"));
+		this.btnReturn = new JButton(new ImageIcon("images/btnbroadcastcancel.png"));
 		this.btnReturn.setContentAreaFilled(false);
-		this.btnReturn.setBounds(520, 105, 150, 60);
+		this.btnReturn.setBounds(520, 105, 120, 60);
 		this.btnReturn.setBorderPainted(false);
 		btnReturn.addMouseListener(new ReturnListener());
 		this.add(btnReturn);

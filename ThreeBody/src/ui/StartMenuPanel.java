@@ -1,5 +1,7 @@
 package ui;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
@@ -8,6 +10,7 @@ import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import ui.login.LoginFrame;
@@ -27,17 +30,16 @@ public class StartMenuPanel extends JPanel{
 	private JButton btnOption;
 	private JButton btnAboutUs;
 	private JButton btnExit;
-	private JButton btnAccount;
 	private JButton btnLogIn;
-	
+	public JLabel labelLogIn;
 	private MainControl mainControl;
-	private String accountId;
+	public String accountId="233";
 	
 	public StartMenuPanel(MainControl mainControl) {
 		this.setLayout(null);
 		this.mainControl = mainControl;
+		this.accountId= AccountDTO.getInstance().getId();
 		this.initComonent();
-		this.accountId=AccountDTO.getInstance().getId();
 	}
 	
 	private void initComonent() {
@@ -72,17 +74,18 @@ public class StartMenuPanel extends JPanel{
 		this.add(btnExit);
 
 		
-		this.btnLogIn = new JButton(accountId);
+		this.btnLogIn = new JButton();
 		this.btnLogIn.setContentAreaFilled(false);
 		this.btnLogIn.setBounds(0, 0, 150, 25);
 		this.btnLogIn.addMouseListener(new LogInListener());
 		this.add(btnLogIn);
 		
-		
-		this.btnAccount = new JButton("账号");
-		this.btnAccount.setContentAreaFilled(false);
-		this.btnAccount.setBounds(0, 25, 150, 25);
-		this.btnAccount.addMouseListener(new AccountListener());
+		this.labelLogIn = new JLabel(accountId,JLabel.CENTER);
+		this.labelLogIn.setBounds(0, 0, 150, 25);
+		this.labelLogIn.setForeground(Color.YELLOW);
+		this.labelLogIn.setFont(new Font("宋体",Font.PLAIN,20));
+		this.labelLogIn.setVisible(true);
+		this.add(labelLogIn);
 	}
 	@Override
 	public void paintComponent(Graphics g) {
@@ -192,30 +195,7 @@ public class StartMenuPanel extends JPanel{
 		public void mouseReleased(MouseEvent arg0) {
 		}
 	}
-	class AccountListener implements MouseListener {
-
-		@Override
-		public void mouseClicked(MouseEvent arg0) {
-			Media.playSound(Sound.choose);
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent arg0) {
-			Media.playSound(Sound.choose);
-		}
-
-		@Override
-		public void mouseExited(MouseEvent arg0) {
-		}
-
-		@Override
-		public void mousePressed(MouseEvent arg0) {
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent arg0) {
-		}
-	}
+	
 	class LogInListener implements MouseListener {
 
 		@Override

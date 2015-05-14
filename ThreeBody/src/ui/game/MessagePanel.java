@@ -44,14 +44,14 @@ public class MessagePanel  extends JPanel{
 			
 			
 			
-			this.btnOK = new JButton(new ImageIcon("images/button.png"));
+			this.btnOK = new JButton(new ImageIcon("images/btnbroadcast.png"));
 			this.btnOK.setContentAreaFilled(false);
 			this.btnOK.setBounds(360, 95, 120, 60);
 			this.btnOK.setBorderPainted(false);
 //			btnOK.addMouseListener(new StartGameListener());
 			this.add(btnOK);
 			
-			this.btnReturn = new JButton(new ImageIcon("images/exit.png"));
+			this.btnReturn = new JButton(new ImageIcon("images/btnbroadcastcancel.png"));
 			this.btnReturn.setContentAreaFilled(false);
 			this.btnReturn.setBounds(520, 95, 120, 60);
 			this.btnReturn.setBorderPainted(false);
