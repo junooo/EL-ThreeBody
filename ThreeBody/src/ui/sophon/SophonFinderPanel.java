@@ -145,9 +145,8 @@ public class SophonFinderPanel extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-//			useSophon();
+			useSophon();
 			jumpPanel();
-			
 		}
 		private void jumpPanel() {
 			if(sophonFinder.getTitle().equals("智子")){

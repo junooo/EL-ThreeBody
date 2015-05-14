@@ -12,12 +12,12 @@ public class TechPanel extends JPanel {
 	
 	public TechPanel() {
 		this.setLayout(null);
-		setBounds(110, 510, 140, 32);
+		setBounds(100, 510, 140, 32);
 	}
 	
 	@Override
 	public void paint(Graphics g) {
 		
-		FrameUtil.drawNumberLeftPad(60, 0, 64, 3, g);
+		FrameUtil.drawNumberLeftPad(60, 0, 233, 3, g);
 	}
 }

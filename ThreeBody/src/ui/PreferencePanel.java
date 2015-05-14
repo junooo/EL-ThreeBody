@@ -88,7 +88,11 @@ public class PreferencePanel extends JPanel{
 	class VolumnUpListener implements MouseListener {
 		@Override
 		public void mouseClicked(MouseEvent e) {
+			
 			volume*=2;
+			if (volume==0.0f) {
+				volume=(float)0.00390625;
+			}
 			volume=volume>=1.0f?1.0f:volume;
 			labelVolume.setText(volume+"");
 			Media.getBgmPlayer().setVolume(volume);
@@ -111,7 +115,7 @@ public class PreferencePanel extends JPanel{
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			volume/=2;
-			volume=volume<0.000001f?0.0f:volume;
+			volume=volume<0.003f?0.0f:volume;
 			labelVolume.setText(volume+"");
 			Media.getBgmPlayer().setVolume(volume);
 		}

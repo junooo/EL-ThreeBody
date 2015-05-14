@@ -14,7 +14,7 @@ public class ResourcePanel extends JPanel {
 	
 	public ResourcePanel() {
 		this.setLayout(null);
-		setBounds(110, 478, 140, 32);
+		setBounds(100, 478, 140, 32);
 	}	
 	
 	@Override

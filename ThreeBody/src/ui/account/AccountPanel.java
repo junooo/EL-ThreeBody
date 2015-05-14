@@ -2,22 +2,24 @@ package ui.account;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import model.Account;
 import ui.FrameUtil;
 import ui.InformFrame;
-import model.Account;
 import control.AccountControl;
 import control.MainControl;
+
 
 
 public class AccountPanel extends JPanel{
@@ -64,13 +66,16 @@ public class AccountPanel extends JPanel{
 		labelHead = new JLabel();
 		labelHead.setBounds(600,120,150,150);
 		if(account.getHead()!=null){
-			ImageIcon headImage = new ImageIcon(account.getHead());
-			labelHead.setIcon(headImage);
+			Image headImage=account.getHead();
+			headImage=headImage.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+			labelHead.setIcon(new ImageIcon(headImage));
 		}else{
 			//TODO 设置默认头像
-			ImageIcon headImage = new ImageIcon("images/headtest.jpg");
-			labelHead.setIcon(headImage);
+			Image headImage = new ImageIcon("images/headtest.jpg").getImage();
+			headImage=headImage.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+			labelHead.setIcon(new ImageIcon(headImage));
 		}
+		labelHead.addMouseListener(new HeadSelectListener());
 		this.add(labelHead);
 		
 		psPoint = new JLabel();
@@ -218,6 +223,31 @@ public class AccountPanel extends JPanel{
 			InformFrame revisePWFrame = new InformFrame("修改密码", 400, 300);
 			RevisePWPanel revisePWpanel = new RevisePWPanel(revisePWFrame, accountControl);
 			revisePWFrame.add(revisePWpanel);
+		}
+		@Override
+		public void mousePressed(MouseEvent e) {
+		}
+		@Override
+		public void mouseReleased(MouseEvent e) {
+		}
+		@Override
+		public void mouseEntered(MouseEvent e) {
+		}
+		@Override
+		public void mouseExited(MouseEvent e) {
+		}
+	}
+	
+	class HeadSelectListener implements MouseListener {
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			JFileChooser jfc = new JFileChooser();
+			jfc.showOpenDialog(jfc);
+			File fileHead = jfc.getSelectedFile();
+			System.out.println(fileHead.getPath());
+			Image headImage = new ImageIcon(fileHead.getPath()).getImage();
+			headImage=headImage.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+			labelHead.setIcon(new ImageIcon(headImage));
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
