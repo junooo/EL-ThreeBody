@@ -147,16 +147,18 @@ public class GamePanel  extends JPanel{
 	private void initComonent() {
 		this.btnReturn = new JButton("返回");
 		this.btnReturn.setContentAreaFilled(false);
-		this.btnReturn.setBounds(-50, 615, 100, 30);
+		this.btnReturn.setBounds(20, 565, 120, 30);
 		btnReturn.setFont(new Font("黑体", Font.BOLD, 20));
+		btnReturn.setForeground(Color.YELLOW);
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnReturn.addMouseListener(new ReturnListener());
 		this.add(btnReturn);
-		
+//		578 300 856
 		this.btnBroadcast = new JButton("广播");
 		this.btnBroadcast.setContentAreaFilled(false);
-		this.btnBroadcast.setBounds(400, 600, 50, 15);
+		this.btnBroadcast.setBounds(260, 600, 80, 20);
 		btnBroadcast.setFont(new Font("黑体", Font.BOLD, 15));
+		btnBroadcast.setForeground(Color.YELLOW);
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnBroadcast.addMouseListener(new BroadcastListener());
 		this.add(btnBroadcast);
@@ -164,17 +166,19 @@ public class GamePanel  extends JPanel{
 		
 		this.btnHistory = new JButton("历史记录");
 		this.btnHistory.setContentAreaFilled(false);
-		this.btnHistory.setBounds(600, 600, 50, 15);
+		this.btnHistory.setBounds(523, 600, 100, 20);
 		btnHistory.setFont(new Font("黑体", Font.BOLD, 15));
+		btnHistory.setForeground(Color.YELLOW);
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnHistory.addMouseListener(new HistoryListener());
 		this.add(btnHistory);
 		
 		this.btnMessage = new JButton("留言");
 		this.btnMessage.setContentAreaFilled(false);
-		this.btnMessage.setBounds(800, 600, 50, 15);
+		this.btnMessage.setBounds(816, 600, 80, 20);
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnMessage.setFont(new Font("黑体", Font.BOLD, 15));
+		btnMessage.setForeground(Color.YELLOW);
 		btnMessage.addMouseListener(new MessageListener());
 		this.add(btnMessage);
 		
@@ -287,10 +291,6 @@ public class GamePanel  extends JPanel{
 	
 	
 	class ReturnListener implements MouseListener {
-		int x = btnReturn.getX();
-		int y = btnReturn.getY();
-		int w = btnReturn.getWidth();
-		int h = btnReturn.getHeight();
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
@@ -298,21 +298,15 @@ public class GamePanel  extends JPanel{
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
-			btnReturn.setBounds(x+40, y-40, w, h+40);
-			
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			btnReturn.setBounds(x+40, y-40, w, h+40);
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {
-			btnReturn.setBounds(x+40, y-40, w, h+40);
 		}
 		@Override
 		public void mouseExited(MouseEvent e) {
-			btnReturn.setLocation(x, y);
-			
 		}
 	}
 	
