@@ -223,7 +223,7 @@ public class StartMenuPanel extends JPanel{
 			Media.playSound(Sound.choose);
 			if(AccountDTO.getInstance().getId() == "本地玩家"){
 				JFrame loginFrame = new LoginFrame();
-				JPanel loginPanel = new LoginPanel(loginFrame,mainControl.ac);
+				JPanel loginPanel = new LoginPanel(loginFrame,mainControl.accountControl);
 				loginFrame.setContentPane(loginPanel);
 				repaint();
 			}else{

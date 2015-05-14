@@ -27,7 +27,9 @@ public class MainControl {
 	private JPanel account=null;
 	private JPanel preference=null;
 	private AnimatePanel animate=null;
-	public AccountControl ac;
+	
+	public AccountControl accountControl;
+	public LobbyControl lobbyControl;
 	
 	private boolean connected = false;
 	
@@ -36,10 +38,10 @@ public class MainControl {
 
 		MainControl mc = new MainControl();
 		
-		mc.ac = new AccountControl(mc);
+		mc.accountControl = new AccountControl(mc);
 		String id = AccountDTO.getInstance().getId();
 		if(!id.equals("本地玩家")){
-			if (mc.ac.loginByTransientID(id) == R.info.SUCCESS) {
+			if (mc.accountControl.loginByTransientID(id) == R.info.SUCCESS) {
 				mc.connected = true;
 			}
 		}
@@ -107,11 +109,14 @@ public class MainControl {
 	}
 
 	public void toLobby() {
-		currentPanel.setVisible(false);
-		if (this.lobbyPanel == null) {
-			this.lobbyPanel = new LobbyPanel(this);
+		// new LobbyControl
+		if (lobbyControl == null){
+			lobbyControl = new LobbyControl((LobbyPanel)this.lobbyPanel);
 		}
+		currentPanel.setVisible(false);
+		this.lobbyPanel = new LobbyPanel(this);
 		currentPanel = this.lobbyPanel;
+		lobbyControl.setLobbyPanel((LobbyPanel)this.lobbyPanel);
 		frame.setContentPane(currentPanel);
 		currentPanel.setVisible(true);
 		frame.validate();
@@ -133,7 +138,7 @@ public class MainControl {
 	public void toAccount(String id) {
 		currentPanel.setVisible(false);
 		//TODO 这里传了this.ac 不合适再调
-		this.account = new AccountPanel(this,id,this.ac);
+		this.account = new AccountPanel(this,id,this.accountControl);
 		currentPanel = this.account;
 		frame.setContentPane(currentPanel);
 		currentPanel.setVisible(true);
@@ -142,7 +147,7 @@ public class MainControl {
 
 	public void exit() {
 		if(connected){
-			ac.logout();
+			accountControl.logout();
 		}
 		System.exit(0);
 	}
