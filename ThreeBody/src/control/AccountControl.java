@@ -22,10 +22,10 @@ public class AccountControl {
     private Account account;
     private RMIAccountCenter rmiac;
     private RMIAccount rmia;
-    private MainControl mc;
+    private MainControl mainControl;
     
     public AccountControl(MainControl mc) {
-    	this.mc = mc;
+    	this.mainControl = mc;
 		// 读取本地缓存
 		account = UserData.loadAccount();
 		AccountDTO.initializeByLocalData(account);
@@ -39,7 +39,7 @@ public class AccountControl {
 			if(feedback == R.info.SUCCESS){
 				rmia = rmiac.getService(id);
 				// 设成连接状态
-				mc.setConnected(true);
+				mainControl.setConnected(true);
 				// 保存transientID
 				String transientID = rmiac.getTransientID(id);
 				UserData.saveTransientID(transientID);
@@ -65,7 +65,7 @@ public class AccountControl {
 			if(feedback == R.info.SUCCESS){
 				rmia = rmiac.getService(id);
 				// 设成连接状态
-				mc.setConnected(true);
+				mainControl.setConnected(true);
 				// 保存transientID
 				String transientID = rmiac.getTransientID(id);
 				UserData.saveTransientID(transientID);
@@ -92,7 +92,7 @@ public class AccountControl {
 			if(feedback == R.info.SUCCESS){
 				rmia = rmiac.getService(id);
 				// 设成连接状态
-				mc.setConnected(true);
+				mainControl.setConnected(true);
 				// 同步网络端的account
 				account = rmia.getAccount();
 				AccountDTO.synchronize(account);
@@ -115,7 +115,7 @@ public class AccountControl {
     	try {
 			feedback = rmiac.logout(account.getId());
 			if(feedback == R.info.SUCCESS){
-				mc.setConnected(false);
+				mainControl.setConnected(false);
 				rmia = null;
 		    	account = null;
 		    	AccountDTO.synchronize(account);
@@ -135,7 +135,7 @@ public class AccountControl {
     	try {
 			feedback = rmiac.logoutAndClear(account.getId());
 			if(feedback == R.info.SUCCESS){
-				mc.setConnected(false);
+				mainControl.setConnected(false);
 				UserData.clearAccount();
 				rmia = null;
 		    	account = null;
