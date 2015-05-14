@@ -1,8 +1,11 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 
+import dto.GameDTO;
 import model.role.Role;
 
 public class Player implements Serializable {
@@ -48,8 +51,6 @@ public class Player implements Serializable {
     private int resource;
     private int techPoint;
     
-    
-    
     public Player(Account account, Role role, Coordinate coordinate,
 			boolean aI) {
     	
@@ -61,6 +62,8 @@ public class Player implements Serializable {
 		
 		resource = this.role.getInitialResource();
 		techPoint = this.role.getInitialTechPoint();
+		
+		foundRoles = new HashMap<Player, Role>();
 	}
     
     public void findCoordinate(Player player,int position,int value){
@@ -70,16 +73,24 @@ public class Player implements Serializable {
     public void findRole(Player player,Role role){
     	this.foundRoles.put(player, role);
     }
+    
+    public void initFoundCoordinates(){
+    	foundCoordinates = new HashMap<Player, Coordinate>();
+    	int uk = Coordinate.UNKNOWN;
+    	int[] uks = new int[Coordinate.DIMENSIONS];
+    	Arrays.fill(uks, uk);
+    	for(Player player : GameDTO.getInstance().getPlayers()){
+    		if(!player.getAccount().getId().equals(account.getId())){
+    			foundCoordinates.put(player, new Coordinate(uks));
+    		}
+    	}
+    }
 
 	/*
      * getters and setters
      */
     public boolean isAI() {
 		return AI;
-	}
-
-	public void setAI(boolean aI) {
-		AI = aI;
 	}
 
 	public Account getAccount() {
@@ -145,7 +156,5 @@ public class Player implements Serializable {
 	public Map<Player, Role> getFoundRoles() {
 		return foundRoles;
 	}
-
-	
     
 }

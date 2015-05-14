@@ -30,9 +30,9 @@ public class MainControl {
 	
 	public AccountControl accountControl;
 	public LobbyControl lobbyControl;
+	public GameControl gameControl;
 	
 	private boolean connected = false;
-	
 	
 	public static void main(String[] args) {
 
@@ -46,7 +46,6 @@ public class MainControl {
 			}
 		}
 		//TODO
-		mc.gamePanel = new GamePanel(mc, 3);
 		mc.frame = new MainFrame(mc);
 		mc.startMenuPanel = new StartMenuPanel(mc);
 		mc.currentPanel = mc.startMenuPanel;
@@ -94,14 +93,17 @@ public class MainControl {
 	public void toTutorial() {
 	}
 
-	
-
 	/*
 	 * TESTED
 	 */
-	public void toGame() {
+	public void toGame(int numOfPlayers) {
+		//new GameControl
+		if(gameControl == null){
+			gameControl = new GameControl(null);
+		}
+		
 		currentPanel.setVisible(false);
-		this.gamePanel = new GamePanel(this, 3);
+		this.gamePanel = new GamePanel(this, numOfPlayers);
 		currentPanel = this.gamePanel;
 		frame.setContentPane(currentPanel);
 		currentPanel.setVisible(true);
@@ -159,7 +161,5 @@ public class MainControl {
 	public void setConnected(boolean connected) {
 		this.connected = connected;
 	}
-
-	
 
 }

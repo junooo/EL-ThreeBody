@@ -3,19 +3,23 @@ package dto;
 import java.util.LinkedList;
 import java.util.List;
 
+import model.Account;
 import model.Broadcast;
+import model.Coordinate;
 import model.Player;
 import model.operation.Operation;
+import model.role.Earth;
+import model.role.ThreeBody;
+import model.role.Unifier;
 
 public class GameDTO {
 	
 	/*
 	 * singleton
 	 */
-	private static GameDTO dto = new GameDTO(null);
+	private static GameDTO dto;
     
     private List<Player> players;
-    
     
     /*
      * 该回合的玩家
@@ -61,10 +65,23 @@ public class GameDTO {
     	//TODO 本地账号
 //    	this.players = players;
     	this.players = new LinkedList<Player>();
+    	
+    	//TODO test
+    	this.players.add(new Player(new Account("A"),new Earth(),Coordinate.generateCoordinate(),false));
+    	this.players.add(new Player(new Account("B"),new Unifier(),Coordinate.generateCoordinate(),false));
+    	this.players.add(new Player(new Account("C"),new ThreeBody(),Coordinate.generateCoordinate(),false));
+    	user = this.players.get(0);
+    	
     	broadcasts = new LinkedList<Broadcast>();
     	historyOperations = new LinkedList<Operation>();
     	unhandledOperations = new LinkedList<Operation>();
     	gameOver = false;
+    }
+    
+    public void init(){
+    	for (Player player : this.players) {
+			player.initFoundCoordinates();
+		}
     }
     
     public static GameDTO getInstance(){
@@ -106,10 +123,6 @@ public class GameDTO {
 		return user;
 	}
 
-	public void setUser(Player user) {
-		this.user = user;
-	}
-
 	public List<Broadcast> getBroadcasts() {
 		return broadcasts;
 	}
@@ -145,7 +158,5 @@ public class GameDTO {
 	public void setWhoseTurn(Player whoseTurn) {
 		this.whoseTurn = whoseTurn;
 	}
-	
-	
 
 }

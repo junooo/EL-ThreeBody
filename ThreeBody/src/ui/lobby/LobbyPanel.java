@@ -101,7 +101,7 @@ public class LobbyPanel extends JPanel implements MouseWheelListener {
 		}
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			mc.toGame();
+			mc.toGame(3);
 		}
 	}
 
