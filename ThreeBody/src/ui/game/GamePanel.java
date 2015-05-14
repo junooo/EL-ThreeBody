@@ -118,7 +118,7 @@ public class GamePanel  extends JPanel{
 	private void createEnemy() {
 		for (int i = 0; i < NumOfPlayer-1; i++) {
 			enemies[i] = new JLabel();
-			enemies[i].setIcon(new ImageIcon("images/star06.gif"));
+			enemies[i].setIcon(new ImageIcon("images/star07.gif"));
 			enemies[i].setBounds(location.get(i));
 			enemies[i].addMouseListener(new EnemyListener(i));
 			this.add(enemies[i]);
@@ -133,7 +133,6 @@ public class GamePanel  extends JPanel{
 			coordinateOfEnemies[i].setBackground(Color.DARK_GRAY);
 			coordinateOfEnemies[i].setOpaque(true);
 			coordinateOfEnemies[i].setText("<html>第一行显示<br>第二行显示</html>");
-//			coordinateOfEnemies[i].setIcon(new ImageIcon("images/logid.png"));
 			Rectangle rec = location.get(i);
 			rec.x-=15; rec.y+=85; rec.width+=30; rec.height=60;
 			coordinateOfEnemies[i].setBounds(rec);
@@ -270,11 +269,11 @@ public class GamePanel  extends JPanel{
 		this.add(btnPriviledgeGetRole);
 		
 		resourceString = new JLabel(new ImageIcon("images/resource.png"));
-		resourceString.setBounds(110,480,60,30);
+		resourceString.setBounds(100,480,60,30);
 		this.add(resourceString);
 		
 		techString = new JLabel(new ImageIcon("images/tech.png"));
-		techString.setBounds(110,510,60,30);
+		techString.setBounds(100,510,60,30);
 		this.add(techString);
 
 		this.add(panelTech);
