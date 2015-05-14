@@ -22,8 +22,7 @@ public class MessageByFramePanel extends JPanel{
 	private JLabel msgLabel;
 	/**
 	 * 
-	 * @param i 1代表login，2代表logup
-	 * @param successInformFrame O
+	 * @param successInformFrame 
 	 */
 	public MessageByFramePanel(InformFrame successInformFrame,String message) {
 		this.setLayout(null);
@@ -37,9 +36,8 @@ public class MessageByFramePanel extends JPanel{
 		btnOK.addMouseListener(new OKListener());
 		this.add(btnOK);
 		
-		msgLabel = new JLabel();
+		msgLabel = new JLabel(message,JLabel.CENTER);
 		msgLabel.setForeground(Color.YELLOW);
-		msgLabel.setText(message);
 		msgLabel.setFont(new Font("宋体", Font.BOLD, 20));
 		msgLabel.setBounds(60,10,180,80);
 		this.add(msgLabel);

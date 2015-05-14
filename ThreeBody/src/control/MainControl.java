@@ -3,10 +3,12 @@ package control;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import model.Room;
 import ui.AboutUsPanel;
 import ui.AnimatePanel;
 import ui.MainFrame;
 import ui.PreferencePanel;
+import ui.RoomPanel;
 import ui.StartMenuPanel;
 import ui.account.AccountPanel;
 import ui.game.GamePanel;
@@ -26,12 +28,14 @@ public class MainControl {
 	private JPanel lobbyPanel = null;
 	private JPanel account=null;
 	private JPanel preference=null;
+	private JPanel roomPanel=null;
 	private AnimatePanel animate=null;
 	
 	public AccountControl accountControl;
 	public LobbyControl lobbyControl;
 	
 	private boolean connected = false;
+	
 	
 	
 	public static void main(String[] args) {
@@ -48,7 +52,6 @@ public class MainControl {
 		//TODO
 		mc.gamePanel = new GamePanel(mc, 3);
 		mc.frame = new MainFrame(mc);
-		mc.startMenuPanel = new StartMenuPanel(mc);
 		mc.currentPanel = mc.startMenuPanel;
 		mc.toStartMenu();
 //		mc.toAnimate("opening");
@@ -60,7 +63,7 @@ public class MainControl {
 	 * TESTED
 	 */
 	public void toStartMenu() {
-		currentPanel.setVisible(false);
+//		currentPanel.setVisible(false);
 		if (this.startMenuPanel == null) {
 			this.startMenuPanel = new StartMenuPanel(this);
 		}
@@ -122,8 +125,13 @@ public class MainControl {
 		frame.validate();
 	}
 
-	public void toRoom() {
-		
+	public void toRoom(Room room) {
+		currentPanel.setVisible(false);
+		this.roomPanel = new RoomPanel(this,room);
+		currentPanel = this.roomPanel;
+		frame.setContentPane(currentPanel);
+		currentPanel.setVisible(true);
+		frame.validate();
 	}
 
 	public void toAboutUs() {
