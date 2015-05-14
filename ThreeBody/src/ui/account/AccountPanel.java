@@ -2,7 +2,6 @@ package ui.account;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
@@ -13,9 +12,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import model.Account;
 import ui.FrameUtil;
 import ui.InformFrame;
-import model.Account;
 import control.AccountControl;
 import control.MainControl;
 

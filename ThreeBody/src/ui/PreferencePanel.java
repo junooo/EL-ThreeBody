@@ -95,7 +95,6 @@ public class PreferencePanel extends JPanel{
 			}
 			volume=volume>=1.0f?1.0f:volume;
 			labelVolume.setText(volume+"");
-			System.out.println(volume);
 			Media.getBgmPlayer().setVolume(volume);
 		}
 		@Override
@@ -118,7 +117,6 @@ public class PreferencePanel extends JPanel{
 			volume/=2;
 			volume=volume<0.003f?0.0f:volume;
 			labelVolume.setText(volume+"");
-			System.out.println(volume);
 			Media.getBgmPlayer().setVolume(volume);
 		}
 		@Override

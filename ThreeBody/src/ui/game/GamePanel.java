@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -58,7 +59,8 @@ public class GamePanel  extends JPanel{
 	private JLabel techString;
 	
 	private JLabel[] enemies = new JLabel[7];
-	private ArrayList<int[]> location = new ArrayList<int[]>(7);
+	private JLabel[] coordinateOfEnemies = new JLabel[7];
+	private ArrayList<Rectangle> location = new ArrayList<Rectangle>(7);
 	
 	public GamePanel(MainControl mainControl,int NumOfPlayer) {
 		this.setLayout(null);
@@ -67,15 +69,20 @@ public class GamePanel  extends JPanel{
 		this.initComonent();
 		this.initEnemyLocation();
 		this.createEnemy();
+		this.createCoordinatePanel();
 	}
+	
+	/**
+	 * 存放敌人的位置
+	 */
 	private void initEnemyLocation() {
-		int[]  enemy1 = {350,100,300,200};
-		int[]  enemy2 = {650,100,230,230};
-		int[]	enemy3= {	250,300,230,230};
-		int[]	enemy4 = {500,300,230,230};
-		int[]	enemy5 = {750,300,230,230};
-		int[]	enemy6 = {100,100,230,230};
-		int[]	enemy7 = {900,100,230,230};
+		Rectangle  enemy1 = new Rectangle(350,100,100,100);
+		Rectangle  enemy2 = new Rectangle(650,100,100,100);
+		Rectangle	enemy3= new Rectangle(250,300,100,100);
+		Rectangle	enemy4 =new Rectangle(500,300,100,100);
+		Rectangle	enemy5 = new Rectangle(750,300,100,100);
+		Rectangle	enemy6 =new Rectangle(100,100,100,100);
+		Rectangle	enemy7 =new Rectangle(900,100,100,100);
 		location.add(enemy1);
 		location.add(enemy2);
 		location.add(enemy3);
@@ -84,15 +91,38 @@ public class GamePanel  extends JPanel{
 		location.add(enemy6);
 		location.add(enemy7);
 	}
+	/**
+	 * 添加敌人
+	 */
 	private void createEnemy() {
 		for (int i = 0; i < NumOfPlayer-1; i++) {
 			enemies[i] = new JLabel();
 			enemies[i].setIcon(new ImageIcon("images/star06.gif"));
-			int[] locationi=location.get(i);
-			enemies[i].setBounds(locationi[0],locationi[1],locationi[2],locationi[3]);
+			enemies[i].setBounds(location.get(i));
+			enemies[i].addMouseListener(new EnemyListener(i));
 			this.add(enemies[i]);
 		}
 	}
+	
+	private void createCoordinatePanel() {
+		for (int i = 0; i < NumOfPlayer-1; i++) {
+			coordinateOfEnemies[i] = new JLabel();
+			coordinateOfEnemies[i].setFont(new Font("宋体",Font.PLAIN,20));
+			coordinateOfEnemies[i].setForeground(Color.YELLOW);
+			coordinateOfEnemies[i].setBackground(Color.DARK_GRAY);
+			coordinateOfEnemies[i].setOpaque(true);
+			coordinateOfEnemies[i].setText("<html>第一行显示<br>第二行显示</html>");
+//			coordinateOfEnemies[i].setIcon(new ImageIcon("images/logid.png"));
+			Rectangle rec = location.get(i);
+			rec.x-=15; rec.y+=85; rec.width+=30; rec.height=60;
+			coordinateOfEnemies[i].setBounds(rec);
+			coordinateOfEnemies[i].setVisible(false);
+			this.add(coordinateOfEnemies[i]);
+		}
+	}
+	/**
+	 * 初始化
+	 */
 	private void initComonent() {
 		this.btnReturn = new JButton("返回");
 		this.btnReturn.setContentAreaFilled(false);
@@ -459,7 +489,6 @@ public class GamePanel  extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			//TODO
 			
 		}
 		@Override
@@ -650,9 +679,9 @@ public class GamePanel  extends JPanel{
 	class MessageListener implements MouseListener {
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			panelMessage.setVisible(true);
 			panelBroadcast.setVisible(false);
 			panelHistory.setVisible(false);
+			panelMessage.setVisible(true);
 			add(panelMessage);
 			repaint();
 		}
@@ -667,6 +696,30 @@ public class GamePanel  extends JPanel{
 		}
 		@Override
 		public void mouseExited(MouseEvent e) {
+		}
+	}
+	
+	class EnemyListener implements MouseListener {
+		int number;
+		public EnemyListener(int number) {
+			this.number=number;
+		}
+		@Override
+		public void mouseClicked(MouseEvent e) {
+		}
+		@Override
+		public void mousePressed(MouseEvent e) {
+		}
+		@Override
+		public void mouseReleased(MouseEvent e) {
+		}
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			coordinateOfEnemies[number].setVisible(true);
+		}
+		@Override
+		public void mouseExited(MouseEvent e) {
+			coordinateOfEnemies[number].setVisible(false);
 		}
 	}
 
