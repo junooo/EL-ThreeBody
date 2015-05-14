@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 
 import ui.FrameUtil;
 import control.AccountControl;
+import dto.AccountDTO;
 
 public class LoginPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
@@ -96,6 +97,7 @@ public class LoginPanel extends JPanel{
 				System.out.println("login success");
 				loginFrame.setVisible(false);
 				FrameUtil.sendMessageByFrame("登录成功", "登录成功！");
+//				AccountDTO.getInstance().getId()
 				break;
 			case ALREADY_IN:
 				System.out.println("already log in");
