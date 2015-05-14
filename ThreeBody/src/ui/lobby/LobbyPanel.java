@@ -52,7 +52,6 @@ public class LobbyPanel extends JPanel implements MouseWheelListener {
 	private void addRoom(int roomNumber) {
 		JButton room = new JButton();
 		JPanel roomPanel = new ButtonPanel(this.roomList.get(roomNumber));
-//		JPanel roomPanel = new ButtonPanel(new Room(null, "南大花房", 3));
 		if (roomNumber != 0) {
 			Rectangle rect = roomFamily.get(roomFamily.size() - 1).getBounds();
 			rect.x = rect.x + 350;
@@ -101,7 +100,7 @@ public class LobbyPanel extends JPanel implements MouseWheelListener {
 		}
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			mc.toGame();
+			mc.toRoom(roomList.get(roomId));
 		}
 	}
 
