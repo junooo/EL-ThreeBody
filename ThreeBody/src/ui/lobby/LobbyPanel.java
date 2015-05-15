@@ -68,9 +68,9 @@ public class LobbyPanel extends JPanel implements MouseWheelListener {
 		roomFamily.add(room);
 	}
 
-	public void refresh() {
-		mainControl.toLobby();
-	}
+//	public void refresh() {
+//		mainControl.toLobby();
+//	}
 
 	public void initComonent() {
 		// lobby room 3*2

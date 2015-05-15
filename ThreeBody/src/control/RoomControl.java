@@ -122,7 +122,7 @@ public class RoomControl {
 					mainControl.toGame(room.getSize());
 					break;
 				}
-				mainControl.toRoom(room.getName());
+				mainControl.roomPanel.refresh();
 			}
 		}
 	}

@@ -19,14 +19,14 @@ import dto.AccountDTO;
 public class MainControl {
 
 	private JPanel currentPanel = null;
-	private JFrame frame = null;
+	public JFrame frame = null;
 	private JPanel startMenuPanel = null;
 	private JPanel gamePanel = null;
 	private JPanel aboutUs = null;
 	private JPanel lobbyPanel = null;
 	private JPanel account=null;
 	private JPanel preference=null;
-	private JPanel roomPanel=null;
+	public RoomPanel roomPanel=null;
 	private AnimatePanel animate=null;
 	
 	public AccountControl accountControl;
