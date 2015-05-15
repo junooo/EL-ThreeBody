@@ -9,20 +9,24 @@ import dto.AccountDTO;
 
 public class RoomControl {
 	
-	RMIRoom rmir;
-	String id = AccountDTO.getInstance().getId();
+	private RMIRoom rmir;
+	private MainControl mainControl;
+	private Room room;
 	
-	public RoomControl(RMIRoom rmir) {
+	public RoomControl(MainControl mc,RMIRoom rmir){
+		this.mainControl = mc;
 		this.rmir = rmir;
+		this.room = this.refreshRoom();
+		new GameStartChecker().start();
 	}
-
+	
 	/**
 	 * 
 	 * @return SUCCESS：准备好
 	 */
 	public R.info ready(){
 		try {
-			return rmir.ready(id);
+			return rmir.ready(AccountDTO.getInstance().getId());
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -35,7 +39,7 @@ public class RoomControl {
 	 */
 	public R.info cancelReady(){
 		try {
-			return rmir.cancelReady(id);
+			return rmir.cancelReady(AccountDTO.getInstance().getId());
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -62,7 +66,9 @@ public class RoomControl {
 	 */
 	public R.info exit(){
 		try {
-			return rmir.exit(id);
+			mainControl.roomControl = null;
+			mainControl.toLobby();
+			return rmir.exit(AccountDTO.getInstance().getId());
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -82,6 +88,10 @@ public class RoomControl {
 		return null;
 	}
 	
+	public Room getRoom(){
+		return room;
+	}
+	
 	/**
 	 * 
 	 * @return GameControl对象
@@ -93,6 +103,28 @@ public class RoomControl {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	/**
+	 * 检查游戏是否开始，若开始，进入游戏界面
+	 */
+	private class GameStartChecker extends Thread{
+		@Override
+		public void run(){
+			while(true){
+				try {
+					Thread.sleep(2000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				room = refreshRoom();
+				if(room.isStart()){
+					mainControl.toGame(room.getSize());
+					break;
+				}
+				mainControl.toRoom(room.getName());
+			}
+		}
 	}
 
 }

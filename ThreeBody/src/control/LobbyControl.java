@@ -18,10 +18,11 @@ public class LobbyControl {
 	
 	private RMILobby rmilb;
 	private LobbyPanel lobbyPanel;
+	private MainControl mainControl;
 	
-	public LobbyControl(LobbyPanel lobbyPanel) {
+	public LobbyControl(MainControl mc) {
 		super();
-		this.lobbyPanel = lobbyPanel;
+		this.mainControl = mc;
 	}
 	
 	public void refreshPanel(){
@@ -39,7 +40,7 @@ public class LobbyControl {
 	 */
 	public RoomControl getRoomService(String roomName){
 		try {
-			return new RoomControl(rmilb.getRoomService(roomName));
+			return new RoomControl(mainControl,rmilb.getRoomService(roomName));
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

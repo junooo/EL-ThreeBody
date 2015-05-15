@@ -103,7 +103,7 @@ public class MainControl {
 	public void toLobby() {
 		// new LobbyControl
 		if (lobbyControl == null){
-			lobbyControl = new LobbyControl((LobbyPanel)this.lobbyPanel);
+			lobbyControl = new LobbyControl(this);
 		}
 		
 		currentPanel.setVisible(false);
@@ -116,7 +116,9 @@ public class MainControl {
 	}
 
 	public void toRoom(String roomName) {
-		roomControl = lobbyControl.getRoomService(roomName);
+		if(roomControl == null){
+			roomControl = lobbyControl.getRoomService(roomName);
+		}
 		
 		currentPanel.setVisible(false);
 		this.roomPanel = new RoomPanel(this,roomControl);

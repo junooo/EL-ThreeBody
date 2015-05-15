@@ -18,9 +18,9 @@ import dto.PreferenceDTO;
  */
 public class UserData {
 	
-	private static String prefURL = "userdata\\Preference.dat";
-	private static String accURL = "userdata\\Account.dat";
-	private static String tidURL = "userdata\\transientID.dat";
+	private static String prefURL = "userdata/Preference.dat";
+	private static String accURL = "userdata/Account.dat";
+	private static String tidURL = "userdata/transientID.dat";
 	
 	public static void savePreference(PreferenceDTO pfr){
 		try {
@@ -74,9 +74,6 @@ public class UserData {
 						file));
 				localData = (Account) ois.readObject();
 				ois.close();
-			}else{
-				// TODO
-				System.out.println(tidURL);
 			}
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

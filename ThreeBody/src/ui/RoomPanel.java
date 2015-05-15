@@ -56,7 +56,7 @@ public class RoomPanel extends JPanel{
 	public RoomPanel(MainControl mc,RoomControl roomControl) {
 		this.setLayout(null);
 		this.roomControl = roomControl;
-		this.room = roomControl.refreshRoom();
+		this.room = roomControl.getRoom();
 		this.mainControl = mc;
 		this.accounts=room.getAccounts();
 		this.initLocation();
@@ -235,15 +235,15 @@ public class RoomPanel extends JPanel{
 		public void refresh(){
 			if(room.getCreater().getId().equals(AccountDTO.getInstance().getId())){
 				// TODO 显示为“开始”
-				System.out.println("按钮为开始");
+				owner.setIcon(new ImageIcon("images/ready.png"));
 				state = 2;
 		    }else if(room.isReady(AccountDTO.getInstance().getId())){
 		    	// TODO 显示“取消预备”
-		    	System.out.println("按钮为取消预备");
+		    	owner.setIcon(new ImageIcon("images/readyCancel.png"));
 		    	state = 1;
 		    }else{
 		    	// TODO 显示“预备”
-		    	System.out.println("按钮为预备");
+		    	owner.setIcon(new ImageIcon("images/roomGameStart.png"));
 		    	state = 0;
 		    }
 		}
@@ -274,7 +274,6 @@ public class RoomPanel extends JPanel{
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			roomControl.exit();
-			mainControl.toLobby();
 		}
 	}
 }
