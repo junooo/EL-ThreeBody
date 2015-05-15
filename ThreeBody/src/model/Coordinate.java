@@ -1,13 +1,19 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Random;
 
-public class Coordinate {
+public class Coordinate implements Serializable{
     
-    public static final int UNKNOWN = 998;
+    /**
+	 * default
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	public static final int UNKNOWN = 998;
     public static final int PROTECTED = 10086;
-    // TODO hard code
+    
     public final static int DIMENSIONS = 4;
     public final static int MAX_NUM = 9;
     

@@ -19,15 +19,20 @@ import javax.swing.JPanel;
 import model.Account;
 import model.Room;
 import ui.lobby.ButtonPanel;
+import util.R;
 import control.LobbyControl;
 import control.MainControl;
+import control.RoomControl;
+import dto.AccountDTO;
 
 public class RoomPanel extends JPanel{
+	
 	private static final long serialVersionUID = 1L;
-	private MainControl mainControl;
+	
 	private JButton btn_ready;
 	private JButton btn_lobbyReturn;
 	private JButton btn_roomInfo;
+	private JButton[] buttons = new JButton[8];
 	private JLabel psId;
 	private JLabel labelId;
 	private JLabel labelHead;
@@ -45,21 +50,28 @@ public class RoomPanel extends JPanel{
 	private Image opaque = new ImageIcon("images/coNothing.png").getImage();
 	private LobbyControl lobbyControl;
 	private List<Rectangle> locations = new ArrayList<Rectangle>(8);
-	private JButton[] buttons = new JButton[8];
+	
+	
+	private MainControl mainControl;
+	private RoomControl roomControl;
 	private Room room;
 	private List<Account> accounts;
-	public RoomPanel(MainControl mc,Room room) {
+	
+	public RoomPanel(MainControl mc,RoomControl roomControl) {
 		this.setLayout(null);
-		this.room=room;
+		this.roomControl = roomControl;
+		this.room = roomControl.getRoom();
 		this.mainControl = mc;
 		this.accounts=room.getAccounts();
 		this.initLocation();
 		this.initComonent();
 		this.initAccountsInfo();
 	}
+	
 	public void refresh() {
-		mainControl.toLobby();
+		mainControl.toRoom(room.getName());
 	}
+	
 	private void initAccountsInfo() {
 		for (int i = 0; i < accounts.size(); i++) {
 			Rectangle rect=locations.get(i);
@@ -159,8 +171,8 @@ public class RoomPanel extends JPanel{
 			labelLosts.setText(accounts.get(i).getLosts()+"");
 			this.add(labelLosts);
 		}
-		
 	}
+		
 	public void initLocation(){
 		locations.add(new Rectangle(15,20,800,60));
 		locations.add(new Rectangle(15,90,800,60));
@@ -171,6 +183,7 @@ public class RoomPanel extends JPanel{
 		locations.add(new Rectangle(15,440,800,60));
 		locations.add(new Rectangle(15,510,800,60));
 	}
+	
 	public void initComonent() {
 		for (int i = 0; i < room.getSize(); i++) {
 			buttons[i]= new JButton();
@@ -195,7 +208,10 @@ public class RoomPanel extends JPanel{
 		this.btn_ready.setContentAreaFilled(false);
 		this.btn_ready.setBounds(840, 500, 100, 50);
 		this.btn_ready.setEnabled(isAbleToPress);
-		this.btn_ready.addMouseListener(new ToGameListener());
+//		this.btn_ready.addMouseListener(new ToGameListener());
+		MultiFunctionListener msl = new MultiFunctionListener(this.btn_ready);
+		msl.refresh();
+		this.btn_ready.addMouseListener(msl);
 		this.add(btn_ready);
 
 		this.btn_lobbyReturn = new JButton();
@@ -211,11 +227,55 @@ public class RoomPanel extends JPanel{
 		g.drawImage(background, 0, 0, null);
 	}
 
-	class ToGameListener extends MouseAdapter  {
+	class MultiFunctionListener extends MouseAdapter  {
+		/*
+		 * 0:ready 1:cancelReady 2:start
+		 */
+		int state;
+		JButton owner;
+		
+		public MultiFunctionListener(JButton owner) {
+			super();
+			this.owner = owner;
+		}
+		
+		public void refresh(){
+			if(room.getCreater().getId().equals(AccountDTO.getInstance().getId())){
+				// TODO 显示为“开始”
+				owner.setIcon(new ImageIcon("images/ready.png"));
+				state = 2;
+		    }else if(room.isReady(AccountDTO.getInstance().getId())){
+		    	// TODO 显示“取消预备”
+		    	owner.setIcon(new ImageIcon("images/readyCancel.png"));
+		    	state = 1;
+		    }else{
+		    	// TODO 显示“预备”
+		    	owner.setIcon(new ImageIcon("images/roomGameStart.png"));
+		    	state = 0;
+		    }
+		}
+
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			mainControl.toGame(room.getSize());
 //			changeIsAbleToPress(btn_lobbyReturn);
+			switch(state){
+			case 2:
+				if(roomControl.start() == R.info.SUCCESS){
+					mainControl.toGame(room.getSize());
+				}else{
+					FrameUtil.sendMessageByFrame("没准备好", "没准备好");
+				}
+				break;
+			case 1:
+				roomControl.cancelReady();
+				refresh();
+				break;
+			case 0:
+				roomControl.ready();
+				refresh();
+				break;
+			}
 		}
 
 		
@@ -224,7 +284,7 @@ public class RoomPanel extends JPanel{
 	class ReturnListener extends MouseAdapter {
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			mainControl.toLobby();
+			roomControl.exit();
 		}
 	}
 	private void ableToPress(Component c){

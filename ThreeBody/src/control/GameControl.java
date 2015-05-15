@@ -22,14 +22,12 @@ public class GameControl {
 	public GameControl(RMIGame rmig) {
 		this.rmig = rmig;
 		
-//		// 初始化GameDTO
-//		try {
-//			GameDTO.setUp(rmig.getPlayers());
-//		} catch (RemoteException e) {
-//			e.printStackTrace();
-//		}
-		//TODO test
-		GameDTO.setUp(null);
+		// 初始化GameDTO
+		try {
+			GameDTO.setUp(rmig.getPlayers());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		gameDTO = GameDTO.getInstance();
 		gameDTO.init();
 //		

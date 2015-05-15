@@ -127,15 +127,12 @@ public class LogupPanel extends JPanel {
 				// TODO 消息窗口
 				switch(accountControl.logUp(id, password, invitationID)){
 				case SUCCESS:
-					System.out.println("logup success");
 					FrameUtil.sendMessageByFrame("登录成功", "登录成功！");
 					break;
 				case ALREADY_EXISTED:
-					System.out.println("this id already exists");
 					FrameUtil.sendMessageByFrame("账户已存在", "账户已存在！");
 					break;
 				case NOT_EXISTED:
-					System.out.println("invitationID not existed");
 					FrameUtil.sendMessageByFrame("邀请码不正确", "邀请码不正确！");
 					break;
 				}

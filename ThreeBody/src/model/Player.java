@@ -40,11 +40,11 @@ public class Player implements Serializable {
     /*
      * 已经获知的其他玩家的坐标
      */
-    private Map<Player,Coordinate> foundCoordinates;
+    private HashMap<Player,Coordinate> foundCoordinates;
     /*
      * 已经获知的其他玩家的身份
      */
-    private Map<Player,Role> foundRoles;
+    private HashMap<Player,Role> foundRoles;
     /*
      * 资源，科技点
      */

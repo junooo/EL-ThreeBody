@@ -3,14 +3,9 @@ package dto;
 import java.util.LinkedList;
 import java.util.List;
 
-import model.Account;
 import model.Broadcast;
-import model.Coordinate;
 import model.Player;
 import model.operation.Operation;
-import model.role.Earth;
-import model.role.ThreeBody;
-import model.role.Unifier;
 
 public class GameDTO {
 	
@@ -63,14 +58,18 @@ public class GameDTO {
     
     private GameDTO(List<Player> players){
     	//TODO 本地账号
-//    	this.players = players;
-    	this.players = new LinkedList<Player>();
+    	this.players = players;
     	
     	//TODO test
-    	this.players.add(new Player(new Account("A"),new Earth(),Coordinate.generateCoordinate(),false));
-    	this.players.add(new Player(new Account("B"),new Unifier(),Coordinate.generateCoordinate(),false));
-    	this.players.add(new Player(new Account("C"),new ThreeBody(),Coordinate.generateCoordinate(),false));
-    	user = this.players.get(0);
+//    	this.players.add(new Player(new Account("A"),new Earth(),Coordinate.generateCoordinate(),false));
+//    	this.players.add(new Player(new Account("B"),new Unifier(),Coordinate.generateCoordinate(),false));
+//    	this.players.add(new Player(new Account("C"),new ThreeBody(),Coordinate.generateCoordinate(),false));
+//    	user = this.players.get(0);
+    	for(Player player:players){
+    		if(player.getAccount().getId().equals(AccountDTO.getInstance().getId())){
+    			user = player;
+    		}
+    	}
     	
     	broadcasts = new LinkedList<Broadcast>();
     	historyOperations = new LinkedList<Operation>();
