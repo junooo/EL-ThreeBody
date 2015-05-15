@@ -5,9 +5,11 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import model.Player;
 import ui.FrameUtil;
 import ui.InformFrame;
 import ui.block.PatialBlockFrame;
@@ -22,6 +25,8 @@ import ui.block.PatialBlockPanel;
 import ui.sophon.SophonFinderFrame;
 import ui.sophon.SophonFinderPanel;
 import control.MainControl;
+import dto.AccountDTO;
+import dto.GameDTO;
 
 public class GamePanel  extends JPanel{
     private static final long serialVersionUID = 1L;
@@ -58,13 +63,23 @@ public class GamePanel  extends JPanel{
 	private JLabel resourceString;
 	private JLabel techString;
 	
-	private JLabel[] enemies = new JLabel[7];
+	private JLabel[] enemyLabels = new JLabel[7];
 	private JLabel[] coordinateOfEnemies = new JLabel[7];
 	private JLabel[] promptLabels = new JLabel[9];
-	ImageIcon[] prompts = new ImageIcon[9];
-	private ArrayList<Rectangle> location = new ArrayList<Rectangle>(7);
+	private ImageIcon[] prompts = new ImageIcon[9];
+	private List<Rectangle> location = new ArrayList<Rectangle>(7);
+	
+	private List<Player> enemies = new ArrayList<Player>();
+	private Player user = GameDTO.getInstance().getUser();
 	
 	public GamePanel(MainControl mainControl,int NumOfPlayer) {
+		// 初始化对方玩家
+		for (Player player : GameDTO.getInstance().getPlayers()) {
+			if(!player.getAccount().getId().equals(user.getAccount().getId())){
+				enemies.add(player);
+			}
+		}
+		
 		this.setLayout(null);
 		this.mainControl = mainControl;
 		this.NumOfPlayer=NumOfPlayer;
@@ -76,7 +91,6 @@ public class GamePanel  extends JPanel{
 	}
 	
 	private void initPrompt() {
-		
 		prompts[0]=new ImageIcon("images/psSophonLabel.png");
 		prompts[1]=new ImageIcon("images/psSillySophonLabel.png");
 		prompts[2]=new ImageIcon("images/psWholeBlockLabel.png");
@@ -99,11 +113,11 @@ public class GamePanel  extends JPanel{
 	private void initEnemyLocation() {
 		Rectangle  enemy1 = new Rectangle(350,100,100,100);
 		Rectangle  enemy2 = new Rectangle(650,100,100,100);
-		Rectangle	enemy3= new Rectangle(250,300,100,100);
-		Rectangle	enemy4 =new Rectangle(500,300,100,100);
-		Rectangle	enemy5 = new Rectangle(750,300,100,100);
-		Rectangle	enemy6 =new Rectangle(100,100,100,100);
-		Rectangle	enemy7 =new Rectangle(900,100,100,100);
+		Rectangle  enemy3= new Rectangle(250,300,100,100);
+		Rectangle  enemy4 =new Rectangle(500,300,100,100);
+		Rectangle  enemy5 = new Rectangle(750,300,100,100);
+		Rectangle  enemy6 =new Rectangle(100,100,100,100);
+		Rectangle  enemy7 =new Rectangle(900,100,100,100);
 		location.add(enemy1);
 		location.add(enemy2);
 		location.add(enemy3);
@@ -112,17 +126,27 @@ public class GamePanel  extends JPanel{
 		location.add(enemy6);
 		location.add(enemy7);
 	}
+	
 	/**
 	 * 添加敌人
 	 */
 	private void createEnemy() {
 		for (int i = 0; i < NumOfPlayer-1; i++) {
-			enemies[i] = new JLabel();
-			enemies[i].setIcon(new ImageIcon("images/star07.gif"));
-			enemies[i].setBounds(location.get(i));
-			enemies[i].addMouseListener(new EnemyListener(i));
-			this.add(enemies[i]);
+			enemyLabels[i] = new JLabel();
+			enemyLabels[i].setIcon(new ImageIcon("images/star07.gif"));
+			enemyLabels[i].setBounds(location.get(i));
+			enemyLabels[i].addMouseListener(new EnemyListener(i));
+			this.add(enemyLabels[i]);
 		}
+	}
+	
+	private void coordinateShow(int i){
+		Player pi = this.enemies.get(i);
+		String role = user.getFoundRoles().get(pi) == null ? "未明" : pi.getRole().getName();
+		coordinateOfEnemies[i].setText("<html>玩家："+pi.getAccount().getId()+"<br>"
+				+"坐标："+user.getFoundCoordinates().get(pi).toString()+"<br>"
+				+"角色："+role+"</html>");
+		coordinateOfEnemies[i].setVisible(true);
 	}
 	
 	private void createCoordinatePanel() {
@@ -132,9 +156,8 @@ public class GamePanel  extends JPanel{
 			coordinateOfEnemies[i].setForeground(Color.YELLOW);
 			coordinateOfEnemies[i].setBackground(Color.DARK_GRAY);
 			coordinateOfEnemies[i].setOpaque(true);
-			coordinateOfEnemies[i].setText("<html>第一行显示<br>第二行显示</html>");
 			Rectangle rec = location.get(i);
-			rec.x-=15; rec.y+=85; rec.width+=30; rec.height=60;
+			rec.x-=25; rec.y+=85; rec.width+=50; rec.height=90;
 			coordinateOfEnemies[i].setBounds(rec);
 			coordinateOfEnemies[i].setVisible(false);
 			this.add(coordinateOfEnemies[i]);
@@ -152,7 +175,7 @@ public class GamePanel  extends JPanel{
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnReturn.addMouseListener(new ReturnListener());
 		this.add(btnReturn);
-//		578 300 856
+		//578 300 856
 		this.btnBroadcast = new JButton("广播");
 		this.btnBroadcast.setContentAreaFilled(false);
 		this.btnBroadcast.setBounds(260, 600, 80, 20);
@@ -161,7 +184,6 @@ public class GamePanel  extends JPanel{
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnBroadcast.addMouseListener(new BroadcastListener());
 		this.add(btnBroadcast);
-		
 		
 		this.btnHistory = new JButton("历史记录");
 		this.btnHistory.setContentAreaFilled(false);
@@ -181,7 +203,6 @@ public class GamePanel  extends JPanel{
 		btnMessage.addMouseListener(new MessageListener());
 		this.add(btnMessage);
 		
-		
 		this.btnTurnEnd = new JButton("回合结束");
 		this.btnTurnEnd.setContentAreaFilled(false);
 		this.btnTurnEnd.setBounds(1000, 500, 150, 30);
@@ -190,7 +211,6 @@ public class GamePanel  extends JPanel{
 		// this.btnMultyPlay.setBorderPainted(false);
 //		btnTurnEnd.addMouseListener(new CardListener1());
 		this.add(btnTurnEnd);
-		
 		
 		this.btnCardSophon = new JButton("智子");
 		this.btnCardSophon.setContentAreaFilled(false);
@@ -242,7 +262,6 @@ public class GamePanel  extends JPanel{
 		btnCardTechPotion.addMouseListener(new CardTechPotionListener());
 		this.add(btnCardTechPotion);
 		
-		
 		this.btnCardResourcePotion = new JButton("资源爆发");
 		this.btnCardResourcePotion.setContentAreaFilled(false);
 		this.btnCardResourcePotion.setBounds(1070, 210, 150, 30);
@@ -250,7 +269,6 @@ public class GamePanel  extends JPanel{
 		// this.btnMultyPlay.setBorderPainted(false);
 		btnCardResourcePotion.addMouseListener(new CardResourcePotionListener());
 		this.add(btnCardResourcePotion);
-		
 		
 		this.btnCardResourceGambling = new JButton("资源赌博");
 		this.btnCardResourceGambling.setContentAreaFilled(false);
@@ -283,29 +301,13 @@ public class GamePanel  extends JPanel{
 	@Override
 	public void paintComponent(Graphics g) {
 		Image IMG_MAIN = new ImageIcon("images/gamebg.jpg").getImage();
-		// ������Ϸ����
 		g.drawImage(IMG_MAIN, 0, 0, 1158, 650, null);
 	}
 	
-	
-	
-	class ReturnListener implements MouseListener {
-
+	class ReturnListener extends MouseAdapter  {
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			mainControl.toStartMenu();
-		}
-		@Override
-		public void mousePressed(MouseEvent e) {
-		}
-		@Override
-		public void mouseReleased(MouseEvent e) {
-		}
-		@Override
-		public void mouseEntered(MouseEvent e) {
-		}
-		@Override
-		public void mouseExited(MouseEvent e) {
 		}
 	}
 	
@@ -317,7 +319,6 @@ public class GamePanel  extends JPanel{
 		public void mouseClicked(MouseEvent e) {
 			initSophon();
 		}
-		
 		private void initSophon() {
 			JFrame sophonFinder = new SophonFinderFrame("智子");
 			JPanel finder = new SophonFinderPanel(sophonFinder);
@@ -562,7 +563,8 @@ public class GamePanel  extends JPanel{
 		Rectangle rec = btnCardResourcePotion.getBounds();
 		@Override
 		public void mouseClicked(MouseEvent e) {
-
+			user.setResource(user.getResource()+10);
+			panelResource.repaint();
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
@@ -671,9 +673,7 @@ public class GamePanel  extends JPanel{
 		}
 	}
 	
-	
-	class BroadcastListener implements MouseListener {
-
+	class BroadcastListener extends MouseAdapter  {
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			panelBroadcast.setVisible(true);
@@ -682,24 +682,9 @@ public class GamePanel  extends JPanel{
 			add(panelBroadcast);
 			repaint();
 		}
-		@Override
-		public void mousePressed(MouseEvent e) {
-			
-		}
-		@Override
-		public void mouseReleased(MouseEvent e) {
-		}
-		@Override
-		public void mouseEntered(MouseEvent e) {
-		}
-		@Override
-		public void mouseExited(MouseEvent e) {
-		}
 	}
 	
-	class HistoryListener implements MouseListener {
-		
-
+	class HistoryListener extends MouseAdapter  {
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			/**
@@ -715,20 +700,11 @@ public class GamePanel  extends JPanel{
 			repaint();
 		}
 		@Override
-		public void mousePressed(MouseEvent e) {
-		}
-		@Override
-		public void mouseReleased(MouseEvent e) {
-		}
-		@Override
 		public void mouseEntered(MouseEvent e) {
 			repaint();
 		}
-		@Override
-		public void mouseExited(MouseEvent e) {
-		}
 	}
-	class MessageListener implements MouseListener {
+	class MessageListener extends MouseAdapter  {
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			panelBroadcast.setVisible(false);
@@ -737,37 +713,16 @@ public class GamePanel  extends JPanel{
 			add(panelMessage);
 			repaint();
 		}
-		@Override
-		public void mousePressed(MouseEvent e) {
-		}
-		@Override
-		public void mouseReleased(MouseEvent e) {
-		}
-		@Override
-		public void mouseEntered(MouseEvent e) {
-		}
-		@Override
-		public void mouseExited(MouseEvent e) {
-		}
 	}
 	
-	class EnemyListener implements MouseListener {
+	class EnemyListener extends MouseAdapter {
 		int number;
 		public EnemyListener(int number) {
 			this.number=number;
 		}
 		@Override
-		public void mouseClicked(MouseEvent e) {
-		}
-		@Override
-		public void mousePressed(MouseEvent e) {
-		}
-		@Override
-		public void mouseReleased(MouseEvent e) {
-		}
-		@Override
 		public void mouseEntered(MouseEvent e) {
-			coordinateOfEnemies[number].setVisible(true);
+			coordinateShow(number);
 		}
 		@Override
 		public void mouseExited(MouseEvent e) {
@@ -775,19 +730,17 @@ public class GamePanel  extends JPanel{
 		}
 	}
 
-	 /*
-     * ����ұ�ըʱ�����ؼ�
+	/*
+     * 被人广播时播放的特效
      */
     public void boom(){
         
     }
     
     /*
-     * ����ұ�ռ��ʱ�����ؼ�
+     * 被三体侵占时播放的特效
      */
     public void conquer(){
         
     }
-    
-
 }

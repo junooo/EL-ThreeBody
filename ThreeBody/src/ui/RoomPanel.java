@@ -200,15 +200,12 @@ public class RoomPanel extends JPanel{
 		this.btn_lobbyReturn.setBounds(1000, 500, 100, 50);
 		this.btn_lobbyReturn.addMouseListener(new ReturnListener());
 		this.add(btn_lobbyReturn);
-		
-		
 	}
 
 	public void paintComponent(Graphics g) {
 		Image background = new ImageIcon("images/模糊背景.jpg").getImage();
 		g.drawImage(background, 0, 0, null);
 	}
-
 
 	class ToGameListener extends MouseAdapter  {
 		@Override
