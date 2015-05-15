@@ -3,7 +3,6 @@ package control;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import model.Room;
 import ui.AboutUsPanel;
 import ui.AnimatePanel;
 import ui.MainFrame;
@@ -15,7 +14,6 @@ import ui.game.GamePanel;
 import ui.lobby.LobbyPanel;
 import ui.sound.Media;
 import ui.sound.Sound;
-import util.R;
 import dto.AccountDTO;
 
 public class MainControl {
@@ -33,6 +31,7 @@ public class MainControl {
 	
 	public AccountControl accountControl;
 	public LobbyControl lobbyControl;
+	public RoomControl roomControl;
 	public GameControl gameControl;
 	
 	private boolean connected = false;
@@ -44,9 +43,9 @@ public class MainControl {
 		mc.accountControl = new AccountControl(mc);
 		String id = AccountDTO.getInstance().getId();
 		if(!id.equals("本地玩家")){
-			if (mc.accountControl.loginByTransientID(id) == R.info.SUCCESS) {
-				mc.connected = true;
-			}
+//			if (mc.accountControl.loginByTransientID(id) == R.info.SUCCESS) {
+//				mc.connected = true;
+//			}
 		}
 		//TODO
 		mc.frame = new MainFrame(mc);
@@ -57,14 +56,8 @@ public class MainControl {
 		Media.playBGM(Sound.BGM);
 	}
 
-	/*
-	 * TESTED
-	 */
 	public void toStartMenu() {
-//		currentPanel.setVisible(false);
-		if (this.startMenuPanel == null) {
-			this.startMenuPanel = new StartMenuPanel(this);
-		}
+		this.startMenuPanel = new StartMenuPanel(this);
 		currentPanel = this.startMenuPanel;
 		frame.setContentPane(currentPanel);
 		currentPanel.setVisible(true);
@@ -95,14 +88,9 @@ public class MainControl {
 	public void toTutorial() {
 	}
 
-	/*
-	 * TESTED
-	 */
 	public void toGame(int numOfPlayers) {
 		//new GameControl
-		if(gameControl == null){
-			gameControl = new GameControl(null);
-		}
+		gameControl = roomControl.getGameService();
 		
 		currentPanel.setVisible(false);
 		this.gamePanel = new GamePanel(this, numOfPlayers);
@@ -117,6 +105,7 @@ public class MainControl {
 		if (lobbyControl == null){
 			lobbyControl = new LobbyControl((LobbyPanel)this.lobbyPanel);
 		}
+		
 		currentPanel.setVisible(false);
 		this.lobbyPanel = new LobbyPanel(this);
 		currentPanel = this.lobbyPanel;
@@ -126,9 +115,11 @@ public class MainControl {
 		frame.validate();
 	}
 
-	public void toRoom(Room room) {
+	public void toRoom(String roomName) {
+		roomControl = lobbyControl.getRoomService(roomName);
+		
 		currentPanel.setVisible(false);
-		this.roomPanel = new RoomPanel(this,room);
+		this.roomPanel = new RoomPanel(this,roomControl);
 		currentPanel = this.roomPanel;
 		frame.setContentPane(currentPanel);
 		currentPanel.setVisible(true);
@@ -146,7 +137,6 @@ public class MainControl {
 	
 	public void toAccount(String id) {
 		currentPanel.setVisible(false);
-		//TODO 这里传了this.ac 不合适再调
 		this.account = new AccountPanel(this,id,this.accountControl);
 		currentPanel = this.account;
 		frame.setContentPane(currentPanel);

@@ -73,7 +73,7 @@ public class RoomControl {
 	 * 
 	 * @return 刷新后的Room
 	 */
-	public Room refresh(){
+	public Room refreshRoom(){
 		try {
 			return rmir.refresh();
 		} catch (RemoteException e) {

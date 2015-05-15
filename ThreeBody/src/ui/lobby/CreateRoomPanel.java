@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 
 import ui.FrameUtil;
 import control.LobbyControl;
+import control.MainControl;
 
 public class CreateRoomPanel extends JPanel{
 	
@@ -27,10 +28,13 @@ public class CreateRoomPanel extends JPanel{
 	private JComboBox<String> select;
 	private JButton btnOk;
 	private JButton btnCancel;
+	
+	MainControl mainControl;
 
-	public CreateRoomPanel(JFrame createRoomFrame,LobbyControl lobbyControl) {
+	public CreateRoomPanel(JFrame createRoomFrame,LobbyControl lobbyControl,MainControl mainControl) {
 		this.lobbyControl = lobbyControl;
-		this.createRoomFrame=createRoomFrame;
+		this.createRoomFrame = createRoomFrame;
+		this.mainControl = mainControl;
 		
 		this.setLayout(null);
 		this.initComonent();
@@ -104,9 +108,9 @@ public class CreateRoomPanel extends JPanel{
 				FrameUtil.sendMessageByFrame("房间名已使用", "房间名已使用");
 				break;
 			case SUCCESS:
-				FrameUtil.sendMessageByFrame("创建成功", "创建成功");
 				createRoomFrame.setVisible(false);
-				lobbyControl.refreshPanel();
+				FrameUtil.sendMessageByFrame("创建成功", "创建成功");
+				mainControl.toRoom(idField.getText());
 				break;
 			default:
 				break;

@@ -5,12 +5,13 @@ import io.NetClient;
 import java.rmi.RemoteException;
 import java.util.Scanner;
 
-import server.AccountCenter;
 import server.interfaces.RMIAccountCenter;
+import server.interfaces.RMILobby;
 
 public class ServerCommand {
 	
 	static RMIAccountCenter accountCenter = NetClient.getInstance().getAccountCenter();
+	static RMILobby lobbyServer = NetClient.getInstance().getLobbyServer();
 	
 	public static void main(String[] args) throws RemoteException {
 		Scanner scanner = new Scanner(System.in);
@@ -23,13 +24,23 @@ public class ServerCommand {
 			case "close":
 				finish = true;
 				break;
-			default:
+			case "cr":
+			case "dr":
+				result = lobbyServer.command(command);
+				System.out.println(result);
+				break;
+			case "cacc":
+			case "aacc":
+			case "cconn":
+			case "cinvi":
+			case "ainvi":
 				result = accountCenter.command(command);
 				System.out.println(result);
 				break;
+			default:
+				System.out.println("wrong command");
 			}
 		}
 		scanner.close();
 	}
-	
 }

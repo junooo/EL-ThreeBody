@@ -177,14 +177,14 @@ public class AccountCenter extends UnicastRemoteObject implements
 		StringBuffer sb;
 
 		switch (parts[0]) {
-		case "add_account":
+		case "aacc":
 			Account acc = new Account(parts[1]);
 			accounts.put(parts[1], acc);
 			passwords.put(parts[1], parts[2]);
 			String transientID = generateRandomTransientID();
 			transientIDs.put(parts[1],transientID);
 			return "success";
-		case "add_invitationID":
+		case "ainvi":
 			int beforeSize = invitationIDs.size();
 			invitationIDs.add(parts[1]);
 			int afterSize = invitationIDs.size();
@@ -192,21 +192,21 @@ public class AccountCenter extends UnicastRemoteObject implements
 				database.addInvitationID(parts[1]);
 			}
 			return "now size:"+invitationIDs.size();
-		case "check_connections":
+		case "cconn":
 			sb = new StringBuffer();
 			sb.append("connections:"+actives.size()+"\n");
 			for (String name : actives.keySet()) {
 				sb.append(name+"\n");
 			}
 			return sb.toString();
-		case "check_invitationIDs":
+		case "cinvi":
 			sb = new StringBuffer();
 			sb.append("invitationIDs:"+invitationIDs.size()+"\n");
 			for (String invitationID : invitationIDs) {
 				sb.append(invitationID+"\n");
 			}
 			return sb.toString();
-		case "check_accounts":
+		case "cacc":
 			sb = new StringBuffer();
 			sb.append("accounts:"+accounts.size()+"\n");
 			for (String name : accounts.keySet()) {
