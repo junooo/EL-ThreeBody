@@ -113,7 +113,6 @@ public class MainControl {
 		if (lobbyControl == null){
 			lobbyControl = new LobbyControl(this);
 		}
-		
 		currentPanel.setVisible(false);
 		this.lobbyPanel = new LobbyPanel(this);
 		currentPanel = this.lobbyPanel;
@@ -121,6 +120,7 @@ public class MainControl {
 		frame.setContentPane(currentPanel);
 		currentPanel.setVisible(true);
 		frame.validate();
+		lobbyControl.startRefresh();
 	}
 
 	public void toRoom(String roomName) {

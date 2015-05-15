@@ -29,7 +29,9 @@ public class LobbyPanel extends JPanel implements MouseWheelListener {
 	private List<JButton> roomFamily = new ArrayList<JButton>();
 	private List<Room> roomList;
 	private LobbyControl lobbyControl;
-
+	//双缓冲机制
+	private Image iBuffer;
+	private Graphics gBuffer;
 	public LobbyPanel(MainControl mc) {
 		this.setLayout(null);
 		this.mainControl = mc;
@@ -88,7 +90,19 @@ public class LobbyPanel extends JPanel implements MouseWheelListener {
 		this.btn_lobbyReturn.addMouseListener(new ReturnListener());
 		this.add(btn_lobbyReturn);
 	}
-
+	@Override
+	public void update(Graphics scr)
+	{
+	    if(iBuffer==null)
+	    {
+	       iBuffer=createImage(this.getSize().width,this.getSize().height);
+	       gBuffer=iBuffer.getGraphics();
+	    }
+	       gBuffer.setColor(getBackground());
+	       gBuffer.fillRect(0,0,this.getSize().width,this.getSize().height);
+	       paint(gBuffer);
+	       scr.drawImage(iBuffer,0,0,this);
+	}
 	public void paintComponent(Graphics g) {
 		Image background = new ImageIcon("images/模糊背景.jpg").getImage();
 		g.drawImage(background, 0, 0, null);
@@ -103,6 +117,7 @@ public class LobbyPanel extends JPanel implements MouseWheelListener {
 		public void mouseClicked(MouseEvent e) {
 			switch(lobbyControl.enterRoom(roomName)){
 			case SUCCESS:
+				lobbyControl.changeEntered();
 				mainControl.toRoom(roomName);
 				break;
 			case ROOM_FULL:

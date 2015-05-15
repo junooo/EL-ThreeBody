@@ -75,7 +75,6 @@ public class RoomPanel extends JPanel{
 		this.room = roomControl.getRoom();
 		this.accounts = room.getAccounts();
 		this.removeAll();
-		
 		this.initComonent();
 		this.initAccountsInfo();
 		mainControl.frame.validate();
@@ -244,8 +243,6 @@ public class RoomPanel extends JPanel{
 	       paint(gBuffer);
 	       scr.drawImage(iBuffer,0,0,this);
 	}
-	
-
 	@Override
 	public void paintComponent(Graphics g) {
 		Image background = new ImageIcon("images/模糊背景.jpg").getImage();
