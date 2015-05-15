@@ -107,10 +107,10 @@ public class SophonFinderPanel extends JPanel{
 					select.addItem(players.get(i).getAccount().getId());
 				}
 			}
+		}else{
+			select.addItem("aa");
+			select.addItem("bb");
 		}
-
-		select.addItem("aa");
-		select.addItem("bb");
 		this.add(select);
 	}
 	

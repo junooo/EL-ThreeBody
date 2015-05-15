@@ -1,6 +1,7 @@
 package ui.game;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -43,7 +44,7 @@ public class GamePanel  extends JPanel{
 	private JButton btnCardResourcePotion;
 	private JButton btnCardResourceGambling;
 	private JButton btnPriviledgeGetRole;
-	
+	private boolean isAbleToPress = true;
 	private JButton btnBroadcast;
 	private JButton btnHistory;
 	private JButton btnMessage;
@@ -157,7 +158,7 @@ public class GamePanel  extends JPanel{
 			coordinateOfEnemies[i].setBackground(Color.DARK_GRAY);
 			coordinateOfEnemies[i].setOpaque(true);
 			Rectangle rec = location.get(i);
-			rec.x-=25; rec.y+=85; rec.width+=50; rec.height=90;
+			rec.x-=25; rec.y+=85; rec.width+=50; rec.height=100;
 			coordinateOfEnemies[i].setBounds(rec);
 			coordinateOfEnemies[i].setVisible(false);
 			this.add(coordinateOfEnemies[i]);
@@ -735,4 +736,16 @@ public class GamePanel  extends JPanel{
     public void conquer(){
         
     }
+    
+    private void ableToPress(Component c){
+		
+		c.setEnabled(isAbleToPress);
+	}
+	private void unableToPress(Component c){
+		isAbleToPress=false;
+		c.setEnabled(isAbleToPress);
+	}
+	private void changeIsAbleToPress(Component c) {
+		c.setEnabled(!c.isEnabled());
+	}
 }

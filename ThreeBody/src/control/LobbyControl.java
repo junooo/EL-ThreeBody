@@ -26,7 +26,7 @@ public class LobbyControl {
 	}
 	
 	public void refreshPanel(){
-		lobbyPanel.refresh();
+		lobbyPanel.repaint();
 	}
 	
 	public void setLobbyPanel(LobbyPanel lp){
