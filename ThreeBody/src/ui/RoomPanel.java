@@ -42,8 +42,8 @@ public class RoomPanel extends JPanel{
 	private JLabel labelLosts;
 	private Image opaque = new ImageIcon("images/coNothing.png").getImage();
 	private LobbyControl lobbyControl;
-	private List<Rectangle> locations = new ArrayList<Rectangle>(7);
-	private JButton[] buttons = new JButton[7];
+	private List<Rectangle> locations = new ArrayList<Rectangle>(8);
+	private JButton[] buttons = new JButton[8];
 	private Room room;
 	private List<Account> accounts;
 	public RoomPanel(MainControl mc,Room room) {
@@ -161,12 +161,13 @@ public class RoomPanel extends JPanel{
 	}
 	public void initLocation(){
 		locations.add(new Rectangle(15,20,800,60));
-		locations.add(new Rectangle(15,100,800,60));
-		locations.add(new Rectangle(15,180,800,60));
-		locations.add(new Rectangle(15,260,800,60));
-		locations.add(new Rectangle(15,340,800,60));
-		locations.add(new Rectangle(15,420,800,60));
-		locations.add(new Rectangle(15,500,800,60));
+		locations.add(new Rectangle(15,90,800,60));
+		locations.add(new Rectangle(15,160,800,60));
+		locations.add(new Rectangle(15,230,800,60));
+		locations.add(new Rectangle(15,300,800,60));
+		locations.add(new Rectangle(15,370,800,60));
+		locations.add(new Rectangle(15,440,800,60));
+		locations.add(new Rectangle(15,510,800,60));
 	}
 	public void initComonent() {
 		for (int i = 0; i < room.getSize(); i++) {
