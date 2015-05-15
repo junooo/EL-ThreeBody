@@ -1,6 +1,7 @@
 package ui;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -40,6 +41,7 @@ public class RoomPanel extends JPanel{
 	private JLabel labelWins;
 	private JLabel psLosts;
 	private JLabel labelLosts;
+	private boolean isAbleToPress=true;
 	private Image opaque = new ImageIcon("images/coNothing.png").getImage();
 	private LobbyControl lobbyControl;
 	private List<Rectangle> locations = new ArrayList<Rectangle>(8);
@@ -178,19 +180,21 @@ public class RoomPanel extends JPanel{
 		}
 		
 		this.btn_roomInfo = new JButton();
-		btn_roomInfo.setIcon(new ImageIcon(opaque.getScaledInstance(300, 125, Image.SCALE_SMOOTH)));
+		this.btn_roomInfo.setIcon(new ImageIcon(opaque.getScaledInstance(300, 125, Image.SCALE_SMOOTH)));
 		JPanel roomPanel = new ButtonPanel(room);
 		roomPanel.setBounds(850, 50, 300, 125);
 		this.btn_roomInfo.setBounds(840, 50, 300, 125);
-		btn_roomInfo.setContentAreaFilled(false);
-		btn_roomInfo.setBorderPainted(false);
-		btn_roomInfo.add(roomPanel);
+		this.btn_roomInfo.setContentAreaFilled(false);
+		this.btn_roomInfo.setBorderPainted(false);
+		this.btn_roomInfo.add(roomPanel);
+		
 		this.add(btn_roomInfo);
 		
 		this.btn_ready = new JButton();
 		this.btn_ready.setIcon(new ImageIcon("images/ready.png"));
 		this.btn_ready.setContentAreaFilled(false);
 		this.btn_ready.setBounds(840, 500, 100, 50);
+		this.btn_ready.setEnabled(isAbleToPress);
 		this.btn_ready.addMouseListener(new ToGameListener());
 		this.add(btn_ready);
 
@@ -211,7 +215,10 @@ public class RoomPanel extends JPanel{
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			mainControl.toGame(room.getSize());
+//			changeIsAbleToPress(btn_lobbyReturn);
 		}
+
+		
 	}
 
 	class ReturnListener extends MouseAdapter {
@@ -219,5 +226,16 @@ public class RoomPanel extends JPanel{
 		public void mouseClicked(MouseEvent e) {
 			mainControl.toLobby();
 		}
+	}
+	private void ableToPress(Component c){
+		isAbleToPress=true;
+		c.setEnabled(isAbleToPress);
+	}
+	private void unableToPress(Component c){
+		isAbleToPress=false;
+		c.setEnabled(isAbleToPress);
+	}
+	private void changeIsAbleToPress(Component c) {
+		c.setEnabled(!c.isEnabled());
 	}
 }

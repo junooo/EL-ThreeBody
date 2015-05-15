@@ -157,7 +157,7 @@ public class GamePanel  extends JPanel{
 			coordinateOfEnemies[i].setBackground(Color.DARK_GRAY);
 			coordinateOfEnemies[i].setOpaque(true);
 			Rectangle rec = location.get(i);
-			rec.x-=25; rec.y+=85; rec.width+=50; rec.height=90;
+			rec.x-=25; rec.y+=85; rec.width+=50; rec.height=100;
 			coordinateOfEnemies[i].setBounds(rec);
 			coordinateOfEnemies[i].setVisible(false);
 			this.add(coordinateOfEnemies[i]);
