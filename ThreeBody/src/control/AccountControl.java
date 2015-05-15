@@ -187,7 +187,7 @@ public class AccountControl {
 					break;
 				}
     			try {
-					Thread.sleep(1000);
+					Thread.sleep(10000);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
