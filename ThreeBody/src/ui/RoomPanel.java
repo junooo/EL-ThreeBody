@@ -188,14 +188,14 @@ public class RoomPanel extends JPanel{
 		this.add(btn_roomInfo);
 		
 		this.btn_ready = new JButton();
-		this.btn_ready.setIcon(new ImageIcon("images/newroom.png"));
+		this.btn_ready.setIcon(new ImageIcon("images/ready.png"));
 		this.btn_ready.setContentAreaFilled(false);
 		this.btn_ready.setBounds(840, 500, 100, 50);
 		this.btn_ready.addMouseListener(new ToGameListener());
 		this.add(btn_ready);
 
 		this.btn_lobbyReturn = new JButton();
-		this.btn_lobbyReturn.setIcon(new ImageIcon("images/roomreturn.png"));
+		this.btn_lobbyReturn.setIcon(new ImageIcon("images/roomExit.png"));
 		this.btn_lobbyReturn.setContentAreaFilled(false);
 		this.btn_lobbyReturn.setBounds(1000, 500, 100, 50);
 		this.btn_lobbyReturn.addMouseListener(new ReturnListener());
