@@ -73,12 +73,12 @@ public class RoomPanel extends JPanel{
 	
 	public void refresh() {
 		this.room = roomControl.getRoom();
-		this.accounts=room.getAccounts();
+		this.accounts = room.getAccounts();
 		this.removeAll();
 		
 		this.initComonent();
 		this.initAccountsInfo();
-		mainControl.frame.setContentPane(this);
+		mainControl.frame.validate();
 	}
 	
 	private void initAccountsInfo() {
@@ -230,6 +230,7 @@ public class RoomPanel extends JPanel{
 		this.btn_lobbyReturn.addMouseListener(new ReturnListener());
 		this.add(btn_lobbyReturn);
 	}
+	
 	@Override
 	public void update(Graphics scr)
 	{
@@ -266,7 +267,7 @@ public class RoomPanel extends JPanel{
 		public void refresh(){
 			if(room.getCreater().getId().equals(AccountDTO.getInstance().getId())){
 				// TODO 显示为“开始”
-				owner.setIcon(new ImageIcon("images/ready.png"));
+				owner.setIcon(new ImageIcon("images/roomGameStart.png"));
 				state = 2;
 		    }else if(room.isReady(AccountDTO.getInstance().getId())){
 		    	// TODO 显示“取消预备”
@@ -274,7 +275,7 @@ public class RoomPanel extends JPanel{
 		    	state = 1;
 		    }else{
 		    	// TODO 显示“预备”
-		    	owner.setIcon(new ImageIcon("images/roomGameStart.png"));
+		    	owner.setIcon(new ImageIcon("images/ready.png"));
 		    	state = 0;
 		    }
 		}

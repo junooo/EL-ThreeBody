@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 
 import model.Room;
 import server.interfaces.RMIRoom;
+import ui.RoomPanel;
 import util.R;
 import dto.AccountDTO;
 
@@ -12,12 +13,21 @@ public class RoomControl {
 	private RMIRoom rmir;
 	private MainControl mainControl;
 	private Room room;
+	private RoomPanel roomPanel;
+	private GameStartChecker gsc;
+	private boolean inRoom;
 	
 	public RoomControl(MainControl mc,RMIRoom rmir){
 		this.mainControl = mc;
 		this.rmir = rmir;
 		this.room = this.refreshRoom();
-		new GameStartChecker().start();
+		this.gsc = new GameStartChecker();
+		this.inRoom = true;
+		gsc.start();
+	}
+	
+	public void setRoomPanel(RoomPanel roomPanel){
+		this.roomPanel = roomPanel;
 	}
 	
 	/**
@@ -64,8 +74,9 @@ public class RoomControl {
 	 * 
 	 * @return SUCCESS: 成功离开房间
 	 */
-	public R.info exit(){
+	public synchronized R.info exit(){
 		try {
+			inRoom = false;
 			mainControl.roomControl = null;
 			mainControl.toLobby();
 			return rmir.exit(AccountDTO.getInstance().getId());
@@ -111,20 +122,24 @@ public class RoomControl {
 	private class GameStartChecker extends Thread{
 		@Override
 		public void run(){
-			while(true){
+			while(inRoom && !room.isStart()){
 				try {
+					room = refreshRoom();
+					refreshRoomPanel();
 					Thread.sleep(2000);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				room = refreshRoom();
-				if(room.isStart()){
-					mainControl.toGame(room.getSize());
-					break;
-				}
-				mainControl.roomPanel.refresh();
+			}
+			if(room.isStart()){
+				mainControl.toGame(room.getSize());
 			}
 		}
 	}
-
+	
+	private synchronized void refreshRoomPanel(){
+		if(inRoom){
+			roomPanel.refresh();
+		}
+	}
 }

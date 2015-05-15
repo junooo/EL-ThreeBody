@@ -1,5 +1,7 @@
 package control;
 
+import io.NetClient;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -42,6 +44,13 @@ public class MainControl {
 		
 		mc.accountControl = new AccountControl(mc);
 		String id = AccountDTO.getInstance().getId();
+		
+		new Thread(new Runnable(){
+			public void run(){
+				NetClient.getInstance();
+			}
+		}).start();
+		
 		if(!id.equals("本地玩家")){
 //			if (mc.accountControl.loginByTransientID(id) == R.info.SUCCESS) {
 //				mc.connected = true;
@@ -49,7 +58,6 @@ public class MainControl {
 		}
 		//TODO
 		mc.frame = new MainFrame(mc);
-		mc.currentPanel = mc.startMenuPanel;
 		mc.toStartMenu();
 //		mc.toAnimate("opening");
 		Sound.load("BGM1");
@@ -121,7 +129,8 @@ public class MainControl {
 		}
 		
 		currentPanel.setVisible(false);
-		this.roomPanel = new RoomPanel(this,roomControl);
+		roomPanel = new RoomPanel(this,roomControl);
+		roomControl.setRoomPanel((RoomPanel)roomPanel);
 		currentPanel = this.roomPanel;
 		frame.setContentPane(currentPanel);
 		currentPanel.setVisible(true);
