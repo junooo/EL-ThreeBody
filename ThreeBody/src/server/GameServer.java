@@ -39,7 +39,18 @@ public class GameServer extends UnicastRemoteObject implements RMIGame{
 		players = new LinkedList<Player>();
 		RandomCombiner rc = new RandomCombiner(accounts.size());
 		rc.addColumn(accounts.toArray());
-		rc.addColumn(Role.generateRoles(3, 2, 1));
+		// 角色数量分配
+		switch(accounts.size()){
+		case 3:
+			rc.addColumn(Role.generateRoles(2, 1, 0));
+			break;
+		case 6:
+			rc.addColumn(Role.generateRoles(3, 2, 1));
+			break;
+		case 8:
+			rc.addColumn(Role.generateRoles(4, 3, 1));
+			break;
+		}
 		rc.addColumn(Coordinate.generateCoordinates(accounts.size()));
 		for (Object[] records : rc.generate()) {
 			Account ac = (Account)records[0];
