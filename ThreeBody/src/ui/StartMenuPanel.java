@@ -54,9 +54,9 @@ public class StartMenuPanel extends JPanel{
 		this.btnStartGame.addMouseListener(new StartGameListener());
 		this.add(btnStartGame);
 
-		this.btnOption = new JButton(new ImageIcon("images/Preference.png"));
+		this.btnOption = new JButton(new ImageIcon("images/Preference2.png"));
 		this.btnOption.setContentAreaFilled(false);
-		this.btnOption.setBounds(384, 92, 150, 150);
+		this.btnOption.setBounds(380, 92, 150, 150);
 		this.btnOption.setBorderPainted(false);
 		this.btnOption.addMouseListener(new OptionListener());
 
@@ -66,14 +66,14 @@ public class StartMenuPanel extends JPanel{
 		aboutUs=aboutUs.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 		this.btnAboutUs = new JButton(new ImageIcon(aboutUs));
 		this.btnAboutUs.setContentAreaFilled(false);
-		this.btnAboutUs.setBounds(350, 400, 100, 100);
+		this.btnAboutUs.setBounds(350, 340, 100, 100);
 		this.btnAboutUs.setBorderPainted(false);
 		this.btnAboutUs.addMouseListener(new AboutUsListener());
 		this.add(btnAboutUs);
 
 		this.btnExit = new JButton(new ImageIcon("images/Menuexit.png"));
 		this.btnExit.setContentAreaFilled(false);
-		this.btnExit.setBounds(483, 380, 150, 150);
+		this.btnExit.setBounds(473, 360, 150, 150);
 		this.btnExit.setBorderPainted(false);
 		this.btnExit.addMouseListener(new ExitListener());
 		this.add(btnExit);

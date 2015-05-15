@@ -172,16 +172,14 @@ public class GamePanel  extends JPanel{
 		this.btnReturn.setBounds(20, 565, 120, 30);
 		btnReturn.setFont(new Font("黑体", Font.BOLD, 20));
 		btnReturn.setForeground(Color.YELLOW);
-		// this.btnMultyPlay.setBorderPainted(false);
 		btnReturn.addMouseListener(new ReturnListener());
 		this.add(btnReturn);
-		//578 300 856
+		
 		this.btnBroadcast = new JButton("广播");
 		this.btnBroadcast.setContentAreaFilled(false);
 		this.btnBroadcast.setBounds(260, 600, 80, 20);
 		btnBroadcast.setFont(new Font("黑体", Font.BOLD, 15));
 		btnBroadcast.setForeground(Color.YELLOW);
-		// this.btnMultyPlay.setBorderPainted(false);
 		btnBroadcast.addMouseListener(new BroadcastListener());
 		this.add(btnBroadcast);
 		
@@ -190,14 +188,12 @@ public class GamePanel  extends JPanel{
 		this.btnHistory.setBounds(523, 600, 100, 20);
 		btnHistory.setFont(new Font("黑体", Font.BOLD, 15));
 		btnHistory.setForeground(Color.YELLOW);
-		// this.btnMultyPlay.setBorderPainted(false);
 		btnHistory.addMouseListener(new HistoryListener());
 		this.add(btnHistory);
 		
 		this.btnMessage = new JButton("留言");
 		this.btnMessage.setContentAreaFilled(false);
 		this.btnMessage.setBounds(816, 600, 80, 20);
-		// this.btnMultyPlay.setBorderPainted(false);
 		btnMessage.setFont(new Font("黑体", Font.BOLD, 15));
 		btnMessage.setForeground(Color.YELLOW);
 		btnMessage.addMouseListener(new MessageListener());
@@ -208,8 +204,7 @@ public class GamePanel  extends JPanel{
 		this.btnTurnEnd.setBounds(1000, 500, 150, 30);
 		btnTurnEnd.setFont(new Font("黑体", Font.BOLD, 15));
 		btnTurnEnd.setForeground(Color.YELLOW);
-		// this.btnMultyPlay.setBorderPainted(false);
-//		btnTurnEnd.addMouseListener(new CardListener1());
+		btnTurnEnd.addMouseListener(new EndListener());
 		this.add(btnTurnEnd);
 		
 		this.btnCardSophon = new JButton("智子");
@@ -226,7 +221,6 @@ public class GamePanel  extends JPanel{
 		this.btnCardSillySophon.setContentAreaFilled(false);
 		this.btnCardSillySophon.setBounds(1070, 60, 150, 30);
 		btnCardSillySophon.setForeground(Color.YELLOW);
-		// this.btnMultyPlay.setBorderPainted(false);
 		btnCardSillySophon.addMouseListener(new CardSillySophonListener());
 		this.add(btnCardSillySophon);
 		
@@ -234,7 +228,6 @@ public class GamePanel  extends JPanel{
 		this.btnCardWholeBlock.setContentAreaFilled(false);
 		this.btnCardWholeBlock.setBounds(1070, 90, 150, 30);
 		btnCardWholeBlock.setForeground(Color.YELLOW);
-		// this.btnMultyPlay.setBorderPainted(false);
 		btnCardWholeBlock.addMouseListener(new CardWholeBlockListener());
 		this.add(btnCardWholeBlock);
 		
@@ -242,7 +235,6 @@ public class GamePanel  extends JPanel{
 		this.btnCardPatialBlock.setContentAreaFilled(false);
 		this.btnCardPatialBlock.setBounds(1070, 120, 150, 30);
 		btnCardPatialBlock.setForeground(Color.YELLOW);
-		// this.btnMultyPlay.setBorderPainted(false);
 		btnCardPatialBlock.addMouseListener(new CardPatialBlockListener());
 		this.add(btnCardPatialBlock);
 		
@@ -250,7 +242,6 @@ public class GamePanel  extends JPanel{
 		this.btnCardNoBroadcasting.setContentAreaFilled(false);
 		this.btnCardNoBroadcasting.setBounds(1070, 150, 150, 30);
 		btnCardNoBroadcasting.setForeground(Color.YELLOW);
-		// this.btnMultyPlay.setBorderPainted(false);
 		btnCardNoBroadcasting.addMouseListener(new CardNoBroadcastingListener());
 		this.add(btnCardNoBroadcasting);
 		
@@ -258,7 +249,6 @@ public class GamePanel  extends JPanel{
 		this.btnCardTechPotion.setContentAreaFilled(false);
 		this.btnCardTechPotion.setBounds(1070, 180, 150, 30);
 		btnCardTechPotion.setForeground(Color.YELLOW);
-		// this.btnMultyPlay.setBorderPainted(false);
 		btnCardTechPotion.addMouseListener(new CardTechPotionListener());
 		this.add(btnCardTechPotion);
 		
@@ -266,7 +256,6 @@ public class GamePanel  extends JPanel{
 		this.btnCardResourcePotion.setContentAreaFilled(false);
 		this.btnCardResourcePotion.setBounds(1070, 210, 150, 30);
 		btnCardResourcePotion.setForeground(Color.YELLOW);
-		// this.btnMultyPlay.setBorderPainted(false);
 		btnCardResourcePotion.addMouseListener(new CardResourcePotionListener());
 		this.add(btnCardResourcePotion);
 		
@@ -274,7 +263,6 @@ public class GamePanel  extends JPanel{
 		this.btnCardResourceGambling.setContentAreaFilled(false);
 		this.btnCardResourceGambling.setBounds(1070, 240, 150, 30);
 		btnCardResourceGambling.setForeground(Color.YELLOW);
-		// this.btnMultyPlay.setBorderPainted(false);
 		btnCardResourceGambling.addMouseListener(new CardResourceGamblingListener());
 		this.add(btnCardResourceGambling);
 		
@@ -282,7 +270,6 @@ public class GamePanel  extends JPanel{
 		this.btnPriviledgeGetRole.setContentAreaFilled(false);
 		this.btnPriviledgeGetRole.setBounds(1070, 270, 150, 30);
 		btnPriviledgeGetRole.setForeground(Color.YELLOW);
-		// this.btnMultyPlay.setBorderPainted(false);
 		btnPriviledgeGetRole.addMouseListener(new PriviledgeGetRoleListener());
 		this.add(btnPriviledgeGetRole);
 		
@@ -558,31 +545,29 @@ public class GamePanel  extends JPanel{
 		}
 	}
 	class CardResourcePotionListener implements MouseListener {
-		int x = btnCardResourcePotion.getX();
-		int y = btnCardResourcePotion.getY();
 		Rectangle rec = btnCardResourcePotion.getBounds();
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			user.setResource(user.getResource()+10);
-			panelResource.repaint();
+			repaint();
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
-			btnCardTechPotion.setLocation(x-10, y-30);
-			btnCardResourcePotion.setLocation(x-40, y);
-			btnCardResourceGambling.setLocation(x-10, y+30);
+			btnCardTechPotion.setLocation(rec.x-10, rec.y-30);
+			btnCardResourcePotion.setLocation(rec.x-40, rec.y);
+			btnCardResourceGambling.setLocation(rec.x-10, rec.y+30);
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			btnCardTechPotion.setLocation(x-10, y-30);
-			btnCardResourcePotion.setLocation(x-40, y);
-			btnCardResourceGambling.setLocation(x-10, y+30);
+			btnCardTechPotion.setLocation(rec.x-10, rec.y-30);
+			btnCardResourcePotion.setLocation(rec.x-40, rec.y);
+			btnCardResourceGambling.setLocation(rec.x-10, rec.y+30);
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {
-			btnCardTechPotion.setLocation(x-10, y-30);
-			btnCardResourcePotion.setLocation(x-40, y);
-			btnCardResourceGambling.setLocation(x-10, y+30);
+			btnCardTechPotion.setLocation(rec.x-10, rec.y-30);
+			btnCardResourcePotion.setLocation(rec.x-40, rec.y);
+			btnCardResourceGambling.setLocation(rec.x-10,rec. y+30);
 			promptLabels[6].setBounds(rec.x-prompts[6].getIconWidth()-40,rec.y,prompts[6].getIconWidth(),prompts[6].getIconHeight());
 			promptLabels[6].setVisible(true);
 			add(promptLabels[6]);
@@ -590,9 +575,9 @@ public class GamePanel  extends JPanel{
 		}
 		@Override
 		public void mouseExited(MouseEvent e) {
-			btnCardTechPotion.setLocation(x, y-30);
-			btnCardResourcePotion.setLocation(x, y);
-			btnCardResourceGambling.setLocation(x, y+30);
+			btnCardTechPotion.setLocation(rec.x, rec.y-30);
+			btnCardResourcePotion.setLocation(rec.x, rec.y);
+			btnCardResourceGambling.setLocation(rec.x, rec.y+30);
 			promptLabels[6].setVisible(false);
 		}
 	}
@@ -727,6 +712,13 @@ public class GamePanel  extends JPanel{
 		@Override
 		public void mouseExited(MouseEvent e) {
 			coordinateOfEnemies[number].setVisible(false);
+		}
+	}
+	
+	class EndListener extends MouseAdapter {
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			
 		}
 	}
 
