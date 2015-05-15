@@ -15,12 +15,14 @@ public class RoomControl {
 	private Room room;
 	private RoomPanel roomPanel;
 	private GameStartChecker gsc;
+	private boolean inRoom;
 	
 	public RoomControl(MainControl mc,RMIRoom rmir){
 		this.mainControl = mc;
 		this.rmir = rmir;
 		this.room = this.refreshRoom();
 		this.gsc = new GameStartChecker();
+		this.inRoom = true;
 		gsc.start();
 	}
 	
@@ -74,7 +76,7 @@ public class RoomControl {
 	 */
 	public synchronized R.info exit(){
 		try {
-			gsc.end();
+			inRoom = false;
 			mainControl.roomControl = null;
 			mainControl.toLobby();
 			return rmir.exit(AccountDTO.getInstance().getId());
@@ -118,14 +120,11 @@ public class RoomControl {
 	 * 检查游戏是否开始，若开始，进入游戏界面
 	 */
 	private class GameStartChecker extends Thread{
-		boolean running = true;
-		public void end(){
-			running = false;
-		}
 		@Override
 		public void run(){
-			while(running && !room.isStart()){
+			while(inRoom && !room.isStart()){
 				try {
+					room = refreshRoom();
 					refreshRoomPanel();
 					Thread.sleep(2000);
 				} catch (InterruptedException e) {
@@ -134,15 +133,13 @@ public class RoomControl {
 			}
 			if(room.isStart()){
 				mainControl.toGame(room.getSize());
-			}else{
-				mainControl.toLobby();
 			}
 		}
 	}
 	
 	private synchronized void refreshRoomPanel(){
-		System.out.println("zaishua");
-		room = refreshRoom();
-		roomPanel.refresh();
+		if(inRoom){
+			roomPanel.refresh();
+		}
 	}
 }
