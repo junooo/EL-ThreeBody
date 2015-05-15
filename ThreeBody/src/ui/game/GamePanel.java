@@ -1,6 +1,7 @@
 package ui.game;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -43,7 +44,7 @@ public class GamePanel  extends JPanel{
 	private JButton btnCardResourcePotion;
 	private JButton btnCardResourceGambling;
 	private JButton btnPriviledgeGetRole;
-	
+	private boolean isAbleToPress = true;
 	private JButton btnBroadcast;
 	private JButton btnHistory;
 	private JButton btnMessage;
@@ -735,4 +736,16 @@ public class GamePanel  extends JPanel{
     public void conquer(){
         
     }
+    
+    private void ableToPress(Component c){
+		
+		c.setEnabled(isAbleToPress);
+	}
+	private void unableToPress(Component c){
+		isAbleToPress=false;
+		c.setEnabled(isAbleToPress);
+	}
+	private void changeIsAbleToPress(Component c) {
+		c.setEnabled(!c.isEnabled());
+	}
 }
