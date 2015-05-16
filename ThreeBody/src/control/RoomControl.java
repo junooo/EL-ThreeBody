@@ -109,7 +109,8 @@ public class RoomControl {
 	 */
 	public GameControl getGameService(){
 		try {
-			return new GameControl(rmir.getGameServer());
+			GameControl.init(rmir.getGameServer());
+			return GameControl.getInstance();
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -125,7 +126,6 @@ public class RoomControl {
 			while (inRoom && !room.isStart()) {
 				try {
 					Thread.sleep(2000);
-					room = refreshRoom();
 					refreshRoomPanel();
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -140,11 +140,8 @@ public class RoomControl {
 	
 	private synchronized void refreshRoomPanel(){
 		if(inRoom){
+			room = refreshRoom();
 			roomPanel.refresh();
 		}
-	}
-
-	public void changeInRoom() {
-		this.inRoom = !this.inRoom;
 	}
 }
