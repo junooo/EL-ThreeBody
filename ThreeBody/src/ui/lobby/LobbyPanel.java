@@ -15,13 +15,14 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import ui.FrameUtil;
 import model.Room;
 import control.LobbyControl;
 import control.MainControl;
 
 public class LobbyPanel extends JPanel implements MouseWheelListener {
 	private static final long serialVersionUID = 1L;
-	private MainControl mc;
+	private MainControl mainControl;
 	private JButton btn_createRoom;
 	private JButton btn_lobbyReturn;
 
@@ -31,7 +32,7 @@ public class LobbyPanel extends JPanel implements MouseWheelListener {
 
 	public LobbyPanel(MainControl mc) {
 		this.setLayout(null);
-		this.mc = mc;
+		this.mainControl = mc;
 		lobbyControl = mc.lobbyControl;
 		this.initComonent();
 		this.addMouseWheelListener(this);
@@ -52,7 +53,6 @@ public class LobbyPanel extends JPanel implements MouseWheelListener {
 	private void addRoom(int roomNumber) {
 		JButton room = new JButton();
 		JPanel roomPanel = new ButtonPanel(this.roomList.get(roomNumber));
-//		JPanel roomPanel = new ButtonPanel(new Room(null, "南大花房", 3));
 		if (roomNumber != 0) {
 			Rectangle rect = roomFamily.get(roomFamily.size() - 1).getBounds();
 			rect.x = rect.x + 350;
@@ -63,14 +63,14 @@ public class LobbyPanel extends JPanel implements MouseWheelListener {
 			roomPanel.setBounds(50, 200, 300, 125);
 		}
 		room.setContentAreaFilled(false);
-		room.addMouseListener(new EnterListener(roomNumber));
+		room.addMouseListener(new EnterListener(roomList.get(roomNumber).getName()));
 		room.add(roomPanel);
 		roomFamily.add(room);
 	}
 
-	public void refresh() {
-		mc.toLobby();
-	}
+//	public void refresh() {
+//		mainControl.toLobby();
+//	}
 
 	public void initComonent() {
 		// lobby room 3*2
@@ -95,13 +95,25 @@ public class LobbyPanel extends JPanel implements MouseWheelListener {
 	}
 
 	class EnterListener extends MouseAdapter  {
-		int roomId;
-		public EnterListener(int roomId) {
-			this.roomId = roomId;
+		String roomName;
+		public EnterListener(String roomName) {
+			this.roomName = roomName;
 		}
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			mc.toGame();
+			switch(lobbyControl.enterRoom(roomName)){
+			case SUCCESS:
+				mainControl.toRoom(roomName);
+				break;
+			case ROOM_FULL:
+				FrameUtil.sendMessageByFrame("房间已满", "房间已满");
+				break;
+			case NOT_EXISTED:
+				FrameUtil.sendMessageByFrame("房间不存在", "房间不存在");
+				break;
+			default:
+				break;
+			}
 		}
 	}
 
@@ -110,17 +122,15 @@ public class LobbyPanel extends JPanel implements MouseWheelListener {
 		public void mouseClicked(MouseEvent e) {
 			JFrame createRoomFrame = new CreateRoomFrame();
 			JPanel createRoomPanel = new CreateRoomPanel(createRoomFrame,
-					lobbyControl);
+					lobbyControl,mainControl);
 			createRoomFrame.setContentPane(createRoomPanel);
-//			addRoom(roomFamily.size());
-//			add(roomFamily.get(roomFamily.size() - 1));
 		}
 	}
 
 	class ReturnListener extends MouseAdapter {
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			mc.toStartMenu();
+			mainControl.toStartMenu();
 		}
 	}
 

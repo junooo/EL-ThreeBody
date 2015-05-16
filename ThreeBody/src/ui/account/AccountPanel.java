@@ -70,7 +70,6 @@ public class AccountPanel extends JPanel{
 			headImage=headImage.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
 			labelHead.setIcon(new ImageIcon(headImage));
 		}else{
-			//TODO 设置默认头像
 			Image headImage = new ImageIcon("images/headtest.jpg").getImage();
 			headImage=headImage.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
 			labelHead.setIcon(new ImageIcon(headImage));

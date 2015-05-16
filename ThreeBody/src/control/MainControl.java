@@ -1,5 +1,7 @@
 package control;
 
+import io.NetClient;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -7,32 +9,34 @@ import ui.AboutUsPanel;
 import ui.AnimatePanel;
 import ui.MainFrame;
 import ui.PreferencePanel;
+import ui.RoomPanel;
 import ui.StartMenuPanel;
 import ui.account.AccountPanel;
 import ui.game.GamePanel;
 import ui.lobby.LobbyPanel;
 import ui.sound.Media;
 import ui.sound.Sound;
-import util.R;
 import dto.AccountDTO;
 
 public class MainControl {
 
 	private JPanel currentPanel = null;
-	private JFrame frame = null;
+	public JFrame frame = null;
 	private JPanel startMenuPanel = null;
 	private JPanel gamePanel = null;
 	private JPanel aboutUs = null;
 	private JPanel lobbyPanel = null;
 	private JPanel account=null;
 	private JPanel preference=null;
+	public RoomPanel roomPanel=null;
 	private AnimatePanel animate=null;
 	
 	public AccountControl accountControl;
 	public LobbyControl lobbyControl;
+	public RoomControl roomControl;
+	public GameControl gameControl;
 	
 	private boolean connected = false;
-	
 	
 	public static void main(String[] args) {
 
@@ -40,30 +44,28 @@ public class MainControl {
 		
 		mc.accountControl = new AccountControl(mc);
 		String id = AccountDTO.getInstance().getId();
-		if(!id.equals("本地玩家")){
-			if (mc.accountControl.loginByTransientID(id) == R.info.SUCCESS) {
-				mc.connected = true;
+		
+		new Thread(new Runnable(){
+			public void run(){
+				NetClient.getInstance();
 			}
+		}).start();
+		
+		if(!id.equals("本地玩家")){
+//			if (mc.accountControl.loginByTransientID(id) == R.info.SUCCESS) {
+//				mc.connected = true;
+//			}
 		}
 		//TODO
-		mc.gamePanel = new GamePanel(mc, 3);
 		mc.frame = new MainFrame(mc);
-		mc.startMenuPanel = new StartMenuPanel(mc);
-		mc.currentPanel = mc.startMenuPanel;
 		mc.toStartMenu();
 //		mc.toAnimate("opening");
 		Sound.load("BGM1");
 		Media.playBGM(Sound.BGM);
 	}
 
-	/*
-	 * TESTED
-	 */
 	public void toStartMenu() {
-		currentPanel.setVisible(false);
-		if (this.startMenuPanel == null) {
-			this.startMenuPanel = new StartMenuPanel(this);
-		}
+		this.startMenuPanel = new StartMenuPanel(this);
 		currentPanel = this.startMenuPanel;
 		frame.setContentPane(currentPanel);
 		currentPanel.setVisible(true);
@@ -94,14 +96,12 @@ public class MainControl {
 	public void toTutorial() {
 	}
 
-	
-
-	/*
-	 * TESTED
-	 */
-	public void toGame() {
+	public void toGame(int numOfPlayers) {
+		//new GameControl
+		gameControl = roomControl.getGameService();
+		
 		currentPanel.setVisible(false);
-		this.gamePanel = new GamePanel(this, 3);
+		this.gamePanel = new GamePanel(this, numOfPlayers);
 		currentPanel = this.gamePanel;
 		frame.setContentPane(currentPanel);
 		currentPanel.setVisible(true);
@@ -111,8 +111,9 @@ public class MainControl {
 	public void toLobby() {
 		// new LobbyControl
 		if (lobbyControl == null){
-			lobbyControl = new LobbyControl((LobbyPanel)this.lobbyPanel);
+			lobbyControl = new LobbyControl(this);
 		}
+		
 		currentPanel.setVisible(false);
 		this.lobbyPanel = new LobbyPanel(this);
 		currentPanel = this.lobbyPanel;
@@ -122,8 +123,18 @@ public class MainControl {
 		frame.validate();
 	}
 
-	public void toRoom() {
+	public void toRoom(String roomName) {
+		if(roomControl == null){
+			roomControl = lobbyControl.getRoomService(roomName);
+		}
 		
+		currentPanel.setVisible(false);
+		roomPanel = new RoomPanel(this,roomControl);
+		roomControl.setRoomPanel((RoomPanel)roomPanel);
+		currentPanel = this.roomPanel;
+		frame.setContentPane(currentPanel);
+		currentPanel.setVisible(true);
+		frame.validate();
 	}
 
 	public void toAboutUs() {
@@ -137,7 +148,6 @@ public class MainControl {
 	
 	public void toAccount(String id) {
 		currentPanel.setVisible(false);
-		//TODO 这里传了this.ac 不合适再调
 		this.account = new AccountPanel(this,id,this.accountControl);
 		currentPanel = this.account;
 		frame.setContentPane(currentPanel);
@@ -159,7 +169,5 @@ public class MainControl {
 	public void setConnected(boolean connected) {
 		this.connected = connected;
 	}
-
-	
 
 }
