@@ -124,6 +124,8 @@ public class LoginPanel extends JPanel{
 				add(errorMsgLabel);
 				loginFrame.setContentPane(thisPanel);
 				break;
+			default:
+				break;
 			}
 		}
 

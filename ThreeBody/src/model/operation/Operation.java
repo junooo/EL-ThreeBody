@@ -1,6 +1,7 @@
 package model.operation;
 
 import java.io.Serializable;
+import java.util.List;
 
 public abstract class Operation implements Serializable{
     
@@ -24,6 +25,7 @@ public abstract class Operation implements Serializable{
 
     protected String operator;
     protected String receiver;
+    protected List<Operation> subOperations;
     
 	public String toOperator() {
 		return null;
@@ -35,6 +37,10 @@ public abstract class Operation implements Serializable{
 
 	public String toOthers() {
 		return null;
+	}
+	
+	public List<Operation> subOperations(){
+		return subOperations;
 	}
 	
 	public String getOperator(){

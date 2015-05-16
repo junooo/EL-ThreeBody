@@ -104,7 +104,7 @@ public class MainControl {
 		gameControl = roomControl.getGameService();
 		
 		currentPanel.setVisible(false);
-		this.gamePanel = new GamePanel(this, numOfPlayers);
+		this.gamePanel = new GamePanel(this, numOfPlayers, gameControl);
 		currentPanel = this.gamePanel;
 		frame.setContentPane(currentPanel);
 		currentPanel.setVisible(true);
@@ -157,6 +157,9 @@ public class MainControl {
 	}
 
 	public void exit() {
+		if(roomControl != null){
+			roomControl.exit();
+		}
 		if(connected){
 			accountControl.logout();
 		}

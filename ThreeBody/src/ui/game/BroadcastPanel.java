@@ -4,6 +4,7 @@ import java.awt.Component;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
@@ -34,8 +35,8 @@ public class BroadcastPanel extends JPanel {
 	public BroadcastPanel() {
 		this.setLayout(null);
 		setBounds(231, 435, 695, 215);
-		players=GameDTO.getInstance().getPlayers();
-		user=GameDTO.getInstance().getUser();
+		players = GameDTO.getInstance().getPlayers();
+		user = GameDTO.getInstance().getUser();
 		this.initComonent();
 	}
 
@@ -93,39 +94,14 @@ public class BroadcastPanel extends JPanel {
 		this.add(select);
 	}
 	
-	class ReturnListener implements MouseListener {
-
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			
-		}
-		@Override
-		public void mousePressed(MouseEvent e) {
-			
-		}
+	class ReturnListener extends MouseAdapter {
 		@Override
 		public void mouseReleased(MouseEvent e) {
 			setVisible(false);
 		}
-		@Override
-		public void mouseEntered(MouseEvent e) {
-		}
-		@Override
-		public void mouseExited(MouseEvent e) {
-			
-		}
 	}
 	
-	class BroadcastListener implements MouseListener {
-
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			
-		}
-		@Override
-		public void mousePressed(MouseEvent e) {
-			
-		}
+	class BroadcastListener extends MouseAdapter {
 		@Override
 		public void mouseReleased(MouseEvent e) {
 			try {
@@ -137,17 +113,8 @@ public class BroadcastPanel extends JPanel {
 				FrameUtil.sendMessageByFrame("Error", "坐标输入错误");
 			}
 		}
-		@Override
-		public void mouseEntered(MouseEvent e) {
-		}
-		@Override
-		public void mouseExited(MouseEvent e) {
-			
-		}
 	}
 	
-	
-
 	@Override
 	public void paintComponent(Graphics g) {
 		Image IMG_MAIN = new ImageIcon("images/img1.jpg").getImage();
@@ -156,15 +123,14 @@ public class BroadcastPanel extends JPanel {
 	}
 	
 	private void ableToPress(Component c) {
-
 		c.setEnabled(isAbleToPress);
 	}
-
+	
 	private void unableToPress(Component c) {
 		isAbleToPress = false;
 		c.setEnabled(isAbleToPress);
 	}
-
+	
 	private void changeIsAbleToPress(Component c) {
 		c.setEnabled(!c.isEnabled());
 	}
