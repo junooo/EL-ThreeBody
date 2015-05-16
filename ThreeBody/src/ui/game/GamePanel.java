@@ -21,6 +21,8 @@ import javax.swing.JPanel;
 
 import model.Coordinate;
 import model.Player;
+import model.card.TechPotion;
+import model.operation.CardUse;
 import model.role.Role;
 import ui.FrameUtil;
 import ui.InformFrame;
@@ -332,7 +334,11 @@ public class GamePanel  extends JPanel{
 			System.out.println("=======================================================================");
 		}
 	}
-	
+	/**
+	 * 智子
+	 * @author user
+	 *
+	 */
 	class CardSophonListener implements MouseListener {
 		int x = btnCardSophon.getX();
 		int y = btnCardSophon.getY();
@@ -372,6 +378,11 @@ public class GamePanel  extends JPanel{
 			promptLabels[0].setVisible(false);
 		}
 	}
+	/**
+	 * 低级智子
+	 * @author user
+	 *
+	 */
 	class CardSillySophonListener implements MouseListener {
 		int x = btnCardSillySophon.getX();
 		int y = btnCardSillySophon.getY();
@@ -417,6 +428,11 @@ public class GamePanel  extends JPanel{
 			promptLabels[1].setVisible(false);
 		}
 	}
+	/**
+	 * 全局黑域
+	 * @author user
+	 *
+	 */
 	class CardWholeBlockListener implements MouseListener {
 		int x = btnCardWholeBlock.getX();
 		int y = btnCardWholeBlock.getY();
@@ -456,6 +472,11 @@ public class GamePanel  extends JPanel{
 			promptLabels[2].setVisible(false);
 		}
 	}
+	/**
+	 * 局部黑域
+	 * @author user
+	 *
+	 */
 	class CardPatialBlockListener implements MouseListener {
 		int x = btnCardPatialBlock.getX();
 		int y = btnCardPatialBlock.getY();
@@ -501,6 +522,11 @@ public class GamePanel  extends JPanel{
 			promptLabels[3].setVisible(false);
 		}
 	}
+	/**
+	 * 电波干扰（禁广播）
+	 * @author user
+	 *
+	 */
 	class CardNoBroadcastingListener implements MouseListener {
 		int x = btnCardNoBroadcasting.getX();
 		int y = btnCardNoBroadcasting.getY();
@@ -541,13 +567,24 @@ public class GamePanel  extends JPanel{
 			promptLabels[4].setVisible(false);
 		}
 	}
+	/**
+	 * 科技爆发
+	 * @author Ann
+	 *
+	 */
 	class CardTechPotionListener implements MouseListener {
 		int x = btnCardTechPotion.getX();
 		int y = btnCardTechPotion.getY();
 		Rectangle rec = btnCardTechPotion.getBounds();
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			
+			useTechPotion();
+		}
+		private void useTechPotion() {
+			String id=user.getAccount().getId();
+			TechPotion tp = new TechPotion(id, id);
+			CardUse cardUseTp=new CardUse(id, id, tp);
+			gameControl.doOperation(cardUseTp);
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
@@ -579,6 +616,11 @@ public class GamePanel  extends JPanel{
 			promptLabels[5].setVisible(false);
 		}
 	}
+	/**
+	 * 资源爆发
+	 * @author user
+	 *
+	 */
 	class CardResourcePotionListener implements MouseListener {
 		Rectangle rec = btnCardResourcePotion.getBounds();
 		@Override
@@ -616,6 +658,11 @@ public class GamePanel  extends JPanel{
 			promptLabels[6].setVisible(false);
 		}
 	}
+	/**
+	 * 赌博
+	 * @author Ann
+	 *
+	 */
 	class CardResourceGamblingListener implements MouseListener {
 		int x = btnCardResourceGambling.getX();
 		int y = btnCardResourceGambling.getY();
@@ -656,6 +703,11 @@ public class GamePanel  extends JPanel{
 			promptLabels[7].setVisible(false);
 		}
 	}
+	/**
+	 * 特权
+	 * @author user
+	 *
+	 */
 	class PriviledgeGetRoleListener implements MouseListener {
 		int x = btnPriviledgeGetRole.getX();
 		int y = btnPriviledgeGetRole.getY();

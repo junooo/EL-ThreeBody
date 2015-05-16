@@ -58,7 +58,9 @@ public class GameControl {
 		gameDTO.depositHistoryOperation(operation);
 		// make information
 		String id = gameDTO.getUser().getAccount().getId();
-		if (operation.getOperator().equals(id)) {
+		if (operation
+				.getOperator()
+				.equals(id)) {
 			if (operation.toOperator() != null) {
 				gameDTO.depositInformation(new Information(
 						operation.getOperator(),

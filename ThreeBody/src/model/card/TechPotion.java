@@ -25,6 +25,7 @@ public class TechPotion extends Card{
 		
 		GameConfig gc = new GameConfig();
 		List<CardConfig> cardList=gc.getCardsConfig();
+		this.name="科技革命";
 		this.lifetime=cardList.get(5).getLifetime();
 		this.requiredResource=cardList.get(5).getRequiredResource();
 		this.requiredTechPoint=cardList.get(5).getRequiredTechPoint();
