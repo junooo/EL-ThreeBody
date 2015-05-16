@@ -35,7 +35,7 @@ public class GameConfig {
 		//读取XML文件
 		Document doc = null;
 		try {
-			doc = reader.read("config/cfg.xml");
+			doc = reader.read("/root/EL/config/cfg.xml");
 		} catch (DocumentException e) {
 			e.printStackTrace();
 		}
@@ -49,8 +49,6 @@ public class GameConfig {
 		//配置角色参数
 		this.setRolesConfig(game.element("roles"));
 		
-		
-	
 	}
 	
 	/*
@@ -100,6 +98,4 @@ public class GameConfig {
 		return rolesConfig;
 	}
 
-	
-	
 }
