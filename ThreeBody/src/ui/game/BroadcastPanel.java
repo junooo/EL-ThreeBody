@@ -96,14 +96,14 @@ public class BroadcastPanel extends JPanel {
 	
 	class ReturnListener extends MouseAdapter {
 		@Override
-		public void mouseClicked(MouseEvent e) {
+		public void mouseReleased(MouseEvent e) {
 			setVisible(false);
 		}
 	}
 	
 	class BroadcastListener extends MouseAdapter {
 		@Override
-		public void mouseClicked(MouseEvent e) {
+		public void mouseReleased(MouseEvent e) {
 			try {
 				int co1=Integer.parseInt(btnCoordinateOne.getText());
 				int co2=Integer.parseInt(btnCoordinateTwo.getText());

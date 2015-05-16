@@ -120,15 +120,14 @@ public class SophonFinderPanel extends JPanel{
 	
 	class ReturnListener extends MouseAdapter {
 		@Override
-		public void mouseClicked(MouseEvent e) {
+		public void mouseReleased(MouseEvent e) {
 			sophonFinderFrame.setVisible(false);
 		}
 	}
 	class FindListener extends MouseAdapter {
 		@Override
 		public void mouseClicked(MouseEvent e) {
-//			useSophon();
-			jumpPanel();
+
 		}
 		private void jumpPanel() {
 			if(sophonFinderFrame.getTitle().equals("智子")){
@@ -158,20 +157,23 @@ public class SophonFinderPanel extends JPanel{
 				gameControl.doOperation(cardSophon);
 			}
 		}
+		@Override
+		public void mouseReleased(MouseEvent e) {
+//			useSophon();
+			jumpPanel();
+		}
 	}
 	class CoordinateOneListener extends MouseAdapter {
-
 		@Override
-		public void mouseClicked(MouseEvent e) {
+		public void mouseReleased(MouseEvent e) {
 			coordinate=1;
 			setPicture(coordinate);
 			repaint();
 		}
 	}
 	class CoordinateTwoListener extends MouseAdapter {
-
 		@Override
-		public void mouseClicked(MouseEvent e) {
+		public void mouseReleased(MouseEvent e) {
 			coordinate=2;
 			setPicture(coordinate);
 			repaint();
@@ -179,16 +181,15 @@ public class SophonFinderPanel extends JPanel{
 	}
 	class CoordinateThreeListener extends MouseAdapter {
 		@Override
-		public void mouseClicked(MouseEvent e) {
+		public void mouseReleased(MouseEvent e) {
 			coordinate=3;
 			setPicture(coordinate);
 			repaint();
 		}
 	}
 	class CoordinateFourListener extends MouseAdapter {
-
 		@Override
-		public void mouseClicked(MouseEvent e) {
+		public void mouseReleased(MouseEvent e) {
 			coordinate=4;
 			setPicture(coordinate);
 			repaint();

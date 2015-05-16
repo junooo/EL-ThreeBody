@@ -45,7 +45,7 @@ public class MessageByFramePanel extends JPanel{
 	
 	class OKListener extends MouseAdapter {
 		@Override
-		public void mouseClicked(MouseEvent e) {
+		public void mouseReleased(MouseEvent e) {
 			frame.dispose();
 		}
 	}

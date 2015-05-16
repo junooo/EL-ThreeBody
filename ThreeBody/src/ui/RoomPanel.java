@@ -73,7 +73,6 @@ public class RoomPanel extends JPanel{
 		this.room = roomControl.getRoom();
 		this.accounts = room.getAccounts();
 		this.removeAll();
-		
 		this.initComonent();
 		this.initAccountsInfo();
 		mainControl.frame.setContentPane(this);
@@ -242,8 +241,6 @@ public class RoomPanel extends JPanel{
 	       paint(gBuffer);
 	       scr.drawImage(iBuffer,0,0,this);
 	}
-	
-
 	@Override
 	public void paintComponent(Graphics g) {
 		Image background = new ImageIcon("images/模糊背景.jpg").getImage();
@@ -279,7 +276,7 @@ public class RoomPanel extends JPanel{
 		}
 
 		@Override
-		public void mouseClicked(MouseEvent e) {
+		public void mouseReleased(MouseEvent e) {
 //			changeIsAbleToPress(btn_lobbyReturn);
 			switch(state){
 			case 2:
@@ -305,7 +302,7 @@ public class RoomPanel extends JPanel{
 
 	class ReturnListener extends MouseAdapter {
 		@Override
-		public void mouseClicked(MouseEvent e) {
+		public void mouseReleased(MouseEvent e) {
 			roomControl.exit();
 		}
 	}
