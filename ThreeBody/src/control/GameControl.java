@@ -109,7 +109,7 @@ public class GameControl {
 				try {
 					// 上传unhandledOperations
 					rmig.uploadOperation(id, gameDTO.getUnSyncOperations());
-					
+					gameDTO.setSynced();
 					// handle 同步过来的人家的 Operable
 					handleOperations(rmig.downloadOperation(id));
 				} catch (RemoteException e) {

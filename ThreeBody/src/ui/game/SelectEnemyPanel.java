@@ -78,8 +78,7 @@ public class SelectEnemyPanel extends JPanel {
 		@Override
 		public void mouseReleased(MouseEvent e) {
 			String receiver = (String)enemys.getSelectedItem();
-			Operation operation = new Priviledge_GetRole(AccountDTO.getInstance().getId(), receiver);
-			GameControl.getInstance().doOperation(operation);
+			
 			frame.setVisible(false);
 		}
 	}
