@@ -97,6 +97,7 @@ public class GamePanel  extends JPanel{
 		this.initPrompt();
 		this.createEnemy();
 		this.createCoordinatePanel();
+		
 	}
 	
 	private void initPrompt() {
