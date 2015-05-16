@@ -40,7 +40,7 @@ public class Sophon extends Card{
 		super(operator, receiver);
 		// TODO 游戏平衡配置
 		this.position = position;
-		
+		this.name="智子";
 		GameConfig gc=new GameConfig();
 		List<CardConfig> cardList=gc.getCardsConfig();
 		this.lifetime=cardList.get(4).getLifetime();
