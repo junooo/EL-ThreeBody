@@ -144,4 +144,8 @@ public class RoomControl {
 			roomPanel.refresh();
 		}
 	}
+
+	public synchronized void changeInRoom() {
+		this.inRoom = !this.inRoom;
+	}
 }

@@ -70,10 +70,10 @@ coordinate=1;
 		this.setPicture(coordinate);
 		
 		
-		this.btnReturn = new JButton(new ImageIcon("images/exit.png"));
+		
+		this.btnReturn = new JButton(new ImageIcon("images/btnOk.png"));
 		this.btnReturn.setContentAreaFilled(false);
-		this.btnReturn.setBounds(160, 105, 150, 60);
-		this.btnReturn.setBorderPainted(false);
+		this.btnReturn.setBounds(190, 125, 60,30);
 		btnReturn.addMouseListener(new ReturnListener());
 		this.add(btnReturn);
 

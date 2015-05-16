@@ -67,6 +67,9 @@ public class SelectEnemyPanel extends JPanel {
 					enemys.addItem(players.get(i).getAccount().getId());
 				}
 			}
+		}else{
+			enemys.addItem("aa");
+			enemys.addItem("bb");
 		}
 		this.add(enemys);
 	}

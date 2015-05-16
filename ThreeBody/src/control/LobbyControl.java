@@ -136,7 +136,7 @@ public class LobbyControl {
 			lobbyPanel.refresh();
 		}
 	}
-	public void changeEntered() {
+	public synchronized void changeEntered() {
 		this.isEntered = !this.isEntered;
 	}
 
