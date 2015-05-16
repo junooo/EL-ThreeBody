@@ -21,7 +21,6 @@ public class Unifier extends Role {
 		this.rsrRestoreSpeed=10;
 	}
 
-
 	@Override
 	public boolean isAvailable(Card card) {
 		if(card.getClass().equals(ResourcePotion.class)){

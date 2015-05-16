@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 
 import ui.FrameUtil;
 import control.AccountControl;
+import dto.AccountDTO;
 
 public class LoginPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
@@ -87,37 +88,29 @@ public class LoginPanel extends JPanel{
 			String id = idField.getText();
 			String password = passwordField.getText();
 			
-			System.out.println(id);
-			System.out.println(password);
-			
 			// TODO 消息窗口
 			switch(accountControl.login(id, password)){
 			case SUCCESS:
-				System.out.println("login success");
 				loginFrame.setVisible(false);
 				FrameUtil.sendMessageByFrame("登录成功", "登录成功！");
+//				AccountDTO.getInstance().getId()
 				break;
 			case ALREADY_IN:
-				System.out.println("already log in");
 				errorMsgLabel.setText("账户已在别处登录");
 				add(errorMsgLabel);
 				loginFrame.setContentPane(thisPanel);
 				break;
 			case INVALID:
-				System.out.println("wrong password");
 				errorMsgLabel.setText("密码输入错误");
 				add(errorMsgLabel);
 				loginFrame.setContentPane(thisPanel);
 				break;
 			case NOT_EXISTED:
-				System.out.println("account not existed");
-				errorMsgLabel.setText("账户已在别处登录");
+				errorMsgLabel.setText("账户不存在");
 				add(errorMsgLabel);
 				loginFrame.setContentPane(thisPanel);
 				break;
 			}
-			
-			
 		}
 		
 		@Override
@@ -142,6 +135,7 @@ public class LoginPanel extends JPanel{
 		public void mouseClicked(MouseEvent e) {
 			setVisible(false);
 			panelLogup.setVisible(true);
+			loginFrame.setTitle("注册");
 			loginFrame.setContentPane(panelLogup);
 			repaint();
 		}

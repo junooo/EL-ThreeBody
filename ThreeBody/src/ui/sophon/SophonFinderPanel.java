@@ -59,20 +59,17 @@ public class SophonFinderPanel extends JPanel{
 		btnCoordinateOne.setContentAreaFilled(false);
 		btnCoordinateOne.addMouseListener(new CoordinateOneListener());
 		
-		
 		this.btnCoordinateTwo = new JButton();
 		this.btnCoordinateTwo.setBounds(120, 16, 99, 60);
 		btnCoordinateTwo.setFont(new Font("黑体", Font.BOLD, 60));
 		btnCoordinateTwo.setContentAreaFilled(false);
 		btnCoordinateTwo.addMouseListener(new CoordinateTwoListener());
 		
-		
 		this.btnCoordinateThree = new JButton();
 		this.btnCoordinateThree.setBounds(229, 16, 99, 60);
 		btnCoordinateThree.setFont(new Font("黑体", Font.BOLD, 60));
 		btnCoordinateThree.setContentAreaFilled(false);
 		btnCoordinateThree.addMouseListener(new CoordinateThreeListener());
-		
 		
 		this.btnCoordinateFour = new JButton();
 		this.btnCoordinateFour.setBounds(339, 16, 99, 60);
@@ -86,20 +83,17 @@ public class SophonFinderPanel extends JPanel{
 		this.add(btnCoordinateFour);
 		this.setPicture(coordinate);
 		
-		this.btnOK = new JButton(new ImageIcon("images/button.png"));
+		this.btnOK = new JButton(new ImageIcon("images/find.png"));
 		this.btnOK.setContentAreaFilled(false);
-		this.btnOK.setBounds(150, 105, 150, 60);
-		this.btnOK.setBorderPainted(false);
+		this.btnOK.setBounds(250, 125, 60, 30);
 		btnOK.addMouseListener(new FindListener());
 		this.add(btnOK);
 		
-		this.btnReturn = new JButton(new ImageIcon("images/exit.png"));
+		this.btnReturn = new JButton(new ImageIcon("images/littlecancel.png"));
 		this.btnReturn.setContentAreaFilled(false);
-		this.btnReturn.setBounds(295, 105, 150, 60);
-		this.btnReturn.setBorderPainted(false);
+		this.btnReturn.setBounds(335, 125, 60, 30);
 		btnReturn.addMouseListener(new ReturnListener());
 		this.add(btnReturn);
-
 		
 		select = new JComboBox<String>();
 		select.setFont(new Font("宋体", Font.PLAIN, 30));
@@ -113,10 +107,10 @@ public class SophonFinderPanel extends JPanel{
 					select.addItem(players.get(i).getAccount().getId());
 				}
 			}
+		}else{
+			select.addItem("aa");
+			select.addItem("bb");
 		}
-
-		select.addItem("aa");
-		select.addItem("bb");
 		this.add(select);
 	}
 	
@@ -147,7 +141,6 @@ public class SophonFinderPanel extends JPanel{
 		public void mouseClicked(MouseEvent e) {
 //			useSophon();
 			jumpPanel();
-			
 		}
 		private void jumpPanel() {
 			if(sophonFinder.getTitle().equals("智子")){
