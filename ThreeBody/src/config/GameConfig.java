@@ -35,7 +35,7 @@ public class GameConfig {
 		//读取XML文件
 		Document doc = null;
 		try {
-			doc = reader.read("root/EL/config/cfg.xml");
+			doc = reader.read("config/cfg.xml");
 		} catch (DocumentException e) {
 			e.printStackTrace();
 		}

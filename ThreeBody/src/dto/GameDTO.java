@@ -95,7 +95,7 @@ public class GameDTO {
     	this.unSyncOperations.add(operation);
     }
     
-    public void setSync(){
+    public void setSynced(){
     	this.unSyncOperations.clear();
     }
 

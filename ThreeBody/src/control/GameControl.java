@@ -123,11 +123,13 @@ public class GameControl {
 			} //while
 		} //run
 	} // syncThread
+	
 	private synchronized void upload() throws RemoteException{
 		// 上传unhandledOperations
 		rmig.uploadOperation(gameDTO.getUser().getAccount().getId(), gameDTO.getUnSyncOperations());
-		gameDTO.setSync();
+		gameDTO.setSynced();
 	}
+		
 	private class TimeThread extends Thread{
 
 		private int seconds;
