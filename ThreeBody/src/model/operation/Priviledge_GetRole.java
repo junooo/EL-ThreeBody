@@ -17,12 +17,10 @@ public class Priviledge_GetRole extends Operation implements Operable {
 		super(operator, receiver);		
 	}
 	
-//TODO
 	@Override
 	public String toOperator() {
 		return this.operator + "对"+this.receiver+"使用了特权，得知其身份";
 	}
-
 
 	@Override
 	public List<Operation> process() {

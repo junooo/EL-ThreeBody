@@ -313,6 +313,12 @@ public class GamePanel  extends JPanel{
 				System.out.println("--"+"资源："+player.getResource());
 				System.out.println("--"+"科技："+player.getTechPoint());
 				System.out.println("--"+"坐标："+player.getCoordinate().toString());
+				System.out.println("--"+"保护情况"+player.getCoordinate().getProtectingState());
+				if(player.isPrivilegeAvailable()){
+					System.out.println("--可以用特权");
+				}else{
+					System.out.println("--不可以用特权");
+				}
 				System.out.println("----"+"发现坐标：");
 				for(Entry<Player,Coordinate> entry:player.getFoundCoordinates().entrySet()){
 					System.out.println("----"+entry.getKey().getAccount().getId()+":"+entry.getValue());
