@@ -22,6 +22,7 @@ public class ResourceGambling extends Card {
 
 	public ResourceGambling(String operator, String receiver, int requiredResource) {
 		super(operator, receiver);
+		this.name = "赌博";
 		this.requiredResource=requiredResource;
 	}
 

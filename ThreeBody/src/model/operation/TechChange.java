@@ -54,8 +54,10 @@ public class TechChange extends Operation implements Operable {
 		switch(type){
 		case INCREASE:
 			change = this.amount;
+			break;
 		case DECREASE:
 			change = -this.amount;
+			break;
 		}
 		
 		int nowTechPoint = pOperator.getTechPoint();

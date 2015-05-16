@@ -54,8 +54,10 @@ public class ResourceChange extends Operation implements Operable{
 		switch(type){
 		case INCREASE:
 			change = this.amount;
+			break;
 		case DECREASE:
 			change = -this.amount;
+			break;
 		}
 		
 		int nowResource = pOperator.getResource();

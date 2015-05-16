@@ -46,7 +46,7 @@ public class GameControl {
 		new SyncThread().start();
 	}
 	
-	public void doOperation(Operation operation){
+	public synchronized void doOperation(Operation operation){
 		gameDTO.depositUnSyncOperation(operation);
 		List<Operation> operations = new LinkedList<Operation>();
 		operations.add(operation);
@@ -58,7 +58,9 @@ public class GameControl {
 		gameDTO.depositHistoryOperation(operation);
 		// make information
 		String id = gameDTO.getUser().getAccount().getId();
-		if (operation.getOperator().equals(id)) {
+		if (operation
+				.getOperator()
+				.equals(id)) {
 			if (operation.toOperator() != null) {
 				gameDTO.depositInformation(new Information(
 						operation.getOperator(),
@@ -107,9 +109,7 @@ public class GameControl {
 		public void run() {
 			while(!gameDTO.isGameOver()){
 				try {
-					// 上传unhandledOperations
-					rmig.uploadOperation(id, gameDTO.getUnSyncOperations());
-					
+					upload();
 					// handle 同步过来的人家的 Operable
 					handleOperations(rmig.downloadOperation(id));
 				} catch (RemoteException e) {
@@ -123,7 +123,11 @@ public class GameControl {
 			} //while
 		} //run
 	} // syncThread
-		
+	private synchronized void upload() throws RemoteException{
+		// 上传unhandledOperations
+		rmig.uploadOperation(gameDTO.getUser().getAccount().getId(), gameDTO.getUnSyncOperations());
+		gameDTO.setSync();
+	}
 	private class TimeThread extends Thread{
 
 		private int seconds;
