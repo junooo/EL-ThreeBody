@@ -1,5 +1,6 @@
 package ui.game;
 
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -26,7 +27,7 @@ public class BroadcastPanel extends JPanel {
 	private JButton btnOK;
 	private JButton btnReturn;
 	private JComboBox<String> select;
-	
+	private boolean isAbleToPress=true;
 	List<Player> players=null;
 	Player user;
 
@@ -59,16 +60,16 @@ public class BroadcastPanel extends JPanel {
 		btnCoordinateFour.setFont(new Font("黑体", Font.BOLD, 60));
 		this.add(btnCoordinateFour);
 		
-		this.btnOK = new JButton(new ImageIcon("images/button.png"));
+		this.btnOK = new JButton(new ImageIcon("images/btnbroadcast.png"));
 		this.btnOK.setContentAreaFilled(false);
-		this.btnOK.setBounds(360, 105, 150, 60);
+		this.btnOK.setBounds(360, 105, 120, 60);
 		this.btnOK.setBorderPainted(false);
 		btnOK.addMouseListener(new BroadcastListener());
 		this.add(btnOK);
 		
-		this.btnReturn = new JButton(new ImageIcon("images/exit.png"));
+		this.btnReturn = new JButton(new ImageIcon("images/btnbroadcastcancel.png"));
 		this.btnReturn.setContentAreaFilled(false);
-		this.btnReturn.setBounds(520, 105, 150, 60);
+		this.btnReturn.setBounds(520, 105, 120, 60);
 		this.btnReturn.setBorderPainted(false);
 		btnReturn.addMouseListener(new ReturnListener());
 		this.add(btnReturn);
@@ -85,10 +86,10 @@ public class BroadcastPanel extends JPanel {
 					select.addItem(players.get(i).getAccount().getId());
 				}
 			}
+		}else{
+			select.addItem("aa");
+			select.addItem("bb");
 		}
-
-		select.addItem("aa");
-		select.addItem("bb");
 		this.add(select);
 	}
 	
@@ -150,5 +151,19 @@ public class BroadcastPanel extends JPanel {
 		Image IMG_MAIN = new ImageIcon("images/img1.jpg").getImage();
 		// 绘制游戏界面
 		g.drawImage(IMG_MAIN, 0, 0,695,215, null);
+	}
+	
+	private void ableToPress(Component c) {
+
+		c.setEnabled(isAbleToPress);
+	}
+
+	private void unableToPress(Component c) {
+		isAbleToPress = false;
+		c.setEnabled(isAbleToPress);
+	}
+
+	private void changeIsAbleToPress(Component c) {
+		c.setEnabled(!c.isEnabled());
 	}
 }

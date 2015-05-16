@@ -29,9 +29,10 @@ public class GameControl {
 			e.printStackTrace();
 		}
 		gameDTO = GameDTO.getInstance();
-		
-		// 启动同步线程
-		new SyncThread().start();
+		gameDTO.init();
+//		
+//		// 启动同步线程
+//		new SyncThread().start();
 	}
 	
 	private class SyncThread extends Thread{
@@ -98,19 +99,22 @@ public class GameControl {
 		} // handleOperation
 	} // syncThread
 		
-	class TimeThread extends Thread{
+	public class TimeThread extends Thread{
 
 		private int seconds;
 		private JPanel countDown;
 		
 		TimeThread(JPanel  countDown){
-			this .countDown= countDown;
+			this.countDown= countDown;
 			this.seconds=60;
+		}
+		
+		public int getSecond(){
+			return seconds;
 		}
 		
 		@Override
 		public void run() {
-			
 			while(seconds>0){
 				try {
 					Thread.sleep(1000);

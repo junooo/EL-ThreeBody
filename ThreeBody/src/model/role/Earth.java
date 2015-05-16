@@ -21,22 +21,13 @@ public class Earth extends Role{
 		this.initialTechPoint=10;
 		this.tchDevelopSpeed=15;
 		this.rsrRestoreSpeed=10;
-		
 	}
-	
 	
 	@Override
 	public boolean isAvailable(Card card) {
-		 
 		return true;
-
 	}
 
-	
-	
-	
-	
-	
 }
 
 

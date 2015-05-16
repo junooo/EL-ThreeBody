@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import ui.FrameUtil;
 import control.AccountControl;
 
 public class LogupPanel extends JPanel {
@@ -94,6 +95,7 @@ public class LogupPanel extends JPanel {
 		public void mouseClicked(MouseEvent e) {
 			setVisible(false);
 			panelLogin.setVisible(true);
+			loginFrame.setTitle("登录");
 			loginFrame.setContentPane(panelLogin);
 			repaint();
 		}
@@ -122,17 +124,16 @@ public class LogupPanel extends JPanel {
 			String password = passwordField.getText();
 			String invitationID = welcomeCodeField.getText();
 			if(password.equals(passwordConfirmField.getText())){
-				
 				// TODO 消息窗口
 				switch(accountControl.logUp(id, password, invitationID)){
 				case SUCCESS:
-					System.out.println("logup success");
+					FrameUtil.sendMessageByFrame("登录成功", "登录成功！");
 					break;
 				case ALREADY_EXISTED:
-					System.out.println("this id already exists");
+					FrameUtil.sendMessageByFrame("账户已存在", "账户已存在！");
 					break;
 				case NOT_EXISTED:
-					System.out.println("invitationID not existed");
+					FrameUtil.sendMessageByFrame("邀请码不正确", "邀请码不正确！");
 					break;
 				}
 				
