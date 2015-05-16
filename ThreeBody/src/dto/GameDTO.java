@@ -15,7 +15,7 @@ public class GameDTO {
 	private static GameDTO dto;
     
 	/*
-	 * 其他玩家（不包括本地玩家）
+	 * 所有玩家
 	 */
     private List<Player> players;
     

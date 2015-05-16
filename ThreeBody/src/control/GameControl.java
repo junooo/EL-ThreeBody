@@ -18,10 +18,19 @@ import dto.GameDTO;
  */
 public class GameControl {
 	
+	private static GameControl instance;
 	private RMIGame rmig;
 	private GameDTO gameDTO;
+	
+	public static GameControl getInstance(){
+		return instance;
+	}
+	
+	public static void init(RMIGame rmig){
+		instance = new GameControl(rmig);
+	}
 
-	public GameControl(RMIGame rmig) {
+	private GameControl(RMIGame rmig) {
 		this.rmig = rmig;
 		
 		// 初始化GameDTO
