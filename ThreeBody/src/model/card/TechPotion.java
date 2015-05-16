@@ -1,5 +1,8 @@
 package model.card;
 
+import java.util.List;
+
+import model.operation.Operation;
 import model.operation.ResourceChange;
 import model.operation.ResourceChange.Type;
 import model.operation.TechChange;
@@ -21,17 +24,17 @@ public class TechPotion extends Card{
 	}
 
 	@Override
-	public void process() {
-		GameDTO dto=GameDTO.getInstance();
-	
+	public List<Operation> process(List<Operation> subOperations) {
+		
 		//pay  resources
 		ResourceChange rc=new ResourceChange(operator, receiver, Type.DECREASE, this.requiredResource);
-		dto.depositOperation(rc);
+		subOperations.add(rc);
+		
 		//get techPoint
 		TechChange tc=new TechChange(operator, receiver, TechChange.Type.INCREASE, this.requiredTechPoint);
-		dto.depositOperation(tc);
+		subOperations.add(tc);
 		
-
+		return subOperations;
 	}
 
 }

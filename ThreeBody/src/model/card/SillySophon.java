@@ -1,10 +1,12 @@
 package model.card;
 
 
+import java.util.List;
+
 import model.Coordinate;
 import model.Player;
-import model.operation.CoordinateGet;
 import model.operation.CoordinateGetFail;
+import model.operation.Operation;
 import model.operation.ResourceChange;
 import dto.GameDTO;
 
@@ -23,8 +25,8 @@ public class SillySophon extends Card {
 	}
 
 	@Override
-	public void process() {
-		GameDTO dto=GameDTO.getInstance();
+	public List<Operation> process(List<Operation> subOperations) {
+		GameDTO dto = GameDTO.getInstance();
 		
 		//得到操作者与被操作者
 		Player pOperator=this.findOperator(dto);
@@ -32,14 +34,14 @@ public class SillySophon extends Card {
 	
 		//消耗资源
 		ResourceChange rc=new ResourceChange(operator,receiver,ResourceChange.Type.DECREASE,this.getResource());
-		dto.depositOperation(rc);
+		subOperations.add(rc);
 		
 		//执行获取坐标操作
 		Coordinate coordinate=pReceiver.getCoordinate();
 		int result=coordinate.getCoordinateElement(position);
 		if(result==Coordinate.UNKNOWN){
 			CoordinateGetFail cgf=new CoordinateGetFail(operator, receiver);
-			dto.depositOperation(cgf);
+			subOperations.add(cgf);
 		}else{
 		//TODO
 		//获取玩家点击的答案
@@ -47,5 +49,6 @@ public class SillySophon extends Card {
 		//如果正确，则同于sophon
 		//如果不正确，则同于CoordinateGetFail
 		}
+		return subOperations;
 	}
 }

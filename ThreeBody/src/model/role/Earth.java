@@ -15,12 +15,18 @@ import model.card.Card;
 
 public class Earth extends Role{
 	
+	/**
+	 * default
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public Earth() {
 		super();
-		this.initialResource=30;
-		this.initialTechPoint=10;
-		this.tchDevelopSpeed=15;
-		this.rsrRestoreSpeed=10;
+		// 原60，10，测试用改成100，100
+		this.initialResource=100;
+		this.initialTechPoint=100;
+		this.tchDevelopSpeed=20;
+		this.rsrRestoreSpeed=30;
 	}
 	
 	@Override

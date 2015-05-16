@@ -14,12 +14,18 @@ import model.card.Card;
  */
 public class ThreeBody extends Role{
 
+	/**
+	 * default
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	public ThreeBody() {
 		super();
-		this.initialResource=10;
-		this.initialTechPoint=30;
-		this.tchDevelopSpeed=10;
-		this.rsrRestoreSpeed=10;
+		// 原60，30，测试用改成100，100
+		this.initialResource=100;
+		this.initialTechPoint=100;
+		this.tchDevelopSpeed=15;
+		this.rsrRestoreSpeed=30;
 	}
 	public  boolean isAvailable(Card card){
 		return true;

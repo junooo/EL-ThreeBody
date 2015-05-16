@@ -1,6 +1,9 @@
 package model.card;
 
+import java.util.List;
+
 import model.Player;
+import model.operation.Operation;
 import model.operation.ResourceChange;
 import model.operation.ResourceChange.Type;
 import dto.GameDTO;
@@ -23,20 +26,21 @@ public class NoBroadcasting extends Card{
 	}
 
 	@Override
-	public void process() {
+	public List<Operation> process(List<Operation> subOperations) {
 		
 		GameDTO dto=GameDTO.getInstance();
 		
 		//get the  receiver
-		Player pReceiver=this.findReceiver(dto);
+		Player pReceiver = this.findReceiver(dto);
 		
 		//pay the resource
-		ResourceChange rc=new ResourceChange(operator, receiver, Type.DECREASE, this.requiredResource);
-		dto.depositOperation(rc);
+		ResourceChange rc = new ResourceChange(operator, receiver, Type.DECREASE, this.requiredResource);
+		subOperations.add(rc);
 		
 		//将receiver的broadcast设为false，在lifetime轮中
 		pReceiver.setBroadcast(false);
 		
+		return subOperations;
 	}
 	
 }

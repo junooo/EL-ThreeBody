@@ -17,7 +17,6 @@ import javax.swing.JTextField;
 
 import ui.FrameUtil;
 import control.AccountControl;
-import dto.AccountDTO;
 
 public class LoginPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
@@ -109,6 +108,8 @@ public class LoginPanel extends JPanel{
 				errorMsgLabel.setText("账户不存在");
 				add(errorMsgLabel);
 				loginFrame.setContentPane(thisPanel);
+				break;
+			default:
 				break;
 			}
 		}

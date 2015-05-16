@@ -10,15 +10,21 @@ import model.card.ResourcePotion;
  * 资源：初始值：中 增长率：与地球三体都相同
  * 技能限制：无法使用获取身份的技能
  * 广播：同地球
-*/
+ */
 public class Unifier extends Role {
 	
+	/**
+	 * default
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public Unifier() {
 		super();
-		this.initialResource=15;
-		this.initialTechPoint=80;
+		// 原80，100，测试用改成100，100
+		this.initialResource=100;
+		this.initialTechPoint=100;
 		this.tchDevelopSpeed=0;
-		this.rsrRestoreSpeed=10;
+		this.rsrRestoreSpeed=30;
 	}
 
 	@Override
