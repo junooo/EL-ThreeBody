@@ -156,7 +156,7 @@ public class SophonFinderPanel extends JPanel{
 			}
 			
 		}
-		private void useSophon() {
+		private void useSophon()  {
 			if(sophonFinder.getTitle().equals("智子")){
 				Sophon sophon  =new Sophon(user.getAccount().getId(), select.getSelectedItem().toString(), coordinate);
 				CardUse cardSophon = new CardUse(user.getAccount().getId(), select.getSelectedItem().toString(), sophon);

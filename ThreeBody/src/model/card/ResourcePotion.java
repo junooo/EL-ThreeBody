@@ -1,5 +1,10 @@
 package model.card;
 
+import java.util.List;
+
+import config.CardConfig;
+import config.GameConfig;
+import ui.game.GamblePanel;
 import model.operation.ResourceChange;
 import model.operation.TechChange;
 import dto.GameDTO;
@@ -19,7 +24,12 @@ public class ResourcePotion extends Card {
 
 	public ResourcePotion(String operator, String receiver) {
 		super(operator, receiver);
-;
+		
+		GameConfig gc=new GameConfig();
+		List<CardConfig> cardList=gc.getCardsConfig();
+		this.lifetime=cardList.get(2).getLifetime();
+		this.requiredResource=cardList.get(2).getRequiredResource();
+		this.requiredTechPoint=cardList.get(2).getRequiredTechPoint();
 	}
 
 	@Override
@@ -34,5 +44,6 @@ public class ResourcePotion extends Card {
 		dto.depositOperation(rc);
 		
 	}
+	
 	
 }

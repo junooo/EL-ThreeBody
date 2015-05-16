@@ -1,5 +1,9 @@
 package model.card;
 
+import java.util.List;
+
+import config.CardConfig;
+import config.GameConfig;
 import model.Player;
 import model.operation.ResourceChange;
 import model.operation.ResourceChange.Type;
@@ -16,6 +20,13 @@ public class WholeBlock extends Card{
 
 	public WholeBlock(String operator, String receiver) {
 		super(operator, receiver);
+		
+		
+		GameConfig gc=new GameConfig();
+		List<CardConfig> cardList=gc.getCardsConfig();
+		this.lifetime = cardList.get(6).getLifetime();
+		this.requiredResource=cardList.get(6).getRequiredResource();
+		this.requiredTechPoint=cardList.get(6).getRequiredTechPoint();
 	}
 
 
@@ -42,5 +53,5 @@ public class WholeBlock extends Card{
 		}
 	}
 	
-		
+
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <game>
-	<cards>
+	<cards >
 		<card  className="model.card.NoBroadcasting" lifetime="1" requiredResource="40" requiredTechPoint="50"/>
 		<card  className="model.card.PatialBlock" lifetime="3" requiredResource="30" requiredTechPoint="20" />
 		<card  className="model.card.ResourcePotion"  lifetime="1" requiredResource="30" requiredTechPoint="5"  />

@@ -1,5 +1,9 @@
 package model.card;
 
+import java.util.List;
+
+import config.CardConfig;
+import config.GameConfig;
 import model.operation.ResourceChange;
 import model.operation.ResourceChange.Type;
 import model.operation.TechChange;
@@ -18,6 +22,12 @@ public class TechPotion extends Card{
 
 	public TechPotion(String operator, String receiver) {
 		super(operator, receiver);
+		
+		GameConfig gc = new GameConfig();
+		List<CardConfig> cardList=gc.getCardsConfig();
+		this.lifetime=cardList.get(5).getLifetime();
+		this.requiredResource=cardList.get(5).getRequiredResource();
+		this.requiredTechPoint=cardList.get(5).getRequiredTechPoint();
 	}
 
 	@Override
@@ -33,5 +43,5 @@ public class TechPotion extends Card{
 		
 
 	}
-
+	
 }
