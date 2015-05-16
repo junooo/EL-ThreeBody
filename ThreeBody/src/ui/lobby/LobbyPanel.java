@@ -15,8 +15,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import ui.FrameUtil;
 import model.Room;
+import ui.FrameUtil;
 import control.LobbyControl;
 import control.MainControl;
 
@@ -28,6 +28,7 @@ public class LobbyPanel extends JPanel implements MouseWheelListener {
 
 	private List<JButton> roomFamily = new ArrayList<JButton>();
 	private List<Room> roomList;
+	private List<Rectangle> locationSave = new ArrayList<Rectangle>();
 	private LobbyControl lobbyControl;
 	//双缓冲机制
 	private Image iBuffer;
@@ -51,6 +52,27 @@ public class LobbyPanel extends JPanel implements MouseWheelListener {
 		}
 	}
 
+	public void refresh(){
+		roomList = lobbyControl.getRooms();
+		roomFamily.clear();
+		for (int i = 0; i < roomList.size(); i++) {
+			addRoom(i);
+		}
+		this.removeAll();
+		this.initComonent();
+		createRooms(locationSave);
+		mainControl.frame.setContentPane(this);
+	}
+	
+	private void createRooms(List<Rectangle> locationSave) {
+		for (int i = 0; i < roomFamily.size(); i++) {
+			roomFamily.get(i).setBounds(locationSave.get(i));
+		}		
+		for (int i = 0; i < roomFamily.size(); i++) {
+			this.add(roomFamily.get(i));
+		}
+	}
+
 	// 添加房间的按钮
 	private void addRoom(int roomNumber) {
 		JButton room = new JButton();
@@ -59,10 +81,12 @@ public class LobbyPanel extends JPanel implements MouseWheelListener {
 			Rectangle rect = roomFamily.get(roomFamily.size() - 1).getBounds();
 			rect.x = rect.x + 350;
 			room.setBounds(rect);
+			locationSave.add(rect);
 			roomPanel.setBounds(rect);
 		} else {
 			room.setBounds(50, 200, 300, 125);
 			roomPanel.setBounds(50, 200, 300, 125);
+			locationSave.add(new Rectangle(50,200,300,125));
 		}
 		room.setContentAreaFilled(false);
 		room.addMouseListener(new EnterListener(roomList.get(roomNumber).getName()));
@@ -145,6 +169,7 @@ public class LobbyPanel extends JPanel implements MouseWheelListener {
 	class ReturnListener extends MouseAdapter {
 		@Override
 		public void mouseClicked(MouseEvent e) {
+			lobbyControl.changeEntered();
 			mainControl.toStartMenu();
 		}
 	}
@@ -153,18 +178,22 @@ public class LobbyPanel extends JPanel implements MouseWheelListener {
 	public void mouseWheelMoved(MouseWheelEvent e) {
 		if (e.getWheelRotation() == 1) {
 			// 往左跑
+			locationSave.clear();
 			for (int i = 0; i < roomFamily.size(); i++) {
 				Rectangle rec = roomFamily.get(i).getBounds();
 				rec.x = rec.x - 50;
 				roomFamily.get(i).setBounds(rec);
+				locationSave.add(rec);
 			}
 		}
 		if (e.getWheelRotation() == -1) {
 			// 往左跑
+			locationSave.clear();
 			for (int i = 0; i < roomFamily.size(); i++) {
 				Rectangle rec = roomFamily.get(i).getBounds();
 				rec.x = rec.x + 50;
 				roomFamily.get(i).setBounds(rec);
+				locationSave.add(rec);
 			}
 		}
 	}

@@ -77,7 +77,7 @@ public class RoomPanel extends JPanel{
 		this.removeAll();
 		this.initComonent();
 		this.initAccountsInfo();
-		mainControl.frame.validate();
+		mainControl.frame.setContentPane(this);
 	}
 	
 	private void initAccountsInfo() {

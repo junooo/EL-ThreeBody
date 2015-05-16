@@ -25,7 +25,7 @@ public class MainControl {
 	private JPanel startMenuPanel = null;
 	private JPanel gamePanel = null;
 	private JPanel aboutUs = null;
-	private JPanel lobbyPanel = null;
+	public LobbyPanel lobbyPanel = null;
 	private JPanel account=null;
 	private JPanel preference=null;
 	public RoomPanel roomPanel=null;
@@ -66,6 +66,9 @@ public class MainControl {
 
 	public void toStartMenu() {
 		this.startMenuPanel = new StartMenuPanel(this);
+		if(currentPanel!=null&&currentPanel==lobbyPanel){
+			currentPanel.setVisible(false);	
+		}
 		currentPanel = this.startMenuPanel;
 		frame.setContentPane(currentPanel);
 		currentPanel.setVisible(true);
@@ -119,7 +122,6 @@ public class MainControl {
 		lobbyControl.setLobbyPanel((LobbyPanel)this.lobbyPanel);
 		frame.setContentPane(currentPanel);
 		currentPanel.setVisible(true);
-		frame.validate();
 		lobbyControl.startRefresh();
 	}
 
@@ -127,7 +129,6 @@ public class MainControl {
 		if(roomControl == null){
 			roomControl = lobbyControl.getRoomService(roomName);
 		}
-		
 		currentPanel.setVisible(false);
 		roomPanel = new RoomPanel(this,roomControl);
 		roomControl.setRoomPanel((RoomPanel)roomPanel);

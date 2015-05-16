@@ -110,6 +110,7 @@ public class CreateRoomPanel extends JPanel{
 			case SUCCESS:
 				createRoomFrame.setVisible(false);
 				FrameUtil.sendMessageByFrame("创建成功", "创建成功");
+				lobbyControl.changeEntered();
 				mainControl.toRoom(idField.getText());
 				break;
 			default:

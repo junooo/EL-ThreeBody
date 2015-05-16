@@ -38,9 +38,9 @@ public class LobbyControl {
 		lr.start();
 	}
 
-	public void refreshPanel(){
-		mainControl.frame.setContentPane(lobbyPanel);
-	}
+//	public void refreshPanel(){
+//		mainControl.frame.setContentPane(lobbyPanel);
+//	}
 	
 	public void setLobbyPanel(LobbyPanel lp){
 		this.lobbyPanel = lp;
@@ -123,15 +123,19 @@ public class LobbyControl {
 			while(!isEntered){
 				try {
 					Thread.sleep(2000);
+					refreshLobbyPanel();
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				refreshPanel();
-				System.out.println("notEnter");
+				
 			}
 		}
 	}
-
+	private synchronized void refreshLobbyPanel(){
+		if(!isEntered){
+			lobbyPanel.refresh();
+		}
+	}
 	public void changeEntered() {
 		this.isEntered = !this.isEntered;
 	}
