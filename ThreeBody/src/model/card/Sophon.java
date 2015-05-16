@@ -2,6 +2,8 @@ package model.card;
 
 import java.util.List;
 
+import config.CardConfig;
+import config.GameConfig;
 import model.Coordinate;
 import model.Player;
 import model.operation.CoordinateGet;
@@ -32,11 +34,18 @@ public class Sophon extends Card{
 	 * @param operator
 	 * @param receiver
 	 * @param position 想要获取的玩家的第几个坐标
+	 * @throws Exception 
 	 */
 	public Sophon(String operator, String receiver,int position) {
 		super(operator, receiver);
 		// TODO 游戏平衡配置
 		this.position = position;
+		
+		GameConfig gc=new GameConfig();
+		List<CardConfig> cardList=gc.getCardsConfig();
+		this.lifetime=cardList.get(4).getLifetime();
+		this.requiredResource=cardList.get(4).getRequiredResource();
+		this.requiredTechPoint=cardList.get(4).getRequiredTechPoint();
 	}
 
 	@Override
@@ -67,5 +76,8 @@ public class Sophon extends Card{
 		
 		return subOperations;
 	}
+	
+	
+
 
 }

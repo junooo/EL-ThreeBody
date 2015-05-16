@@ -3,6 +3,8 @@ package model.card;
 
 import java.util.List;
 
+import config.CardConfig;
+import config.GameConfig;
 import model.Coordinate;
 import model.Player;
 import model.operation.CoordinateGetFail;
@@ -19,9 +21,15 @@ public class SillySophon extends Card {
 	
 	private int position;
 	
-	public SillySophon(String operator, String receiver,int position) {
+	public SillySophon(String operator, String receiver,int position)  {
 		super(operator, receiver);
 		this.position=position;
+		
+		GameConfig gc=new GameConfig();
+		List<CardConfig> cardList=gc.getCardsConfig();
+		this.lifetime=cardList.get(3).getLifetime();
+		this.requiredResource=cardList.get(3).getRequiredResource();
+		this.requiredTechPoint=cardList.get(3).getRequiredTechPoint();
 	}
 
 	@Override
@@ -29,7 +37,6 @@ public class SillySophon extends Card {
 		GameDTO dto = GameDTO.getInstance();
 		
 		//得到操作者与被操作者
-		Player pOperator=this.findOperator(dto);
 		Player pReceiver=this.findReceiver(dto);
 	
 		//消耗资源
@@ -51,4 +58,5 @@ public class SillySophon extends Card {
 		}
 		return subOperations;
 	}
+	
 }

@@ -2,6 +2,8 @@ package model.card;
 
 import java.util.List;
 
+import config.CardConfig;
+import config.GameConfig;
 import model.Player;
 import model.operation.Operation;
 import model.operation.ResourceChange;
@@ -22,7 +24,12 @@ public class NoBroadcasting extends Card{
 
 	public NoBroadcasting(String operator, String receiver) {
 		super(operator, receiver);
-
+		
+		GameConfig gc=new GameConfig();
+		List<CardConfig> cardList=gc.getCardsConfig();
+		this.lifetime=cardList.get(0).getLifetime();
+		this.requiredResource=cardList.get(0).getRequiredResource();
+		this.requiredTechPoint=cardList.get(0).getRequiredTechPoint();
 	}
 
 	@Override
@@ -42,5 +49,6 @@ public class NoBroadcasting extends Card{
 		
 		return subOperations;
 	}
-	
+
+
 }

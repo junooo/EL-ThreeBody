@@ -1,5 +1,9 @@
 package model.role;
 
+import java.util.List;
+
+import config.GameConfig;
+import config.RoleConfig;
 import model.card.Card;
 import model.card.ResourcePotion;
 
@@ -20,11 +24,14 @@ public class Unifier extends Role {
 
 	public Unifier() {
 		super();
-		// 原80，100，测试用改成100，100
-		this.initialResource=100;
-		this.initialTechPoint=100;
-		this.tchDevelopSpeed=0;
-		this.rsrRestoreSpeed=30;
+		// 原80，100，0,30,测试用改成100，100,0,30
+		
+		GameConfig gc=new GameConfig();
+		List<RoleConfig> roleList=gc.getRolesConfig();
+		this.initialResource=roleList.get(1).getInitialResource();
+		this.initialTechPoint=roleList.get(1).getInitialTechPoint();
+		this.tchDevelopSpeed=roleList.get(1).getTchDevelopSpeed();
+		this.rsrRestoreSpeed=roleList.get(1).getRsrRestoreSpeed();
 	}
 
 	@Override
