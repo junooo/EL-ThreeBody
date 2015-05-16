@@ -48,18 +48,30 @@ public class LobbyPanel extends JPanel implements MouseWheelListener {
 			addRoom(i);
 		}
 		for (int i = 0; i < roomFamily.size(); i++) {
+			locationSave.add(roomFamily.get(i).getBounds());
+		}
+		for (int i = 0; i < roomFamily.size(); i++) {
 			this.add(roomFamily.get(i));
 		}
 	}
-
+	
 	public void refresh(){
 		roomList = lobbyControl.getRooms();
+//		Rectangle rect1 = locationSave.get(0);
 		roomFamily.clear();
 		for (int i = 0; i < roomList.size(); i++) {
 			addRoom(i);
 		}
 		this.removeAll();
 		this.initComonent();
+		locationSave.clear();
+//		Rectangle rectNew=roomFamily.get(0).getBounds();
+//		int xDiff=rectNew.x-rect1.x;
+		for (int i = 0; i < roomFamily.size(); i++) {
+			Rectangle rectNewi=roomFamily.get(i).getBounds();
+//			rectNewi.x+=xDiff;
+			locationSave.add(rectNewi);
+		}
 		createRooms(locationSave);
 		mainControl.frame.setContentPane(this);
 	}
@@ -81,18 +93,17 @@ public class LobbyPanel extends JPanel implements MouseWheelListener {
 			Rectangle rect = roomFamily.get(roomFamily.size() - 1).getBounds();
 			rect.x = rect.x + 350;
 			room.setBounds(rect);
-			locationSave.add(rect);
 			roomPanel.setBounds(rect);
 		} else {
 			room.setBounds(50, 200, 300, 125);
 			roomPanel.setBounds(50, 200, 300, 125);
-			locationSave.add(new Rectangle(50,200,300,125));
 		}
 		room.setContentAreaFilled(false);
 		room.addMouseListener(new EnterListener(roomList.get(roomNumber).getName()));
 		room.add(roomPanel);
 		roomFamily.add(room);
 	}
+	
 
 //	public void refresh() {
 //		mainControl.toLobby();
@@ -178,22 +189,22 @@ public class LobbyPanel extends JPanel implements MouseWheelListener {
 	public void mouseWheelMoved(MouseWheelEvent e) {
 		if (e.getWheelRotation() == 1) {
 			// 往左跑
-			locationSave.clear();
 			for (int i = 0; i < roomFamily.size(); i++) {
 				Rectangle rec = roomFamily.get(i).getBounds();
 				rec.x = rec.x - 50;
 				roomFamily.get(i).setBounds(rec);
-				locationSave.add(rec);
+				locationSave.remove(i);
+				locationSave.add(i,rec);
 			}
 		}
 		if (e.getWheelRotation() == -1) {
-			// 往左跑
-			locationSave.clear();
+			// 往右跑
 			for (int i = 0; i < roomFamily.size(); i++) {
 				Rectangle rec = roomFamily.get(i).getBounds();
 				rec.x = rec.x + 50;
 				roomFamily.get(i).setBounds(rec);
-				locationSave.add(rec);
+				locationSave.remove(i);
+				locationSave.add(i,rec);
 			}
 		}
 	}
