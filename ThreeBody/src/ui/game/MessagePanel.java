@@ -82,7 +82,7 @@ public class MessagePanel  extends JPanel{
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				setVisible(false);
+				
 			}
 			@Override
 			public void mousePressed(MouseEvent e) {
@@ -90,6 +90,7 @@ public class MessagePanel  extends JPanel{
 			}
 			@Override
 			public void mouseReleased(MouseEvent e) {
+				setVisible(false);
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {

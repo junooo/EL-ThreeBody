@@ -149,7 +149,7 @@ public class LobbyPanel extends JPanel implements MouseWheelListener {
 			this.roomName = roomName;
 		}
 		@Override
-		public void mouseClicked(MouseEvent e) {
+		public void mouseReleased(MouseEvent e) {
 			switch(lobbyControl.enterRoom(roomName)){
 			case SUCCESS:
 				lobbyControl.changeEntered();
@@ -169,7 +169,7 @@ public class LobbyPanel extends JPanel implements MouseWheelListener {
 
 	class CreateRoomListener extends MouseAdapter  {
 		@Override
-		public void mouseClicked(MouseEvent e) {
+		public void mouseReleased(MouseEvent e) {
 			JFrame createRoomFrame = new CreateRoomFrame();
 			JPanel createRoomPanel = new CreateRoomPanel(createRoomFrame,
 					lobbyControl,mainControl);
@@ -179,7 +179,7 @@ public class LobbyPanel extends JPanel implements MouseWheelListener {
 
 	class ReturnListener extends MouseAdapter {
 		@Override
-		public void mouseClicked(MouseEvent e) {
+		public void mouseReleased(MouseEvent e) {
 			lobbyControl.changeEntered();
 			mainControl.toStartMenu();
 		}

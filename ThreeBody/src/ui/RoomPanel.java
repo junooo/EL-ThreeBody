@@ -278,7 +278,7 @@ public class RoomPanel extends JPanel{
 		}
 
 		@Override
-		public void mouseClicked(MouseEvent e) {
+		public void mouseReleased(MouseEvent e) {
 //			changeIsAbleToPress(btn_lobbyReturn);
 			switch(state){
 			case 2:
@@ -304,7 +304,7 @@ public class RoomPanel extends JPanel{
 
 	class ReturnListener extends MouseAdapter {
 		@Override
-		public void mouseClicked(MouseEvent e) {
+		public void mouseReleased(MouseEvent e) {
 			roomControl.exit();
 		}
 	}

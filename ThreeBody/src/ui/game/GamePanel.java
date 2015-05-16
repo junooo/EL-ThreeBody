@@ -661,7 +661,7 @@ public class GamePanel  extends JPanel{
 	
 	class BroadcastListener extends MouseAdapter  {
 		@Override
-		public void mouseClicked(MouseEvent e) {
+		public void mouseReleased(MouseEvent e) {
 			panelBroadcast.setVisible(true);
 			panelMessage.setVisible(false);
 			panelHistory.setVisible(false);
@@ -672,7 +672,7 @@ public class GamePanel  extends JPanel{
 	
 	class HistoryListener extends MouseAdapter  {
 		@Override
-		public void mouseClicked(MouseEvent e) {
+		public void mouseReleased(MouseEvent e) {
 			/**
 			 * 很HeHe的解决方式
 			 */
@@ -692,7 +692,7 @@ public class GamePanel  extends JPanel{
 	}
 	class MessageListener extends MouseAdapter  {
 		@Override
-		public void mouseClicked(MouseEvent e) {
+		public void mouseReleased(MouseEvent e) {
 			panelBroadcast.setVisible(false);
 			panelHistory.setVisible(false);
 			panelMessage.setVisible(true);
@@ -718,7 +718,7 @@ public class GamePanel  extends JPanel{
 	
 	class EndListener extends MouseAdapter {
 		@Override
-		public void mouseClicked(MouseEvent e) {
+		public void mouseReleased(MouseEvent e) {
 			
 		}
 	}

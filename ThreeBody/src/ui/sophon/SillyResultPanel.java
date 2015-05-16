@@ -79,10 +79,7 @@ public class SillyResultPanel extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			setVisible(false);
-			sophonFinder.setContentPane(resultPanel);
-			resultPanel.setVisible(true);	
-			sophonFinder.validate();
+
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
@@ -90,6 +87,10 @@ public class SillyResultPanel extends JPanel{
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
+			setVisible(false);
+			sophonFinder.setContentPane(resultPanel);
+			resultPanel.setVisible(true);	
+			sophonFinder.validate();
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {
@@ -103,9 +104,7 @@ public class SillyResultPanel extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			coordinate=1;
-			setPicture(coordinate);
-			repaint();
+
 		}
 		
 		
@@ -115,6 +114,9 @@ public class SillyResultPanel extends JPanel{
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
+			coordinate=1;
+			setPicture(coordinate);
+			repaint();
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {
@@ -128,9 +130,7 @@ public class SillyResultPanel extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			coordinate=2;
-			setPicture(coordinate);
-			repaint();
+
 		}
 		
 		
@@ -140,6 +140,9 @@ public class SillyResultPanel extends JPanel{
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
+			coordinate=2;
+			setPicture(coordinate);
+			repaint();
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {
@@ -153,9 +156,7 @@ public class SillyResultPanel extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			coordinate=3;
-			setPicture(coordinate);
-			repaint();
+
 		}
 		
 		
@@ -165,6 +166,9 @@ public class SillyResultPanel extends JPanel{
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
+			coordinate=3;
+			setPicture(coordinate);
+			repaint();
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {

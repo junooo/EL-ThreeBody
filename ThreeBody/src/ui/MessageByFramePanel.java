@@ -47,13 +47,14 @@ public class MessageByFramePanel extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			frame.setVisible(false);
+
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
+			frame.setVisible(false);
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {

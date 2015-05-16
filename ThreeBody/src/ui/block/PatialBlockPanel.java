@@ -84,7 +84,7 @@ coordinate=1;
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			patialBlock.setVisible(false);
+
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
@@ -92,6 +92,7 @@ coordinate=1;
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
+			patialBlock.setVisible(false);
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {
@@ -105,9 +106,7 @@ coordinate=1;
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			coordinate=1;
-			setPicture(coordinate);
-			repaint();
+
 		}
 		
 		
@@ -117,6 +116,9 @@ coordinate=1;
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
+			coordinate=1;
+			setPicture(coordinate);
+			repaint();
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {
@@ -130,9 +132,7 @@ coordinate=1;
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			coordinate=2;
-			setPicture(coordinate);
-			repaint();
+
 		}
 		
 		
@@ -142,6 +142,9 @@ coordinate=1;
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
+			coordinate=2;
+			setPicture(coordinate);
+			repaint();
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {
@@ -155,9 +158,7 @@ coordinate=1;
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			coordinate=3;
-			setPicture(coordinate);
-			repaint();
+
 		}
 		
 		
@@ -167,6 +168,9 @@ coordinate=1;
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
+			coordinate=3;
+			setPicture(coordinate);
+			repaint();
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {
@@ -180,9 +184,7 @@ coordinate=1;
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			coordinate=4;
-			setPicture(coordinate);
-			repaint();
+
 		}
 		
 		
@@ -192,6 +194,9 @@ coordinate=1;
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
+			coordinate=4;
+			setPicture(coordinate);
+			repaint();
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {

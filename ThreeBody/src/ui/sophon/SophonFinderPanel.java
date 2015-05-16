@@ -118,7 +118,7 @@ public class SophonFinderPanel extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			sophonFinder.setVisible(false);
+
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
@@ -126,6 +126,7 @@ public class SophonFinderPanel extends JPanel{
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
+			sophonFinder.setVisible(false);
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {
@@ -139,8 +140,7 @@ public class SophonFinderPanel extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-//			useSophon();
-			jumpPanel();
+
 		}
 		private void jumpPanel() {
 			if(sophonFinder.getTitle().equals("智子")){
@@ -177,6 +177,9 @@ public class SophonFinderPanel extends JPanel{
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
+//			useSophon();
+			jumpPanel();
+			
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {
@@ -190,9 +193,7 @@ public class SophonFinderPanel extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			coordinate=1;
-			setPicture(coordinate);
-			repaint();
+
 		}
 		
 		
@@ -202,6 +203,9 @@ public class SophonFinderPanel extends JPanel{
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
+			coordinate=1;
+			setPicture(coordinate);
+			repaint();
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {
@@ -215,9 +219,7 @@ public class SophonFinderPanel extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			coordinate=2;
-			setPicture(coordinate);
-			repaint();
+
 		}
 		
 		
@@ -227,6 +229,9 @@ public class SophonFinderPanel extends JPanel{
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
+			coordinate=2;
+			setPicture(coordinate);
+			repaint();
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {
@@ -240,9 +245,7 @@ public class SophonFinderPanel extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			coordinate=3;
-			setPicture(coordinate);
-			repaint();
+
 		}
 		
 		
@@ -252,6 +255,9 @@ public class SophonFinderPanel extends JPanel{
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
+			coordinate=3;
+			setPicture(coordinate);
+			repaint();
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {
@@ -265,9 +271,7 @@ public class SophonFinderPanel extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			coordinate=4;
-			setPicture(coordinate);
-			repaint();
+
 		}
 		
 		
@@ -277,6 +281,9 @@ public class SophonFinderPanel extends JPanel{
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
+			coordinate=4;
+			setPicture(coordinate);
+			repaint();
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {

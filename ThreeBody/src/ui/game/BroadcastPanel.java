@@ -97,7 +97,7 @@ public class BroadcastPanel extends JPanel {
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			setVisible(false);
+			
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
@@ -105,6 +105,7 @@ public class BroadcastPanel extends JPanel {
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
+			setVisible(false);
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {
@@ -119,6 +120,14 @@ public class BroadcastPanel extends JPanel {
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
+			
+		}
+		@Override
+		public void mousePressed(MouseEvent e) {
+			
+		}
+		@Override
+		public void mouseReleased(MouseEvent e) {
 			try {
 				int co1=Integer.parseInt(btnCoordinateOne.getText());
 				int co2=Integer.parseInt(btnCoordinateTwo.getText());
@@ -127,13 +136,6 @@ public class BroadcastPanel extends JPanel {
 			} catch (Exception exception) {
 				FrameUtil.sendMessageByFrame("Error", "坐标输入错误");
 			}
-		}
-		@Override
-		public void mousePressed(MouseEvent e) {
-			
-		}
-		@Override
-		public void mouseReleased(MouseEvent e) {
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {

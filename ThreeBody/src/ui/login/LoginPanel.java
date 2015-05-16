@@ -89,8 +89,7 @@ public class LoginPanel extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-//			setGif();
-			login();
+
 		}
 		
 		 private void setGif() {
@@ -134,6 +133,8 @@ public class LoginPanel extends JPanel{
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
+//			setGif();
+			login();
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {
@@ -148,11 +149,7 @@ public class LoginPanel extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			setVisible(false);
-			panelLogup.setVisible(true);
-			loginFrame.setTitle("注册");
-			loginFrame.setContentPane(panelLogup);
-			repaint();
+
 		}
 		
 		@Override
@@ -161,6 +158,11 @@ public class LoginPanel extends JPanel{
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
+			setVisible(false);
+			panelLogup.setVisible(true);
+			loginFrame.setTitle("注册");
+			loginFrame.setContentPane(panelLogup);
+			repaint();
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {
