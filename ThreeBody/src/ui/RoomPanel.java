@@ -279,7 +279,6 @@ public class RoomPanel extends JPanel{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			mainControl.toGame(room.getSize());
 //			changeIsAbleToPress(btn_lobbyReturn);
 			switch(state){
 			case 2:
