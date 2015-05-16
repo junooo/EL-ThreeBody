@@ -36,49 +36,45 @@ public class LobbyPanel extends JPanel implements MouseWheelListener {
 	public LobbyPanel(MainControl mc) {
 		this.setLayout(null);
 		this.mainControl = mc;
-		lobbyControl = mc.lobbyControl;
+		this.lobbyControl = mc.lobbyControl;
+		this.initLocation();
 		this.initComonent();
 		this.addMouseWheelListener(this);
-		roomList = lobbyControl.getRooms();
-		createRooms();
+		this.roomList = lobbyControl.getRooms();
+		this.createRooms();
 	}
 
 	private void createRooms() {
 		for (int i = 0; i < roomList.size(); i++) {
-			addRoom(i);
-		}
-		for (int i = 0; i < roomFamily.size(); i++) {
-			locationSave.add(roomFamily.get(i).getBounds());
+			this.addRoom(i);
 		}
 		for (int i = 0; i < roomFamily.size(); i++) {
 			this.add(roomFamily.get(i));
 		}
 	}
 	
+	private void initLocation(){
+		for (int i = 0; i < 97; i++) {
+			this.locationSave.add(new Rectangle(50+350*i,200,300,125));
+		}
+	}
+	
 	public void refresh(){
-		roomList = lobbyControl.getRooms();
-//		Rectangle rect1 = locationSave.get(0);
-		roomFamily.clear();
+		this.roomList = lobbyControl.getRooms();
+		this.roomFamily.clear();
 		for (int i = 0; i < roomList.size(); i++) {
-			addRoom(i);
+			this.addRoom(i);
 		}
 		this.removeAll();
 		this.initComonent();
-		locationSave.clear();
-//		Rectangle rectNew=roomFamily.get(0).getBounds();
-//		int xDiff=rectNew.x-rect1.x;
-		for (int i = 0; i < roomFamily.size(); i++) {
-			Rectangle rectNewi=roomFamily.get(i).getBounds();
-//			rectNewi.x+=xDiff;
-			locationSave.add(rectNewi);
-		}
-		createRooms(locationSave);
-		mainControl.frame.setContentPane(this);
+
+		this.createRooms(locationSave);
+		this.mainControl.frame.setContentPane(this);
 	}
 	
 	private void createRooms(List<Rectangle> locationSave) {
 		for (int i = 0; i < roomFamily.size(); i++) {
-			roomFamily.get(i).setBounds(locationSave.get(i));
+			this.roomFamily.get(i).setBounds(locationSave.get(i));
 		}		
 		for (int i = 0; i < roomFamily.size(); i++) {
 			this.add(roomFamily.get(i));
@@ -89,25 +85,18 @@ public class LobbyPanel extends JPanel implements MouseWheelListener {
 	private void addRoom(int roomNumber) {
 		JButton room = new JButton();
 		JPanel roomPanel = new ButtonPanel(this.roomList.get(roomNumber));
-		if (roomNumber != 0) {
-			Rectangle rect = roomFamily.get(roomFamily.size() - 1).getBounds();
-			rect.x = rect.x + 350;
-			room.setBounds(rect);
-			roomPanel.setBounds(rect);
-		} else {
-			room.setBounds(50, 200, 300, 125);
-			roomPanel.setBounds(50, 200, 300, 125);
-		}
+	
+		Rectangle rect = this.locationSave.get(roomNumber);
+		room.setBounds(rect);
+		roomPanel.setBounds(rect);
+
 		room.setContentAreaFilled(false);
 		room.addMouseListener(new EnterListener(roomList.get(roomNumber).getName()));
 		room.add(roomPanel);
-		roomFamily.add(room);
+		this.roomFamily.add(roomNumber,room);
 	}
 	
 
-//	public void refresh() {
-//		mainControl.toLobby();
-//	}
 
 	public void initComonent() {
 		// lobby room 3*2
@@ -190,21 +179,27 @@ public class LobbyPanel extends JPanel implements MouseWheelListener {
 		if (e.getWheelRotation() == 1) {
 			// 往左跑
 			for (int i = 0; i < roomFamily.size(); i++) {
-				Rectangle rec = roomFamily.get(i).getBounds();
+				Rectangle rec =locationSave.get(i);
 				rec.x = rec.x - 50;
 				roomFamily.get(i).setBounds(rec);
-				locationSave.remove(i);
-				locationSave.add(i,rec);
+			}
+			for (int i = 0; i < 97; i++) {
+				Rectangle rec =locationSave.get(i);
+				rec.x = rec.x - 50;
+				locationSave.set(i,rec);
 			}
 		}
 		if (e.getWheelRotation() == -1) {
 			// 往右跑
 			for (int i = 0; i < roomFamily.size(); i++) {
-				Rectangle rec = roomFamily.get(i).getBounds();
+				Rectangle rec =locationSave.get(i);
 				rec.x = rec.x + 50;
 				roomFamily.get(i).setBounds(rec);
-				locationSave.remove(i);
-				locationSave.add(i,rec);
+			}
+			for (int i = 0; i < 97; i++) {
+				Rectangle rec =locationSave.get(i);
+				rec.x = rec.x + 50;
+				locationSave.set(i,rec);
 			}
 		}
 	}
