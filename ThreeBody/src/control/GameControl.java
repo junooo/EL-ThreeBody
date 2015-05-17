@@ -134,7 +134,7 @@ public class GameControl {
 		gameDTO.setSynced();
 	}
 		
-	private class TimeThread extends Thread{
+	public class TimeThread extends Thread{
 
 		private int seconds;
 		private JPanel countDown;

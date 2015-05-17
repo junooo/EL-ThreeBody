@@ -32,7 +32,8 @@
 /root/EL/src/model/Information.java
 /root/EL/src/model/operation/Broadcast.java
 /root/EL/src/model/operation/CardUse.java
-/root/EL/src/model/operation/Character_Change.java
+/root/EL/src/model/operation/CharacterChange.java
+/root/EL/src/model/operation/Conquer.java
 /root/EL/src/model/operation/CoordinateGet.java
 /root/EL/src/model/operation/CoordinateGetFail.java
 /root/EL/src/model/operation/Lose.java

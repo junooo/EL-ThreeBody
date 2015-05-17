@@ -21,6 +21,7 @@ public class Conquer extends Operation implements Operable{
 		this.coordinate = coordinate;
 	}
 	
+	//TODO 如果对面不是地球怎么办
 	@Override
 	public List<Operation> process() {
 		//如果某个坐标与广播的坐标相同
