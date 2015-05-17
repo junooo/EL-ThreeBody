@@ -40,7 +40,7 @@ public class Sophon extends Card{
 		super(operator, receiver);
 		// TODO 游戏平衡配置
 		this.position = position;
-		
+		this.name="智子";
 		GameConfig gc=new GameConfig();
 		List<CardConfig> cardList=gc.getCardsConfig();
 		this.lifetime=cardList.get(4).getLifetime();
@@ -56,7 +56,7 @@ public class Sophon extends Card{
 		//得到操作者与被操作者
 		Player pOperator = this.findOperator(dto);
 		Player pReceiver = this.findReceiver(dto);
-		
+//		System.out.println(pOperator.getAccount().getId()+","+pReceiver.getAccount().getId());
 		//消耗相应的资源，通过放置新Operation来实现
 		ResourceChange rc = new ResourceChange(operator, receiver, ResourceChange.Type.DECREASE, this.requiredResource);
 		subOperations.add(rc);
@@ -69,8 +69,11 @@ public class Sophon extends Card{
 			subOperations.add(cgf);
 		}else{
 			// 设定operator的已发现的坐标值
+//			System.out.println("111");
 			pOperator.findCoordinate(pReceiver, position, result);
+//			System.out.println(pReceiver.getAccount().getId());
 			CoordinateGet cg = new CoordinateGet(operator,receiver,position,result);
+//			System.out.println(receiver);
 			subOperations.add(cg);
 		}
 		
