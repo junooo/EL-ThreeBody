@@ -162,4 +162,9 @@ public class GameControl {
 		}
 	}
 	
+	public synchronized void turnChange(){
+		if(gameDTO.getUser() == gameDTO.getWhoseTurn()){
+			
+		}
+	}
 }

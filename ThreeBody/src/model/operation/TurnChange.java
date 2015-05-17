@@ -15,8 +15,6 @@ public class TurnChange extends Operation implements Operable{
 
 	public TurnChange(String operator, String receiver) {
 		super(operator,receiver);
-		this.operator = null;
-		this.receiver = null;
 	}
 
 	@Override
@@ -35,7 +33,7 @@ public class TurnChange extends Operation implements Operable{
 		//2.得到玩家的数量
 		int playerNum = dto.getPlayers().size();
 
-		//3.将whoseTurn设为从服务器端得到的当前玩家
+		//3.将whoseTurn设为下一个没输的玩家
 		for(int i = index+1 % playerNum;;i++){
 			if(i == playerNum){
 				i = 0;
@@ -65,17 +63,14 @@ public class TurnChange extends Operation implements Operable{
 	}
 	
 	public String toOperator(){
-		
-		return null;
+		return operator+"回合结束";
 	}
 	
 	public String toReceiver(){
-		
 		return null;
 	}
 	
 	public String toOthers(){
-		
 		return "回合变更";
 	}
 

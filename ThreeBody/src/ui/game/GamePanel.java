@@ -156,6 +156,9 @@ public class GamePanel  extends JPanel{
 		}
 	}
 	
+	/*
+	 * 鼠标移到星球上显示我方已知的信息
+	 */
 	private void coordinateShow(int i){
 		Player pi = this.enemies.get(i);
 		String role = user.getFoundRoles().get(pi) == null ? "未明" : pi.getRole().toString();
@@ -866,7 +869,7 @@ public class GamePanel  extends JPanel{
 	class EndListener extends MouseAdapter {
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			Operation turnChange = new TurnChange(null,null);
+			Operation turnChange = new TurnChange(user.getAccount().getId(),null);
 			GameControl.getInstance().doOperation(turnChange);
 		}
 	}
