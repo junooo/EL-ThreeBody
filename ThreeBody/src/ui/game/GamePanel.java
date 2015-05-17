@@ -58,6 +58,7 @@ public class GamePanel  extends JPanel{
 	private JButton btnBroadcast;
 	private JButton btnHistory;
 	private JButton btnMessage;
+	private JLabel labelRole;
 	
 	private JButton btnTurnEnd;
 	
@@ -296,11 +297,41 @@ public class GamePanel  extends JPanel{
 		techString = new JLabel(new ImageIcon("images/tech.png"));
 		techString.setBounds(100,510,60,30);
 		this.add(techString);
+		
+		labelRole = new JLabel(new ImageIcon("images/img1.jpg"));
+		labelRole.setBounds(100,375,100,100);
+		initRoleImage();
+		this.add(labelRole);
+		
 
 		this.add(panelTech);
 		this.add(panelResource);
 		this.add(panelCountDown);
 	}
+
+	private void initRoleImage() {
+		Role roleName = GameDTO.getInstance().getUser().getRole();
+		switch (roleName.toString()) {
+		case "地球":
+			Image Img_earth = new ImageIcon("images/earth.png").getImage();
+			Img_earth = Img_earth.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+			labelRole.setIcon(new ImageIcon(Img_earth));
+			break;
+		case "三体":
+			Image Img_threeBody = new ImageIcon("images/threeBody.png").getImage();
+			Img_threeBody = Img_threeBody.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+			labelRole.setIcon(new ImageIcon(Img_threeBody));
+			break;
+		case "归一者":
+			Image Img_unifier = new ImageIcon("images/unifier.png").getImage();
+			Img_unifier = Img_unifier.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+			labelRole.setIcon(new ImageIcon(Img_unifier));
+			break;
+		default:
+			break;
+		}
+	}
+
 	@Override
 	public void paintComponent(Graphics g) {
 		Image IMG_MAIN = new ImageIcon("images/gamebg.jpg").getImage();
