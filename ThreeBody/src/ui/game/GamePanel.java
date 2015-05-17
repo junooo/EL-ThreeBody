@@ -60,7 +60,8 @@ public class GamePanel  extends JPanel{
 	private JButton btnHistory;
 	private JButton btnMessage;
 	private JLabel labelRole;
-	
+	private JLabel numOfBout;
+	private JLabel numOfRound;
 	private JButton btnTurnEnd;
 	
 	private int NumOfPlayer;
@@ -105,9 +106,7 @@ public class GamePanel  extends JPanel{
 		this.initPrompt();
 		this.createEnemy();
 		this.createCoordinatePanel();
-		
 	}
-	
 	private void initPrompt() {
 		prompts[0]=new ImageIcon("images/psSophonLabel.png");
 		prompts[1]=new ImageIcon("images/psSillySophonLabel.png");
@@ -230,7 +229,6 @@ public class GamePanel  extends JPanel{
 		this.btnCardSophon.setBounds(1070, 30, 150, 30);
 		this.btnCardSophon.setFont(new Font("黑体", Font.BOLD, 15));
 		this.btnCardSophon.setForeground(Color.YELLOW);
-		// this.btnMultyPlay.setBorderPainted(false);
 		this.btnCardSophon.addMouseListener(new CardSophonListener());
 		this.add(btnCardSophon);
 		
@@ -301,9 +299,20 @@ public class GamePanel  extends JPanel{
 		
 		this.labelRole = new JLabel(new ImageIcon("images/img1.jpg"));
 		this.labelRole.setBounds(100,375,100,100);
-		initRoleImage();
+		this.initRoleImage();
 		this.add(labelRole);
 		
+		this.numOfBout = new JLabel("现在回合数："+GameDTO.getInstance().getBout());
+		this.numOfBout.setForeground(Color.YELLOW);
+		this.numOfBout.setFont(new Font("黑体",Font.BOLD,20));
+		this.numOfBout.setBounds(180, 40,500,30);
+		this.add(numOfBout);
+		
+		this.numOfRound = new JLabel("现在轮次数："+GameDTO.getInstance().getRound());
+		this.numOfRound.setForeground(Color.YELLOW);
+		this.numOfRound.setFont(new Font("黑体",Font.BOLD,20));
+		this.numOfRound.setBounds(180, 70,500,30);
+		this.add(numOfRound);
 
 		this.add(panelTech);
 		this.add(panelResource);
@@ -312,24 +321,23 @@ public class GamePanel  extends JPanel{
 
 	private void initRoleImage() {
 		Role roleName = GameDTO.getInstance().getUser().getRole();
-		switch (roleName.toString()) {
-		case "地球":
+		if(roleName.toString().equals("地球")){
 			Image Img_earth = new ImageIcon("images/earth.png").getImage();
 			Img_earth = Img_earth.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 			labelRole.setIcon(new ImageIcon(Img_earth));
-			break;
-		case "三体":
+			return;
+		}
+		if(roleName.toString().equals("三体")){
 			Image Img_threeBody = new ImageIcon("images/threeBody.png").getImage();
 			Img_threeBody = Img_threeBody.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 			labelRole.setIcon(new ImageIcon(Img_threeBody));
-			break;
-		case "归一者":
+			return;
+		}
+		if(roleName.toString().equals("归一者")){
 			Image Img_unifier = new ImageIcon("images/unifier.png").getImage();
 			Img_unifier = Img_unifier.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 			labelRole.setIcon(new ImageIcon(Img_unifier));
-			break;
-		default:
-			break;
+			return;
 		}
 	}
 
