@@ -13,13 +13,14 @@ import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import control.GameControl;
 import model.Coordinate;
 import model.Player;
 import model.operation.Broadcast;
+import model.operation.Conquer;
 import model.operation.Operation;
 import model.role.Role;
 import ui.FrameUtil;
+import control.GameControl;
 import dto.AccountDTO;
 import dto.GameDTO;
 
@@ -140,10 +141,10 @@ public class BroadcastPanel extends JPanel {
 				sequence[1] = Integer.parseInt(btnCoordinateTwo.getText());
 				sequence[2] = Integer.parseInt(btnCoordinateThree.getText());
 				sequence[3] = Integer.parseInt(btnCoordinateFour.getText());
-//				Coordinate coordinate = new Coordinate(sequence);
-//				String id = AccountDTO.getInstance().getId();
-//				Operation broadcast = new Broadcast(id,null,coordinate);
-//				GameControl.getInstance().doOperation(broadcast);
+				Coordinate coordinate = new Coordinate(sequence);
+				String id = AccountDTO.getInstance().getId();
+				Operation conquer = new Conquer(id,null,coordinate);
+				GameControl.getInstance().doOperation(conquer);
 			} catch (Exception exception) {
 				FrameUtil.sendMessageByFrame("Error", "坐标输入错误");
 			}

@@ -78,8 +78,9 @@ public class RoomControl {
 		try {
 			inRoom = false;
 			mainControl.roomControl = null;
+			R.info feedback = rmir.exit(AccountDTO.getInstance().getId());
 			mainControl.toLobby();
-			return rmir.exit(AccountDTO.getInstance().getId());
+			return feedback;
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

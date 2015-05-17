@@ -1,7 +1,6 @@
 package ui.game;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -27,6 +26,7 @@ import model.card.TechPotion;
 import model.card.WholeBlock;
 import model.operation.CardUse;
 import model.operation.Operation;
+import model.operation.TurnChange;
 import model.role.Role;
 import ui.FrameUtil;
 import ui.InformFrame;
@@ -351,7 +351,9 @@ public class GamePanel  extends JPanel{
 		public void mouseClicked(MouseEvent e) {
 			// TODO 测试
 			System.out.println(AccountDTO.getInstance().getId()+"端:");
-			List<Player> players = GameDTO.getInstance().getPlayers();
+			System.out.println("第"+gameDTO.getBout()+"回合");
+			System.out.println("回合玩家："+gameDTO.getWhoseTurn().getAccount().getId());
+			List<Player> players = gameDTO.getPlayers();
 			for (Player player : players) {
 				System.out.println("--"+player.getAccount().getId()+":");
 				System.out.println("--"+player.getRole()+":");
@@ -864,7 +866,8 @@ public class GamePanel  extends JPanel{
 	class EndListener extends MouseAdapter {
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			
+			Operation turnChange = new TurnChange(null,null);
+			GameControl.getInstance().doOperation(turnChange);
 		}
 	}
 
@@ -881,15 +884,4 @@ public class GamePanel  extends JPanel{
     public void conquer(){
         
     }
-    
-    private void ableToPress(Component c){
-		c.setEnabled(isAbleToPress);
-	}
-	private void unableToPress(Component c){
-		isAbleToPress=false;
-		c.setEnabled(isAbleToPress);
-	}
-	private void changeIsAbleToPress(Component c) {
-		c.setEnabled(!c.isEnabled());
-	}
 }

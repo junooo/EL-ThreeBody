@@ -16,7 +16,6 @@ import javax.swing.JPanel;
 public class MessageByFramePanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private JFrame frame;
-	private JButton btnOK;
 	private JLabel msgLabel;
 	private TwoSecondCloseFrameThread tscf;
 	/**
@@ -32,11 +31,7 @@ public class MessageByFramePanel extends JPanel{
 	}
 	
 	private void initComonent(String message) {
-		this.btnOK = new JButton(new ImageIcon("images/btnOk.png"));
-		this.btnOK.setContentAreaFilled(false);
-		this.btnOK.setBounds(120, 132,60, 30);
-		btnOK.addMouseListener(new OKListener());
-		this.add(btnOK);
+
 		
 		msgLabel = new JLabel(message,JLabel.CENTER);
 		msgLabel.setForeground(Color.YELLOW);
