@@ -47,8 +47,7 @@ public class PatialBlock extends Card{
 		subOperations.add(rc);
 		
 		//set the coordinate according to position
-		pOperator.getCoordinate()
-		.setCoordinateElement(position, Coordinate.PROTECTED);
+		pOperator.getCoordinate().setProtected(position, true);
 		
 		return subOperations;
 	}

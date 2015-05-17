@@ -14,6 +14,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import ui.FrameUtil;
 import model.Information;
 import model.Player;
 import model.card.SillySophon;
@@ -150,7 +151,7 @@ public class SophonFinderPanel extends JPanel{
 				gameControl.doOperation(cardSophon);
 				String[] broadcasts = GameDTO.getInstance().getInformations();
 				result = broadcasts[broadcasts.length-1];
-				resultPanel.setResult(result);
+				FrameUtil.sendMessageByFrame("结果", result);
 			}else if(sophonFinderFrame.getTitle().equals("人造智子")){
 				SillySophon sillySophon  =new SillySophon(user.getAccount().getId(), select.getSelectedItem().toString(), coordinate);
 				CardUse cardSophon = new CardUse(user.getAccount().getId(), select.getSelectedItem().toString(), sillySophon);
