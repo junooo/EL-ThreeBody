@@ -19,7 +19,6 @@
 /root/EL/src/io/NetClient.java
 /root/EL/src/io/UserData.java
 /root/EL/src/model/Account.java
-/root/EL/src/model/Broadcast.java
 /root/EL/src/model/card/Card.java
 /root/EL/src/model/card/NoBroadcasting.java
 /root/EL/src/model/card/PatialBlock.java
@@ -30,9 +29,11 @@
 /root/EL/src/model/card/TechPotion.java
 /root/EL/src/model/card/WholeBlock.java
 /root/EL/src/model/Coordinate.java
+/root/EL/src/model/Information.java
 /root/EL/src/model/operation/Broadcast.java
 /root/EL/src/model/operation/CardUse.java
-/root/EL/src/model/operation/Character_Change.java
+/root/EL/src/model/operation/CharacterChange.java
+/root/EL/src/model/operation/Conquer.java
 /root/EL/src/model/operation/CoordinateGet.java
 /root/EL/src/model/operation/CoordinateGetFail.java
 /root/EL/src/model/operation/Lose.java

@@ -25,7 +25,7 @@ public class MainControl {
 	private JPanel startMenuPanel = null;
 	private JPanel gamePanel = null;
 	private JPanel aboutUs = null;
-	private JPanel lobbyPanel = null;
+	public LobbyPanel lobbyPanel = null;
 	private JPanel account=null;
 	private JPanel preference=null;
 	public RoomPanel roomPanel=null;
@@ -66,6 +66,9 @@ public class MainControl {
 
 	public void toStartMenu() {
 		this.startMenuPanel = new StartMenuPanel(this);
+		if(currentPanel!=null&&currentPanel==lobbyPanel){
+			currentPanel.setVisible(false);	
+		}
 		currentPanel = this.startMenuPanel;
 		frame.setContentPane(currentPanel);
 		currentPanel.setVisible(true);
@@ -101,7 +104,7 @@ public class MainControl {
 		gameControl = roomControl.getGameService();
 		
 		currentPanel.setVisible(false);
-		this.gamePanel = new GamePanel(this, numOfPlayers);
+		this.gamePanel = new GamePanel(this, numOfPlayers, gameControl);
 		currentPanel = this.gamePanel;
 		frame.setContentPane(currentPanel);
 		currentPanel.setVisible(true);
@@ -113,21 +116,19 @@ public class MainControl {
 		if (lobbyControl == null){
 			lobbyControl = new LobbyControl(this);
 		}
-		
 		currentPanel.setVisible(false);
 		this.lobbyPanel = new LobbyPanel(this);
 		currentPanel = this.lobbyPanel;
 		lobbyControl.setLobbyPanel((LobbyPanel)this.lobbyPanel);
 		frame.setContentPane(currentPanel);
 		currentPanel.setVisible(true);
-		frame.validate();
+		lobbyControl.startRefresh();
 	}
 
 	public void toRoom(String roomName) {
 		if(roomControl == null){
 			roomControl = lobbyControl.getRoomService(roomName);
 		}
-		
 		currentPanel.setVisible(false);
 		roomPanel = new RoomPanel(this,roomControl);
 		roomControl.setRoomPanel((RoomPanel)roomPanel);
@@ -156,6 +157,9 @@ public class MainControl {
 	}
 
 	public void exit() {
+		if(roomControl != null){
+			roomControl.exit();
+		}
 		if(connected){
 			accountControl.logout();
 		}

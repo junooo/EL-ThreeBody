@@ -20,7 +20,6 @@ import model.Account;
 import model.Room;
 import ui.lobby.ButtonPanel;
 import util.R;
-import control.LobbyControl;
 import control.MainControl;
 import control.RoomControl;
 import dto.AccountDTO;
@@ -49,11 +48,10 @@ public class RoomPanel extends JPanel{
 	private JLabel labelWins;
 	private JLabel psLosts;
 	private JLabel labelLosts;
+	private JLabel nowReady;
 	private boolean isAbleToPress=true;
 	private Image opaque = new ImageIcon("images/coNothing.png").getImage();
-	private LobbyControl lobbyControl;
 	private List<Rectangle> locations = new ArrayList<Rectangle>(8);
-	
 	
 	private MainControl mainControl;
 	private RoomControl roomControl;
@@ -75,10 +73,9 @@ public class RoomPanel extends JPanel{
 		this.room = roomControl.getRoom();
 		this.accounts = room.getAccounts();
 		this.removeAll();
-		
 		this.initComonent();
 		this.initAccountsInfo();
-		mainControl.frame.validate();
+		mainControl.frame.setContentPane(this);
 	}
 	
 	private void initAccountsInfo() {
@@ -168,6 +165,12 @@ public class RoomPanel extends JPanel{
 		labelLosts.setForeground(Color.YELLOW);
 		labelLosts.setText(accounts.get(i).getLosts()+"");
 		
+		
+		nowReady = new JLabel();
+		nowReady.setBounds(rect.x+690,rect.y,91,60);
+		addNowReady(i);
+		this.add(nowReady);
+		
 		this.add(psId);
 		this.add(labelId);
 		this.add(labelHead);
@@ -182,6 +185,20 @@ public class RoomPanel extends JPanel{
 		this.add(psLosts);
 		this.add(labelLosts);
 }
+
+	private void addNowReady(int i) {
+		if(room.getCreater().getId().equals(accounts.get(i).getId())){
+			nowReady.setIcon(new ImageIcon());
+			return;
+		}
+		if (room.isReady(accounts.get(i).getId())) {
+			Image nowReadyImg = new ImageIcon("images/NowReady.png").getImage();
+			nowReadyImg = nowReadyImg.getScaledInstance(91, 60,	Image.SCALE_SMOOTH);
+			nowReady.setIcon(new ImageIcon(nowReadyImg));
+		} else {
+			nowReady.setIcon(new ImageIcon());
+		}
+	}
 
 	public void initLocation(){
 		locations.add(new Rectangle(15,20,800,60));
@@ -244,8 +261,6 @@ public class RoomPanel extends JPanel{
 	       paint(gBuffer);
 	       scr.drawImage(iBuffer,0,0,this);
 	}
-	
-
 	@Override
 	public void paintComponent(Graphics g) {
 		Image background = new ImageIcon("images/模糊背景.jpg").getImage();
@@ -281,8 +296,7 @@ public class RoomPanel extends JPanel{
 		}
 
 		@Override
-		public void mouseClicked(MouseEvent e) {
-			mainControl.toGame(room.getSize());
+		public void mouseReleased(MouseEvent e) {
 //			changeIsAbleToPress(btn_lobbyReturn);
 			switch(state){
 			case 2:
@@ -308,7 +322,7 @@ public class RoomPanel extends JPanel{
 
 	class ReturnListener extends MouseAdapter {
 		@Override
-		public void mouseClicked(MouseEvent e) {
+		public void mouseReleased(MouseEvent e) {
 			roomControl.exit();
 		}
 	}
