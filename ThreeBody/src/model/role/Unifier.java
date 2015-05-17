@@ -42,5 +42,9 @@ public class Unifier extends Role {
 			return true;
 		}
 	}
+	@Override
+	public String toString(){
+		return "归一者";
+	}
 
 }

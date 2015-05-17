@@ -20,7 +20,6 @@ import model.Account;
 import model.Room;
 import ui.lobby.ButtonPanel;
 import util.R;
-import control.LobbyControl;
 import control.MainControl;
 import control.RoomControl;
 import dto.AccountDTO;
@@ -49,6 +48,7 @@ public class RoomPanel extends JPanel{
 	private JLabel labelWins;
 	private JLabel psLosts;
 	private JLabel labelLosts;
+	private JLabel nowReady;
 	private boolean isAbleToPress=true;
 	private Image opaque = new ImageIcon("images/coNothing.png").getImage();
 	private List<Rectangle> locations = new ArrayList<Rectangle>(8);
@@ -165,6 +165,12 @@ public class RoomPanel extends JPanel{
 		labelLosts.setForeground(Color.YELLOW);
 		labelLosts.setText(accounts.get(i).getLosts()+"");
 		
+		
+		nowReady = new JLabel();
+		nowReady.setBounds(rect.x+690,rect.y,91,60);
+		addNowReady(i);
+		this.add(nowReady);
+		
 		this.add(psId);
 		this.add(labelId);
 		this.add(labelHead);
@@ -179,6 +185,20 @@ public class RoomPanel extends JPanel{
 		this.add(psLosts);
 		this.add(labelLosts);
 }
+
+	private void addNowReady(int i) {
+		if(room.getCreater().getId().equals(accounts.get(i).getId())){
+			nowReady.setIcon(new ImageIcon());
+			return;
+		}
+		if (room.isReady(accounts.get(i).getId())) {
+			Image nowReadyImg = new ImageIcon("images/NowReady.png").getImage();
+			nowReadyImg = nowReadyImg.getScaledInstance(91, 60,	Image.SCALE_SMOOTH);
+			nowReady.setIcon(new ImageIcon(nowReadyImg));
+		} else {
+			nowReady.setIcon(new ImageIcon());
+		}
+	}
 
 	public void initLocation(){
 		locations.add(new Rectangle(15,20,800,60));

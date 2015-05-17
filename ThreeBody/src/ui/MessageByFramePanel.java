@@ -18,7 +18,7 @@ public class MessageByFramePanel extends JPanel{
 	private JFrame frame;
 	private JButton btnOK;
 	private JLabel msgLabel;
-	
+	private TwoSecondCloseFrameThread tscf;
 	/**
 	 * 
 	 * @param successInformFrame 
@@ -27,6 +27,8 @@ public class MessageByFramePanel extends JPanel{
 		this.setLayout(null);
 		this.frame=successInformFrame;
 		this.initComonent(message);
+		this.tscf = new TwoSecondCloseFrameThread();
+		this.tscf.start();
 	}
 	
 	private void initComonent(String message) {
@@ -54,5 +56,16 @@ public class MessageByFramePanel extends JPanel{
 		Image IMG_MAIN = new ImageIcon("images/img1.jpg").getImage();
 		// 绘制游戏界面
 		g.drawImage(IMG_MAIN, 0, 0,695,215, null);
+	}
+	private class TwoSecondCloseFrameThread extends Thread{
+		@Override
+		public void run() {
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			frame.dispose();
+		}
 	}
 }

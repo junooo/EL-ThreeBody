@@ -40,6 +40,11 @@ public class Earth extends Role{
 	public boolean isAvailable(Card card) {
 		return true;
 	}
+	
+	@Override
+	public String toString(){
+		return "地球";
+	}
 
 }
 
