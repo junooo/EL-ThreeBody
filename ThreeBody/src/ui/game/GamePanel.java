@@ -187,119 +187,119 @@ public class GamePanel  extends JPanel{
 		this.btnReturn = new JButton("返回");
 		this.btnReturn.setContentAreaFilled(false);
 		this.btnReturn.setBounds(20, 565, 120, 30);
-		btnReturn.setFont(new Font("黑体", Font.BOLD, 20));
-		btnReturn.setForeground(Color.YELLOW);
-		btnReturn.addMouseListener(new ReturnListener());
+		this.btnReturn.setFont(new Font("黑体", Font.BOLD, 20));
+		this.btnReturn.setForeground(Color.YELLOW);
+		this.btnReturn.addMouseListener(new ReturnListener());
 		this.add(btnReturn);
 		
 		this.btnBroadcast = new JButton("广播");
 		this.btnBroadcast.setContentAreaFilled(false);
 		this.btnBroadcast.setBounds(260, 600, 80, 20);
-		btnBroadcast.setFont(new Font("黑体", Font.BOLD, 15));
-		btnBroadcast.setForeground(Color.YELLOW);
-		btnBroadcast.addMouseListener(new BroadcastListener());
+		this.btnBroadcast.setFont(new Font("黑体", Font.BOLD, 15));
+		this.btnBroadcast.setForeground(Color.YELLOW);
+		this.btnBroadcast.addMouseListener(new BroadcastListener());
 		this.add(btnBroadcast);
 		
 		this.btnHistory = new JButton("历史记录");
 		this.btnHistory.setContentAreaFilled(false);
 		this.btnHistory.setBounds(523, 600, 100, 20);
-		btnHistory.setFont(new Font("黑体", Font.BOLD, 15));
-		btnHistory.setForeground(Color.YELLOW);
-		btnHistory.addMouseListener(new HistoryListener());
+		this.btnHistory.setFont(new Font("黑体", Font.BOLD, 15));
+		this.btnHistory.setForeground(Color.YELLOW);
+		this.btnHistory.addMouseListener(new HistoryListener());
 		this.add(btnHistory);
 		
 		this.btnMessage = new JButton("留言");
 		this.btnMessage.setContentAreaFilled(false);
 		this.btnMessage.setBounds(816, 600, 80, 20);
-		btnMessage.setFont(new Font("黑体", Font.BOLD, 15));
-		btnMessage.setForeground(Color.YELLOW);
-		btnMessage.addMouseListener(new MessageListener());
+		this.btnMessage.setFont(new Font("黑体", Font.BOLD, 15));
+		this.btnMessage.setForeground(Color.YELLOW);
+		this.btnMessage.addMouseListener(new MessageListener());
 		this.add(btnMessage);
 		
 		this.btnTurnEnd = new JButton("回合结束");
 		this.btnTurnEnd.setContentAreaFilled(false);
 		this.btnTurnEnd.setBounds(1000, 500, 150, 30);
-		btnTurnEnd.setFont(new Font("黑体", Font.BOLD, 15));
-		btnTurnEnd.setForeground(Color.YELLOW);
-		btnTurnEnd.addMouseListener(new EndListener());
+		this.btnTurnEnd.setFont(new Font("黑体", Font.BOLD, 15));
+		this.btnTurnEnd.setForeground(Color.YELLOW);
+		this.btnTurnEnd.addMouseListener(new EndListener());
 		this.add(btnTurnEnd);
 		
 		this.btnCardSophon = new JButton("智子");
 		this.btnCardSophon.setContentAreaFilled(false);
 		this.btnCardSophon.setBounds(1070, 30, 150, 30);
-		btnCardSophon.setFont(new Font("黑体", Font.BOLD, 15));
-		btnCardSophon.setForeground(Color.YELLOW);
+		this.btnCardSophon.setFont(new Font("黑体", Font.BOLD, 15));
+		this.btnCardSophon.setForeground(Color.YELLOW);
 		// this.btnMultyPlay.setBorderPainted(false);
-		btnCardSophon.addMouseListener(new CardSophonListener());
+		this.btnCardSophon.addMouseListener(new CardSophonListener());
 		this.add(btnCardSophon);
 		
 		
 		this.btnCardSillySophon = new JButton("人造智子");
 		this.btnCardSillySophon.setContentAreaFilled(false);
 		this.btnCardSillySophon.setBounds(1070, 60, 150, 30);
-		btnCardSillySophon.setForeground(Color.YELLOW);
-		btnCardSillySophon.addMouseListener(new CardSillySophonListener());
+		this.btnCardSillySophon.setForeground(Color.YELLOW);
+		this.btnCardSillySophon.addMouseListener(new CardSillySophonListener());
 		this.add(btnCardSillySophon);
 		
 		this.btnCardWholeBlock = new JButton("全局黑域");
 		this.btnCardWholeBlock.setContentAreaFilled(false);
 		this.btnCardWholeBlock.setBounds(1070, 90, 150, 30);
-		btnCardWholeBlock.setForeground(Color.YELLOW);
-		btnCardWholeBlock.addMouseListener(new CardWholeBlockListener());
+		this.btnCardWholeBlock.setForeground(Color.YELLOW);
+		this.btnCardWholeBlock.addMouseListener(new CardWholeBlockListener());
 		this.add(btnCardWholeBlock);
 		
 		this.btnCardPatialBlock = new JButton("局部黑域");
 		this.btnCardPatialBlock.setContentAreaFilled(false);
 		this.btnCardPatialBlock.setBounds(1070, 120, 150, 30);
-		btnCardPatialBlock.setForeground(Color.YELLOW);
-		btnCardPatialBlock.addMouseListener(new CardPatialBlockListener());
+		this.btnCardPatialBlock.setForeground(Color.YELLOW);
+		this.btnCardPatialBlock.addMouseListener(new CardPatialBlockListener());
 		this.add(btnCardPatialBlock);
 		
 		this.btnCardNoBroadcasting = new JButton("电波干扰");
 		this.btnCardNoBroadcasting.setContentAreaFilled(false);
 		this.btnCardNoBroadcasting.setBounds(1070, 150, 150, 30);
-		btnCardNoBroadcasting.setForeground(Color.YELLOW);
-		btnCardNoBroadcasting.addMouseListener(new CardNoBroadcastingListener());
+		this.btnCardNoBroadcasting.setForeground(Color.YELLOW);
+		this.btnCardNoBroadcasting.addMouseListener(new CardNoBroadcastingListener());
 		this.add(btnCardNoBroadcasting);
 		
 		this.btnCardTechPotion = new JButton("科技革命");
 		this.btnCardTechPotion.setContentAreaFilled(false);
 		this.btnCardTechPotion.setBounds(1070, 180, 150, 30);
-		btnCardTechPotion.setForeground(Color.YELLOW);
-		btnCardTechPotion.addMouseListener(new CardTechPotionListener());
+		this.btnCardTechPotion.setForeground(Color.YELLOW);
+		this.btnCardTechPotion.addMouseListener(new CardTechPotionListener());
 		this.add(btnCardTechPotion);
 		
 		this.btnCardResourcePotion = new JButton("资源爆发");
 		this.btnCardResourcePotion.setContentAreaFilled(false);
 		this.btnCardResourcePotion.setBounds(1070, 210, 150, 30);
-		btnCardResourcePotion.setForeground(Color.YELLOW);
-		btnCardResourcePotion.addMouseListener(new CardResourcePotionListener());
+		this.btnCardResourcePotion.setForeground(Color.YELLOW);
+		this.btnCardResourcePotion.addMouseListener(new CardResourcePotionListener());
 		this.add(btnCardResourcePotion);
 		
 		this.btnCardResourceGambling = new JButton("资源赌博");
 		this.btnCardResourceGambling.setContentAreaFilled(false);
 		this.btnCardResourceGambling.setBounds(1070, 240, 150, 30);
-		btnCardResourceGambling.setForeground(Color.YELLOW);
-		btnCardResourceGambling.addMouseListener(new CardResourceGamblingListener());
+		this.btnCardResourceGambling.setForeground(Color.YELLOW);
+		this.btnCardResourceGambling.addMouseListener(new CardResourceGamblingListener());
 		this.add(btnCardResourceGambling);
 		
 		this.btnPriviledgeGetRole = new JButton("特权");
 		this.btnPriviledgeGetRole.setContentAreaFilled(false);
 		this.btnPriviledgeGetRole.setBounds(1070, 270, 150, 30);
-		btnPriviledgeGetRole.setForeground(Color.YELLOW);
-		btnPriviledgeGetRole.addMouseListener(new PriviledgeGetRoleListener());
+		this.btnPriviledgeGetRole.setForeground(Color.YELLOW);
+		this.btnPriviledgeGetRole.addMouseListener(new PriviledgeGetRoleListener());
 		this.add(btnPriviledgeGetRole);
 		
-		resourceString = new JLabel(new ImageIcon("images/resource.png"));
-		resourceString.setBounds(100,480,60,30);
+		this.resourceString = new JLabel(new ImageIcon("images/resource.png"));
+		this.resourceString.setBounds(100,480,60,30);
 		this.add(resourceString);
 		
-		techString = new JLabel(new ImageIcon("images/tech.png"));
-		techString.setBounds(100,510,60,30);
+		this.techString = new JLabel(new ImageIcon("images/tech.png"));
+		this.techString.setBounds(100,510,60,30);
 		this.add(techString);
 		
-		labelRole = new JLabel(new ImageIcon("images/img1.jpg"));
-		labelRole.setBounds(100,375,100,100);
+		this.labelRole = new JLabel(new ImageIcon("images/img1.jpg"));
+		this.labelRole.setBounds(100,375,100,100);
 		initRoleImage();
 		this.add(labelRole);
 		
