@@ -70,6 +70,8 @@ public class GameDTO {
     	informations = new LinkedList<Information>();
     	historyOperations = new LinkedList<Operation>();
     	unSyncOperations = new LinkedList<Operation>();
+    	bout = 0;
+    	whoseTurn = this.players.get(0);
     	gameOver = false;
     }
     

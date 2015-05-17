@@ -7,14 +7,14 @@ import model.role.Earth;
 import dto.GameDTO;
 
 
-public class Character_Change extends Operation implements Operable {
+public class CharacterChange extends Operation implements Operable {
 
 	/**
 	 * default
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public Character_Change(String operator, String receiver) {
+	public CharacterChange(String operator, String receiver) {
 		super(operator, receiver);
 	}
 
@@ -24,25 +24,25 @@ public class Character_Change extends Operation implements Operable {
 		GameDTO dto=GameDTO.getInstance();
 		
 		//得到操作者（三体）
-		Player pOperator=null;
+		Player pOperator = null;
 		for(Player player:dto.getPlayers()){
 			if(player.getAccount().getId().equals(this.operator)){
-				pOperator=player;
+				pOperator = player;
 			}
 		}
 		
-		//将操作者设置为地球
-		//1新建一个地球
-		Earth earth=new Earth();
-		//2得到三体玩家的科技值与资源值
-		int techPoint=pOperator.getTechPoint();
-		int resource=pOperator.getResource();
-		//3.将操作者变为地球玩家
+		// 将操作者设置为地球
+		// 1新建一个地球
+		Earth earth = new Earth();
+		// 2得到三体玩家的科技值与资源值
+		int techPoint = pOperator.getTechPoint();
+		int resource = pOperator.getResource();
+		// 3.将操作者变为地球玩家
 		pOperator.setRole(earth);
-		//4.将科技值与资源值赋给新地球(待定，取决于变成地球后会不会被初始化)
+		// 4.将科技值与资源值赋给新地球(待定，取决于变成地球后会不会被初始化)
 		pOperator.setResource(resource);
 		pOperator.setTechPoint(techPoint);
-		
+
 		return null;
 	}
 	
