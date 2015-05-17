@@ -57,9 +57,10 @@ public class HistoryPanel extends JPanel{
 		this.add(scroller);
 		repaint();
 		
-		this.btnReturn = new JButton(new ImageIcon("images/exit.png"));
+		Image buttonImg = new ImageIcon("images/refresh.png").getImage();
+		this.btnReturn = new JButton(new ImageIcon(buttonImg.getScaledInstance(40, 40, Image.SCALE_SMOOTH)));
 		this.btnReturn.setContentAreaFilled(false);
-		this.btnReturn.setBounds(520, 95, 150, 60);
+		this.btnReturn.setBounds(650, 95, 40, 40);
 		this.btnReturn.setBorderPainted(false);
 		btnReturn.addMouseListener(new ReturnListener());
 		this.add(btnReturn);
@@ -95,7 +96,7 @@ public class HistoryPanel extends JPanel{
 
 	@Override
 	public void paintComponent(Graphics g) {
-		Image IMG_MAIN = new ImageIcon("images/img1.jpg").getImage();
+		Image IMG_MAIN = new ImageIcon("images/opaqueHalf.png").getImage();
 		// 绘制游戏界面
 		g.drawImage(IMG_MAIN, 0, 0,695,215, null);
 	}

@@ -106,6 +106,7 @@ public class GamePanel  extends JPanel{
 		this.createEnemy();
 		this.createCoordinatePanel();
 	}
+	
 	private void initPrompt() {
 		prompts[0]=new ImageIcon("images/psSophonLabel.png");
 		prompts[1]=new ImageIcon("images/psSillySophonLabel.png");
@@ -122,7 +123,7 @@ public class GamePanel  extends JPanel{
 			promptLabels[i].setVisible(false);
 		}
 	}
-
+	
 	/**
 	 * 存放敌人的位置
 	 */
@@ -365,7 +366,7 @@ public class GamePanel  extends JPanel{
 
 	@Override
 	public void paintComponent(Graphics g) {
-		Image IMG_MAIN = new ImageIcon("images/gamebg.jpg").getImage();
+		Image IMG_MAIN = new ImageIcon("images/sky5.jpg").getImage();
 		g.drawImage(IMG_MAIN, 0, 0, 1158, 650, null);
 	}
 	
@@ -444,7 +445,7 @@ public class GamePanel  extends JPanel{
 		public void mouseEntered(MouseEvent e) {
 			btnCardSophon.setLocation(x-40, y);
 			btnCardSillySophon.setLocation(x-10, y+30);
-			promptLabels[0].setBounds(rec.x-prompts[0].getIconWidth()-40,rec.y,prompts[0].getIconWidth(),prompts[0].getIconHeight());
+			promptLabels[0].setBounds(rec.x-prompts[0].getIconWidth()-15,rec.y,prompts[0].getIconWidth(),prompts[0].getIconHeight());
 			promptLabels[0].setVisible(true);
 			add(promptLabels[0]);
 			repaint();
@@ -493,7 +494,7 @@ public class GamePanel  extends JPanel{
 			btnCardSophon.setLocation(x-10, y-30);
 			btnCardSillySophon.setLocation(x-40, y);
 			btnCardWholeBlock.setLocation(x-10, y+30);
-			promptLabels[1].setBounds(rec.x-prompts[1].getIconWidth()-40,rec.y,prompts[1].getIconWidth(),prompts[1].getIconHeight());
+			promptLabels[1].setBounds(rec.x-prompts[1].getIconWidth()-15,rec.y,prompts[1].getIconWidth(),prompts[1].getIconHeight());
 			promptLabels[1].setVisible(true);
 			add(promptLabels[1]);
 			repaint();
@@ -540,7 +541,7 @@ public class GamePanel  extends JPanel{
 			btnCardSillySophon.setLocation(x-10, y-30);
 			btnCardWholeBlock.setLocation(x-40, y);
 			btnCardPatialBlock.setLocation(x-10, y+30);
-			promptLabels[2].setBounds(rec.x-prompts[2].getIconWidth()-40,rec.y,prompts[2].getIconWidth(),prompts[2].getIconHeight());
+			promptLabels[2].setBounds(rec.x-prompts[2].getIconWidth()-15,rec.y,prompts[2].getIconWidth(),prompts[2].getIconHeight());
 			promptLabels[2].setVisible(true);
 			add(promptLabels[2]);
 			repaint();
@@ -590,7 +591,7 @@ public class GamePanel  extends JPanel{
 			btnCardWholeBlock.setLocation(x-10, y-30);
 			btnCardPatialBlock.setLocation(x-40, y);
 			btnCardNoBroadcasting.setLocation(x-10, y+30);
-			promptLabels[3].setBounds(rec.x-prompts[3].getIconWidth()-40,rec.y,prompts[3].getIconWidth(),prompts[3].getIconHeight());
+			promptLabels[3].setBounds(rec.x-prompts[3].getIconWidth()-15,rec.y,prompts[3].getIconWidth(),prompts[3].getIconHeight());
 			promptLabels[3].setVisible(true);
 			add(promptLabels[3]);
 			repaint();
@@ -635,7 +636,7 @@ public class GamePanel  extends JPanel{
 			btnCardPatialBlock.setLocation(x-10, y-30);
 			btnCardNoBroadcasting.setLocation(x-40, y);
 			btnCardTechPotion.setLocation(x-10, y+30);
-			promptLabels[4].setBounds(rec.x-prompts[4].getIconWidth()-40,rec.y,prompts[4].getIconWidth(),prompts[4].getIconHeight());
+			promptLabels[4].setBounds(rec.x-prompts[4].getIconWidth()-15,rec.y,prompts[4].getIconWidth(),prompts[4].getIconHeight());
 			promptLabels[4].setVisible(true);
 			add(promptLabels[4]);
 			repaint();
@@ -684,7 +685,7 @@ public class GamePanel  extends JPanel{
 			btnCardNoBroadcasting.setLocation(x-10, y-30);
 			btnCardTechPotion.setLocation(x-40, y);
 			btnCardResourcePotion.setLocation(x-10, y+30);
-			promptLabels[5].setBounds(rec.x-prompts[5].getIconWidth()-40,rec.y,prompts[5].getIconWidth(),prompts[5].getIconHeight());
+			promptLabels[5].setBounds(rec.x-prompts[5].getIconWidth()-15,rec.y,prompts[5].getIconWidth(),prompts[5].getIconHeight());
 			promptLabels[5].setVisible(true);
 			add(promptLabels[5]);
 			repaint();
@@ -729,7 +730,7 @@ public class GamePanel  extends JPanel{
 			btnCardTechPotion.setLocation(rec.x-10, rec.y-30);
 			btnCardResourcePotion.setLocation(rec.x-40, rec.y);
 			btnCardResourceGambling.setLocation(rec.x-10,rec. y+30);
-			promptLabels[6].setBounds(rec.x-prompts[6].getIconWidth()-40,rec.y,prompts[6].getIconWidth(),prompts[6].getIconHeight());
+			promptLabels[6].setBounds(rec.x-prompts[6].getIconWidth()-15,rec.y,prompts[6].getIconWidth(),prompts[6].getIconHeight());
 			promptLabels[6].setVisible(true);
 			add(promptLabels[6]);
 			repaint();
@@ -774,7 +775,7 @@ public class GamePanel  extends JPanel{
 			btnCardResourcePotion.setLocation(x-10, y-30);
 			btnCardResourceGambling.setLocation(x-40, y);
 			btnPriviledgeGetRole.setLocation(x-10, y+30);
-			promptLabels[7].setBounds(rec.x-prompts[7].getIconWidth()-40,rec.y,prompts[7].getIconWidth(),prompts[7].getIconHeight());
+			promptLabels[7].setBounds(rec.x-prompts[7].getIconWidth()-15,rec.y,prompts[7].getIconWidth(),prompts[7].getIconHeight());
 			promptLabels[7].setVisible(true);
 			add(promptLabels[7]);
 			repaint();
@@ -816,7 +817,7 @@ public class GamePanel  extends JPanel{
 		public void mouseEntered(MouseEvent e) {
 			btnCardResourceGambling.setLocation(x-10, y-30);
 			btnPriviledgeGetRole.setLocation(x-40, y);
-			promptLabels[8].setBounds(rec.x-prompts[8].getIconWidth()-40,rec.y,prompts[8].getIconWidth(),prompts[8].getIconHeight());
+			promptLabels[8].setBounds(rec.x-prompts[8].getIconWidth()-15,rec.y,prompts[8].getIconWidth(),prompts[8].getIconHeight());
 			promptLabels[8].setVisible(true);
 			add(promptLabels[8]);
 			repaint();

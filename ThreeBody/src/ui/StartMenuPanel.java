@@ -47,7 +47,7 @@ public class StartMenuPanel extends JPanel{
 	
 	private void initComonent() {
 
-		this.btnStartGame = new JButton(new ImageIcon("images/GameStart.png"));
+		this.btnStartGame = new JButton(new ImageIcon("images/GameStart7.gif"));
 		this.btnStartGame.setContentAreaFilled(false);
 		this.btnStartGame.setBounds(523, 120, 260, 260);
 		this.btnStartGame.setBorderPainted(false);
