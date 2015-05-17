@@ -87,7 +87,7 @@ public class GameDTO {
     	this.historyOperations.add(operation);
     }
     
-    public void depositInformation(Information br){
+    public synchronized void depositInformation(Information br){
     	this.informations.add(br);
     }
     
@@ -126,8 +126,12 @@ public class GameDTO {
 		return user;
 	}
 
-	public List<Information> getInformations() {
-		return informations;
+	public synchronized String[] getInformations(){
+		String[] infos = new String[informations.size()];
+		for (int i = 0; i < infos.length; i++) {
+			infos[i] = informations.get(i).getContent();
+		}
+		return infos;
 	}
 
 	public List<Operation> getHistoryOperations() {

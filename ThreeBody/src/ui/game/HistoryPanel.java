@@ -40,13 +40,9 @@ public class HistoryPanel extends JPanel{
 	}
 
 	private void initComonent() {
-		List<Information> informationList = GameDTO.getInstance().getInformations();
 		model = new DefaultListModel<>();
 		
 		this.history = new JList<>(model);
-		for (int i = 0; i < informationList.size(); i++) {
-			model.addElement(informationList.get(i).toString());
-		}
 		
 		this.history.setBounds(80, 30, 560, 80);
 		history.setFont(new Font("黑体", Font.BOLD, 20));
@@ -81,9 +77,9 @@ public class HistoryPanel extends JPanel{
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			List<Information> infos = GameDTO.getInstance().getInformations();
-			for (int i = model.size(); i <infos.size(); i++) {
-				model.addElement(infos.get(i).getContent());
+			String[] infos = GameDTO.getInstance().getInformations();
+			for (int i = model.size(); i < infos.length; i++) {
+				model.addElement(infos[i]);
 			}
 			GamePanel gp = (GamePanel)getParent();
 			gp.repaint();

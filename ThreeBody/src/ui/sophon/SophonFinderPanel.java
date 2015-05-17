@@ -148,8 +148,8 @@ public class SophonFinderPanel extends JPanel{
 				Sophon sophon  =new Sophon(user.getAccount().getId(), select.getSelectedItem().toString(), coordinate);
 				CardUse cardSophon = new CardUse(user.getAccount().getId(), select.getSelectedItem().toString(), sophon);
 				gameControl.doOperation(cardSophon);
-				ArrayList<Information> broadcasts = (ArrayList<Information>) GameDTO.getInstance().getInformations();
-				result=broadcasts.get(broadcasts.size()-1).toString();
+				String[] broadcasts = GameDTO.getInstance().getInformations();
+				result = broadcasts[broadcasts.length-1];
 				resultPanel.setResult(result);
 			}else if(sophonFinderFrame.getTitle().equals("人造智子")){
 				SillySophon sillySophon  =new SillySophon(user.getAccount().getId(), select.getSelectedItem().toString(), coordinate);

@@ -77,6 +77,8 @@ public class SelectEnemyPanel extends JPanel {
 		public void mouseReleased(MouseEvent e) {
 			String receiver = (String)enemys.getSelectedItem();
 			if(msgLabel.getText().equals("选择要干扰的敌人")){
+				// TODO：
+				System.out.println("!!!!!!!!!!!!receiver是："+receiver);
 				Card card = new NoBroadcasting(AccountDTO.getInstance().getId(), receiver);
 				Operation operation = new CardUse(AccountDTO.getInstance().getId(), receiver,card);
 				GameControl.getInstance().doOperation(operation);

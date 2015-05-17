@@ -28,6 +28,8 @@ public class ResourcePotion extends Card {
 		this.lifetime=cardList.get(2).getLifetime();
 		this.requiredResource=cardList.get(2).getRequiredResource();
 		this.requiredTechPoint=cardList.get(2).getRequiredTechPoint();
+		
+		this.name = "资源爆发";
 	}
 
 	@Override
