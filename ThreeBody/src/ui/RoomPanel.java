@@ -187,9 +187,15 @@ public class RoomPanel extends JPanel{
 }
 
 	private void addNowReady(int i) {
+		if(room.getCreater().getId().equals(accounts.get(i).getId())){
+			nowReady.setIcon(new ImageIcon());
+			return;
+		}
 		if (room.isReady(accounts.get(i).getId())) {
-			nowReady.setIcon(new ImageIcon("images/NowReady.png"));
-		}else{
+			Image nowReadyImg = new ImageIcon("images/NowReady.png").getImage();
+			nowReadyImg = nowReadyImg.getScaledInstance(91, 60,	Image.SCALE_SMOOTH);
+			nowReady.setIcon(new ImageIcon(nowReadyImg));
+		} else {
 			nowReady.setIcon(new ImageIcon());
 		}
 	}
