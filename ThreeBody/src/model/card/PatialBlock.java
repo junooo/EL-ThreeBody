@@ -27,7 +27,7 @@ public class PatialBlock extends Card{
 	public PatialBlock(String operator, String receiver,int position)  {
 		super(operator, receiver);
 		this.position=position;	
-		
+		this.name="局部黑域";
 		GameConfig gc=new GameConfig();
 		List<CardConfig> cardList=gc.getCardsConfig();
 		this.lifetime=cardList.get(1).getLifetime();
@@ -47,7 +47,8 @@ public class PatialBlock extends Card{
 		subOperations.add(rc);
 		
 		//set the coordinate according to position
-		pOperator.getCoordinate().setCoordinateElement(position, Coordinate.PROTECTED);
+		pOperator.getCoordinate()
+		.setCoordinateElement(position, Coordinate.PROTECTED);
 		
 		return subOperations;
 	}

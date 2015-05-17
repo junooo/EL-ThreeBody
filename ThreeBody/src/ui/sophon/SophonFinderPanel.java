@@ -55,7 +55,7 @@ public class SophonFinderPanel extends JPanel{
 	
 	private void initComonent() {
 		
-		coordinate=1;
+		coordinate=0;
 		
 		this.btnCoordinateOne = new JButton();
 		this.btnCoordinateOne.setBounds(11, 16, 99, 60);
@@ -154,19 +154,19 @@ public class SophonFinderPanel extends JPanel{
 			}else if(sophonFinderFrame.getTitle().equals("人造智子")){
 				SillySophon sillySophon  =new SillySophon(user.getAccount().getId(), select.getSelectedItem().toString(), coordinate);
 				CardUse cardSophon = new CardUse(user.getAccount().getId(), select.getSelectedItem().toString(), sillySophon);
-				gameControl.doOperation(cardSophon);
+				GameControl.getInstance().doOperation(cardSophon);
 			}
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
-//			useSophon();
+			useSophon();
 			jumpPanel();
 		}
 	}
 	class CoordinateOneListener extends MouseAdapter {
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			coordinate=1;
+			coordinate=0;
 			setPicture(coordinate);
 			repaint();
 		}
@@ -174,7 +174,7 @@ public class SophonFinderPanel extends JPanel{
 	class CoordinateTwoListener extends MouseAdapter {
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			coordinate=2;
+			coordinate=1;
 			setPicture(coordinate);
 			repaint();
 		}
@@ -182,7 +182,7 @@ public class SophonFinderPanel extends JPanel{
 	class CoordinateThreeListener extends MouseAdapter {
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			coordinate=3;
+			coordinate=2;
 			setPicture(coordinate);
 			repaint();
 		}
@@ -190,7 +190,7 @@ public class SophonFinderPanel extends JPanel{
 	class CoordinateFourListener extends MouseAdapter {
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			coordinate=4;
+			coordinate=3;
 			setPicture(coordinate);
 			repaint();
 		}
@@ -200,16 +200,16 @@ public class SophonFinderPanel extends JPanel{
 		btnCoordinateTwo.setIcon(new ImageIcon("images/coNothing.png"));
 		btnCoordinateThree.setIcon(new ImageIcon("images/coNothing.png"));
 		btnCoordinateFour.setIcon(new ImageIcon("images/coNothing.png"));
-		if(cooperate==1){
+		if(cooperate==0){
 			btnCoordinateOne.setIcon(new ImageIcon("images/select.png"));
 		}
-		if(cooperate==2){
+		if(cooperate==1){
 			btnCoordinateTwo.setIcon(new ImageIcon("images/select.png"));
 		}
-		if(cooperate==3){
+		if(cooperate==2){
 			btnCoordinateThree.setIcon(new ImageIcon("images/select.png"));
 		}
-		if(cooperate==4){
+		if(cooperate==3){
 			btnCoordinateFour.setIcon(new ImageIcon("images/select.png"));
 		}
 	}

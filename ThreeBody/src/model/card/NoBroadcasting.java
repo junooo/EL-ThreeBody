@@ -24,7 +24,7 @@ public class NoBroadcasting extends Card{
 
 	public NoBroadcasting(String operator, String receiver) {
 		super(operator, receiver);
-		
+		this.name="电波干扰";
 		GameConfig gc=new GameConfig();
 		List<CardConfig> cardList=gc.getCardsConfig();
 		this.lifetime=cardList.get(0).getLifetime();

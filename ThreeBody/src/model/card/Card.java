@@ -27,6 +27,7 @@ public abstract class Card implements Serializable{
     	this.operator = operator;
     	this.receiver = receiver;
     }
+   
 
     public abstract List<Operation> process(List<Operation> operations);
     
