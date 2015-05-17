@@ -3,6 +3,7 @@ package model.operation;
 import java.util.LinkedList;
 import java.util.List;
 
+import control.GameControl;
 import model.Player;
 import dto.GameDTO;
 
@@ -59,10 +60,18 @@ public class TurnChange extends Operation implements Operable{
 				TechChange.Type.INCREASE, 
 				whoseTurn.getRole().getTchDevelopSpeed()));
 		
+		// 如果刚好轮到我方，开启时钟线程
+		if(dto.getUser() == dto.getWhoseTurn()){
+			GameControl.getInstance().startCountdown();
+		}
+		
 		return subOperations;
 	}
 	
 	public String toOperator(){
+		if(GameDTO.getInstance().getBout() == 0){
+			return null;
+		}
 		return operator+"回合结束";
 	}
 	
@@ -71,6 +80,9 @@ public class TurnChange extends Operation implements Operable{
 	}
 	
 	public String toOthers(){
+		if(GameDTO.getInstance().getBout() == 0){
+			return null;
+		}
 		return "回合变更";
 	}
 

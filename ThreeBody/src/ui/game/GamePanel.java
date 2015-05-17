@@ -54,7 +54,7 @@ public class GamePanel  extends JPanel{
 	private JButton btnCardResourcePotion;
 	private JButton btnCardResourceGambling;
 	private JButton btnPriviledgeGetRole;
-	private boolean isAbleToPress = true;
+	private boolean isAbleToPress;
 	private JButton btnBroadcast;
 	private JButton btnHistory;
 	private JButton btnMessage;
@@ -869,8 +869,7 @@ public class GamePanel  extends JPanel{
 	class EndListener extends MouseAdapter {
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			Operation turnChange = new TurnChange(user.getAccount().getId(),null);
-			GameControl.getInstance().doOperation(turnChange);
+			GameControl.getInstance().turnChange();
 		}
 	}
 
@@ -886,5 +885,12 @@ public class GamePanel  extends JPanel{
      */
     public void conquer(){
         
+    }
+
+    /*
+     * getters and setters
+     */
+    public JPanel getCountdownPanel(){
+    	return this.panelCountDown;
     }
 }

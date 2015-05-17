@@ -9,7 +9,10 @@ import javax.swing.JPanel;
 import model.Information;
 import model.operation.Operable;
 import model.operation.Operation;
+import model.operation.TurnChange;
 import server.interfaces.RMIGame;
+import ui.game.GamePanel;
+import dto.AccountDTO;
 import dto.GameDTO;
 
 /*
@@ -21,6 +24,7 @@ public class GameControl {
 	private static GameControl instance;
 	private RMIGame rmig;
 	private GameDTO gameDTO;
+	private GamePanel gamePanel;
 	
 	public static GameControl getInstance(){
 		return instance;
@@ -28,6 +32,10 @@ public class GameControl {
 	
 	public static void init(RMIGame rmig){
 		instance = new GameControl(rmig);
+	}
+	
+	public void setPanel(GamePanel gamePanel){
+		this.gamePanel = gamePanel;
 	}
 
 	private GameControl(RMIGame rmig) {
@@ -42,8 +50,15 @@ public class GameControl {
 		gameDTO = GameDTO.getInstance();
 		gameDTO.init();
 		
+		// 从turnChange开始游戏
+		this.turnChange();
+		
 		// 启动同步线程
 		new SyncThread().start();
+	}
+	
+	public void startCountdown(){
+		new TimeThread().start();
 	}
 	
 	public synchronized void doOperation(Operation operation){
@@ -53,6 +68,9 @@ public class GameControl {
 		handleOperations(operations);
 	}
 	
+	/*
+	 * 顺序为先放入消息后执行,TurnChange依赖于此
+	 */
 	private List<Operation> handleOperation(Operation operation){
 		// 加到历史里面
 		gameDTO.depositHistoryOperation(operation);
@@ -134,37 +152,43 @@ public class GameControl {
 		gameDTO.setSynced();
 	}
 		
-	public class TimeThread extends Thread{
+	private class TimeThread extends Thread{
 
 		private int seconds;
 		private JPanel countDown;
 		
-		TimeThread(JPanel  countDown){
-			this.countDown= countDown;
-			this.seconds=60;
-		}
-		
-		public int getSecond(){
-			return seconds;
+		TimeThread(){
+			countDown = gamePanel.getCountdownPanel();
+			this.seconds = 61;
 		}
 		
 		@Override
 		public void run() {
-			while(seconds>0){
+			while(seconds>0 && gameDTO.getUser() == gameDTO.getWhoseTurn()){
 				try {
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				countDown.repaint();
 				seconds--;
+				gameDTO.setCountdowns(seconds);
+				countDown.repaint();
 			}
+			turnChange();
 		}
 	}
 	
+	/**
+	 * 玩家结束使用这个方法，不用doOperation方法
+	 */
 	public synchronized void turnChange(){
+		// 这个判断加上synchronized可以防止玩家按 和 倒计时线程冲突
 		if(gameDTO.getUser() == gameDTO.getWhoseTurn()){
-			
+			Operation operation = new TurnChange(AccountDTO.getInstance().getId(),null);
+			gameDTO.depositUnSyncOperation(operation);
+			List<Operation> operations = new LinkedList<Operation>();
+			operations.add(operation);
+			handleOperations(operations);
 		}
 	}
 }
