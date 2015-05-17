@@ -18,6 +18,7 @@ import model.Coordinate;
 import model.Player;
 import model.operation.Broadcast;
 import model.operation.Operation;
+import model.role.Role;
 import ui.FrameUtil;
 import dto.AccountDTO;
 import dto.GameDTO;
@@ -84,7 +85,11 @@ public class BroadcastPanel extends JPanel {
 		this.btnConquer.setBounds(240, 105, 120, 60);
 		this.btnConquer.setBorderPainted(false);
 		btnConquer.addMouseListener(new ConquerListener());
-		this.add(btnConquer);
+		Role roleName = GameDTO.getInstance().getUser().getRole();
+		if(roleName.toString().equals("三体")){
+			this.add(btnConquer);
+		}
+		
 		
 		select = new JComboBox<String>();
 		select.setFont(new Font("宋体", Font.PLAIN, 30));
