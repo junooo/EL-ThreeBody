@@ -106,6 +106,7 @@ public class GamePanel  extends JPanel{
 		this.createEnemy();
 		this.createCoordinatePanel();
 	}
+	
 	private void initPrompt() {
 		prompts[0]=new ImageIcon("images/psSophonLabel.png");
 		prompts[1]=new ImageIcon("images/psSillySophonLabel.png");
@@ -122,7 +123,7 @@ public class GamePanel  extends JPanel{
 			promptLabels[i].setVisible(false);
 		}
 	}
-
+	
 	/**
 	 * 存放敌人的位置
 	 */
@@ -196,7 +197,9 @@ public class GamePanel  extends JPanel{
 		
 		this.btnBroadcast = new JButton("广播");
 		this.btnBroadcast.setContentAreaFilled(false);
-		this.btnBroadcast.setBounds(260, 600, 80, 20);
+		this.btnBroadcast.setBorderPainted(false);
+		this.btnBroadcast.setBounds(250, 590, 100, 28);
+		this.btnBroadcast.setIcon(new ImageIcon("images/148.png"));
 		this.btnBroadcast.setFont(new Font("黑体", Font.BOLD, 15));
 		this.btnBroadcast.setForeground(Color.YELLOW);
 		this.btnBroadcast.addMouseListener(new BroadcastListener());
@@ -204,7 +207,9 @@ public class GamePanel  extends JPanel{
 		
 		this.btnHistory = new JButton("历史记录");
 		this.btnHistory.setContentAreaFilled(false);
-		this.btnHistory.setBounds(523, 600, 100, 20);
+		this.btnHistory.setBorderPainted(false);
+		this.btnHistory.setBounds(503, 590, 140, 28);
+		this.btnHistory.setIcon(new ImageIcon("images/522.png"));
 		this.btnHistory.setFont(new Font("黑体", Font.BOLD, 15));
 		this.btnHistory.setForeground(Color.YELLOW);
 		this.btnHistory.addMouseListener(new HistoryListener());
@@ -212,7 +217,9 @@ public class GamePanel  extends JPanel{
 		
 		this.btnMessage = new JButton("留言");
 		this.btnMessage.setContentAreaFilled(false);
-		this.btnMessage.setBounds(816, 600, 80, 20);
+		this.btnMessage.setBounds(806, 590, 100, 28);
+		this.btnMessage.setBorderPainted(false);
+		this.btnMessage.setIcon(new ImageIcon("images/262.png"));
 		this.btnMessage.setFont(new Font("黑体", Font.BOLD, 15));
 		this.btnMessage.setForeground(Color.YELLOW);
 		this.btnMessage.addMouseListener(new MessageListener());
@@ -226,10 +233,11 @@ public class GamePanel  extends JPanel{
 		this.btnTurnEnd.addMouseListener(new EndListener());
 		this.add(btnTurnEnd);
 		
-		this.btnCardSophon = new JButton("智子");
+		this.btnCardSophon = new JButton("三体智子");
 		this.btnCardSophon.setContentAreaFilled(false);
+		this.btnCardSophon.setBorderPainted(false);
 		this.btnCardSophon.setBounds(1070, 30, 150, 30);
-		this.btnCardSophon.setFont(new Font("黑体", Font.BOLD, 15));
+		this.btnCardSophon.setIcon(new ImageIcon("images/78.png"));
 		this.btnCardSophon.setForeground(Color.YELLOW);
 		this.btnCardSophon.addMouseListener(new CardSophonListener());
 		this.add(btnCardSophon);
@@ -238,12 +246,16 @@ public class GamePanel  extends JPanel{
 		this.btnCardSillySophon = new JButton("人造智子");
 		this.btnCardSillySophon.setContentAreaFilled(false);
 		this.btnCardSillySophon.setBounds(1070, 60, 150, 30);
+		this.btnCardSillySophon.setBorderPainted(false);
+		this.btnCardSillySophon.setIcon(new ImageIcon("images/240.png"));
 		this.btnCardSillySophon.setForeground(Color.YELLOW);
 		this.btnCardSillySophon.addMouseListener(new CardSillySophonListener());
 		this.add(btnCardSillySophon);
 		
 		this.btnCardWholeBlock = new JButton("全局黑域");
 		this.btnCardWholeBlock.setContentAreaFilled(false);
+		this.btnCardWholeBlock.setBorderPainted(false);
+		this.btnCardWholeBlock.setIcon(new ImageIcon("images/288.png"));
 		this.btnCardWholeBlock.setBounds(1070, 90, 150, 30);
 		this.btnCardWholeBlock.setForeground(Color.YELLOW);
 		this.btnCardWholeBlock.addMouseListener(new CardWholeBlockListener());
@@ -251,6 +263,8 @@ public class GamePanel  extends JPanel{
 		
 		this.btnCardPatialBlock = new JButton("局部黑域");
 		this.btnCardPatialBlock.setContentAreaFilled(false);
+		this.btnCardPatialBlock.setBorderPainted(false);
+		this.btnCardPatialBlock.setIcon(new ImageIcon("images/36.png"));
 		this.btnCardPatialBlock.setBounds(1070, 120, 150, 30);
 		this.btnCardPatialBlock.setForeground(Color.YELLOW);
 		this.btnCardPatialBlock.addMouseListener(new CardPatialBlockListener());
@@ -258,6 +272,8 @@ public class GamePanel  extends JPanel{
 		
 		this.btnCardNoBroadcasting = new JButton("电波干扰");
 		this.btnCardNoBroadcasting.setContentAreaFilled(false);
+		this.btnCardNoBroadcasting.setBorderPainted(false);
+		this.btnCardNoBroadcasting.setIcon(new ImageIcon("images/268.png"));
 		this.btnCardNoBroadcasting.setBounds(1070, 150, 150, 30);
 		this.btnCardNoBroadcasting.setForeground(Color.YELLOW);
 		this.btnCardNoBroadcasting.addMouseListener(new CardNoBroadcastingListener());
@@ -265,6 +281,8 @@ public class GamePanel  extends JPanel{
 		
 		this.btnCardTechPotion = new JButton("科技革命");
 		this.btnCardTechPotion.setContentAreaFilled(false);
+		this.btnCardTechPotion.setBorderPainted(false);
+		this.btnCardTechPotion.setIcon(new ImageIcon("images/20.png"));
 		this.btnCardTechPotion.setBounds(1070, 180, 150, 30);
 		this.btnCardTechPotion.setForeground(Color.YELLOW);
 		this.btnCardTechPotion.addMouseListener(new CardTechPotionListener());
@@ -272,6 +290,8 @@ public class GamePanel  extends JPanel{
 		
 		this.btnCardResourcePotion = new JButton("资源爆发");
 		this.btnCardResourcePotion.setContentAreaFilled(false);
+		this.btnCardResourcePotion.setBorderPainted(false);
+		this.btnCardResourcePotion.setIcon(new ImageIcon("images/112.png"));
 		this.btnCardResourcePotion.setBounds(1070, 210, 150, 30);
 		this.btnCardResourcePotion.setForeground(Color.YELLOW);
 		this.btnCardResourcePotion.addMouseListener(new CardResourcePotionListener());
@@ -279,13 +299,17 @@ public class GamePanel  extends JPanel{
 		
 		this.btnCardResourceGambling = new JButton("资源赌博");
 		this.btnCardResourceGambling.setContentAreaFilled(false);
+		this.btnCardResourceGambling.setBorderPainted(false);
+		this.btnCardResourceGambling.setIcon(new ImageIcon("images/16.png"));
 		this.btnCardResourceGambling.setBounds(1070, 240, 150, 30);
 		this.btnCardResourceGambling.setForeground(Color.YELLOW);
 		this.btnCardResourceGambling.addMouseListener(new CardResourceGamblingListener());
 		this.add(btnCardResourceGambling);
 		
-		this.btnPriviledgeGetRole = new JButton("特权");
+		this.btnPriviledgeGetRole = new JButton("身份探知");
 		this.btnPriviledgeGetRole.setContentAreaFilled(false);
+		this.btnPriviledgeGetRole.setBorderPainted(false);
+		this.btnPriviledgeGetRole.setIcon(new ImageIcon("images/164.png"));
 		this.btnPriviledgeGetRole.setBounds(1070, 270, 150, 30);
 		this.btnPriviledgeGetRole.setForeground(Color.YELLOW);
 		this.btnPriviledgeGetRole.addMouseListener(new PriviledgeGetRoleListener());
@@ -345,7 +369,7 @@ public class GamePanel  extends JPanel{
 
 	@Override
 	public void paintComponent(Graphics g) {
-		Image IMG_MAIN = new ImageIcon("images/gamebg.jpg").getImage();
+		Image IMG_MAIN = new ImageIcon("images/sky5.jpg").getImage();
 		g.drawImage(IMG_MAIN, 0, 0, 1158, 650, null);
 	}
 	
@@ -424,7 +448,7 @@ public class GamePanel  extends JPanel{
 		public void mouseEntered(MouseEvent e) {
 			btnCardSophon.setLocation(x-40, y);
 			btnCardSillySophon.setLocation(x-10, y+30);
-			promptLabels[0].setBounds(rec.x-prompts[0].getIconWidth()-40,rec.y,prompts[0].getIconWidth(),prompts[0].getIconHeight());
+			promptLabels[0].setBounds(rec.x-prompts[0].getIconWidth()-15,rec.y,prompts[0].getIconWidth(),prompts[0].getIconHeight());
 			promptLabels[0].setVisible(true);
 			add(promptLabels[0]);
 			repaint();
@@ -473,7 +497,7 @@ public class GamePanel  extends JPanel{
 			btnCardSophon.setLocation(x-10, y-30);
 			btnCardSillySophon.setLocation(x-40, y);
 			btnCardWholeBlock.setLocation(x-10, y+30);
-			promptLabels[1].setBounds(rec.x-prompts[1].getIconWidth()-40,rec.y,prompts[1].getIconWidth(),prompts[1].getIconHeight());
+			promptLabels[1].setBounds(rec.x-prompts[1].getIconWidth()-15,rec.y,prompts[1].getIconWidth(),prompts[1].getIconHeight());
 			promptLabels[1].setVisible(true);
 			add(promptLabels[1]);
 			repaint();
@@ -520,7 +544,7 @@ public class GamePanel  extends JPanel{
 			btnCardSillySophon.setLocation(x-10, y-30);
 			btnCardWholeBlock.setLocation(x-40, y);
 			btnCardPatialBlock.setLocation(x-10, y+30);
-			promptLabels[2].setBounds(rec.x-prompts[2].getIconWidth()-40,rec.y,prompts[2].getIconWidth(),prompts[2].getIconHeight());
+			promptLabels[2].setBounds(rec.x-prompts[2].getIconWidth()-15,rec.y,prompts[2].getIconWidth(),prompts[2].getIconHeight());
 			promptLabels[2].setVisible(true);
 			add(promptLabels[2]);
 			repaint();
@@ -570,7 +594,7 @@ public class GamePanel  extends JPanel{
 			btnCardWholeBlock.setLocation(x-10, y-30);
 			btnCardPatialBlock.setLocation(x-40, y);
 			btnCardNoBroadcasting.setLocation(x-10, y+30);
-			promptLabels[3].setBounds(rec.x-prompts[3].getIconWidth()-40,rec.y,prompts[3].getIconWidth(),prompts[3].getIconHeight());
+			promptLabels[3].setBounds(rec.x-prompts[3].getIconWidth()-15,rec.y,prompts[3].getIconWidth(),prompts[3].getIconHeight());
 			promptLabels[3].setVisible(true);
 			add(promptLabels[3]);
 			repaint();
@@ -615,7 +639,7 @@ public class GamePanel  extends JPanel{
 			btnCardPatialBlock.setLocation(x-10, y-30);
 			btnCardNoBroadcasting.setLocation(x-40, y);
 			btnCardTechPotion.setLocation(x-10, y+30);
-			promptLabels[4].setBounds(rec.x-prompts[4].getIconWidth()-40,rec.y,prompts[4].getIconWidth(),prompts[4].getIconHeight());
+			promptLabels[4].setBounds(rec.x-prompts[4].getIconWidth()-15,rec.y,prompts[4].getIconWidth(),prompts[4].getIconHeight());
 			promptLabels[4].setVisible(true);
 			add(promptLabels[4]);
 			repaint();
@@ -664,7 +688,7 @@ public class GamePanel  extends JPanel{
 			btnCardNoBroadcasting.setLocation(x-10, y-30);
 			btnCardTechPotion.setLocation(x-40, y);
 			btnCardResourcePotion.setLocation(x-10, y+30);
-			promptLabels[5].setBounds(rec.x-prompts[5].getIconWidth()-40,rec.y,prompts[5].getIconWidth(),prompts[5].getIconHeight());
+			promptLabels[5].setBounds(rec.x-prompts[5].getIconWidth()-15,rec.y,prompts[5].getIconWidth(),prompts[5].getIconHeight());
 			promptLabels[5].setVisible(true);
 			add(promptLabels[5]);
 			repaint();
@@ -709,7 +733,7 @@ public class GamePanel  extends JPanel{
 			btnCardTechPotion.setLocation(rec.x-10, rec.y-30);
 			btnCardResourcePotion.setLocation(rec.x-40, rec.y);
 			btnCardResourceGambling.setLocation(rec.x-10,rec. y+30);
-			promptLabels[6].setBounds(rec.x-prompts[6].getIconWidth()-40,rec.y,prompts[6].getIconWidth(),prompts[6].getIconHeight());
+			promptLabels[6].setBounds(rec.x-prompts[6].getIconWidth()-15,rec.y,prompts[6].getIconWidth(),prompts[6].getIconHeight());
 			promptLabels[6].setVisible(true);
 			add(promptLabels[6]);
 			repaint();
@@ -754,7 +778,7 @@ public class GamePanel  extends JPanel{
 			btnCardResourcePotion.setLocation(x-10, y-30);
 			btnCardResourceGambling.setLocation(x-40, y);
 			btnPriviledgeGetRole.setLocation(x-10, y+30);
-			promptLabels[7].setBounds(rec.x-prompts[7].getIconWidth()-40,rec.y,prompts[7].getIconWidth(),prompts[7].getIconHeight());
+			promptLabels[7].setBounds(rec.x-prompts[7].getIconWidth()-15,rec.y,prompts[7].getIconWidth(),prompts[7].getIconHeight());
 			promptLabels[7].setVisible(true);
 			add(promptLabels[7]);
 			repaint();
@@ -796,7 +820,7 @@ public class GamePanel  extends JPanel{
 		public void mouseEntered(MouseEvent e) {
 			btnCardResourceGambling.setLocation(x-10, y-30);
 			btnPriviledgeGetRole.setLocation(x-40, y);
-			promptLabels[8].setBounds(rec.x-prompts[8].getIconWidth()-40,rec.y,prompts[8].getIconWidth(),prompts[8].getIconHeight());
+			promptLabels[8].setBounds(rec.x-prompts[8].getIconWidth()-15,rec.y,prompts[8].getIconWidth(),prompts[8].getIconHeight());
 			promptLabels[8].setVisible(true);
 			add(promptLabels[8]);
 			repaint();
