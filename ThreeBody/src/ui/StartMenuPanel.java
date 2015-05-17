@@ -59,7 +59,6 @@ public class StartMenuPanel extends JPanel{
 		this.btnOption.setBounds(380, 92, 150, 150);
 		this.btnOption.setBorderPainted(false);
 		this.btnOption.addMouseListener(new OptionListener());
-
 		this.add(btnOption);
 
 		Image aboutUs = new ImageIcon("images/AboutUs.png").getImage();
