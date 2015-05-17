@@ -76,10 +76,11 @@ public class Player implements Serializable {
     	foundCoordinates = new HashMap<Player, Coordinate>();
     	foundRoles = new HashMap<Player, Role>();
     	// make四个都为UNKNOWN的坐标
-    	int uk = Coordinate.UNKNOWN;
-    	int[] uks = new int[Coordinate.DIMENSIONS];
-    	Arrays.fill(uks, uk);
+    	
     	for(Player player : GameDTO.getInstance().getPlayers()){
+    		int uk = Coordinate.UNKNOWN;
+        	int[] uks = new int[Coordinate.DIMENSIONS];
+        	Arrays.fill(uks, uk);
     		if(player != this){
     			foundCoordinates.put(player, new Coordinate(uks));
     			foundRoles.put(player, null);
