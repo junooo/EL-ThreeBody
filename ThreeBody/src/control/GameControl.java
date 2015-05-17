@@ -58,17 +58,19 @@ public class GameControl {
 		gameDTO.depositHistoryOperation(operation);
 		// make information
 		String id = gameDTO.getUser().getAccount().getId();
-		if (operation
-				.getOperator()
-				.equals(id)) {
+		if (id.equals(operation.getOperator())) {
 			if (operation.toOperator() != null) {
+				// TODO TEST
+				System.out.println("!!!!!!!!!!!put in as toOperator");
 				gameDTO.depositInformation(new Information(
 						operation.getOperator(),
 						operation.getReceiver(), 
 						operation.toOperator()));
 			}
-		} else if (operation.getReceiver().equals(id)) {
+		} else if (id.equals(operation.getReceiver())) {
 			if (operation.toReceiver() != null) {
+				// TODO TEST
+				System.out.println("!!!!!!!!!!!put in as toReceiver");
 				gameDTO.depositInformation(new Information(
 						operation.getOperator(),
 						operation.getReceiver(), 
@@ -76,6 +78,8 @@ public class GameControl {
 			}
 		} else {
 			if (operation.toOthers() != null) {
+				// TODO TEST
+				System.out.println("!!!!!!!!!!!put in as toOther");
 				gameDTO.depositInformation(new Information(
 						operation.getOperator(),
 						operation.getReceiver(), 

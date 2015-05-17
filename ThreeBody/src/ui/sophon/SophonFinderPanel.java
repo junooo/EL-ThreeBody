@@ -14,6 +14,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import ui.FrameUtil;
 import model.Information;
 import model.Player;
 import model.card.SillySophon;
@@ -145,12 +146,12 @@ public class SophonFinderPanel extends JPanel{
 		}
 		private void useSophon() {
 			if(sophonFinderFrame.getTitle().equals("智子")){
-				Sophon sophon  =new Sophon(user.getAccount().getId(), (String)select.getSelectedItem(), coordinate);
-				CardUse cardSophon = new CardUse(user.getAccount().getId(), (String)select.getSelectedItem(), sophon);
-				GameControl.getInstance().doOperation(cardSophon);
-//				ArrayList<Information> broadcasts = (ArrayList<Information>) GameDTO.getInstance().getInformations();
-//				result=broadcasts.get(broadcasts.size()-1).toString();
-//				resultPanel.setResult(result);
+				Sophon sophon  =new Sophon(user.getAccount().getId(), select.getSelectedItem().toString(), coordinate);
+				CardUse cardSophon = new CardUse(user.getAccount().getId(), select.getSelectedItem().toString(), sophon);
+				gameControl.doOperation(cardSophon);
+				String[] broadcasts = GameDTO.getInstance().getInformations();
+				result = broadcasts[broadcasts.length-1];
+				FrameUtil.sendMessageByFrame("结果", result);
 			}else if(sophonFinderFrame.getTitle().equals("人造智子")){
 				SillySophon sillySophon  =new SillySophon(user.getAccount().getId(), select.getSelectedItem().toString(), coordinate);
 				CardUse cardSophon = new CardUse(user.getAccount().getId(), select.getSelectedItem().toString(), sillySophon);

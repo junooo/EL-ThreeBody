@@ -21,8 +21,12 @@ import javax.swing.JPanel;
 
 import model.Coordinate;
 import model.Player;
+import model.card.Card;
+import model.card.ResourcePotion;
 import model.card.TechPotion;
+import model.card.WholeBlock;
 import model.operation.CardUse;
+import model.operation.Operation;
 import model.role.Role;
 import ui.FrameUtil;
 import ui.InformFrame;
@@ -321,6 +325,16 @@ public class GamePanel  extends JPanel{
 				}else{
 					System.out.println("--不可以用特权");
 				}
+				if(player.isBroadcastable()){
+					System.out.println("--可以用广播");
+				}else{
+					System.out.println("--不能用广播");
+				}
+				if(player.isLost()){
+					System.out.println("--已死");
+				}else{
+					System.out.println("--存活中");
+				}
 				System.out.println("----"+"发现坐标：");
 				for(Entry<Player,Coordinate> entry:player.getFoundCoordinates().entrySet()){
 					System.out.println("----"+entry.getKey().getAccount().getId()+":"+entry.getValue());
@@ -440,7 +454,10 @@ public class GamePanel  extends JPanel{
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			FrameUtil.sendMessageByFrame("全局黑域", "保护所有坐标一轮");
-			
+			String id = AccountDTO.getInstance().getId();
+			Card wholeBlock = new WholeBlock(id, null);
+			Operation cardUse = new CardUse(id,null,wholeBlock);
+			GameControl.getInstance().doOperation(cardUse);
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
@@ -625,7 +642,10 @@ public class GamePanel  extends JPanel{
 		Rectangle rec = btnCardResourcePotion.getBounds();
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			user.setResource(user.getResource()+10);
+			String id = AccountDTO.getInstance().getId();
+			Card resourcePotion = new ResourcePotion(id, null);
+			Operation cardUse = new CardUse(id,null,resourcePotion);
+			GameControl.getInstance().doOperation(cardUse);
 			repaint();
 		}
 		@Override

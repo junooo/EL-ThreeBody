@@ -20,8 +20,8 @@ public abstract class Card implements Serializable{
     protected int lifetime;
        
     //ID
-    protected  String operator;
-    protected  String receiver;
+    protected String operator;
+    protected String receiver;
     
     public Card(String operator,String receiver){
     	this.operator = operator;

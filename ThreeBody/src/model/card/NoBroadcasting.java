@@ -30,12 +30,17 @@ public class NoBroadcasting extends Card{
 		this.lifetime=cardList.get(0).getLifetime();
 		this.requiredResource=cardList.get(0).getRequiredResource();
 		this.requiredTechPoint=cardList.get(0).getRequiredTechPoint();
+		
+		this.name = "电波干扰";
 	}
 
 	@Override
 	public List<Operation> process(List<Operation> subOperations) {
 		
 		GameDTO dto=GameDTO.getInstance();
+		
+		//TODO
+		System.out.println("!!!!!!!!!!receiver="+this.receiver);
 		
 		//get the  receiver
 		Player pReceiver = this.findReceiver(dto);
@@ -45,7 +50,7 @@ public class NoBroadcasting extends Card{
 		subOperations.add(rc);
 		
 		//将receiver的broadcast设为false，在lifetime轮中
-		pReceiver.setBroadcast(false);
+		pReceiver.setBroadcastable(false);
 		
 		return subOperations;
 	}

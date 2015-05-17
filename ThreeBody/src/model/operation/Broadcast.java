@@ -39,19 +39,15 @@ public class Broadcast extends Operation implements Operable{
 	}
 	
 	public String toOperator(){
-		
-		return  this.operator+"发布了广播";
-		
+		return this.operator+"发布了广播:"+coordinate.toString();
 	}
 	
 	public String toReceiver (){
-		
-		return null;
+		return "有人发了广播:"+coordinate.toString();
 	}
 	
 	public String toOthers(){
-		
-		return null;
+		return "有人发了广播:"+coordinate.toString();
 	}
 
 }

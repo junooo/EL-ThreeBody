@@ -1,12 +1,10 @@
 package ui.game;
 
-import java.awt.Component;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.List;
 
 import javax.swing.ImageIcon;
@@ -15,8 +13,13 @@ import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import ui.FrameUtil;
+import control.GameControl;
+import model.Coordinate;
 import model.Player;
+import model.operation.Broadcast;
+import model.operation.Operation;
+import ui.FrameUtil;
+import dto.AccountDTO;
 import dto.GameDTO;
 
 public class BroadcastPanel extends JPanel {
@@ -79,17 +82,12 @@ public class BroadcastPanel extends JPanel {
 		select.setFont(new Font("宋体", Font.PLAIN, 30));
 		select.setBounds(100,105, 60, 30);
 		//
-		if (players != null) {
-			for (int i = 0; i < players.size(); i++) {
-				if (players.get(i).equals(user)) {
-					continue;
-				} else {
-					select.addItem(players.get(i).getAccount().getId());
-				}
+		for (int i = 0; i < players.size(); i++) {
+			if (players.get(i).equals(user)) {
+				continue;
+			} else {
+				select.addItem(players.get(i).getAccount().getId());
 			}
-		}else{
-			select.addItem("aa");
-			select.addItem("bb");
 		}
 		this.add(select);
 	}
@@ -105,10 +103,15 @@ public class BroadcastPanel extends JPanel {
 		@Override
 		public void mouseReleased(MouseEvent e) {
 			try {
-				int co1=Integer.parseInt(btnCoordinateOne.getText());
-				int co2=Integer.parseInt(btnCoordinateTwo.getText());
-				int co3=Integer.parseInt(btnCoordinateThree.getText());
-				int co4=Integer.parseInt(btnCoordinateFour.getText());
+				int[] sequence = new int[4];
+				sequence[0] = Integer.parseInt(btnCoordinateOne.getText());
+				sequence[1] = Integer.parseInt(btnCoordinateTwo.getText());
+				sequence[2] = Integer.parseInt(btnCoordinateThree.getText());
+				sequence[3] = Integer.parseInt(btnCoordinateFour.getText());
+				Coordinate coordinate = new Coordinate(sequence);
+				String id = AccountDTO.getInstance().getId();
+				Operation broadcast = new Broadcast(id,null,coordinate);
+				GameControl.getInstance().doOperation(broadcast);
 			} catch (Exception exception) {
 				FrameUtil.sendMessageByFrame("Error", "坐标输入错误");
 			}
@@ -122,16 +125,4 @@ public class BroadcastPanel extends JPanel {
 		g.drawImage(IMG_MAIN, 0, 0,695,215, null);
 	}
 	
-	private void ableToPress(Component c) {
-		c.setEnabled(isAbleToPress);
-	}
-	
-	private void unableToPress(Component c) {
-		isAbleToPress = false;
-		c.setEnabled(isAbleToPress);
-	}
-	
-	private void changeIsAbleToPress(Component c) {
-		c.setEnabled(!c.isEnabled());
-	}
 }
