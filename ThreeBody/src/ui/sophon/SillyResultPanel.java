@@ -11,6 +11,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import control.GameControl;
+import dto.AccountDTO;
+import model.card.SillySophon;
+import model.operation.CardUse;
 import ui.FrameUtil;
 
 public class SillyResultPanel extends JPanel{
@@ -25,12 +29,23 @@ public class SillyResultPanel extends JPanel{
 	int coordinateOne;
 	int coordinateTwo;
 	int coordinateThree;
+	int[] possibleList;
+	int position;
+	String receiverName;
 	
-	public SillyResultPanel(JFrame sophonFinder) {
+	public SillyResultPanel(JFrame sophonFinder,int[] possibleList,String receiverName,int position) {
 		this.setLayout(null);
 		this.sophonFinder=sophonFinder;
 		resultPanel = new ResultPanel(sophonFinder);
 		this.initComonent();
+		
+		this.receiverName = receiverName;
+		
+		this.possibleList = possibleList;
+		this.position = position;
+		coordinateOne = possibleList[0];
+		coordinateTwo = possibleList[1];
+		coordinateThree = possibleList[2];
 	}
 	
 	private void initComonent() {
@@ -88,9 +103,15 @@ public class SillyResultPanel extends JPanel{
 		@Override
 		public void mouseReleased(MouseEvent e) {
 			setVisible(false);
-			sophonFinder.setContentPane(resultPanel);
-			resultPanel.setVisible(true);	
-			sophonFinder.validate();
+			// TODO resultPanel
+//			sophonFinder.setContentPane(resultPanel);
+//			resultPanel.setVisible(true);	
+//			sophonFinder.validate();
+			String id = AccountDTO.getInstance().getId();
+			SillySophon ss = new SillySophon(id, receiverName, position, possibleList, possibleList[coordinate]);
+			CardUse cardUse = new CardUse(id, receiverName, ss);
+			GameControl.getInstance().doOperation(cardUse);
+			
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {
@@ -106,8 +127,6 @@ public class SillyResultPanel extends JPanel{
 		public void mouseClicked(MouseEvent e) {
 
 		}
-		
-		
 		@Override
 		public void mousePressed(MouseEvent e) {
 			
@@ -132,8 +151,6 @@ public class SillyResultPanel extends JPanel{
 		public void mouseClicked(MouseEvent e) {
 
 		}
-		
-		
 		@Override
 		public void mousePressed(MouseEvent e) {
 			
@@ -158,8 +175,6 @@ public class SillyResultPanel extends JPanel{
 		public void mouseClicked(MouseEvent e) {
 
 		}
-		
-		
 		@Override
 		public void mousePressed(MouseEvent e) {
 			
@@ -192,12 +207,12 @@ public class SillyResultPanel extends JPanel{
 		if(cooperate==2){
 			resultThree.setIcon(new ImageIcon("images/select.png"));
 		}
-		
 	}
+
 	public void paintComponent(Graphics g) {
 		Image img = new ImageIcon("images/img1.jpg").getImage();
 		g.drawImage(img, 0, 0, null);
-		FrameUtil.drawCoordinate(164, 323, 558, g);
-		}
-	
+		FrameUtil.drawCoordinate(coordinateOne, coordinateTwo, coordinateThree, g);
+	}
+
 }

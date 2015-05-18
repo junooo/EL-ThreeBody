@@ -65,10 +65,14 @@ public class Coordinate implements Serializable{
      * @param position 坐标的第几个
      * @return 如果没有被保护，返回正常的坐标，否则返回PROTECTED
      */
-    public int getCoordinateElement(int position){
+    public int probeCoordinateElement(int position){
     	if(isProtected[position]){
     		return PROTECTED;
     	}
+    	return sequence[position];
+    }
+    
+    public int getCoordinateElement(int position){
     	return sequence[position];
     }
     

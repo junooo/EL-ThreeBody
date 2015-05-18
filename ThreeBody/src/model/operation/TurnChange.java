@@ -3,6 +3,7 @@ package model.operation;
 import java.util.LinkedList;
 import java.util.List;
 
+import control.GameControl;
 import model.Player;
 import dto.GameDTO;
 
@@ -15,8 +16,6 @@ public class TurnChange extends Operation implements Operable{
 
 	public TurnChange(String operator, String receiver) {
 		super(operator,receiver);
-		this.operator = null;
-		this.receiver = null;
 	}
 
 	@Override
@@ -35,7 +34,7 @@ public class TurnChange extends Operation implements Operable{
 		//2.得到玩家的数量
 		int playerNum = dto.getPlayers().size();
 
-		//3.将whoseTurn设为从服务器端得到的当前玩家
+		//3.将whoseTurn设为下一个没输的玩家
 		for(int i = index+1 % playerNum;;i++){
 			if(i == playerNum){
 				i = 0;
@@ -61,21 +60,29 @@ public class TurnChange extends Operation implements Operable{
 				TechChange.Type.INCREASE, 
 				whoseTurn.getRole().getTchDevelopSpeed()));
 		
+		// 如果刚好轮到我方，开启时钟线程
+		if(dto.getUser() == dto.getWhoseTurn()){
+			GameControl.getInstance().startCountdown();
+		}
+		
 		return subOperations;
 	}
 	
 	public String toOperator(){
-		
-		return null;
+		if(GameDTO.getInstance().getBout() == 0){
+			return null;
+		}
+		return operator+"回合结束";
 	}
 	
 	public String toReceiver(){
-		
 		return null;
 	}
 	
 	public String toOthers(){
-		
+		if(GameDTO.getInstance().getBout() == 0){
+			return null;
+		}
 		return "回合变更";
 	}
 

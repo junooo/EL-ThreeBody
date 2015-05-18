@@ -105,6 +105,8 @@ public class MainControl {
 		
 		currentPanel.setVisible(false);
 		this.gamePanel = new GamePanel(this, numOfPlayers, gameControl);
+		
+		gameControl.setPanel((GamePanel)gamePanel);
 		currentPanel = this.gamePanel;
 		frame.setContentPane(currentPanel);
 		currentPanel.setVisible(true);

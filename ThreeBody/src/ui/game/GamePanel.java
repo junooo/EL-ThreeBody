@@ -54,7 +54,7 @@ public class GamePanel  extends JPanel{
 	private JButton btnCardResourcePotion;
 	private JButton btnCardResourceGambling;
 	private JButton btnPriviledgeGetRole;
-	private boolean isAbleToPress = true;
+	private boolean isAbleToPress;
 	private JButton btnBroadcast;
 	private JButton btnHistory;
 	private JButton btnMessage;
@@ -157,6 +157,9 @@ public class GamePanel  extends JPanel{
 		}
 	}
 	
+	/*
+	 * 鼠标移到星球上显示我方已知的信息
+	 */
 	private void coordinateShow(int i){
 		Player pi = this.enemies.get(i);
 		String role = user.getFoundRoles().get(pi) == null ? "未明" : pi.getRole().toString();
@@ -890,8 +893,7 @@ public class GamePanel  extends JPanel{
 	class EndListener extends MouseAdapter {
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			Operation turnChange = new TurnChange(null,null);
-			GameControl.getInstance().doOperation(turnChange);
+			GameControl.getInstance().turnChange();
 		}
 	}
 
@@ -907,5 +909,12 @@ public class GamePanel  extends JPanel{
      */
     public void conquer(){
         
+    }
+
+    /*
+     * getters and setters
+     */
+    public JPanel getCountdownPanel(){
+    	return this.panelCountDown;
     }
 }
