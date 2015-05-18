@@ -9,7 +9,11 @@ import javax.swing.JPanel;
 import model.Information;
 import model.operation.Operable;
 import model.operation.Operation;
+import model.operation.TurnChange;
 import server.interfaces.RMIGame;
+import ui.FrameUtil;
+import ui.game.GamePanel;
+import dto.AccountDTO;
 import dto.GameDTO;
 
 /*
@@ -21,6 +25,7 @@ public class GameControl {
 	private static GameControl instance;
 	private RMIGame rmig;
 	private GameDTO gameDTO;
+	private GamePanel gamePanel;
 	
 	public static GameControl getInstance(){
 		return instance;
@@ -28,6 +33,11 @@ public class GameControl {
 	
 	public static void init(RMIGame rmig){
 		instance = new GameControl(rmig);
+	}
+	
+	public void setPanel(GamePanel gamePanel){
+		this.gamePanel = gamePanel;
+		new RefreshPanelThread().start();
 	}
 
 	private GameControl(RMIGame rmig) {
@@ -46,6 +56,40 @@ public class GameControl {
 		new SyncThread().start();
 	}
 	
+	public void startCountdown(){
+		new TimeThread().start();
+	}
+	
+	public void gameOver() {
+		try {
+			upload();
+			gameDTO.setGameOver(true);
+			switch(rmig.exitGame(gameDTO.getUser(), true)){
+			case SUCCESS:
+				System.out.println("exit game successfully");
+				break;
+			default:
+				System.out.println("exit game unsuccessfully");
+			}
+			FrameUtil.sendMessageByFrame("游戏结束", "游戏结束，5秒后转跳");
+			System.out.println("游戏结束，5秒后转跳");
+			new Thread(new Runnable(){
+				public void run(){
+					try {
+						Thread.sleep(5000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					System.out.println("转跳前");
+					MainControl.getInstance().toLobby();
+					System.out.println("转跳后");
+				}
+			}).start();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public synchronized void doOperation(Operation operation){
 		gameDTO.depositUnSyncOperation(operation);
 		List<Operation> operations = new LinkedList<Operation>();
@@ -53,6 +97,9 @@ public class GameControl {
 		handleOperations(operations);
 	}
 	
+	/*
+	 * 顺序为先放入消息后执行,TurnChange依赖于此
+	 */
 	private List<Operation> handleOperation(Operation operation){
 		// 加到历史里面
 		gameDTO.depositHistoryOperation(operation);
@@ -62,6 +109,7 @@ public class GameControl {
 			if (operation.toOperator() != null) {
 				// TODO TEST
 				System.out.println("!!!!!!!!!!!put in as toOperator");
+				System.out.println(operation.toOperator());
 				gameDTO.depositInformation(new Information(
 						operation.getOperator(),
 						operation.getReceiver(), 
@@ -71,6 +119,7 @@ public class GameControl {
 			if (operation.toReceiver() != null) {
 				// TODO TEST
 				System.out.println("!!!!!!!!!!!put in as toReceiver");
+				System.out.println(operation.toReceiver());
 				gameDTO.depositInformation(new Information(
 						operation.getOperator(),
 						operation.getReceiver(), 
@@ -80,6 +129,7 @@ public class GameControl {
 			if (operation.toOthers() != null) {
 				// TODO TEST
 				System.out.println("!!!!!!!!!!!put in as toOther");
+				System.out.println(operation.toOthers());
 				gameDTO.depositInformation(new Information(
 						operation.getOperator(),
 						operation.getReceiver(), 
@@ -111,19 +161,20 @@ public class GameControl {
 		
 		@Override
 		public void run() {
-			while(!gameDTO.isGameOver()){
-				try {
+			try {
+				while(!gameDTO.isGameOver()){
 					upload();
 					// handle 同步过来的人家的 Operable
 					handleOperations(rmig.downloadOperation(id));
-				} catch (RemoteException e) {
-					e.printStackTrace();
+					try {
+						Thread.sleep(3000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
 				}
-				try {
-					Thread.sleep(6000);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+			} catch (RemoteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			} //while
 		} //run
 	} // syncThread
@@ -134,32 +185,60 @@ public class GameControl {
 		gameDTO.setSynced();
 	}
 		
-	public class TimeThread extends Thread{
-
+	private class TimeThread extends Thread{
 		private int seconds;
 		private JPanel countDown;
 		
-		TimeThread(JPanel  countDown){
-			this.countDown= countDown;
-			this.seconds=60;
-		}
-		
-		public int getSecond(){
-			return seconds;
+		TimeThread(){
+			countDown = gamePanel.getCountdownPanel();
+			this.seconds = 61;
 		}
 		
 		@Override
 		public void run() {
-			while(seconds>0){
+			while(seconds > 0 && gameDTO.getUser() == gameDTO.getWhoseTurn() && !gameDTO.isGameOver()){
 				try {
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				countDown.repaint();
 				seconds--;
+				gameDTO.setCountdowns(seconds);
+				countDown.repaint();
+			}
+			gameDTO.setCountdowns(0);
+			countDown.repaint();
+			turnChange();
+		}
+	}
+	
+	/**
+	 * 玩家结束使用这个方法，不用doOperation方法
+	 */
+	public synchronized void turnChange(){
+		// 这个判断加上synchronized可以防止玩家按 和 倒计时线程冲突
+		if(gameDTO.getUser() == gameDTO.getWhoseTurn()){
+			Operation operation = new TurnChange(AccountDTO.getInstance().getId(),null);
+			gameDTO.depositUnSyncOperation(operation);
+			List<Operation> operations = new LinkedList<Operation>();
+			operations.add(operation);
+			handleOperations(operations);
+			
+		}
+	}
+
+	private class RefreshPanelThread extends Thread{
+		public void run(){
+			while(!gameDTO.isGameOver()){
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				gamePanel.refresh();
 			}
 		}
 	}
+
 	
 }

@@ -2,6 +2,7 @@ package dto;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 import model.Information;
 import model.Player;
@@ -33,6 +34,11 @@ public class GameDTO {
      * 轮次，所有玩家均完成一次操作即为增加一轮
      */
     private int round;
+    
+    /*
+     * 倒计时
+     */
+    private int countdowns;
  
     /*
      * 本地玩家
@@ -108,6 +114,16 @@ public class GameDTO {
 		return players;
 	}
 	
+	public Player findPlayerByID(String id){
+		Player result = null;
+		for (Player player : getPlayers()) {
+			if (player.getAccount().getId().equals(id)) {
+				result = player;
+			}
+		}
+		return result;
+	}
+	
 	public int getBout() {
 		return bout;
 	}
@@ -159,4 +175,13 @@ public class GameDTO {
 	public List<Operation> getUnSyncOperations() {
 		return unSyncOperations;
 	}
+
+	public int getCountdowns() {
+		return countdowns;
+	}
+
+	public void setCountdowns(int countdowns) {
+		this.countdowns = countdowns;
+	}
+
 }

@@ -14,11 +14,11 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import model.Account;
 import ui.FrameUtil;
 import ui.InformFrame;
 import control.AccountControl;
 import control.MainControl;
+import dto.AccountDTO;
 
 
 
@@ -40,12 +40,12 @@ public class AccountPanel extends JPanel{
 	private JButton btnReturn;
 	private JButton btnLogout;
 	private JButton btnRevisePW;
-	private Account account;
+	private AccountDTO accountDTO;
 	private AccountControl accountControl;
 	private MainControl mainControl;
 	public AccountPanel(MainControl mainControl, String id,AccountControl accountControl){
 		this.setLayout(null);
-		this.account=new Account(id);
+		this.accountDTO = AccountDTO.getInstance();
 		this.mainControl=mainControl;
 		this.accountControl=accountControl;
 		init();
@@ -60,13 +60,13 @@ public class AccountPanel extends JPanel{
 		labelId.setBounds(440,200,160,60);
 		labelId.setFont(new Font("宋体",Font.PLAIN,60));
 		labelId.setForeground(Color.YELLOW);
-		labelId.setText(account.getId());
+		labelId.setText(accountDTO.getId());
 		this.add(labelId);
 		
 		labelHead = new JLabel();
 		labelHead.setBounds(600,120,150,150);
-		if(account.getHead()!=null){
-			Image headImage=account.getHead();
+		if(accountDTO.getHead()!=null){
+			Image headImage=accountDTO.getHead();
 			headImage=headImage.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
 			labelHead.setIcon(new ImageIcon(headImage));
 		}else{
@@ -86,7 +86,7 @@ public class AccountPanel extends JPanel{
 		labelPoint.setBounds(690,300,60,30);
 		labelPoint.setFont(new Font("宋体",Font.PLAIN,30));
 		labelPoint.setForeground(Color.YELLOW);
-		labelPoint.setText(account.getPoint()+"");
+		labelPoint.setText(accountDTO.getPoint()+"");
 		this.add(labelPoint);
 		
 		psRank = new JLabel();
@@ -98,7 +98,7 @@ public class AccountPanel extends JPanel{
 		labelRank.setBounds(690,350,60,30);
 		labelRank.setFont(new Font("宋体",Font.PLAIN,30));
 		labelRank.setForeground(Color.YELLOW);
-		labelRank.setText(account.getRank()+"");
+		labelRank.setText(accountDTO.getRank()+"");
 		this.add(labelRank);;
 		
 		psTotalGames = new JLabel();
@@ -110,7 +110,7 @@ public class AccountPanel extends JPanel{
 		labelTotalGames.setBounds(690,400,60,30);
 		labelTotalGames.setFont(new Font("宋体",Font.PLAIN,30));
 		labelTotalGames.setForeground(Color.YELLOW);
-		labelTotalGames.setText(account.getTotalGames()+"");
+		labelTotalGames.setText(accountDTO.getTotalGames()+"");
 		this.add(labelTotalGames);
 		
 		
@@ -123,7 +123,7 @@ public class AccountPanel extends JPanel{
 		labelWins.setBounds(690,450,60,30);
 		labelWins.setFont(new Font("宋体",Font.PLAIN,30));
 		labelWins.setForeground(Color.YELLOW);
-		labelWins.setText(account.getWins()+"");
+		labelWins.setText(accountDTO.getWins()+"");
 		this.add(labelWins);
 		
 		
@@ -137,7 +137,7 @@ public class AccountPanel extends JPanel{
 		labelLosts.setBounds(690,500,60,30);
 		labelLosts.setFont(new Font("宋体",Font.PLAIN,30));
 		labelLosts.setForeground(Color.YELLOW);
-		labelLosts.setText(account.getLosts()+"");
+		labelLosts.setText(accountDTO.getLosts()+"");
 		this.add(labelLosts);
 		
 		this.btnReturn = new JButton("返回");

@@ -47,7 +47,7 @@ public class StartMenuPanel extends JPanel{
 	
 	private void initComonent() {
 
-		this.btnStartGame = new JButton(new ImageIcon("images/GameStart.png"));
+		this.btnStartGame = new JButton(new ImageIcon("images/GameStart7.gif"));
 		this.btnStartGame.setContentAreaFilled(false);
 		this.btnStartGame.setBounds(523, 120, 260, 260);
 		this.btnStartGame.setBorderPainted(false);
@@ -59,7 +59,6 @@ public class StartMenuPanel extends JPanel{
 		this.btnOption.setBounds(380, 92, 150, 150);
 		this.btnOption.setBorderPainted(false);
 		this.btnOption.addMouseListener(new OptionListener());
-
 		this.add(btnOption);
 
 		Image aboutUs = new ImageIcon("images/AboutUs.png").getImage();
@@ -168,7 +167,7 @@ public class StartMenuPanel extends JPanel{
 	class HelpListener extends MouseAdapter {
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			Media.playSound(Sound.goback);
+			mainControl.toScore(false);
 		}
 	}
 }

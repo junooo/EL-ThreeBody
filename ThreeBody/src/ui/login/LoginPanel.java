@@ -50,11 +50,13 @@ public class LoginPanel extends JPanel{
 		this.btnlogin = new JButton(new ImageIcon("images/login.png"));
 		this.btnlogin.setBounds(220, 220, 80, 40);
 		btnlogin.setContentAreaFilled(false);
+		this.btnlogin.setBorderPainted(false);
 		btnlogin.addMouseListener(new LoginListener());
 		this.add(btnlogin);
 		
 		this.btnlogup = new JButton(new ImageIcon("images/logup.png"));
 		this.btnlogup.setBounds(100, 220, 80, 40);
+		this.btnlogup.setBorderPainted(false);
 		btnlogup.setContentAreaFilled(false);
 		btnlogup.addMouseListener(new LogupListener());
 		this.add(btnlogup);

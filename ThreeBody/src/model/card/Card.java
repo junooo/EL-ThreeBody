@@ -28,8 +28,7 @@ public abstract class Card implements Serializable{
     	this.receiver = receiver;
     }
    
-
-    public abstract List<Operation> process(List<Operation> operations);
+    public abstract List<Operation> process(List<Operation> subOperations);
     
     public String getName() {
 		return name;
@@ -48,23 +47,11 @@ public abstract class Card implements Serializable{
 	}
 	
 	protected Player findOperator(GameDTO dto){
-		Player pOperator=null;
-		for(Player player:dto.getPlayers()){
-			if(player.getAccount().getId().equals(this.operator)){
-				pOperator=player;
-			}
-		}
-		return pOperator;
+		return dto.findPlayerByID(operator);
 	}
 	
 	protected Player findReceiver(GameDTO dto){
-		Player pReceiver=null;
-		for(Player player:dto.getPlayers()){
-			if(player.getAccount().getId().equals(this.receiver)){
-				pReceiver=player;
-			}
-		}
-		return pReceiver;
+		return dto.findPlayerByID(receiver);
 	}
 	
 }

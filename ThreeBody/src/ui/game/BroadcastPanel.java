@@ -45,7 +45,7 @@ public class BroadcastPanel extends JPanel {
 		user = GameDTO.getInstance().getUser();
 		this.initComonent();
 	}
-
+//926,650
 	private void initComonent() {
 		this.btnCoordinateOne = new JTextField();
 		this.btnCoordinateOne.setBounds(12, 16, 159, 80);
@@ -69,21 +69,21 @@ public class BroadcastPanel extends JPanel {
 		
 		this.btnOK = new JButton(new ImageIcon("images/btnbroadcast.png"));
 		this.btnOK.setContentAreaFilled(false);
-		this.btnOK.setBounds(380, 105, 120, 60);
+		this.btnOK.setBounds(380, 95, 120, 60);
 		this.btnOK.setBorderPainted(false);
 		btnOK.addMouseListener(new BroadcastListener());
 		this.add(btnOK);
 		
 		this.btnReturn = new JButton(new ImageIcon("images/btnbroadcastcancel.png"));
 		this.btnReturn.setContentAreaFilled(false);
-		this.btnReturn.setBounds(520, 105, 120, 60);
+		this.btnReturn.setBounds(520, 95, 120, 60);
 		this.btnReturn.setBorderPainted(false);
 		btnReturn.addMouseListener(new ReturnListener());
 		this.add(btnReturn);
 		
 		this.btnConquer = new JButton(new ImageIcon("images/conquer.png"));
 		this.btnConquer.setContentAreaFilled(false);
-		this.btnConquer.setBounds(240, 105, 120, 60);
+		this.btnConquer.setBounds(240, 95, 120, 60);
 		this.btnConquer.setBorderPainted(false);
 		btnConquer.addMouseListener(new ConquerListener());
 		Role roleName = GameDTO.getInstance().getUser().getRole();
@@ -153,7 +153,7 @@ public class BroadcastPanel extends JPanel {
 	
 	@Override
 	public void paintComponent(Graphics g) {
-		Image IMG_MAIN = new ImageIcon("images/img1.jpg").getImage();
+		Image IMG_MAIN = new ImageIcon("images/opaqueHalf.png").getImage();
 		// 绘制游戏界面
 		g.drawImage(IMG_MAIN, 0, 0,695,215, null);
 	}

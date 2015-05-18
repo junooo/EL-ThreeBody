@@ -35,8 +35,8 @@ public class MessageByFramePanel extends JPanel{
 		
 		msgLabel = new JLabel(message,JLabel.CENTER);
 		msgLabel.setForeground(Color.YELLOW);
-		msgLabel.setFont(new Font("宋体", Font.BOLD, 20));
-		msgLabel.setBounds(60,10,180,80);
+		msgLabel.setFont(new Font("汉仪菱心体简", Font.PLAIN, 20));
+		msgLabel.setBounds(0,0,300,200);
 		this.add(msgLabel);
 	}
 	
@@ -48,9 +48,9 @@ public class MessageByFramePanel extends JPanel{
 	}
 	
 	public void paintComponent(Graphics g) {
-		Image IMG_MAIN = new ImageIcon("images/img1.jpg").getImage();
+		Image IMG_MAIN = new ImageIcon("images/sky8.jpeg").getImage();
 		// 绘制游戏界面
-		g.drawImage(IMG_MAIN, 0, 0,695,215, null);
+		g.drawImage(IMG_MAIN, 0, 0,300,200, null);
 	}
 	private class TwoSecondCloseFrameThread extends Thread{
 		@Override
