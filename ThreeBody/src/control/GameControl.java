@@ -26,6 +26,7 @@ public class GameControl {
 	private GameDTO gameDTO;
 	private GamePanel gamePanel;
 	
+	
 	public static GameControl getInstance(){
 		return instance;
 	}
@@ -173,6 +174,8 @@ public class GameControl {
 				seconds--;
 				gameDTO.setCountdowns(seconds);
 				countDown.repaint();
+				gamePanel.refresh();
+				
 			}
 			turnChange();
 		}
@@ -189,6 +192,8 @@ public class GameControl {
 			List<Operation> operations = new LinkedList<Operation>();
 			operations.add(operation);
 			handleOperations(operations);
+			
 		}
 	}
+
 }
