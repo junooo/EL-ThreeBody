@@ -167,7 +167,7 @@ public class StartMenuPanel extends JPanel{
 	class HelpListener extends MouseAdapter {
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			Media.playSound(Sound.goback);
+			mainControl.toScore(false);
 		}
 	}
 }

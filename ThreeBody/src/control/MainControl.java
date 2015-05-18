@@ -10,6 +10,7 @@ import ui.AnimatePanel;
 import ui.MainFrame;
 import ui.PreferencePanel;
 import ui.RoomPanel;
+import ui.ScorePanel;
 import ui.StartMenuPanel;
 import ui.account.AccountPanel;
 import ui.game.GamePanel;
@@ -30,6 +31,7 @@ public class MainControl {
 	private JPanel preference=null;
 	public RoomPanel roomPanel=null;
 	private AnimatePanel animate=null;
+	private JPanel score=null;
 	
 	public AccountControl accountControl;
 	public LobbyControl lobbyControl;
@@ -37,6 +39,7 @@ public class MainControl {
 	public GameControl gameControl;
 	
 	private boolean connected = false;
+	
 	
 	public static void main(String[] args) {
 
@@ -166,6 +169,15 @@ public class MainControl {
 			accountControl.logout();
 		}
 		System.exit(0);
+	}
+	
+	public void toScore(boolean isLost) {
+		currentPanel.setVisible(false);
+		this.score = new ScorePanel(isLost,this);
+		currentPanel = this.score;
+		frame.setContentPane(currentPanel);
+		currentPanel.setVisible(true);
+		frame.validate();
 	}
 	
 	public boolean isConnected() {
