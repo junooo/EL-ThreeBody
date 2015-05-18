@@ -427,9 +427,13 @@ public class GamePanel  extends JPanel{
 		Rectangle rec = btnCardSophon.getBounds();
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			initSophon();
+			if (isAbleToPress) {
+				initSophon();
+			}
+			
 		}
 		private void initSophon() {
+			
 			JFrame sophonFinderFrame = new SophonFinderFrame("智子");
 			JPanel finder = new SophonFinderPanel(sophonFinderFrame,gameControl);
 			sophonFinderFrame.setContentPane(finder);
@@ -471,10 +475,14 @@ public class GamePanel  extends JPanel{
 		Rectangle rec = btnCardSillySophon.getBounds();
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			initSillySophon();
+			if (isAbleToPress) {
+				initSillySophon();
+			}
+			
 			
 		}
 		private void initSillySophon() {
+			
 			JFrame sophonFinder = new SophonFinderFrame("人造智子");
 			JPanel finder = new SophonFinderPanel(sophonFinder,gameControl);
 			sophonFinder.setContentPane(finder);
@@ -521,11 +529,14 @@ public class GamePanel  extends JPanel{
 		Rectangle rec = btnCardWholeBlock.getBounds();
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			FrameUtil.sendMessageByFrame("全局黑域", "保护所有坐标一轮");
-			String id = AccountDTO.getInstance().getId();
-			Card wholeBlock = new WholeBlock(id, null);
-			Operation cardUse = new CardUse(id,null,wholeBlock);
-			GameControl.getInstance().doOperation(cardUse);
+			if (isAbleToPress) {
+				FrameUtil.sendMessageByFrame("全局黑域", "保护所有坐标一轮");
+				String id = AccountDTO.getInstance().getId();
+				Card wholeBlock = new WholeBlock(id, null);
+				Operation cardUse = new CardUse(id,null,wholeBlock);
+				GameControl.getInstance().doOperation(cardUse);
+			}
+			
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
@@ -568,13 +579,17 @@ public class GamePanel  extends JPanel{
 		Rectangle rec = btnCardPatialBlock.getBounds();
 		@Override
 		public void mouseClicked(MouseEvent e) {
+			if (isAbleToPress) {
+				JFrame patialBlock = new PatialBlockFrame();
+				JPanel block = new PatialBlockPanel(patialBlock);
+				patialBlock.setContentPane(block);
+			}
 			initPatialBlock();
 			
 		}
 		private void initPatialBlock() {
-			JFrame patialBlock = new PatialBlockFrame();
-			JPanel block = new PatialBlockPanel(patialBlock);
-			patialBlock.setContentPane(block);
+			
+			
 			
 		}
 		@Override
@@ -618,9 +633,12 @@ public class GamePanel  extends JPanel{
 		Rectangle rec = btnCardNoBroadcasting.getBounds();
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			JFrame iframe = new InformFrame("电波干扰", 300, 200);
-			JPanel selectEnemyPanel = new SelectEnemyPanel(iframe,"选择要干扰的敌人");
-			iframe.add(selectEnemyPanel);
+			if (isAbleToPress) {
+				JFrame iframe = new InformFrame("电波干扰", 300, 200);
+				JPanel selectEnemyPanel = new SelectEnemyPanel(iframe,"选择要干扰的敌人");
+				iframe.add(selectEnemyPanel);
+			}
+			
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
@@ -663,9 +681,13 @@ public class GamePanel  extends JPanel{
 		Rectangle rec = btnCardTechPotion.getBounds();
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			useTechPotion();
+			if (isAbleToPress) {
+				useTechPotion();
+			}
+			
 		}
 		private void useTechPotion() {
+			
 			String id=user.getAccount().getId();
 			TechPotion tp = new TechPotion(id, id);
 			CardUse cardUseTp=new CardUse(id, id, tp);
@@ -710,11 +732,14 @@ public class GamePanel  extends JPanel{
 		Rectangle rec = btnCardResourcePotion.getBounds();
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			String id = AccountDTO.getInstance().getId();
-			Card resourcePotion = new ResourcePotion(id, null);
-			Operation cardUse = new CardUse(id,null,resourcePotion);
-			GameControl.getInstance().doOperation(cardUse);
-			repaint();
+			if (isAbleToPress) {
+				String id = AccountDTO.getInstance().getId();
+				Card resourcePotion = new ResourcePotion(id, null);
+				Operation cardUse = new CardUse(id,null,resourcePotion);
+				GameControl.getInstance().doOperation(cardUse);
+				repaint();
+			}
+			
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
@@ -757,9 +782,12 @@ public class GamePanel  extends JPanel{
 		Rectangle rec = btnCardResourceGambling.getBounds();
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			JFrame iframe = new InformFrame("资源赌博", 300, 200);
-			JPanel gamblePanel = new GamblePanel(iframe,"输入要赌博的资源");
-			iframe.add(gamblePanel);
+			if (isAbleToPress) {
+				JFrame iframe = new InformFrame("资源赌博", 300, 200);
+				JPanel gamblePanel = new GamblePanel(iframe,"输入要赌博的资源");
+				iframe.add(gamblePanel);
+			}
+			
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
@@ -802,9 +830,12 @@ public class GamePanel  extends JPanel{
 		Rectangle rec = btnPriviledgeGetRole.getBounds();
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			JFrame iframe = new InformFrame("特权_身份探知", 300, 200);
-			JPanel selectEnemyPanel = new SelectEnemyPanel(iframe,"选择要探知的敌人");
-			iframe.add(selectEnemyPanel);
+			if(isAbleToPress){
+				JFrame iframe = new InformFrame("特权_身份探知", 300, 200);
+				JPanel selectEnemyPanel = new SelectEnemyPanel(iframe,"选择要探知的敌人");
+				iframe.add(selectEnemyPanel);
+			}
+			
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
